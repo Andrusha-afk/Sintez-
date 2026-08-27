@@ -47,6 +47,27 @@
             align-items: center;
             padding: 20px 24px;
             z-index: 10;
+            position: relative;
+            background: var(--bg-color); /* Ensure header has background */
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
         }
 
         .logo {
@@ -59,6 +80,12 @@
         }
 
         .logo svg { width: 24px; height: 24px; fill: white; }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: 700;
+            display: none; /* Hidden on main screens */
+        }
 
         .lang-switch {
             display: flex;
@@ -91,6 +118,7 @@
             color: white;
             cursor: pointer;
             display: none; /* Hidden by default, shown on dashboard */
+            padding: 5px;
         }
 
         /* --- Screens Container --- */
@@ -107,12 +135,13 @@
             transition: opacity 0.3s ease-in-out;
             background-color: var(--bg-color);
             overflow-y: auto;
+            z-index: 1;
         }
 
         .screen.active {
             opacity: 1;
             pointer-events: all;
-            z-index: 1;
+            z-index: 2;
         }
 
         /* --- Onboarding Common Styles --- */
@@ -337,23 +366,178 @@
         .menu-text h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
         .menu-text p { font-size: 13px; color: var(--text-secondary); }
 
+        /* --- MODAL MENU STYLES --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #1c1c22;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            padding: 24px;
+            z-index: 101;
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal-sheet.open {
+            transform: translateY(0);
+        }
+
+        .modal-handle {
+            width: 40px;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            margin: 0 auto 20px auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .close-modal {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+        }
+
+        .modal-option {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .modal-option:active {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .modal-footer-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            line-height: 1.4;
+        }
+
+        /* --- ANALYTICS SCREEN STYLES --- */
+        .analytics-container {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .analytics-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px 24px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .analytics-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .analytics-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--text-secondary);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .analytics-text {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
     </style>
 </head>
 <body>
 
     <!-- Global Header -->
     <div class="header">
-        <div class="logo">
-            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-            LinkOS
+        <div class="header-left">
+            <button class="back-btn" id="globalBackBtn" onclick="goBack()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            
+            <div class="logo" id="mainLogo">
+                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                LinkOS
+            </div>
+            
+            <div class="page-title" id="pageTitle">Аналитика</div>
         </div>
+
         <div style="display: flex; gap: 10px; align-items: center;">
             <div class="lang-switch">
                 <button class="lang-btn">Ge</button>
                 <button class="lang-btn">En</button>
                 <button class="lang-btn active">Ru</button>
             </div>
-            <button class="menu-btn" id="globalMenuBtn">
+            <button class="menu-btn" id="globalMenuBtn" onclick="openMenu()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
@@ -471,7 +655,7 @@
 
             <!-- Menu Items -->
             <div class="card" style="padding: 10px 24px;">
-                <div class="menu-item">
+                <div class="menu-item" onclick="showAnalytics()">
                     <div class="menu-icon">
                         <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
                     </div>
@@ -495,6 +679,44 @@
         </div>
     </div>
 
+    <!-- ANALYTICS SCREEN -->
+    <div id="screen-analytics" class="screen">
+        <div class="analytics-container">
+            <div class="analytics-card">
+                <div class="analytics-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+                <p class="analytics-text">
+                    Пока нет просмотров — поделись визиткой, и здесь появится статистика
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL MENU OVERLAY -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeMenu()"></div>
+    
+    <!-- MODAL SHEET -->
+    <div class="modal-sheet" id="modalSheet">
+        <div class="modal-handle"></div>
+        <div class="modal-header">
+            <div class="modal-title">Меню</div>
+            <button class="close-modal" onclick="closeMenu()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+
+        <button class="modal-option" onclick="showWelcome()">Посмотреть приветствие</button>
+        <button class="modal-option" onclick="showMyCards()">Мои визитки</button>
+
+        <div class="modal-footer-text">
+            Приветствие показывается один раз при первом входе. Отсюда его можно открыть снова.
+        </div>
+    </div>
+
     <script>
         // Language Switcher Logic
         const langBtns = document.querySelectorAll('.lang-btn');
@@ -507,21 +729,90 @@
 
         // Navigation Logic
         function nextScreen(screenNum) {
-            // Hide all screens
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            // Show target screen
             document.getElementById(`screen-${screenNum}`).classList.add('active');
+            updateHeader('onboarding');
         }
 
         function goToDashboard() {
-            // Hide all screens
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            // Show dashboard
             document.getElementById('screen-dashboard').classList.add('active');
-            
-            // Show menu button in header
-            document.getElementById('globalMenuBtn').style.display = 'block';
+            updateHeader('dashboard');
+            localStorage.setItem('linkos_visited', 'true');
         }
+
+        function showAnalytics() {
+            closeMenu();
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen-analytics').classList.add('active');
+            updateHeader('analytics');
+        }
+
+        function goBack() {
+            // If we are in analytics, go back to dashboard
+            if (document.getElementById('screen-analytics').classList.contains('active')) {
+                goToDashboard();
+            }
+        }
+
+        // Header State Management
+        function updateHeader(state) {
+            const backBtn = document.getElementById('globalBackBtn');
+            const logo = document.getElementById('mainLogo');
+            const title = document.getElementById('pageTitle');
+            const menuBtn = document.getElementById('globalMenuBtn');
+
+            if (state === 'onboarding') {
+                backBtn.style.display = 'none';
+                logo.style.display = 'flex';
+                title.style.display = 'none';
+                menuBtn.style.display = 'none';
+            } else if (state === 'dashboard') {
+                backBtn.style.display = 'none';
+                logo.style.display = 'flex';
+                title.style.display = 'none';
+                menuBtn.style.display = 'block';
+            } else if (state === 'analytics') {
+                backBtn.style.display = 'flex';
+                logo.style.display = 'none';
+                title.style.display = 'block';
+                menuBtn.style.display = 'none';
+            }
+        }
+
+        // Modal Logic
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalSheet = document.getElementById('modalSheet');
+
+        function openMenu() {
+            modalOverlay.classList.add('open');
+            modalSheet.classList.add('open');
+        }
+
+        function closeMenu() {
+            modalOverlay.classList.remove('open');
+            modalSheet.classList.remove('open');
+        }
+
+        // Menu Actions
+        function showWelcome() {
+            closeMenu();
+            nextScreen(1);
+        }
+
+        function showMyCards() {
+            closeMenu();
+            goToDashboard();
+        }
+
+        // Initial Check
+        window.onload = function() {
+            if (localStorage.getItem('linkos_visited') === 'true') {
+                goToDashboard();
+            } else {
+                updateHeader('onboarding');
+            }
+        };
 
         // Optional: Handle "Create" button click
         document.querySelector('.btn-create').addEventListener('click', () => {
