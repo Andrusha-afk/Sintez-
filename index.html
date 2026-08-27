@@ -8,6 +8,7 @@
         :root {
             --bg-color: #0f0f13;
             --card-bg: #18181d;
+            --input-bg: #1c1c22;
             --text-main: #ffffff;
             --text-secondary: #8b8b9e;
             --accent-gradient: linear-gradient(90deg, #a5b4fc 0%, #c7d2fe 100%);
@@ -87,7 +88,7 @@
             display: none;
         }
 
-        .lang-switch {
+        .lang-switch-header {
             display: flex;
             gap: 4px;
             background: rgba(255,255,255,0.1);
@@ -95,7 +96,7 @@
             border-radius: 20px;
         }
 
-        .lang-btn {
+        .lang-btn-header {
             background: transparent;
             border: none;
             color: var(--text-secondary);
@@ -107,7 +108,7 @@
             transition: all 0.2s;
         }
 
-        .lang-btn.active {
+        .lang-btn-header.active {
             background: var(--btn-primary);
             color: var(--btn-primary-text);
         }
@@ -512,12 +513,175 @@
             line-height: 1.5;
         }
 
-        /* --- NO CARDS MESSAGE STYLE --- */
-        .no-cards-message {
-            text-align: center;
-            padding: 40px 20px;
+        /* --- CREATOR SCREEN STYLES (NEW) --- */
+        .creator-container {
+            padding: 20px 24px 40px 24px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .creator-header {
+            margin-bottom: 30px;
+        }
+
+        .creator-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.1;
+        }
+
+        .creator-subtitle {
             color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.4;
+            margin-bottom: 24px;
+        }
+
+        /* Language Selector in Creator */
+        .lang-selector-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .lang-selector-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .lang-option {
+            flex: 1;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--text-main);
+            padding: 14px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .lang-option.active {
+            background: var(--btn-primary);
+            color: var(--btn-primary-text);
+            border-color: var(--btn-primary);
+        }
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .form-input {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 14px;
+            padding: 16px;
             font-size: 16px;
+            color: white;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: var(--btn-primary);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+
+        .creator-footer {
+            padding: 24px;
+            margin-top: auto;
+            background: var(--bg-color); /* Ensure bg covers scroll area if needed */
+        }
+
+        .btn-next-large {
+            width: 100%;
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 17px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            background: var(--btn-primary);
+            color: var(--btn-primary-text);
+            box-shadow: 0 4px 20px rgba(165, 180, 252, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* User Card Preview in Dashboard */
+        .user-card-preview {
+            background: #23232a;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .uc-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--btn-primary-text);
+            font-size: 20px;
+        }
+
+        .uc-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .uc-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+
+        .uc-actions {
+            margin-left: auto;
+            display: flex;
+            gap: 8px;
+        }
+
+        .uc-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
         }
 
     </style>
@@ -540,10 +704,10 @@
         </div>
 
         <div style="display: flex; gap: 10px; align-items: center;">
-            <div class="lang-switch">
-                <button class="lang-btn" data-lang="de">De</button>
-                <button class="lang-btn" data-lang="en">En</button>
-                <button class="lang-btn active" data-lang="ru">Ru</button>
+            <div class="lang-switch-header">
+                <button class="lang-btn-header" data-lang="de">De</button>
+                <button class="lang-btn-header" data-lang="en">En</button>
+                <button class="lang-btn-header active" data-lang="ru">Ru</button>
             </div>
             <button class="menu-btn" id="globalMenuBtn" onclick="openMenu()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -630,30 +794,34 @@
             <div class="card">
                 <div class="card-label" data-i18n="label_my_cards">МОИ ВИЗИТКИ</div>
                 
-                <div class="empty-state-viz">
-                    <div class="mini-card">
-                        <div class="mc-header"></div>
-                        <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div>
-                        <div class="mc-footer"></div>
+                <!-- Content will be injected here via JS -->
+                <div id="cards-list-container">
+                    <!-- Default Empty State -->
+                    <div class="empty-state-viz">
+                        <div class="mini-card">
+                            <div class="mc-header"></div>
+                            <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div>
+                            <div class="mc-footer"></div>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mc-header" style="background: var(--color-blue)"></div>
+                            <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div><div class="mc-block"></div></div>
+                            <div class="mc-footer"></div>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mc-header" style="background: var(--color-blue)"></div>
+                            <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div>
+                            <div class="mc-footer"></div>
+                        </div>
                     </div>
-                    <div class="mini-card">
-                        <div class="mc-header" style="background: var(--color-blue)"></div>
-                        <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div><div class="mc-block"></div></div>
-                        <div class="mc-footer"></div>
-                    </div>
-                    <div class="mini-card">
-                        <div class="mc-header" style="background: var(--color-blue)"></div>
-                        <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div>
-                        <div class="mc-footer"></div>
-                    </div>
-                </div>
 
-                <div class="empty-text-block">
-                    <h3 data-i18n="empty_h3">Здесь появятся твои визитки</h3>
-                    <p data-i18n="empty_p">Первая собирается за несколько минут: имя, пара блоков — и готово.</p>
-                </div>
+                    <div class="empty-text-block">
+                        <h3 data-i18n="empty_h3">Здесь появятся твои визитки</h3>
+                        <p data-i18n="empty_p">Первая собирается за несколько минут: имя, пара блоков — и готово.</p>
+                    </div>
 
-                <button class="btn-create" data-i18n="btn_create">Создать свою визитку</button>
+                    <button class="btn-create" onclick="openCreator()" data-i18n="btn_create">Создать свою визитку</button>
+                </div>
             </div>
 
             <!-- Info Box -->
@@ -684,6 +852,46 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <!-- CREATOR SCREEN (NEW) -->
+    <div id="screen-creator" class="screen">
+        <div class="creator-container">
+            <div class="creator-header">
+                <h1 class="creator-title" data-i18n="cr_title">Расскажи о себе</h1>
+                <p class="creator-subtitle" data-i18n="cr_subtitle">Это встанет в шапку визитки. Можно поменять в любой момент.</p>
+            </div>
+
+            <!-- Language Selector -->
+            <label class="lang-selector-label" data-i18n="cr_lang_label">Язык приложения</label>
+            <div class="lang-selector-row">
+                <button class="lang-option" onclick="selectCreatorLang(this, 'ge')">ქართული</button>
+                <button class="lang-option" onclick="selectCreatorLang(this, 'en')">English</button>
+                <button class="lang-option active" onclick="selectCreatorLang(this, 'ru')">Русский</button>
+            </div>
+
+            <!-- Form Fields -->
+            <div class="form-group">
+                <label class="form-label" data-i18n="cr_label_name">Название или имя</label>
+                <input type="text" class="form-input" id="input-name" data-i18n-ph="cr_ph_name" placeholder="напр. Студия Анны">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" data-i18n="cr_label_desc">Чем занимаешься — одной фразой</label>
+                <input type="text" class="form-input" id="input-desc" data-i18n-ph="cr_ph_desc" placeholder="напр. Маникюр и дизайн ногтей">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" data-i18n="cr_label_city">Город — по желанию</label>
+                <input type="text" class="form-input" id="input-city" data-i18n-ph="cr_ph_city" placeholder="напр. Батуми">
+            </div>
+        </div>
+
+        <div class="creator-footer">
+            <button class="btn-next-large" onclick="saveCardAndGoBack()">
+                <span data-i18n="btn_next_arrow">Далее →</span>
+            </button>
         </div>
     </div>
 
@@ -746,7 +954,15 @@
                 analytics_empty: "Пока нет просмотров — поделись визиткой, и здесь появится статистика",
                 menu_title: "Меню", menu_welcome: "Посмотреть приветствие", menu_mycards: "Мои визитки",
                 menu_footer: "Приветствие показывается один раз при первом входе. Отсюда его можно открыть снова.",
-                no_cards_msg: "Пока у вас нет визиток", page_analytics: "Аналитика"
+                no_cards_msg: "Пока у вас нет визиток", page_analytics: "Аналитика",
+                // Creator Translations
+                cr_title: "Расскажи о себе",
+                cr_subtitle: "Это встанет в шапку визитки. Можно поменять в любой момент.",
+                cr_lang_label: "Язык приложения",
+                cr_label_name: "Название или имя", cr_ph_name: "напр. Студия Анны",
+                cr_label_desc: "Чем занимаешься — одной фразой", cr_ph_desc: "напр. Маникюр и дизайн ногтей",
+                cr_label_city: "Город — по желанию", cr_ph_city: "напр. Батуми",
+                btn_next_arrow: "Далее →"
             },
             en: {
                 s1_title: "Your business card ", s1_title_grad: "inside MAX",
@@ -766,7 +982,15 @@
                 analytics_empty: "No views yet — share your card and statistics will appear here",
                 menu_title: "Menu", menu_welcome: "View welcome screen", menu_mycards: "My cards",
                 menu_footer: "Welcome screen is shown once on first login. You can open it again from here.",
-                no_cards_msg: "You don't have any cards yet", page_analytics: "Analytics"
+                no_cards_msg: "You don't have any cards yet", page_analytics: "Analytics",
+                // Creator Translations
+                cr_title: "Tell about yourself",
+                cr_subtitle: "This will go into the card header. You can change it anytime.",
+                cr_lang_label: "App language",
+                cr_label_name: "Name or title", cr_ph_name: "e.g. Anna's Studio",
+                cr_label_desc: "What you do — in one phrase", cr_ph_desc: "e.g. Manicure and nail design",
+                cr_label_city: "City — optional", cr_ph_city: "e.g. Batumi",
+                btn_next_arrow: "Next →"
             },
             de: {
                 s1_title: "Deine Visitenkarte ", s1_title_grad: "in MAX",
@@ -786,16 +1010,24 @@
                 analytics_empty: "Noch keine Aufrufe — teile deine Karte und hier erscheint die Statistik",
                 menu_title: "Menü", menu_welcome: "Begrüßung ansehen", menu_mycards: "Meine Karten",
                 menu_footer: "Der Begrüßungsbildschirm wird beim ersten Login einmal angezeigt. Du kannst ihn von hier aus wieder öffnen.",
-                no_cards_msg: "Sie haben noch keine Karten", page_analytics: "Analytik"
+                no_cards_msg: "Sie haben noch keine Karten", page_analytics: "Analytik",
+                // Creator Translations
+                cr_title: "Erzähl von dir",
+                cr_subtitle: "Dies wird in den Kopf der Karte eingefügt. Kann jederzeit geändert werden.",
+                cr_lang_label: "App-Sprache",
+                cr_label_name: "Name oder Titel", cr_ph_name: "z.B. Annas Studio",
+                cr_label_desc: "Was machst du — in einem Satz", cr_ph_desc: "z.B. Maniküre und Nageldesign",
+                cr_label_city: "Stadt — optional", cr_ph_city: "z.B. Batumi",
+                btn_next_arrow: "Weiter →"
             }
         };
 
         let currentLang = 'ru';
-        // Имитация наличия визиток (false = пусто, true = есть визитки)
         let hasUserCards = false; 
+        let userCardData = null;
 
-        // Language Switcher Logic
-        const langBtns = document.querySelectorAll('.lang-btn');
+        // Language Switcher Logic (Header)
+        const langBtns = document.querySelectorAll('.lang-btn-header');
         langBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 langBtns.forEach(b => b.classList.remove('active'));
@@ -809,15 +1041,12 @@
             const t = translations[currentLang];
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (t[key]) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = t[key];
-                    } else {
-                        el.innerHTML = t[key];
-                    }
-                }
+                if (t[key]) el.innerHTML = t[key];
             });
-            // Update page title specifically
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (t[key]) el.placeholder = t[key];
+            });
             document.getElementById('pageTitle').innerText = t.page_analytics;
         }
 
@@ -832,6 +1061,24 @@
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('screen-dashboard').classList.add('active');
             updateHeader('dashboard');
+            renderCardsList(); // Refresh list state
+        }
+
+        function openCreator() {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen-creator').classList.add('active');
+            updateHeader('creator');
+            
+            // Reset form if needed or keep previous values
+            if(userCardData) {
+                document.getElementById('input-name').value = userCardData.name || '';
+                document.getElementById('input-desc').value = userCardData.desc || '';
+                document.getElementById('input-city').value = userCardData.city || '';
+            } else {
+                document.getElementById('input-name').value = '';
+                document.getElementById('input-desc').value = '';
+                document.getElementById('input-city').value = '';
+            }
         }
 
         function showAnalytics() {
@@ -844,6 +1091,8 @@
         function goBack() {
             if (document.getElementById('screen-analytics').classList.contains('active')) {
                 goToDashboard();
+            } else if (document.getElementById('screen-creator').classList.contains('active')) {
+                goToDashboard();
             }
         }
 
@@ -853,22 +1102,34 @@
             const logo = document.getElementById('mainLogo');
             const title = document.getElementById('pageTitle');
             const menuBtn = document.getElementById('globalMenuBtn');
+            const langSwitch = document.querySelector('.lang-switch-header');
 
-            if (state === 'onboarding') {
-                backBtn.style.display = 'none';
-                logo.style.display = 'flex';
+            if (state === 'onboarding' || state === 'creator') {
+                backBtn.style.display = (state === 'creator') ? 'flex' : 'none';
+                logo.style.display = 'none'; // Hide logo on creator to match screenshot style usually, or keep if preferred. Screenshot shows just text/header. Let's hide logo for clean look or keep simple.
+                // Actually screenshot doesn't show header clearly, but standard is back button.
+                if(state === 'creator') {
+                     logo.style.display = 'none';
+                     title.style.display = 'none'; // Title is inside page
+                } else {
+                     logo.style.display = 'flex';
+                }
+                
                 title.style.display = 'none';
                 menuBtn.style.display = 'none';
+                langSwitch.style.display = 'none'; // Hide global lang switch on creator
             } else if (state === 'dashboard') {
                 backBtn.style.display = 'none';
                 logo.style.display = 'flex';
                 title.style.display = 'none';
                 menuBtn.style.display = 'block';
+                langSwitch.style.display = 'flex';
             } else if (state === 'analytics') {
                 backBtn.style.display = 'flex';
                 logo.style.display = 'none';
                 title.style.display = 'block';
                 menuBtn.style.display = 'none';
+                langSwitch.style.display = 'none';
             }
         }
 
@@ -897,28 +1158,94 @@
             if (hasUserCards) {
                 goToDashboard();
             } else {
-                // Show simple alert or custom toast for "No cards"
-                // For this demo, we'll use a standard alert styled by browser, 
-                // but translated.
                 alert(translations[currentLang].no_cards_msg);
+            }
+        }
+
+        // Creator Logic
+        function selectCreatorLang(btn, langCode) {
+            document.querySelectorAll('.lang-option').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            // In a real app, this would change the language of the card being created
+        }
+
+        function saveCardAndGoBack() {
+            const name = document.getElementById('input-name').value.trim();
+            const desc = document.getElementById('input-desc').value.trim();
+            const city = document.getElementById('input-city').value.trim();
+
+            if (!name) {
+                // Simple validation
+                alert(currentLang === 'ru' ? 'Введите название или имя' : 'Enter name or title');
+                return;
+            }
+
+            // Save Data
+            userCardData = { name, desc, city };
+            hasUserCards = true;
+
+            // Go back to dashboard
+            goToDashboard();
+        }
+
+        function renderCardsList() {
+            const container = document.getElementById('cards-list-container');
+            const t = translations[currentLang];
+
+            if (hasUserCards && userCardData) {
+                // Render User Card
+                const initial = userCardData.name.charAt(0).toUpperCase();
+                container.innerHTML = `
+                    <div class="user-card-preview">
+                        <div class="uc-avatar">${initial}</div>
+                        <div class="uc-info">
+                            <h4>${userCardData.name}</h4>
+                            <p>${userCardData.desc} ${userCardData.city ? '• ' + userCardData.city : ''}</p>
+                        </div>
+                        <div class="uc-actions">
+                            <button class="uc-btn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn-create" onclick="openCreator()" style="margin-top: 10px; background: rgba(255,255,255,0.1); color: white; box-shadow: none;">+ Создать еще одну</button>
+                `;
+            } else {
+                // Render Empty State
+                container.innerHTML = `
+                    <div class="empty-state-viz">
+                        <div class="mini-card">
+                            <div class="mc-header"></div>
+                            <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div>
+                            <div class="mc-footer"></div>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mc-header" style="background: var(--color-blue)"></div>
+                            <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div><div class="mc-block"></div></div>
+                            <div class="mc-footer"></div>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mc-header" style="background: var(--color-blue)"></div>
+                            <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div>
+                            <div class="mc-footer"></div>
+                        </div>
+                    </div>
+
+                    <div class="empty-text-block">
+                        <h3>${t.empty_h3}</h3>
+                        <p>${t.empty_p}</p>
+                    </div>
+
+                    <button class="btn-create" onclick="openCreator()">${t.btn_create}</button>
+                `;
             }
         }
 
         // Initial Setup
         window.onload = function() {
-            // Always start with welcome screen as requested
             nextScreen(1);
             applyTranslations();
         };
-
-        // Optional: Handle "Create" button click
-        document.querySelector('.btn-create').addEventListener('click', () => {
-            // Simulate creating a card so next time "My Cards" works
-            hasUserCards = true;
-            alert(currentLang === 'ru' ? 'Визитка создана! Теперь раздел "Мои визитки" будет работать.' : 
-                  currentLang === 'en' ? 'Card created! Now "My Cards" section will work.' : 
-                  'Karte erstellt! Der Bereich "Meine Karten" funktioniert jetzt.');
-        });
 
     </script>
 </body>
