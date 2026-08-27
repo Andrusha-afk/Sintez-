@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LinkOS - Твоя визитка</title>
+    <style>
+        :root {
+            --bg-color: #0f0f13;
+            --text-main: #ffffff;
+            --text-secondary: #8b8b9e;
+            --accent-gradient: linear-gradient(90deg, #a5b4fc 0%, #c7d2fe 100%);
+            --btn-primary: #a5b4fc;
+            --btn-primary-text: #0f0f13;
+            --btn-secondary: rgba(255, 255, 255, 0.05);
+            --icon-bg: rgba(255, 255, 255, 0.03);
+            --icon-border: rgba(165, 180, 252, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .logo svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 4px;
+            background: rgba(255,255,255,0.1);
+            padding: 2px;
+            border-radius: 20px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        .lang-btn.active {
+            background: var(--btn-primary);
+            color: var(--btn-primary-text);
+        }
+
+        /* Main Content */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 24px;
+            text-align: center;
+            margin-top: -40px; /* Visual balance */
+        }
+
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--icon-bg);
+            border: 1px solid var(--icon-border);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            box-shadow: 0 0 30px rgba(165, 180, 252, 0.1);
+        }
+
+        .hero-icon svg {
+            width: 36px;
+            height: 36px;
+            stroke: var(--btn-primary);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        h1 {
+            font-size: 32px;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        p.description {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.5;
+            max-width: 320px;
+        }
+
+        /* Footer Buttons */
+        .footer {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: var(--btn-secondary);
+            color: var(--text-main);
+        }
+
+        .btn-primary {
+            background: var(--btn-primary);
+            color: var(--btn-primary-text);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <!-- Simple Link Icon -->
+            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            LinkOS
+        </div>
+        <div class="lang-switch">
+            <button class="lang-btn">Ge</button>
+            <button class="lang-btn">En</button>
+            <button class="lang-btn active">Ru</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="hero-icon">
+            <!-- User Card Icon -->
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect>
+                <circle cx="12" cy="10" r="3"></circle>
+                <path d="M7 20v-2a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"></path>
+            </svg>
+        </div>
+
+        <h1>
+            Твоя визитка <span class="gradient-text">внутри Telegram</span>
+        </h1>
+
+        <p class="description">
+            Открывается по ссылке за секунду.<br>
+            Ставить ничего не нужно — ни тебе,<br>
+            ни тому, кому ты её отправишь.
+        </p>
+    </div>
+
+    <!-- Footer Actions -->
+    <div class="footer">
+        <button class="btn btn-secondary" onclick="skipOnboarding()">Пропустить</button>
+        <button class="btn btn-primary" onclick="goNext()">Далее</button>
+    </div>
+
+    <script>
+        // Простая логика для демонстрации
+        function skipOnboarding() {
+            console.log("User skipped onboarding");
+            // Здесь можно добавить редирект на главную страницу
+            // window.location.href = '/home';
+            alert("Переход к созданию визитки...");
+        }
+
+        function goNext() {
+            console.log("User clicked Next");
+            // Логика перехода на следующий экран
+            alert("Следующий шаг онбординга");
+        }
+
+        // Обработка переключения языка (визуальная)
+        const langBtns = document.querySelectorAll('.lang-btn');
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
