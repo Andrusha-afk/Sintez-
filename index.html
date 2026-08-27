@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Синтез - Твоя визитка</title>
+    <title>Synthes - Твоя визитка</title>
     <style>
         :root {
             --bg-color: #0f0f13;
@@ -48,7 +48,7 @@
             padding: 20px 24px;
             z-index: 10;
             position: relative;
-            background: var(--bg-color); /* Ensure header has background */
+            background: var(--bg-color);
         }
 
         .header-left {
@@ -63,7 +63,7 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            display: none; /* Hidden by default */
+            display: none;
             align-items: center;
             justify-content: center;
             cursor: pointer;
@@ -84,7 +84,7 @@
         .page-title {
             font-size: 18px;
             font-weight: 700;
-            display: none; /* Hidden on main screens */
+            display: none;
         }
 
         .lang-switch {
@@ -117,7 +117,7 @@
             border: none;
             color: white;
             cursor: pointer;
-            display: none; /* Hidden by default, shown on dashboard */
+            display: none;
             padding: 5px;
         }
 
@@ -512,6 +512,14 @@
             line-height: 1.5;
         }
 
+        /* --- NO CARDS MESSAGE STYLE --- */
+        .no-cards-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
     </style>
 </head>
 <body>
@@ -533,9 +541,9 @@
 
         <div style="display: flex; gap: 10px; align-items: center;">
             <div class="lang-switch">
-                <button class="lang-btn">Ge</button>
-                <button class="lang-btn">En</button>
-                <button class="lang-btn active">Ru</button>
+                <button class="lang-btn" data-lang="de">De</button>
+                <button class="lang-btn" data-lang="en">En</button>
+                <button class="lang-btn active" data-lang="ru">Ru</button>
             </div>
             <button class="menu-btn" id="globalMenuBtn" onclick="openMenu()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -553,12 +561,12 @@
                     <path d="M7 20v-2a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"></path>
                 </svg>
             </div>
-            <h1>Твоя визитка <span class="gradient-text">внутри Telegram</span></h1>
-            <p class="description">Открывается по ссылке за секунду. Ставить ничего не нужно — ни тебе, ни тому, кому ты её отправишь.</p>
+            <h1 data-i18n="s1_title">Твоя визитка <span class="gradient-text" data-i18n="s1_title_grad">внутри MAX</span></h1>
+            <p class="description" data-i18n="s1_desc">Открывается по ссылке за секунду. Ставить ничего не нужно — ни тебе, ни тому, кому ты её отправишь.</p>
         </div>
         <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="goToDashboard()">Пропустить</button>
-            <button class="btn btn-primary" onclick="nextScreen(2)">Далее</button>
+            <button class="btn btn-secondary" onclick="goToDashboard()" data-i18n="btn_skip">Пропустить</button>
+            <button class="btn btn-primary" onclick="nextScreen(2)" data-i18n="btn_next">Далее</button>
         </div>
     </div>
 
@@ -580,12 +588,12 @@
                 </div>
                 <div class="m-line" style="height: 15px; width: 100%; background: #2a2a35; margin-top: 5px;"></div>
             </div>
-            <h1>Собирается <span class="gradient-text">из блоков</span></h1>
-            <p class="description">Прайс, отзывы, фотогалерея, карта, часы работы, кнопка записи. Блоки переставляются перетаскиванием, порядок задаёшь ты.</p>
+            <h1 data-i18n="s2_title">Собирается <span class="gradient-text" data-i18n="s2_title_grad">из блоков</span></h1>
+            <p class="description" data-i18n="s2_desc">Прайс, отзывы, фотогалерея, карта, часы работы, кнопка записи. Блоки переставляются перетаскиванием, порядок задаёшь ты.</p>
         </div>
         <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="goToDashboard()">Пропустить</button>
-            <button class="btn btn-primary" onclick="nextScreen(3)">Далее</button>
+            <button class="btn btn-secondary" onclick="goToDashboard()" data-i18n="btn_skip">Пропустить</button>
+            <button class="btn btn-primary" onclick="nextScreen(3)" data-i18n="btn_next">Далее</button>
         </div>
     </div>
 
@@ -601,11 +609,11 @@
                     <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
                 </svg>
             </div>
-            <h1>Свой бот и своя<br>ссылка</h1>
-            <p class="description">У визитки появляется собственный бот. Ссылку можно отправить в переписке, положить в описание профиля или напечатать на карточке.</p>
+            <h1 data-i18n="s3_title">Свой бот и своя<br>ссылка</h1>
+            <p class="description" data-i18n="s3_desc">У визитки появляется собственный бот. Ссылку можно отправить в переписке, положить в описание профиля или напечатать на карточке.</p>
         </div>
         <div class="footer-actions">
-            <button class="btn btn-primary" onclick="goToDashboard()" style="box-shadow: 0 4px 20px rgba(165, 180, 252, 0.3);">Начать</button>
+            <button class="btn btn-primary" onclick="goToDashboard()" style="box-shadow: 0 4px 20px rgba(165, 180, 252, 0.3);" data-i18n="btn_start">Начать</button>
         </div>
     </div>
 
@@ -614,13 +622,13 @@
         <div class="dashboard-container" style="padding-top: 20px;">
             
             <div class="dash-header-text">
-                <h2 class="dash-title">Твои визитки</h2>
-                <p class="dash-subtitle">Открой, чтобы изменить. Ссылку можно отправить кому угодно.</p>
+                <h2 class="dash-title" data-i18n="dash_title">Твои визитки</h2>
+                <p class="dash-subtitle" data-i18n="dash_subtitle">Открой, чтобы изменить. Ссылку можно отправить кому угодно.</p>
             </div>
 
             <!-- Main Card: My Business Cards -->
             <div class="card">
-                <div class="card-label">МОИ ВИЗИТКИ</div>
+                <div class="card-label" data-i18n="label_my_cards">МОИ ВИЗИТКИ</div>
                 
                 <div class="empty-state-viz">
                     <div class="mini-card">
@@ -641,15 +649,15 @@
                 </div>
 
                 <div class="empty-text-block">
-                    <h3>Здесь появятся твои визитки</h3>
-                    <p>Первая собирается за несколько минут: имя, пара блоков — и готово.</p>
+                    <h3 data-i18n="empty_h3">Здесь появятся твои визитки</h3>
+                    <p data-i18n="empty_p">Первая собирается за несколько минут: имя, пара блоков — и готово.</p>
                 </div>
 
-                <button class="btn-create">Создать свою визитку</button>
+                <button class="btn-create" data-i18n="btn_create">Создать свою визитку</button>
             </div>
 
             <!-- Info Box -->
-            <div class="info-box">
+            <div class="info-box" data-i18n="info_box">
                 Так это выглядит на примере. Здесь появятся ваши цифры, когда сделаете первую визитку.
             </div>
 
@@ -660,8 +668,8 @@
                         <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
                     </div>
                     <div class="menu-text">
-                        <h4>Статистика</h4>
-                        <p>Просмотры, переходы и заявки</p>
+                        <h4 data-i18n="menu_stats">Статистика</h4>
+                        <p data-i18n="menu_stats_sub">Просмотры, переходы и заявки</p>
                     </div>
                 </div>
 
@@ -670,8 +678,8 @@
                         <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                     </div>
                     <div class="menu-text">
-                        <h4>Ссылки для продвижения</h4>
-                        <p>Отдельная ссылка под каждый канал</p>
+                        <h4 data-i18n="menu_links">Ссылки для продвижения</h4>
+                        <p data-i18n="menu_links_sub">Отдельная ссылка под каждый канал</p>
                     </div>
                 </div>
             </div>
@@ -689,7 +697,7 @@
                         <circle cx="12" cy="12" r="3"></circle>
                     </svg>
                 </div>
-                <p class="analytics-text">
+                <p class="analytics-text" data-i18n="analytics_empty">
                     Пока нет просмотров — поделись визиткой, и здесь появится статистика
                 </p>
             </div>
@@ -703,29 +711,115 @@
     <div class="modal-sheet" id="modalSheet">
         <div class="modal-handle"></div>
         <div class="modal-header">
-            <div class="modal-title">Меню</div>
+            <div class="modal-title" data-i18n="menu_title">Меню</div>
             <button class="close-modal" onclick="closeMenu()">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
         </div>
 
-        <button class="modal-option" onclick="showWelcome()">Посмотреть приветствие</button>
-        <button class="modal-option" onclick="showMyCards()">Мои визитки</button>
+        <button class="modal-option" onclick="showWelcome()" data-i18n="menu_welcome">Посмотреть приветствие</button>
+        <button class="modal-option" onclick="handleMyCardsClick()" data-i18n="menu_mycards">Мои визитки</button>
 
-        <div class="modal-footer-text">
+        <div class="modal-footer-text" data-i18n="menu_footer">
             Приветствие показывается один раз при первом входе. Отсюда его можно открыть снова.
         </div>
     </div>
 
     <script>
+        // --- TRANSLATIONS ---
+        const translations = {
+            ru: {
+                s1_title: "Твоя визитка ", s1_title_grad: "внутри MAX",
+                s1_desc: "Открывается по ссылке за секунду. Ставить ничего не нужно — ни тебе, ни тому, кому ты её отправишь.",
+                s2_title: "Собирается ", s2_title_grad: "из блоков",
+                s2_desc: "Прайс, отзывы, фотогалерея, карта, часы работы, кнопка записи. Блоки переставляются перетаскиванием, порядок задаёшь ты.",
+                s3_title: "Свой бот и своя<br>ссылка",
+                s3_desc: "У визитки появляется собственный бот. Ссылку можно отправить в переписке, положить в описание профиля или напечатать на карточке.",
+                btn_skip: "Пропустить", btn_next: "Далее", btn_start: "Начать",
+                dash_title: "Твои визитки", dash_subtitle: "Открой, чтобы изменить. Ссылку можно отправить кому угодно.",
+                label_my_cards: "МОИ ВИЗИТКИ", empty_h3: "Здесь появятся твои визитки", 
+                empty_p: "Первая собирается за несколько минут: имя, пара блоков — и готово.",
+                btn_create: "Создать свою визитку",
+                info_box: "Так это выглядит на примере. Здесь появятся ваши цифры, когда сделаете первую визитку.",
+                menu_stats: "Статистика", menu_stats_sub: "Просмотры, переходы и заявки",
+                menu_links: "Ссылки для продвижения", menu_links_sub: "Отдельная ссылка под каждый канал",
+                analytics_empty: "Пока нет просмотров — поделись визиткой, и здесь появится статистика",
+                menu_title: "Меню", menu_welcome: "Посмотреть приветствие", menu_mycards: "Мои визитки",
+                menu_footer: "Приветствие показывается один раз при первом входе. Отсюда его можно открыть снова.",
+                no_cards_msg: "Пока у вас нет визиток", page_analytics: "Аналитика"
+            },
+            en: {
+                s1_title: "Your business card ", s1_title_grad: "inside MAX",
+                s1_desc: "Opens via link in a second. No installation needed — neither for you nor for the recipient.",
+                s2_title: "Built from ", s2_title_grad: "blocks",
+                s2_desc: "Price list, reviews, photo gallery, map, working hours, booking button. Blocks are rearranged by dragging, you set the order.",
+                s3_title: "Your own bot and<br>link",
+                s3_desc: "The business card gets its own bot. The link can be sent in chat, put in profile bio or printed on a physical card.",
+                btn_skip: "Skip", btn_next: "Next", btn_start: "Start",
+                dash_title: "Your cards", dash_subtitle: "Open to edit. Send the link to anyone.",
+                label_my_cards: "MY CARDS", empty_h3: "Your cards will appear here", 
+                empty_p: "The first one is assembled in a few minutes: name, a couple of blocks — and it's ready.",
+                btn_create: "Create your card",
+                info_box: "This is how it looks in the example. Your numbers will appear here when you create your first card.",
+                menu_stats: "Statistics", menu_stats_sub: "Views, clicks and requests",
+                menu_links: "Promotion links", menu_links_sub: "Separate link for each channel",
+                analytics_empty: "No views yet — share your card and statistics will appear here",
+                menu_title: "Menu", menu_welcome: "View welcome screen", menu_mycards: "My cards",
+                menu_footer: "Welcome screen is shown once on first login. You can open it again from here.",
+                no_cards_msg: "You don't have any cards yet", page_analytics: "Analytics"
+            },
+            de: {
+                s1_title: "Deine Visitenkarte ", s1_title_grad: "in MAX",
+                s1_desc: "Öffnet sich per Link in einer Sekunde. Keine Installation nötig — weder für dich noch für den Empfänger.",
+                s2_title: "Zusammengestellt aus ", s2_title_grad: "Blöcken",
+                s2_desc: "Preisliste, Bewertungen, Fotogalerie, Karte, Öffnungszeiten, Buchungsbutton. Blöcke werden per Drag & Drop neu angeordnet.",
+                s3_title: "Eigener Bot und<br>eigener Link",
+                s3_desc: "Die Visitenkarte erhält einen eigenen Bot. Der Link kann im Chat gesendet, in die Profilbio eingefügt oder auf eine Karte gedruckt werden.",
+                btn_skip: "Überspringen", btn_next: "Weiter", btn_start: "Starten",
+                dash_title: "Deine Karten", dash_subtitle: "Zum Bearbeiten öffnen. Sende den Link an jeden.",
+                label_my_cards: "MEINE KARTEN", empty_h3: "Hier erscheinen deine Karten", 
+                empty_p: "Die erste ist in wenigen Minuten erstellt: Name, ein paar Blöcke — und fertig.",
+                btn_create: "Karte erstellen",
+                info_box: "So sieht es im Beispiel aus. Ihre Zahlen erscheinen hier, wenn Sie Ihre erste Karte erstellen.",
+                menu_stats: "Statistik", menu_stats_sub: "Aufrufe, Klicks und Anfragen",
+                menu_links: "Werbelinks", menu_links_sub: "Separater Link für jeden Kanal",
+                analytics_empty: "Noch keine Aufrufe — teile deine Karte und hier erscheint die Statistik",
+                menu_title: "Menü", menu_welcome: "Begrüßung ansehen", menu_mycards: "Meine Karten",
+                menu_footer: "Der Begrüßungsbildschirm wird beim ersten Login einmal angezeigt. Du kannst ihn von hier aus wieder öffnen.",
+                no_cards_msg: "Sie haben noch keine Karten", page_analytics: "Analytik"
+            }
+        };
+
+        let currentLang = 'ru';
+        // Имитация наличия визиток (false = пусто, true = есть визитки)
+        let hasUserCards = false; 
+
         // Language Switcher Logic
         const langBtns = document.querySelectorAll('.lang-btn');
         langBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 langBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
+                currentLang = btn.getAttribute('data-lang');
+                applyTranslations();
             });
         });
+
+        function applyTranslations() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = t[key];
+                    } else {
+                        el.innerHTML = t[key];
+                    }
+                }
+            });
+            // Update page title specifically
+            document.getElementById('pageTitle').innerText = t.page_analytics;
+        }
 
         // Navigation Logic
         function nextScreen(screenNum) {
@@ -738,7 +832,6 @@
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('screen-dashboard').classList.add('active');
             updateHeader('dashboard');
-            localStorage.setItem('linkos_visited', 'true');
         }
 
         function showAnalytics() {
@@ -749,7 +842,6 @@
         }
 
         function goBack() {
-            // If we are in analytics, go back to dashboard
             if (document.getElementById('screen-analytics').classList.contains('active')) {
                 goToDashboard();
             }
@@ -800,23 +892,32 @@
             nextScreen(1);
         }
 
-        function showMyCards() {
+        function handleMyCardsClick() {
             closeMenu();
-            goToDashboard();
-        }
-
-        // Initial Check
-        window.onload = function() {
-            if (localStorage.getItem('linkos_visited') === 'true') {
+            if (hasUserCards) {
                 goToDashboard();
             } else {
-                updateHeader('onboarding');
+                // Show simple alert or custom toast for "No cards"
+                // For this demo, we'll use a standard alert styled by browser, 
+                // but translated.
+                alert(translations[currentLang].no_cards_msg);
             }
+        }
+
+        // Initial Setup
+        window.onload = function() {
+            // Always start with welcome screen as requested
+            nextScreen(1);
+            applyTranslations();
         };
 
         // Optional: Handle "Create" button click
         document.querySelector('.btn-create').addEventListener('click', () => {
-            alert('Открывается редактор визитки...');
+            // Simulate creating a card so next time "My Cards" works
+            hasUserCards = true;
+            alert(currentLang === 'ru' ? 'Визитка создана! Теперь раздел "Мои визитки" будет работать.' : 
+                  currentLang === 'en' ? 'Card created! Now "My Cards" section will work.' : 
+                  'Karte erstellt! Der Bereich "Meine Karten" funktioniert jetzt.');
         });
 
     </script>
