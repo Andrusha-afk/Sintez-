@@ -22,6 +22,7 @@
             --color-yellow: #fbbf24;
             --color-green: #4ade80;
             --color-pink: #f472b6;
+            --color-red: #ef4444;
         }
 
         * {
@@ -452,10 +453,27 @@
             text-align: left;
             cursor: pointer;
             transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .modal-option:active {
             background: rgba(255,255,255,0.08);
+        }
+
+        .modal-option.danger {
+            color: var(--color-red);
+            border-color: rgba(239, 68, 68, 0.2);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .modal-option svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
         }
 
         .modal-footer-text {
@@ -608,7 +626,7 @@
         .creator-footer {
             padding: 24px;
             margin-top: auto;
-            background: var(--bg-color); /* Ensure bg covers scroll area if needed */
+            background: var(--bg-color);
         }
 
         .btn-next-large {
@@ -651,24 +669,36 @@
             font-weight: 800;
             color: var(--btn-primary-text);
             font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .uc-info {
+            flex: 1;
+            min-width: 0;
         }
 
         .uc-info h4 {
             font-size: 16px;
             font-weight: 700;
             margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .uc-info p {
             font-size: 13px;
             color: var(--text-secondary);
             line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .uc-actions {
-            margin-left: auto;
             display: flex;
             gap: 8px;
+            flex-shrink: 0;
         }
 
         .uc-btn {
@@ -682,6 +712,35 @@
             justify-content: center;
             cursor: pointer;
             color: white;
+            transition: background 0.2s;
+        }
+
+        .uc-btn:active {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #2a2a35;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 200;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
 
     </style>
@@ -912,10 +971,10 @@
         </div>
     </div>
 
-    <!-- MODAL MENU OVERLAY -->
+    <!-- MODAL MENU OVERLAY (Main Menu) -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeMenu()"></div>
     
-    <!-- MODAL SHEET -->
+    <!-- MODAL SHEET (Main Menu) -->
     <div class="modal-sheet" id="modalSheet">
         <div class="modal-handle"></div>
         <div class="modal-header">
@@ -932,6 +991,36 @@
             Приветствие показывается один раз при первом входе. Отсюда его можно открыть снова.
         </div>
     </div>
+
+    <!-- CARD ACTIONS MODAL (Edit/Share/Delete) -->
+    <div class="modal-overlay" id="cardModalOverlay" onclick="closeCardMenu()"></div>
+    <div class="modal-sheet" id="cardModalSheet">
+        <div class="modal-handle"></div>
+        <div class="modal-header">
+            <div class="modal-title" id="cardModalTitle">Действия</div>
+            <button class="close-modal" onclick="closeCardMenu()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+
+        <button class="modal-option" onclick="editCurrentCard()">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <span data-i18n="action_edit">Редактировать</span>
+        </button>
+
+        <button class="modal-option" onclick="shareCurrentCard()">
+            <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            <span data-i18n="action_share">Поделиться</span>
+        </button>
+
+        <button class="modal-option danger" onclick="deleteCurrentCard()">
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            <span data-i18n="action_delete">Удалить навсегда</span>
+        </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Ссылка скопирована!</div>
 
     <script>
         // --- TRANSLATIONS ---
@@ -955,14 +1044,15 @@
                 menu_title: "Меню", menu_welcome: "Посмотреть приветствие", menu_mycards: "Мои визитки",
                 menu_footer: "Приветствие показывается один раз при первом входе. Отсюда его можно открыть снова.",
                 no_cards_msg: "Пока у вас нет визиток", page_analytics: "Аналитика",
-                // Creator Translations
                 cr_title: "Расскажи о себе",
                 cr_subtitle: "Это встанет в шапку визитки. Можно поменять в любой момент.",
                 cr_lang_label: "Язык приложения",
                 cr_label_name: "Название или имя", cr_ph_name: "напр. Студия Анны",
                 cr_label_desc: "Чем занимаешься — одной фразой", cr_ph_desc: "напр. Маникюр и дизайн ногтей",
                 cr_label_city: "Город — по желанию", cr_ph_city: "напр. Батуми",
-                btn_next_arrow: "Далее →"
+                btn_next_arrow: "Далее →",
+                action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить навсегда",
+                toast_copy: "Ссылка скопирована!", toast_deleted: "Визитка удалена"
             },
             en: {
                 s1_title: "Your business card ", s1_title_grad: "inside MAX",
@@ -983,14 +1073,15 @@
                 menu_title: "Menu", menu_welcome: "View welcome screen", menu_mycards: "My cards",
                 menu_footer: "Welcome screen is shown once on first login. You can open it again from here.",
                 no_cards_msg: "You don't have any cards yet", page_analytics: "Analytics",
-                // Creator Translations
                 cr_title: "Tell about yourself",
                 cr_subtitle: "This will go into the card header. You can change it anytime.",
                 cr_lang_label: "App language",
                 cr_label_name: "Name or title", cr_ph_name: "e.g. Anna's Studio",
                 cr_label_desc: "What you do — in one phrase", cr_ph_desc: "e.g. Manicure and nail design",
                 cr_label_city: "City — optional", cr_ph_city: "e.g. Batumi",
-                btn_next_arrow: "Next →"
+                btn_next_arrow: "Next →",
+                action_edit: "Edit", action_share: "Share", action_delete: "Delete forever",
+                toast_copy: "Link copied!", toast_deleted: "Card deleted"
             },
             de: {
                 s1_title: "Deine Visitenkarte ", s1_title_grad: "in MAX",
@@ -1011,14 +1102,15 @@
                 menu_title: "Menü", menu_welcome: "Begrüßung ansehen", menu_mycards: "Meine Karten",
                 menu_footer: "Der Begrüßungsbildschirm wird beim ersten Login einmal angezeigt. Du kannst ihn von hier aus wieder öffnen.",
                 no_cards_msg: "Sie haben noch keine Karten", page_analytics: "Analytik",
-                // Creator Translations
                 cr_title: "Erzähl von dir",
                 cr_subtitle: "Dies wird in den Kopf der Karte eingefügt. Kann jederzeit geändert werden.",
                 cr_lang_label: "App-Sprache",
                 cr_label_name: "Name oder Titel", cr_ph_name: "z.B. Annas Studio",
                 cr_label_desc: "Was machst du — in einem Satz", cr_ph_desc: "z.B. Maniküre und Nageldesign",
                 cr_label_city: "Stadt — optional", cr_ph_city: "z.B. Batumi",
-                btn_next_arrow: "Weiter →"
+                btn_next_arrow: "Weiter →",
+                action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Für immer löschen",
+                toast_copy: "Link kopiert!", toast_deleted: "Karte gelöscht"
             }
         };
 
@@ -1061,16 +1153,15 @@
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('screen-dashboard').classList.add('active');
             updateHeader('dashboard');
-            renderCardsList(); // Refresh list state
+            renderCardsList();
         }
 
-        function openCreator() {
+        function openCreator(isEdit = false) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('screen-creator').classList.add('active');
             updateHeader('creator');
             
-            // Reset form if needed or keep previous values
-            if(userCardData) {
+            if (isEdit && userCardData) {
                 document.getElementById('input-name').value = userCardData.name || '';
                 document.getElementById('input-desc').value = userCardData.desc || '';
                 document.getElementById('input-city').value = userCardData.city || '';
@@ -1106,18 +1197,10 @@
 
             if (state === 'onboarding' || state === 'creator') {
                 backBtn.style.display = (state === 'creator') ? 'flex' : 'none';
-                logo.style.display = 'none'; // Hide logo on creator to match screenshot style usually, or keep if preferred. Screenshot shows just text/header. Let's hide logo for clean look or keep simple.
-                // Actually screenshot doesn't show header clearly, but standard is back button.
-                if(state === 'creator') {
-                     logo.style.display = 'none';
-                     title.style.display = 'none'; // Title is inside page
-                } else {
-                     logo.style.display = 'flex';
-                }
-                
+                logo.style.display = (state === 'creator') ? 'none' : 'flex';
                 title.style.display = 'none';
                 menuBtn.style.display = 'none';
-                langSwitch.style.display = 'none'; // Hide global lang switch on creator
+                langSwitch.style.display = 'none';
             } else if (state === 'dashboard') {
                 backBtn.style.display = 'none';
                 logo.style.display = 'flex';
@@ -1133,7 +1216,7 @@
             }
         }
 
-        // Modal Logic
+        // Modal Logic (Main Menu)
         const modalOverlay = document.getElementById('modalOverlay');
         const modalSheet = document.getElementById('modalSheet');
 
@@ -1145,6 +1228,20 @@
         function closeMenu() {
             modalOverlay.classList.remove('open');
             modalSheet.classList.remove('open');
+        }
+
+        // Card Actions Modal Logic
+        const cardModalOverlay = document.getElementById('cardModalOverlay');
+        const cardModalSheet = document.getElementById('cardModalSheet');
+
+        function openCardMenu() {
+            cardModalOverlay.classList.add('open');
+            cardModalSheet.classList.add('open');
+        }
+
+        function closeCardMenu() {
+            cardModalOverlay.classList.remove('open');
+            cardModalSheet.classList.remove('open');
         }
 
         // Menu Actions
@@ -1166,7 +1263,6 @@
         function selectCreatorLang(btn, langCode) {
             document.querySelectorAll('.lang-option').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            // In a real app, this would change the language of the card being created
         }
 
         function saveCardAndGoBack() {
@@ -1175,17 +1271,43 @@
             const city = document.getElementById('input-city').value.trim();
 
             if (!name) {
-                // Simple validation
                 alert(currentLang === 'ru' ? 'Введите название или имя' : 'Enter name or title');
                 return;
             }
 
-            // Save Data
             userCardData = { name, desc, city };
             hasUserCards = true;
-
-            // Go back to dashboard
             goToDashboard();
+        }
+
+        // Card Actions
+        function editCurrentCard() {
+            closeCardMenu();
+            openCreator(true); // Open creator in edit mode
+        }
+
+        function shareCurrentCard() {
+            closeCardMenu();
+            // Simulate copying link
+            const dummyLink = `https://max.app/vizitka/${userCardData.name.replace(/\s+/g, '-').toLowerCase()}`;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(dummyLink).then(() => {
+                showToast(translations[currentLang].toast_copy);
+            }).catch(() => {
+                // Fallback if clipboard API fails
+                showToast(translations[currentLang].toast_copy);
+            });
+        }
+
+        function deleteCurrentCard() {
+            closeCardMenu();
+            if (confirm(currentLang === 'ru' ? 'Вы уверены, что хотите удалить визитку? Это действие нельзя отменить.' : 'Are you sure you want to delete this card? This action cannot be undone.')) {
+                userCardData = null;
+                hasUserCards = false;
+                renderCardsList();
+                showToast(translations[currentLang].toast_deleted);
+            }
         }
 
         function renderCardsList() {
@@ -1193,7 +1315,6 @@
             const t = translations[currentLang];
 
             if (hasUserCards && userCardData) {
-                // Render User Card
                 const initial = userCardData.name.charAt(0).toUpperCase();
                 container.innerHTML = `
                     <div class="user-card-preview">
@@ -1203,7 +1324,7 @@
                             <p>${userCardData.desc} ${userCardData.city ? '• ' + userCardData.city : ''}</p>
                         </div>
                         <div class="uc-actions">
-                            <button class="uc-btn">
+                            <button class="uc-btn" onclick="openCardMenu()" aria-label="Actions">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                             </button>
                         </div>
@@ -1211,7 +1332,6 @@
                     <button class="btn-create" onclick="openCreator()" style="margin-top: 10px; background: rgba(255,255,255,0.1); color: white; box-shadow: none;">+ Создать еще одну</button>
                 `;
             } else {
-                // Render Empty State
                 container.innerHTML = `
                     <div class="empty-state-viz">
                         <div class="mini-card">
@@ -1239,6 +1359,16 @@
                     <button class="btn-create" onclick="openCreator()">${t.btn_create}</button>
                 `;
             }
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
         }
 
         // Initial Setup
