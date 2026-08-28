@@ -19,12 +19,10 @@ const translations = {
         menu_title: "Меню", menu_welcome: "Посмотреть приветствие", menu_mycards: "Мои визитки",
         menu_footer: "Приветствие показывается один раз при первом входе. Отсюда его можно открыть снова.",
         no_cards_msg: "Пока у вас нет визиток", page_analytics: "Аналитика",
-        cr_title: "Расскажи о себе",
-        cr_subtitle: "Это встанет в шапку визитки. Можно поменять в любой момент.",
-        cr_lang_label: "Язык приложения",
-        cr_label_name: "Название или имя", cr_ph_name: "Имя или название компании",
+        cr_title_step1: "О бизнесе",
+        cr_subtitle_step1: "Расскажи немного о себе. Это будет видно всем.",
+        cr_label_name: "Имя или название компании", cr_ph_name: "напр. Студия Анны",
         cr_label_desc: "Подзаголовок", cr_ph_desc: "чем ты занимаешься",
-        cr_label_city: "Город — по желанию", cr_ph_city: "напр. Батуми",
         btn_next_arrow: "Далее →", btn_finish: "Готово",
         action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить навсегда",
         toast_copy: "Ссылка скопирована!", toast_deleted: "Визитка удалена",
@@ -34,7 +32,9 @@ const translations = {
         blk_reviews: "Отзывы", blk_faq: "Вопрос-Ответ", blk_facts: "Цифры / Факты",
         blk_video: "Видео", blk_share: "Поделиться", blk_gallery: "Фотогалерея", blk_map: "Карта + Такси",
         btn_back: "Назад", btn_assemble: "Далее",
-        edit_header_btn: "Изменить шапку",
+        pv_title: "Твоя визитка", pv_desc: "Настрой шапку и блоки. Нажми на аватар, чтобы изменить формат.",
+        edit_modal_title: "Редактировать блок", btn_save: "Сохранить",
+        preview_placeholder: "Содержимое блока",
         modal_header_title: "Шапка", header_format_label: "Формат шапки",
         tab_avatar: "Аватар", tab_cover: "Обложка", tab_banner: "Баннер", tab_carousel: "Карусель",
         desc_avatar: "Круглый аватар — иконка, эмодзи или фото. Без обложки.",
@@ -66,12 +66,10 @@ const translations = {
         menu_title: "Menu", menu_welcome: "View welcome screen", menu_mycards: "My cards",
         menu_footer: "Welcome screen is shown once on first login. You can open it again from here.",
         no_cards_msg: "You don't have any cards yet", page_analytics: "Analytics",
-        cr_title: "Tell about yourself",
-        cr_subtitle: "This will go into the card header. You can change it anytime.",
-        cr_lang_label: "App language",
-        cr_label_name: "Name or title", cr_ph_name: "Company name or title",
+        cr_title_step1: "About Business",
+        cr_subtitle_step1: "Tell us a bit about yourself. This will be visible to everyone.",
+        cr_label_name: "Name or company title", cr_ph_name: "e.g. Anna's Studio",
         cr_label_desc: "Subtitle", cr_ph_desc: "what you do",
-        cr_label_city: "City — optional", cr_ph_city: "e.g. Batumi",
         btn_next_arrow: "Next →", btn_finish: "Finish",
         action_edit: "Edit", action_share: "Share", action_delete: "Delete forever",
         toast_copy: "Link copied!", toast_deleted: "Card deleted",
@@ -81,7 +79,9 @@ const translations = {
         blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts & Figures",
         blk_video: "Video", blk_share: "Share", blk_gallery: "Gallery", blk_map: "Map + Taxi",
         btn_back: "Back", btn_assemble: "Next",
-        edit_header_btn: "Edit header",
+        pv_title: "Your card", pv_desc: "Adjust header and blocks. Tap avatar to change format.",
+        edit_modal_title: "Edit block", btn_save: "Save",
+        preview_placeholder: "Block content",
         modal_header_title: "Header", header_format_label: "Header format",
         tab_avatar: "Avatar", tab_cover: "Cover", tab_banner: "Banner", tab_carousel: "Carousel",
         desc_avatar: "Round avatar — icon, emoji or photo. No cover.",
@@ -113,12 +113,10 @@ const translations = {
         menu_title: "Menü", menu_welcome: "Begrüßung ansehen", menu_mycards: "Meine Karten",
         menu_footer: "Der Begrüßungsbildschirm wird beim ersten Login einmal angezeigt. Du kannst ihn von hier aus wieder öffnen.",
         no_cards_msg: "Sie haben noch keine Karten", page_analytics: "Analytik",
-        cr_title: "Erzähl von dir",
-        cr_subtitle: "Dies wird in den Kopf der Karte eingefügt. Kann jederzeit geändert werden.",
-        cr_lang_label: "App-Sprache",
-        cr_label_name: "Name oder Titel", cr_ph_name: "Firmenname oder Titel",
+        cr_title_step1: "Über das Unternehmen",
+        cr_subtitle_step1: "Erzählen Sie etwas über sich. Das wird allen angezeigt.",
+        cr_label_name: "Name oder Firmenname", cr_ph_name: "z.B. Annas Studio",
         cr_label_desc: "Untertitel", cr_ph_desc: "was du machst",
-        cr_label_city: "Stadt — optional", cr_ph_city: "z.B. Batumi",
         btn_next_arrow: "Weiter →", btn_finish: "Fertig",
         action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Für immer löschen",
         toast_copy: "Link kopiert!", toast_deleted: "Karte gelöscht",
@@ -128,7 +126,9 @@ const translations = {
         blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten & Zahlen",
         blk_video: "Video", blk_share: "Teilen", blk_gallery: "Galerie", blk_map: "Karte + Taxi",
         btn_back: "Zurück", btn_assemble: "Weiter",
-        edit_header_btn: "Kopfzeile ändern",
+        pv_title: "Deine Karte", pv_desc: "Kopfzeile und Blöcke anpassen. Tippe auf Avatar, um Format zu ändern.",
+        edit_modal_title: "Block bearbeiten", btn_save: "Speichern",
+        preview_placeholder: "Blockinhalt",
         modal_header_title: "Kopfzeile", header_format_label: "Format der Kopfzeile",
         tab_avatar: "Avatar", tab_cover: "Titelbild", tab_banner: "Banner", tab_carousel: "Karussell",
         desc_avatar: "Runder Avatar — Symbol, Emoji oder Foto. Ohne Titelbild.",
@@ -148,6 +148,7 @@ let hasUserCards = false;
 let userCardData = null;
 let selectedBlocks = {}; 
 let currentHeaderFormat = 'avatar'; // 'avatar', 'cover', 'banner', 'carousel'
+let currentEditingBlockId = null;
 
 // --- LOCAL STORAGE HELPERS ---
 function saveUserData() {
@@ -222,14 +223,55 @@ function goToDashboard() {
 }
 
 function startCreationFlow() {
-    // Go to blocks selection first
+    // Step 1: Go to creator (About Business)
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-creator').classList.add('active');
+    updateHeader('creator');
+    
+    // Reset inputs if starting fresh
+    if (!userCardData) {
+        document.getElementById('input-name').value = '';
+        document.getElementById('input-desc').value = '';
+    } else {
+        document.getElementById('input-name').value = userCardData.name || '';
+        document.getElementById('input-desc').value = userCardData.desc || '';
+    }
+}
+
+function goToBlocksSelection() {
+    const name = document.getElementById('input-name').value.trim();
+    const desc = document.getElementById('input-desc').value.trim();
+
+    if (!name) {
+        alert(currentLang === 'ru' ? 'Введите название или имя' : 'Enter name or title');
+        return;
+    }
+
+    // Save basic info
+    if (!userCardData) userCardData = {};
+    userCardData.name = name;
+    userCardData.desc = desc;
+
+    // Step 2: Go to blocks selection
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-blocks').classList.add('active');
     updateHeader('blocks');
+    
+    // Sync checkboxes with saved state
+    const checkboxes = document.querySelectorAll('.toggle-switch input');
+    checkboxes.forEach(cb => {
+        const key = cb.getAttribute('data-block');
+        if (selectedBlocks[key]) {
+            cb.checked = selectedBlocks[key].visible;
+        } else {
+            // Initialize if not exists
+            selectedBlocks[key] = { visible: cb.checked, title: null };
+        }
+    });
 }
 
 function finishBlocksSelection() {
-    // Save block selections
+    // Save block selections from toggles
     const checkboxes = document.querySelectorAll('.toggle-switch input');
     checkboxes.forEach(cb => {
         const key = cb.getAttribute('data-block');
@@ -237,20 +279,25 @@ function finishBlocksSelection() {
         selectedBlocks[key].visible = cb.checked;
     });
 
-    // Initialize userCardData if empty
-    if (!userCardData) userCardData = {};
+    // Step 3: Go to preview screen
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-preview').classList.add('active');
+    updateHeader('preview');
+    renderPreview();
+}
 
-    // Go to creator screen
+function goBackFromBlocks() {
+    // Return to creator
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-creator').classList.add('active');
     updateHeader('creator');
-    
-    // Fill inputs if data exists
-    document.getElementById('input-name').value = userCardData.name || '';
-    document.getElementById('input-desc').value = userCardData.desc || '';
-    document.getElementById('input-city').value = userCardData.city || '';
-    updatePreviewText();
-    updateHeaderPreviewVisuals();
+}
+
+function goBackFromPreview() {
+    // Return to blocks selection
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-blocks').classList.add('active');
+    updateHeader('blocks');
 }
 
 function openCreator(isEdit = false) {
@@ -262,9 +309,6 @@ function openCreator(isEdit = false) {
         
         document.getElementById('input-name').value = userCardData.name || '';
         document.getElementById('input-desc').value = userCardData.desc || '';
-        document.getElementById('input-city').value = userCardData.city || '';
-        updatePreviewText();
-        updateHeaderPreviewVisuals();
     } else {
         startCreationFlow();
     }
@@ -280,12 +324,11 @@ function showAnalytics() {
 function goBack() {
     if (document.getElementById('screen-analytics').classList.contains('active')) {
         goToDashboard();
-    } else if (document.getElementById('screen-creator').classList.contains('active')) {
-        // If coming from creator, go back to blocks
-        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        document.getElementById('screen-blocks').classList.add('active');
-        updateHeader('blocks');
+    } else if (document.getElementById('screen-preview').classList.contains('active')) {
+        goBackFromPreview();
     } else if (document.getElementById('screen-blocks').classList.contains('active')) {
+        goBackFromBlocks();
+    } else if (document.getElementById('screen-creator').classList.contains('active')) {
         goToDashboard();
     }
 }
@@ -300,7 +343,7 @@ function updateHeader(state) {
 
     const showLangSwitch = state !== 'analytics';
     
-    if (state === 'onboarding' || state === 'blocks' || state === 'creator') {
+    if (state === 'onboarding' || state === 'blocks' || state === 'preview' || state === 'creator') {
         backBtn.style.display = (state !== 'onboarding') ? 'flex' : 'none';
         logo.style.display = 'none';
         title.style.display = 'none';
@@ -370,32 +413,152 @@ function handleMyCardsClick() {
     else alert(translations[currentLang].no_cards_msg);
 }
 
-// Creator Logic
-function updatePreviewText() {
-    const name = document.getElementById('input-name').value;
-    const desc = document.getElementById('input-desc').value;
-    
-    document.getElementById('preview-name-display').innerText = name || translations[currentLang].cr_ph_name;
-    document.getElementById('preview-desc-display').innerText = desc || translations[currentLang].cr_ph_desc;
-}
+// Preview Logic
+function renderPreview() {
+    const container = document.getElementById('preview-list-container');
+    container.innerHTML = '';
+    const t = translations[currentLang];
 
-function updateHeaderPreviewVisuals() {
-    const avatarImg = document.getElementById('preview-avatar-img');
-    const coverBg = document.getElementById('preview-cover-bg');
+    // 1. Render Header Card
+    const headerCard = document.createElement('div');
+    headerCard.className = 'preview-header-card';
+    headerCard.onclick = openHeaderModal;
     
-    // Reset styles
-    avatarImg.style.display = 'flex';
-    coverBg.style.display = 'none';
-    avatarImg.style.backgroundImage = 'none';
-    
-    if (userCardData && userCardData.avatarUrl) {
-        avatarImg.style.backgroundImage = `url(${userCardData.avatarUrl})`;
-    }
+    let coverStyle = '';
+    let avatarStyle = '';
+    let avatarDisplay = 'flex';
     
     if (currentHeaderFormat === 'cover' && userCardData && userCardData.coverUrl) {
-        coverBg.style.display = 'block';
-        coverBg.style.backgroundImage = `url(${userCardData.coverUrl})`;
-        avatarImg.style.display = 'none'; // No avatar in cover mode
+        coverStyle = `background-image: url(${userCardData.coverUrl});`;
+        avatarDisplay = 'none'; // No avatar in cover mode
+    } else if (userCardData && userCardData.avatarUrl) {
+        avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
+    }
+
+    headerCard.innerHTML = `
+        <div class="header-preview-cover" style="${coverStyle}"></div>
+        <div class="header-preview-avatar" style="display: ${avatarDisplay}; ${avatarStyle}">
+            ${!userCardData?.avatarUrl ? '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' : ''}
+        </div>
+        <div class="header-preview-info">
+            <h3>${userCardData?.name || t.cr_ph_name}</h3>
+            <p>${userCardData?.desc || t.cr_ph_desc}</p>
+        </div>
+        <div class="edit-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <span>${t.modal_header_title}</span>
+        </div>
+    `;
+    container.appendChild(headerCard);
+
+    // 2. Render Block Cards
+    const blockKeys = ['links', 'socials', 'hours', 'cta', 'contacts', 'price', 'discounts', 'reviews', 'faq', 'facts', 'video', 'share', 'gallery', 'map'];
+    
+    blockKeys.forEach(key => {
+        const blockData = selectedBlocks[key];
+        if (blockData && blockData.visible) {
+            const defaultTitleKey = `blk_${key}`;
+            const title = blockData.title || t[defaultTitleKey] || key;
+            const isVisible = blockData.visible !== false;
+
+            const card = document.createElement('div');
+            card.className = `preview-card ${isVisible ? '' : 'hidden-block'}`;
+            card.id = `preview-card-${key}`;
+            
+            card.innerHTML = `
+                <div class="preview-card-header">
+                    <div class="preview-card-title">${title}</div>
+                    <div class="preview-card-actions">
+                        <button class="action-btn ${isVisible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                        <button class="action-btn" onclick="openEditBlock('${key}')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="preview-card-body">
+                    ${t.preview_placeholder}
+                </div>
+            `;
+            container.appendChild(card);
+        }
+    });
+
+    if (container.children.length <= 1) { // Only header card
+        const emptyMsg = document.createElement('div');
+        emptyMsg.style.textAlign = 'center';
+        emptyMsg.style.color = 'var(--text-secondary)';
+        emptyMsg.style.padding = '40px 0';
+        emptyMsg.innerText = t.empty_h3;
+        container.appendChild(emptyMsg);
+    }
+}
+
+function toggleBlockVisibility(key) {
+    if (!selectedBlocks[key]) selectedBlocks[key] = {};
+    selectedBlocks[key].visible = !selectedBlocks[key].visible;
+    
+    const card = document.getElementById(`preview-card-${key}`);
+    const btn = card.querySelector('.action-btn'); // First button is eye
+    
+    if (selectedBlocks[key].visible) {
+        card.classList.remove('hidden-block');
+        btn.classList.add('active-eye');
+    } else {
+        card.classList.add('hidden-block');
+        btn.classList.remove('active-eye');
+    }
+    
+    saveUserData();
+}
+
+// Edit Block Modal Logic
+const editModalOverlay = document.getElementById('editModalOverlay');
+const editModalSheet = document.getElementById('editModalSheet');
+const editInput = document.getElementById('edit-block-input');
+
+function openEditBlock(key) {
+    currentEditingBlockId = key;
+    const blockData = selectedBlocks[key] || {};
+    const t = translations[currentLang];
+    const defaultTitle = t[`blk_${key}`] || key;
+    
+    editInput.value = blockData.title || defaultTitle;
+    
+    editModalOverlay.classList.add('open');
+    editModalSheet.classList.add('open');
+}
+
+function closeEditModal() {
+    editModalOverlay.classList.remove('open');
+    editModalSheet.classList.remove('open');
+    currentEditingBlockId = null;
+}
+
+function saveBlockEdit() {
+    if (currentEditingBlockId) {
+        const newTitle = editInput.value.trim();
+        if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
+        
+        const t = translations[currentLang];
+        const defaultTitle = t[`blk_${currentEditingBlockId}`];
+        
+        if (newTitle === defaultTitle) {
+            delete selectedBlocks[currentEditingBlockId].title;
+        } else {
+            selectedBlocks[currentEditingBlockId].title = newTitle;
+        }
+        
+        saveUserData();
+        renderPreview();
+        closeEditModal();
     }
 }
 
@@ -408,7 +571,6 @@ function openHeaderModal() {
     headerModalSheet.classList.add('open');
     switchHeaderTab(currentHeaderFormat);
     
-    // Fill inputs if data exists
     if (userCardData) {
         document.getElementById('input-avatar-url').value = userCardData.avatarUrl || '';
         document.getElementById('input-cover-url').value = userCardData.coverUrl || '';
@@ -420,78 +582,54 @@ function openHeaderModal() {
 function closeHeaderModal() {
     headerModalOverlay.classList.remove('open');
     headerModalSheet.classList.remove('open');
+    // Update preview after closing modal
+    renderPreview();
 }
 
 function switchHeaderTab(tab) {
     currentHeaderFormat = tab;
     
-    // Update tabs UI
     document.querySelectorAll('.header-tab').forEach(t => t.classList.remove('active'));
     const activeTabBtn = Array.from(document.querySelectorAll('.header-tab')).find(t => t.getAttribute('onclick').includes(`'${tab}'`));
     if (activeTabBtn) activeTabBtn.classList.add('active');
     
-    // Show content
     document.querySelectorAll('.header-tab-content').forEach(c => c.classList.add('hidden'));
     document.getElementById(`tab-content-${tab}`).classList.remove('hidden');
     
-    // Update preview in modal based on tab
     if (tab === 'cover') {
-        // Ensure cover preview updates
         updateCoverFromUrl(document.getElementById('input-cover-url').value);
     }
 }
 
 function updateAvatarFromUrl(url) {
     const modalAvatar = document.getElementById('modal-avatar-img');
-    const previewAvatar = document.getElementById('preview-avatar-img');
     
     if (url) {
         modalAvatar.style.backgroundImage = `url(${url})`;
-        previewAvatar.style.backgroundImage = `url(${url})`;
         if (!userCardData) userCardData = {};
         userCardData.avatarUrl = url;
     } else {
         modalAvatar.style.backgroundImage = 'none';
-        previewAvatar.style.backgroundImage = 'none';
         if (userCardData) delete userCardData.avatarUrl;
     }
 }
 
 function updateCoverFromUrl(url) {
     const modalCoverBg = document.getElementById('modal-cover-preview-bg');
-    const previewCoverBg = document.getElementById('preview-cover-bg');
     
     if (url) {
         modalCoverBg.style.backgroundImage = `url(${url})`;
-        previewCoverBg.style.backgroundImage = `url(${url})`;
         if (!userCardData) userCardData = {};
         userCardData.coverUrl = url;
     } else {
         modalCoverBg.style.backgroundImage = 'none';
-        previewCoverBg.style.backgroundImage = 'none';
         if (userCardData) delete userCardData.coverUrl;
     }
 }
 
-function saveCardAndGoBack() {
-    const name = document.getElementById('input-name').value.trim();
-    const desc = document.getElementById('input-desc').value.trim();
-    const city = document.getElementById('input-city').value.trim();
-
-    if (!name) {
-        alert(currentLang === 'ru' ? 'Введите название или имя' : 'Enter name or title');
-        return;
-    }
-
-    if (!userCardData) userCardData = {};
-    userCardData.name = name;
-    userCardData.desc = desc;
-    userCardData.city = city;
-    userCardData.headerFormat = currentHeaderFormat;
-    
-    hasUserCards = true;
-    
+function finalizeCard() {
     saveUserData();
+    hasUserCards = true;
     goToDashboard();
 }
 

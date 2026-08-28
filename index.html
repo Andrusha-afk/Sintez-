@@ -141,7 +141,33 @@
         </div>
     </div>
 
-    <!-- SCREEN: BLOCKS SELECTION (First Step of Creation) -->
+    <!-- STEP 1: CREATOR (About Business) -->
+    <div id="screen-creator" class="screen">
+        <div class="creator-container">
+            <div class="creator-header">
+                <h1 class="creator-title" data-i18n="cr_title_step1">О бизнесе</h1>
+                <p class="creator-subtitle" data-i18n="cr_subtitle_step1">Расскажи немного о себе. Это будет видно всем.</p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" data-i18n="cr_label_name">Имя или название компании</label>
+                <input type="text" class="form-input" id="input-name" data-i18n-ph="cr_ph_name" placeholder="напр. Студия Анны">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" data-i18n="cr_label_desc">Подзаголовок</label>
+                <input type="text" class="form-input" id="input-desc" data-i18n-ph="cr_ph_desc" placeholder="чем ты занимаешься">
+            </div>
+        </div>
+
+        <div class="creator-footer">
+            <button class="btn-next-large" onclick="goToBlocksSelection()">
+                <span data-i18n="btn_next_arrow">Далее →</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- STEP 2: BLOCKS SELECTION -->
     <div id="screen-blocks" class="screen">
         <div class="blocks-header-section">
             <h1 data-i18n="bl_title">Что <span class="gradient-text" data-i18n="bl_title_grad">показать</span><br>клиентам?</h1>
@@ -264,54 +290,30 @@
         </div>
 
         <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="goToDashboard()" data-i18n="btn_back">Назад</button>
+            <button class="btn btn-secondary" onclick="goBackFromBlocks()" data-i18n="btn_back">Назад</button>
             <button class="btn btn-primary" onclick="finishBlocksSelection()" data-i18n="btn_assemble">Далее</button>
         </div>
     </div>
 
-    <!-- SCREEN: CREATOR (Second Step - Header & Details) -->
-    <div id="screen-creator" class="screen">
-        <div class="creator-container">
-            <!-- Interactive Header Preview -->
-            <div class="creator-header-preview" onclick="openHeaderModal()">
-                <div class="header-preview-cover" id="preview-cover-bg"></div>
-                <div class="header-preview-avatar" id="preview-avatar-img">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
-                <div class="header-preview-info">
-                    <h3 id="preview-name-display" data-i18n-ph="cr_ph_name">Имя или название компании</h3>
-                    <p id="preview-desc-display" data-i18n-ph="cr_ph_desc">Подзаголовок</p>
-                </div>
-                <div class="edit-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                    <span data-i18n="edit_header_btn">Изменить шапку</span>
-                </div>
-            </div>
-
-            <div class="form-group" style="margin-top: 24px;">
-                <label class="form-label" data-i18n="cr_label_name">Название или имя</label>
-                <input type="text" class="form-input" id="input-name" data-i18n-ph="cr_ph_name" placeholder="напр. Студия Анны" oninput="updatePreviewText()">
-            </div>
-
-            <div class="form-group">
-                <label class="form-label" data-i18n="cr_label_desc">Подзаголовок</label>
-                <input type="text" class="form-input" id="input-desc" data-i18n-ph="cr_ph_desc" placeholder="напр. Маникюр и дизайн ногтей" oninput="updatePreviewText()">
-            </div>
-
-            <div class="form-group">
-                <label class="form-label" data-i18n="cr_label_city">Город — по желанию</label>
-                <input type="text" class="form-input" id="input-city" data-i18n-ph="cr_ph_city" placeholder="напр. Батуми">
-            </div>
+    <!-- STEP 3: PREVIEW & FINAL EDIT -->
+    <div id="screen-preview" class="screen">
+        <div class="preview-header-section">
+            <h1 data-i18n="pv_title">Твоя визитка</h1>
+            <p class="description" data-i18n="pv_desc">Настрой шапку и блоки. Нажми на аватар, чтобы изменить формат.</p>
         </div>
 
-        <div class="creator-footer">
-            <button class="btn-next-large" onclick="saveCardAndGoBack()">
-                <span data-i18n="btn_finish">Готово</span>
-            </button>
+        <div class="preview-list" id="preview-list-container">
+            <!-- Header Card will be injected here -->
+            <!-- Block Cards will be injected here -->
+        </div>
+
+        <div class="footer-actions">
+            <button class="btn btn-secondary" onclick="goBackFromPreview()" data-i18n="btn_back">Назад</button>
+            <button class="btn btn-primary" onclick="finalizeCard()" data-i18n="btn_finish">Готово</button>
         </div>
     </div>
 
-    <!-- HEADER EDIT MODAL -->
+    <!-- HEADER FORMAT MODAL -->
     <div class="modal-overlay" id="headerModalOverlay" onclick="closeHeaderModal()"></div>
     <div class="modal-sheet header-modal-sheet" id="headerModalSheet">
         <div class="modal-handle"></div>
@@ -330,6 +332,7 @@
             <button class="header-tab" onclick="switchHeaderTab('carousel')" data-i18n="tab_carousel">Карусель</button>
         </div>
 
+        <!-- Avatar Tab Content -->
         <div class="header-tab-content" id="tab-content-avatar">
             <p class="tab-desc" data-i18n="desc_avatar">Круглый аватар — иконка, эмодзи или фото. Без обложки.</p>
             <div class="modal-avatar-preview">
@@ -337,13 +340,14 @@
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
-            <button class="btn-upload" data-i18n="btn_upload_device">📷 Загрузить фото с устройства</button>
+            <button class="btn-upload" data-i18n="btn_upload_device"> Загрузить фото с устройства</button>
             <button class="btn-upload-secondary" data-i18n="btn_upload_tg">👤 Взять фото из Telegram</button>
             <p class="upload-hint" data-i18n="upload_hint">Фото сохранится в визитке. Поменяешь аватар в Telegram — нажми ещё раз.</p>
             <div class="or-divider" data-i18n="or_link">...или ссылка на фото</div>
             <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
         </div>
 
+        <!-- Cover Tab Content -->
         <div class="header-tab-content hidden" id="tab-content-cover">
             <p class="tab-desc" data-i18n="desc_cover">Широкая обложка на всю ширину, имя под ней. Без аватара.</p>
             <div class="modal-cover-preview">
@@ -352,11 +356,12 @@
                 <div class="preview-cover-hint" data-i18n="hint_example">Пример — загрузите своё фото ниже</div>
             </div>
             <div class="section-label" data-i18n="lbl_cover">ОБЛОЖКА</div>
-            <button class="btn-upload" data-i18n="btn_upload_cover">🖼️ Загрузить обложку</button>
+            <button class="btn-upload" data-i18n="btn_upload_cover">️ Загрузить обложку</button>
             <div class="section-label-small" data-i18n="lbl_cover_link">Обложка — ссылка на фото</div>
             <input type="text" class="form-input" id="input-cover-url" placeholder="https://..." oninput="updateCoverFromUrl(this.value)">
         </div>
 
+        <!-- Banner Tab Content -->
         <div class="header-tab-content hidden" id="tab-content-banner">
             <p class="tab-desc" data-i18n="desc_banner">Длинный баннер с текстом внутри.</p>
             <div class="modal-banner-preview">
@@ -365,6 +370,7 @@
             <button class="btn-upload" data-i18n="btn_upload_banner">️ Загрузить баннер</button>
         </div>
 
+        <!-- Carousel Tab Content -->
         <div class="header-tab-content hidden" id="tab-content-carousel">
             <p class="tab-desc" data-i18n="desc_carousel">Несколько фото в ряд.</p>
             <div class="modal-carousel-preview">
@@ -374,6 +380,22 @@
             </div>
             <button class="btn-upload" data-i18n="btn_upload_carousel">🖼️ Загрузить фото</button>
         </div>
+    </div>
+
+    <!-- BLOCK EDIT MODAL -->
+    <div class="modal-overlay" id="editModalOverlay" onclick="closeEditModal()"></div>
+    <div class="modal-sheet" id="editModalSheet">
+        <div class="modal-handle"></div>
+        <div class="modal-header">
+            <div class="modal-title" data-i18n="edit_modal_title">Редактировать блок</div>
+            <button class="close-modal" onclick="closeEditModal()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+            <input type="text" class="form-input" id="edit-block-input" placeholder="Название блока">
+        </div>
+        <button class="btn btn-primary" onclick="saveBlockEdit()" data-i18n="btn_save">Сохранить</button>
     </div>
 
     <!-- ANALYTICS SCREEN -->
