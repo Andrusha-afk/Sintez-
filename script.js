@@ -23,6 +23,7 @@ const translations = {
         cr_subtitle_step1: "Расскажи немного о себе. Это будет видно всем.",
         cr_label_name: "Имя или название компании", cr_ph_name: "напр. Студия Анны",
         cr_label_desc: "Подзаголовок", cr_ph_desc: "чем ты занимаешься",
+        cr_label_city: "Город", cr_ph_city: "напр. Москва", // NEW
         btn_next_arrow: "Далее →", btn_finish: "Готово",
         action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить навсегда",
         toast_copy: "Ссылка скопирована!", toast_deleted: "Визитка удалена",
@@ -38,12 +39,12 @@ const translations = {
         modal_header_title: "Шапка", header_format_label: "Формат шапки",
         tab_avatar: "Аватар", tab_cover: "Обложка", tab_banner: "Баннер", tab_carousel: "Карусель",
         desc_avatar: "Круглый аватар — иконка, эмодзи или фото. Без обложки.",
-        btn_upload_device: "📷 Загрузить фото с устройства", btn_upload_tg: "👤 Взять фото из Telegram",
+        btn_upload_device: "📷 Загрузить фото с устройства", btn_upload_tg: " Взять фото из Telegram",
         upload_hint: "Фото сохранится в визитке. Поменяешь аватар в Telegram — нажми ещё раз.",
         or_link: "...или ссылка на фото",
         desc_cover: "Широкая обложка на всю ширину, имя под ней. Без аватара.",
         ph_company_name: "Имя или название компании", hint_example: "Пример — загрузите своё фото ниже",
-        lbl_cover: "ОБЛОЖКА", btn_upload_cover: "🖼️ Загрузить обложку", lbl_cover_link: "Обложка — ссылка на фото",
+        lbl_cover: "ОБЛОЖКА", btn_upload_cover: "️ Загрузить обложку", lbl_cover_link: "Обложка — ссылка на фото",
         desc_banner: "Длинный баннер с текстом внутри.", banner_placeholder: "Баннер", btn_upload_banner: "🖼️ Загрузить баннер",
         desc_carousel: "Несколько фото в ряд.", btn_upload_carousel: "️ Загрузить фото"
     },
@@ -70,6 +71,7 @@ const translations = {
         cr_subtitle_step1: "Tell us a bit about yourself. This will be visible to everyone.",
         cr_label_name: "Name or company title", cr_ph_name: "e.g. Anna's Studio",
         cr_label_desc: "Subtitle", cr_ph_desc: "what you do",
+        cr_label_city: "City", cr_ph_city: "e.g. Moscow", // NEW
         btn_next_arrow: "Next →", btn_finish: "Finish",
         action_edit: "Edit", action_share: "Share", action_delete: "Delete forever",
         toast_copy: "Link copied!", toast_deleted: "Card deleted",
@@ -117,6 +119,7 @@ const translations = {
         cr_subtitle_step1: "Erzählen Sie etwas über sich. Das wird allen angezeigt.",
         cr_label_name: "Name oder Firmenname", cr_ph_name: "z.B. Annas Studio",
         cr_label_desc: "Untertitel", cr_ph_desc: "was du machst",
+        cr_label_city: "Stadt", cr_ph_city: "z.B. Moskau", // NEW
         btn_next_arrow: "Weiter →", btn_finish: "Fertig",
         action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Für immer löschen",
         toast_copy: "Link kopiert!", toast_deleted: "Karte gelöscht",
@@ -232,15 +235,18 @@ function startCreationFlow() {
     if (!userCardData) {
         document.getElementById('input-name').value = '';
         document.getElementById('input-desc').value = '';
+        document.getElementById('input-city').value = '';
     } else {
         document.getElementById('input-name').value = userCardData.name || '';
         document.getElementById('input-desc').value = userCardData.desc || '';
+        document.getElementById('input-city').value = userCardData.city || '';
     }
 }
 
 function goToBlocksSelection() {
     const name = document.getElementById('input-name').value.trim();
     const desc = document.getElementById('input-desc').value.trim();
+    const city = document.getElementById('input-city').value.trim(); // NEW
 
     if (!name) {
         alert(currentLang === 'ru' ? 'Введите название или имя' : 'Enter name or title');
@@ -251,6 +257,7 @@ function goToBlocksSelection() {
     if (!userCardData) userCardData = {};
     userCardData.name = name;
     userCardData.desc = desc;
+    userCardData.city = city; // NEW
 
     // Step 2: Go to blocks selection
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -309,6 +316,7 @@ function openCreator(isEdit = false) {
         
         document.getElementById('input-name').value = userCardData.name || '';
         document.getElementById('input-desc').value = userCardData.desc || '';
+        document.getElementById('input-city').value = userCardData.city || '';
     } else {
         startCreationFlow();
     }
