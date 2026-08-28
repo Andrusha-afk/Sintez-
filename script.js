@@ -22,10 +22,10 @@ const translations = {
         cr_title: "Расскажи о себе",
         cr_subtitle: "Это встанет в шапку визитки. Можно поменять в любой момент.",
         cr_lang_label: "Язык приложения",
-        cr_label_name: "Название или имя", cr_ph_name: "напр. Студия Анны",
-        cr_label_desc: "Чем занимаешься — одной фразой", cr_ph_desc: "напр. Маникюр и дизайн ногтей",
+        cr_label_name: "Название или имя", cr_ph_name: "Имя или название компании",
+        cr_label_desc: "Подзаголовок", cr_ph_desc: "чем ты занимаешься",
         cr_label_city: "Город — по желанию", cr_ph_city: "напр. Батуми",
-        btn_next_arrow: "Далее →",
+        btn_next_arrow: "Далее →", btn_finish: "Готово",
         action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить навсегда",
         toast_copy: "Ссылка скопирована!", toast_deleted: "Визитка удалена",
         bl_title: "Что ", bl_title_grad: "показать", bl_desc: "Отметь нужные блоки — соберу визитку из них. Остальное добавишь потом.",
@@ -33,10 +33,19 @@ const translations = {
         blk_contacts: "Контакты", blk_price: "Прайс / Цены", blk_discounts: "Скидки / Акции",
         blk_reviews: "Отзывы", blk_faq: "Вопрос-Ответ", blk_facts: "Цифры / Факты",
         blk_video: "Видео", blk_share: "Поделиться", blk_gallery: "Фотогалерея", blk_map: "Карта + Такси",
-        btn_back: "Назад", btn_assemble: "Собрать визитку",
-        pv_title: "Твоя визитка", pv_desc: "Настрой порядок и видимость блоков. Нажми на карандаш, чтобы изменить название.",
-        btn_finish: "Готово", edit_modal_title: "Редактировать блок", btn_save: "Сохранить",
-        preview_placeholder: "Содержимое блока"
+        btn_back: "Назад", btn_assemble: "Далее",
+        edit_header_btn: "Изменить шапку",
+        modal_header_title: "Шапка", header_format_label: "Формат шапки",
+        tab_avatar: "Аватар", tab_cover: "Обложка", tab_banner: "Баннер", tab_carousel: "Карусель",
+        desc_avatar: "Круглый аватар — иконка, эмодзи или фото. Без обложки.",
+        btn_upload_device: "📷 Загрузить фото с устройства", btn_upload_tg: "👤 Взять фото из Telegram",
+        upload_hint: "Фото сохранится в визитке. Поменяешь аватар в Telegram — нажми ещё раз.",
+        or_link: "...или ссылка на фото",
+        desc_cover: "Широкая обложка на всю ширину, имя под ней. Без аватара.",
+        ph_company_name: "Имя или название компании", hint_example: "Пример — загрузите своё фото ниже",
+        lbl_cover: "ОБЛОЖКА", btn_upload_cover: "🖼️ Загрузить обложку", lbl_cover_link: "Обложка — ссылка на фото",
+        desc_banner: "Длинный баннер с текстом внутри.", banner_placeholder: "Баннер", btn_upload_banner: "🖼️ Загрузить баннер",
+        desc_carousel: "Несколько фото в ряд.", btn_upload_carousel: "️ Загрузить фото"
     },
     en: {
         s1_title: "Your business card ", s1_title_grad: "inside MAX",
@@ -60,10 +69,10 @@ const translations = {
         cr_title: "Tell about yourself",
         cr_subtitle: "This will go into the card header. You can change it anytime.",
         cr_lang_label: "App language",
-        cr_label_name: "Name or title", cr_ph_name: "e.g. Anna's Studio",
-        cr_label_desc: "What you do — in one phrase", cr_ph_desc: "e.g. Manicure and nail design",
+        cr_label_name: "Name or title", cr_ph_name: "Company name or title",
+        cr_label_desc: "Subtitle", cr_ph_desc: "what you do",
         cr_label_city: "City — optional", cr_ph_city: "e.g. Batumi",
-        btn_next_arrow: "Next →",
+        btn_next_arrow: "Next →", btn_finish: "Finish",
         action_edit: "Edit", action_share: "Share", action_delete: "Delete forever",
         toast_copy: "Link copied!", toast_deleted: "Card deleted",
         bl_title: "What to ", bl_title_grad: "show", bl_desc: "Select blocks to build your card. Add more later.",
@@ -71,10 +80,19 @@ const translations = {
         blk_contacts: "Contacts", blk_price: "Price list", blk_discounts: "Discounts",
         blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts & Figures",
         blk_video: "Video", blk_share: "Share", blk_gallery: "Gallery", blk_map: "Map + Taxi",
-        btn_back: "Back", btn_assemble: "Assemble card",
-        pv_title: "Your card", pv_desc: "Adjust order and visibility. Tap pencil to rename.",
-        btn_finish: "Finish", edit_modal_title: "Edit block", btn_save: "Save",
-        preview_placeholder: "Block content"
+        btn_back: "Back", btn_assemble: "Next",
+        edit_header_btn: "Edit header",
+        modal_header_title: "Header", header_format_label: "Header format",
+        tab_avatar: "Avatar", tab_cover: "Cover", tab_banner: "Banner", tab_carousel: "Carousel",
+        desc_avatar: "Round avatar — icon, emoji or photo. No cover.",
+        btn_upload_device: "📷 Upload from device", btn_upload_tg: "👤 Get from Telegram",
+        upload_hint: "Photo will be saved. Change avatar in Telegram — tap again.",
+        or_link: "...or photo link",
+        desc_cover: "Wide cover full width, name below it. No avatar.",
+        ph_company_name: "Company name or title", hint_example: "Example — upload your photo below",
+        lbl_cover: "COVER", btn_upload_cover: "🖼️ Upload cover", lbl_cover_link: "Cover — photo link",
+        desc_banner: "Long banner with text inside.", banner_placeholder: "Banner", btn_upload_banner: "🖼️ Upload banner",
+        desc_carousel: "Several photos in a row.", btn_upload_carousel: "️ Upload photos"
     },
     de: {
         s1_title: "Deine Visitenkarte ", s1_title_grad: "in MAX",
@@ -98,10 +116,10 @@ const translations = {
         cr_title: "Erzähl von dir",
         cr_subtitle: "Dies wird in den Kopf der Karte eingefügt. Kann jederzeit geändert werden.",
         cr_lang_label: "App-Sprache",
-        cr_label_name: "Name oder Titel", cr_ph_name: "z.B. Annas Studio",
-        cr_label_desc: "Was machst du — in einem Satz", cr_ph_desc: "z.B. Maniküre und Nageldesign",
+        cr_label_name: "Name oder Titel", cr_ph_name: "Firmenname oder Titel",
+        cr_label_desc: "Untertitel", cr_ph_desc: "was du machst",
         cr_label_city: "Stadt — optional", cr_ph_city: "z.B. Batumi",
-        btn_next_arrow: "Weiter →",
+        btn_next_arrow: "Weiter →", btn_finish: "Fertig",
         action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Für immer löschen",
         toast_copy: "Link kopiert!", toast_deleted: "Karte gelöscht",
         bl_title: "Was ", bl_title_grad: "zeigen?", bl_desc: "Wähle Blöcke für deine Karte. Den Rest fügst du später hinzu.",
@@ -109,18 +127,27 @@ const translations = {
         blk_contacts: "Kontakte", blk_price: "Preisliste", blk_discounts: "Rabatte",
         blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten & Zahlen",
         blk_video: "Video", blk_share: "Teilen", blk_gallery: "Galerie", blk_map: "Karte + Taxi",
-        btn_back: "Zurück", btn_assemble: "Karte erstellen",
-        pv_title: "Deine Karte", pv_desc: "Ordnung und Sichtbarkeit anpassen. Tippe auf Stift zum Umbenennen.",
-        btn_finish: "Fertig", edit_modal_title: "Block bearbeiten", btn_save: "Speichern",
-        preview_placeholder: "Blockinhalt"
+        btn_back: "Zurück", btn_assemble: "Weiter",
+        edit_header_btn: "Kopfzeile ändern",
+        modal_header_title: "Kopfzeile", header_format_label: "Format der Kopfzeile",
+        tab_avatar: "Avatar", tab_cover: "Titelbild", tab_banner: "Banner", tab_carousel: "Karussell",
+        desc_avatar: "Runder Avatar — Symbol, Emoji oder Foto. Ohne Titelbild.",
+        btn_upload_device: "📷 Foto vom Gerät laden", btn_upload_tg: " Aus Telegram holen",
+        upload_hint: "Foto wird gespeichert. Ändere Avatar in Telegram — tippe erneut.",
+        or_link: "...oder Fotolink",
+        desc_cover: "Breites Titelbild über die ganze Breite, Name darunter. Kein Avatar.",
+        ph_company_name: "Firmenname oder Titel", hint_example: "Beispiel — lade dein Foto unten hoch",
+        lbl_cover: "TITELBILD", btn_upload_cover: "🖼️ Titelbild laden", lbl_cover_link: "Titelbild — Fotolink",
+        desc_banner: "Langes Banner mit Text darin.", banner_placeholder: "Banner", btn_upload_banner: "🖼️ Banner laden",
+        desc_carousel: "Mehrere Fotos in einer Reihe.", btn_upload_carousel: "️ Fotos laden"
     }
 };
 
 let currentLang = 'ru';
 let hasUserCards = false; 
 let userCardData = null;
-let selectedBlocks = {}; // Stores block states: { id: { visible: true, title: "..." } }
-let currentEditingBlockId = null;
+let selectedBlocks = {}; 
+let currentHeaderFormat = 'avatar'; // 'avatar', 'cover', 'banner', 'carousel'
 
 // --- LOCAL STORAGE HELPERS ---
 function saveUserData() {
@@ -128,7 +155,8 @@ function saveUserData() {
         lang: currentLang,
         hasCards: hasUserCards,
         cardData: userCardData,
-        blocks: selectedBlocks
+        blocks: selectedBlocks,
+        headerFormat: currentHeaderFormat
     };
     localStorage.setItem('synthes_user_data', JSON.stringify(userData));
 }
@@ -142,6 +170,7 @@ function loadUserData() {
             hasUserCards = parsed.hasCards || false;
             userCardData = parsed.cardData || null;
             selectedBlocks = parsed.blocks || {};
+            currentHeaderFormat = parsed.headerFormat || 'avatar';
             
             document.querySelectorAll('.lang-btn-header').forEach(btn => {
                 btn.classList.remove('active');
@@ -192,19 +221,52 @@ function goToDashboard() {
     saveUserData();
 }
 
-function openCreator(isEdit = false) {
+function startCreationFlow() {
+    // Go to blocks selection first
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-blocks').classList.add('active');
+    updateHeader('blocks');
+}
+
+function finishBlocksSelection() {
+    // Save block selections
+    const checkboxes = document.querySelectorAll('.toggle-switch input');
+    checkboxes.forEach(cb => {
+        const key = cb.getAttribute('data-block');
+        if (!selectedBlocks[key]) selectedBlocks[key] = {};
+        selectedBlocks[key].visible = cb.checked;
+    });
+
+    // Initialize userCardData if empty
+    if (!userCardData) userCardData = {};
+
+    // Go to creator screen
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-creator').classList.add('active');
     updateHeader('creator');
     
+    // Fill inputs if data exists
+    document.getElementById('input-name').value = userCardData.name || '';
+    document.getElementById('input-desc').value = userCardData.desc || '';
+    document.getElementById('input-city').value = userCardData.city || '';
+    updatePreviewText();
+    updateHeaderPreviewVisuals();
+}
+
+function openCreator(isEdit = false) {
+    // If editing existing card, go straight to creator
     if (isEdit && userCardData) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('screen-creator').classList.add('active');
+        updateHeader('creator');
+        
         document.getElementById('input-name').value = userCardData.name || '';
         document.getElementById('input-desc').value = userCardData.desc || '';
         document.getElementById('input-city').value = userCardData.city || '';
+        updatePreviewText();
+        updateHeaderPreviewVisuals();
     } else {
-        document.getElementById('input-name').value = '';
-        document.getElementById('input-desc').value = '';
-        document.getElementById('input-city').value = '';
+        startCreationFlow();
     }
 }
 
@@ -219,23 +281,13 @@ function goBack() {
     if (document.getElementById('screen-analytics').classList.contains('active')) {
         goToDashboard();
     } else if (document.getElementById('screen-creator').classList.contains('active')) {
-        goToDashboard();
+        // If coming from creator, go back to blocks
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('screen-blocks').classList.add('active');
+        updateHeader('blocks');
     } else if (document.getElementById('screen-blocks').classList.contains('active')) {
-        goBackFromBlocks();
-    } else if (document.getElementById('screen-preview').classList.contains('active')) {
-        goBackFromPreview();
+        goToDashboard();
     }
-}
-
-function goBackFromBlocks() {
-    openCreator(true); 
-}
-
-function goBackFromPreview() {
-    // Return to blocks selection
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('screen-blocks').classList.add('active');
-    updateHeader('blocks');
 }
 
 // Header State Management
@@ -248,7 +300,7 @@ function updateHeader(state) {
 
     const showLangSwitch = state !== 'analytics';
     
-    if (state === 'onboarding' || state === 'blocks' || state === 'preview') {
+    if (state === 'onboarding' || state === 'blocks' || state === 'creator') {
         backBtn.style.display = (state !== 'onboarding') ? 'flex' : 'none';
         logo.style.display = 'none';
         title.style.display = 'none';
@@ -257,19 +309,6 @@ function updateHeader(state) {
         if (showLangSwitch) {
             langSwitch.style.display = 'flex';
             langSwitch.style.background = (state === 'onboarding') ? 'rgba(255,255,255,0.1)' : 'transparent';
-        } else {
-            langSwitch.style.display = 'none';
-        }
-    } 
-    else if (state === 'creator') {
-        backBtn.style.display = 'flex';
-        logo.style.display = 'none';
-        title.style.display = 'none';
-        menuBtn.style.display = 'none';
-        
-        if (showLangSwitch) {
-            langSwitch.style.display = 'flex';
-            langSwitch.style.background = 'transparent'; 
         } else {
             langSwitch.style.display = 'none';
         }
@@ -332,12 +371,109 @@ function handleMyCardsClick() {
 }
 
 // Creator Logic
-function selectCreatorLang(btn, langCode) {
-    document.querySelectorAll('.lang-option').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+function updatePreviewText() {
+    const name = document.getElementById('input-name').value;
+    const desc = document.getElementById('input-desc').value;
+    
+    document.getElementById('preview-name-display').innerText = name || translations[currentLang].cr_ph_name;
+    document.getElementById('preview-desc-display').innerText = desc || translations[currentLang].cr_ph_desc;
 }
 
-function saveBasicInfoAndNext() {
+function updateHeaderPreviewVisuals() {
+    const avatarImg = document.getElementById('preview-avatar-img');
+    const coverBg = document.getElementById('preview-cover-bg');
+    
+    // Reset styles
+    avatarImg.style.display = 'flex';
+    coverBg.style.display = 'none';
+    avatarImg.style.backgroundImage = 'none';
+    
+    if (userCardData && userCardData.avatarUrl) {
+        avatarImg.style.backgroundImage = `url(${userCardData.avatarUrl})`;
+    }
+    
+    if (currentHeaderFormat === 'cover' && userCardData && userCardData.coverUrl) {
+        coverBg.style.display = 'block';
+        coverBg.style.backgroundImage = `url(${userCardData.coverUrl})`;
+        avatarImg.style.display = 'none'; // No avatar in cover mode
+    }
+}
+
+// Header Modal Logic
+const headerModalOverlay = document.getElementById('headerModalOverlay');
+const headerModalSheet = document.getElementById('headerModalSheet');
+
+function openHeaderModal() {
+    headerModalOverlay.classList.add('open');
+    headerModalSheet.classList.add('open');
+    switchHeaderTab(currentHeaderFormat);
+    
+    // Fill inputs if data exists
+    if (userCardData) {
+        document.getElementById('input-avatar-url').value = userCardData.avatarUrl || '';
+        document.getElementById('input-cover-url').value = userCardData.coverUrl || '';
+        updateAvatarFromUrl(userCardData.avatarUrl || '');
+        updateCoverFromUrl(userCardData.coverUrl || '');
+    }
+}
+
+function closeHeaderModal() {
+    headerModalOverlay.classList.remove('open');
+    headerModalSheet.classList.remove('open');
+}
+
+function switchHeaderTab(tab) {
+    currentHeaderFormat = tab;
+    
+    // Update tabs UI
+    document.querySelectorAll('.header-tab').forEach(t => t.classList.remove('active'));
+    const activeTabBtn = Array.from(document.querySelectorAll('.header-tab')).find(t => t.getAttribute('onclick').includes(`'${tab}'`));
+    if (activeTabBtn) activeTabBtn.classList.add('active');
+    
+    // Show content
+    document.querySelectorAll('.header-tab-content').forEach(c => c.classList.add('hidden'));
+    document.getElementById(`tab-content-${tab}`).classList.remove('hidden');
+    
+    // Update preview in modal based on tab
+    if (tab === 'cover') {
+        // Ensure cover preview updates
+        updateCoverFromUrl(document.getElementById('input-cover-url').value);
+    }
+}
+
+function updateAvatarFromUrl(url) {
+    const modalAvatar = document.getElementById('modal-avatar-img');
+    const previewAvatar = document.getElementById('preview-avatar-img');
+    
+    if (url) {
+        modalAvatar.style.backgroundImage = `url(${url})`;
+        previewAvatar.style.backgroundImage = `url(${url})`;
+        if (!userCardData) userCardData = {};
+        userCardData.avatarUrl = url;
+    } else {
+        modalAvatar.style.backgroundImage = 'none';
+        previewAvatar.style.backgroundImage = 'none';
+        if (userCardData) delete userCardData.avatarUrl;
+    }
+}
+
+function updateCoverFromUrl(url) {
+    const modalCoverBg = document.getElementById('modal-cover-preview-bg');
+    const previewCoverBg = document.getElementById('preview-cover-bg');
+    
+    if (url) {
+        modalCoverBg.style.backgroundImage = `url(${url})`;
+        previewCoverBg.style.backgroundImage = `url(${url})`;
+        if (!userCardData) userCardData = {};
+        userCardData.coverUrl = url;
+    } else {
+        modalCoverBg.style.backgroundImage = 'none';
+        previewCoverBg.style.backgroundImage = 'none';
+        if (userCardData) delete userCardData.coverUrl;
+    }
+}
+
+function saveCardAndGoBack() {
     const name = document.getElementById('input-name').value.trim();
     const desc = document.getElementById('input-desc').value.trim();
     const city = document.getElementById('input-city').value.trim();
@@ -347,161 +483,14 @@ function saveBasicInfoAndNext() {
         return;
     }
 
-    userCardData = { ...userCardData, name, desc, city };
+    if (!userCardData) userCardData = {};
+    userCardData.name = name;
+    userCardData.desc = desc;
+    userCardData.city = city;
+    userCardData.headerFormat = currentHeaderFormat;
+    
     hasUserCards = true;
     
-    // Sync checkboxes with saved state
-    const checkboxes = document.querySelectorAll('.toggle-switch input');
-    checkboxes.forEach(cb => {
-        const key = cb.getAttribute('data-block');
-        if (selectedBlocks[key]) {
-            cb.checked = selectedBlocks[key].visible;
-        } else {
-            // Initialize if not exists
-            selectedBlocks[key] = { visible: cb.checked, title: null };
-        }
-    });
-
-    // Go to preview screen
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('screen-preview').classList.add('active');
-    updateHeader('preview');
-    renderPreview();
-}
-
-function finishCreation() {
-    // Save block selections from toggles
-    const checkboxes = document.querySelectorAll('.toggle-switch input');
-    checkboxes.forEach(cb => {
-        const key = cb.getAttribute('data-block');
-        if (!selectedBlocks[key]) selectedBlocks[key] = {};
-        selectedBlocks[key].visible = cb.checked;
-    });
-
-    saveUserData();
-    
-    // Go to preview screen
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('screen-preview').classList.add('active');
-    updateHeader('preview');
-    renderPreview();
-}
-
-// Preview Logic
-function renderPreview() {
-    const container = document.getElementById('preview-list-container');
-    container.innerHTML = '';
-    const t = translations[currentLang];
-
-    // Get all possible blocks in order
-    const blockKeys = ['links', 'socials', 'hours', 'cta', 'contacts', 'price', 'discounts', 'reviews', 'faq', 'facts', 'video', 'share', 'gallery', 'map'];
-    
-    blockKeys.forEach(key => {
-        const blockData = selectedBlocks[key];
-        if (blockData && blockData.visible) {
-            // Get translation key for title if custom title not set
-            const defaultTitleKey = `blk_${key}`;
-            const title = blockData.title || t[defaultTitleKey] || key;
-            const isVisible = blockData.visible !== false; // Default true if not explicitly false
-
-            const card = document.createElement('div');
-            card.className = `preview-card ${isVisible ? '' : 'hidden-block'}`;
-            card.id = `preview-card-${key}`;
-            
-            card.innerHTML = `
-                <div class="preview-card-header">
-                    <div class="preview-card-title">${title}</div>
-                    <div class="preview-card-actions">
-                        <button class="action-btn ${isVisible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
-                        </button>
-                        <button class="action-btn" onclick="openEditBlock('${key}')">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="preview-card-body">
-                    ${t.preview_placeholder}
-                </div>
-            `;
-            container.appendChild(card);
-        }
-    });
-
-    if (container.children.length === 0) {
-        container.innerHTML = `<div style="text-align:center; color:var(--text-secondary); padding: 40px 0;">${t.empty_h3}</div>`;
-    }
-}
-
-function toggleBlockVisibility(key) {
-    if (!selectedBlocks[key]) selectedBlocks[key] = {};
-    selectedBlocks[key].visible = !selectedBlocks[key].visible;
-    
-    const card = document.getElementById(`preview-card-${key}`);
-    const btn = card.querySelector('.action-btn'); // First button is eye
-    
-    if (selectedBlocks[key].visible) {
-        card.classList.remove('hidden-block');
-        btn.classList.add('active-eye');
-    } else {
-        card.classList.add('hidden-block');
-        btn.classList.remove('active-eye');
-    }
-    
-    saveUserData();
-}
-
-// Edit Block Modal Logic
-const editModalOverlay = document.getElementById('editModalOverlay');
-const editModalSheet = document.getElementById('editModalSheet');
-const editInput = document.getElementById('edit-block-input');
-
-function openEditBlock(key) {
-    currentEditingBlockId = key;
-    const blockData = selectedBlocks[key] || {};
-    const t = translations[currentLang];
-    const defaultTitle = t[`blk_${key}`] || key;
-    
-    editInput.value = blockData.title || defaultTitle;
-    
-    editModalOverlay.classList.add('open');
-    editModalSheet.classList.add('open');
-}
-
-function closeEditModal() {
-    editModalOverlay.classList.remove('open');
-    editModalSheet.classList.remove('open');
-    currentEditingBlockId = null;
-}
-
-function saveBlockEdit() {
-    if (currentEditingBlockId) {
-        const newTitle = editInput.value.trim();
-        if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
-        
-        // If title is same as default, remove custom title to save space, otherwise save it
-        const t = translations[currentLang];
-        const defaultTitle = t[`blk_${currentEditingBlockId}`];
-        
-        if (newTitle === defaultTitle) {
-            delete selectedBlocks[currentEditingBlockId].title;
-        } else {
-            selectedBlocks[currentEditingBlockId].title = newTitle;
-        }
-        
-        saveUserData();
-        renderPreview(); // Re-render to show new title
-        closeEditModal();
-    }
-}
-
-function finalizeCard() {
     saveUserData();
     goToDashboard();
 }
