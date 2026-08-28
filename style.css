@@ -246,7 +246,7 @@ p.description { color: var(--text-secondary); font-size: 16px; line-height: 1.5;
 .uc-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; transition: background 0.2s; }
 .uc-btn:active { background: rgba(255,255,255,0.1); }
 
-/* --- BLOCKS SELECTION SCREEN (NEW) --- */
+/* --- BLOCKS SELECTION SCREEN --- */
 .blocks-header-section {
     padding: 30px 24px 20px 24px;
     position: sticky; top: 0; background: var(--bg-color);
@@ -285,6 +285,92 @@ p.description { color: var(--text-secondary); font-size: 16px; line-height: 1.5;
 }
 input:checked + .slider { background-color: #3f3f4e; }
 input:checked + .slider:before { transform: translateX(20px); }
+
+/* --- PREVIEW SCREEN (NEW) --- */
+.preview-header-section {
+    padding: 30px 24px 20px 24px;
+    position: sticky; top: 0; background: var(--bg-color);
+    z-index: 10; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.preview-list {
+    padding: 20px 24px 100px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.preview-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.3s ease;
+}
+
+.preview-card.hidden-block {
+    opacity: 0.4;
+    filter: grayscale(0.8);
+    border-style: dashed;
+}
+
+.preview-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preview-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.preview-card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+}
+
+.action-btn:hover, .action-btn:active {
+    background: rgba(255,255,255,0.1);
+    color: var(--text-main);
+}
+
+.action-btn.active-eye {
+    background: rgba(165, 180, 252, 0.1);
+    color: var(--btn-primary);
+    border-color: rgba(165, 180, 252, 0.3);
+}
+
+.preview-card-body {
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 16px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    border: 1px dashed rgba(255,255,255,0.1);
+}
 
 /* Toast */
 .toast {

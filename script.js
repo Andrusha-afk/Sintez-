@@ -33,7 +33,10 @@ const translations = {
         blk_contacts: "Контакты", blk_price: "Прайс / Цены", blk_discounts: "Скидки / Акции",
         blk_reviews: "Отзывы", blk_faq: "Вопрос-Ответ", blk_facts: "Цифры / Факты",
         blk_video: "Видео", blk_share: "Поделиться", blk_gallery: "Фотогалерея", blk_map: "Карта + Такси",
-        btn_back: "Назад", btn_assemble: "Собрать визитку"
+        btn_back: "Назад", btn_assemble: "Собрать визитку",
+        pv_title: "Твоя визитка", pv_desc: "Настрой порядок и видимость блоков. Нажми на карандаш, чтобы изменить название.",
+        btn_finish: "Готово", edit_modal_title: "Редактировать блок", btn_save: "Сохранить",
+        preview_placeholder: "Содержимое блока"
     },
     en: {
         s1_title: "Your business card ", s1_title_grad: "inside MAX",
@@ -68,7 +71,10 @@ const translations = {
         blk_contacts: "Contacts", blk_price: "Price list", blk_discounts: "Discounts",
         blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts & Figures",
         blk_video: "Video", blk_share: "Share", blk_gallery: "Gallery", blk_map: "Map + Taxi",
-        btn_back: "Back", btn_assemble: "Assemble card"
+        btn_back: "Back", btn_assemble: "Assemble card",
+        pv_title: "Your card", pv_desc: "Adjust order and visibility. Tap pencil to rename.",
+        btn_finish: "Finish", edit_modal_title: "Edit block", btn_save: "Save",
+        preview_placeholder: "Block content"
     },
     de: {
         s1_title: "Deine Visitenkarte ", s1_title_grad: "in MAX",
@@ -103,14 +109,18 @@ const translations = {
         blk_contacts: "Kontakte", blk_price: "Preisliste", blk_discounts: "Rabatte",
         blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten & Zahlen",
         blk_video: "Video", blk_share: "Teilen", blk_gallery: "Galerie", blk_map: "Karte + Taxi",
-        btn_back: "Zurück", btn_assemble: "Karte erstellen"
+        btn_back: "Zurück", btn_assemble: "Karte erstellen",
+        pv_title: "Deine Karte", pv_desc: "Ordnung und Sichtbarkeit anpassen. Tippe auf Stift zum Umbenennen.",
+        btn_finish: "Fertig", edit_modal_title: "Block bearbeiten", btn_save: "Speichern",
+        preview_placeholder: "Blockinhalt"
     }
 };
 
 let currentLang = 'ru';
 let hasUserCards = false; 
 let userCardData = null;
-let selectedBlocks = {}; // Stores block states
+let selectedBlocks = {}; // Stores block states: { id: { visible: true, title: "..." } }
+let currentEditingBlockId = null;
 
 // --- LOCAL STORAGE HELPERS ---
 function saveUserData() {
@@ -212,11 +222,20 @@ function goBack() {
         goToDashboard();
     } else if (document.getElementById('screen-blocks').classList.contains('active')) {
         goBackFromBlocks();
+    } else if (document.getElementById('screen-preview').classList.contains('active')) {
+        goBackFromPreview();
     }
 }
 
 function goBackFromBlocks() {
-    openCreator(true); // Return to creator with filled data
+    openCreator(true); 
+}
+
+function goBackFromPreview() {
+    // Return to blocks selection
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-blocks').classList.add('active');
+    updateHeader('blocks');
 }
 
 // Header State Management
@@ -227,14 +246,20 @@ function updateHeader(state) {
     const menuBtn = document.getElementById('globalMenuBtn');
     const langSwitch = document.querySelector('.lang-switch-header');
 
-    if (state === 'onboarding' || state === 'blocks') {
-        backBtn.style.display = (state === 'blocks') ? 'flex' : 'none';
+    const showLangSwitch = state !== 'analytics';
+    
+    if (state === 'onboarding' || state === 'blocks' || state === 'preview') {
+        backBtn.style.display = (state !== 'onboarding') ? 'flex' : 'none';
         logo.style.display = 'none';
         title.style.display = 'none';
         menuBtn.style.display = 'none';
         
-        langSwitch.style.display = 'flex';
-        langSwitch.style.background = (state === 'blocks') ? 'transparent' : 'rgba(255,255,255,0.1)';
+        if (showLangSwitch) {
+            langSwitch.style.display = 'flex';
+            langSwitch.style.background = (state === 'onboarding') ? 'rgba(255,255,255,0.1)' : 'transparent';
+        } else {
+            langSwitch.style.display = 'none';
+        }
     } 
     else if (state === 'creator') {
         backBtn.style.display = 'flex';
@@ -242,8 +267,12 @@ function updateHeader(state) {
         title.style.display = 'none';
         menuBtn.style.display = 'none';
         
-        langSwitch.style.display = 'flex';
-        langSwitch.style.background = 'transparent'; 
+        if (showLangSwitch) {
+            langSwitch.style.display = 'flex';
+            langSwitch.style.background = 'transparent'; 
+        } else {
+            langSwitch.style.display = 'none';
+        }
     } 
     else if (state === 'dashboard') {
         backBtn.style.display = 'none';
@@ -251,8 +280,12 @@ function updateHeader(state) {
         title.style.display = 'none';
         menuBtn.style.display = 'block';
         
-        langSwitch.style.display = 'flex';
-        langSwitch.style.background = 'rgba(255,255,255,0.1)';
+        if (showLangSwitch) {
+            langSwitch.style.display = 'flex';
+            langSwitch.style.background = 'rgba(255,255,255,0.1)';
+        } else {
+            langSwitch.style.display = 'none';
+        }
     } 
     else if (state === 'analytics') {
         backBtn.style.display = 'flex';
@@ -314,34 +347,161 @@ function saveBasicInfoAndNext() {
         return;
     }
 
-    // Save basic info temporarily
     userCardData = { ...userCardData, name, desc, city };
     hasUserCards = true;
     
-    // Load previously saved blocks if any
+    // Sync checkboxes with saved state
     const checkboxes = document.querySelectorAll('.toggle-switch input');
     checkboxes.forEach(cb => {
         const key = cb.getAttribute('data-block');
-        if (selectedBlocks[key] !== undefined) {
-            cb.checked = selectedBlocks[key];
+        if (selectedBlocks[key]) {
+            cb.checked = selectedBlocks[key].visible;
         } else {
-            selectedBlocks[key] = cb.checked;
+            // Initialize if not exists
+            selectedBlocks[key] = { visible: cb.checked, title: null };
         }
     });
 
-    // Go to blocks screen
+    // Go to preview screen
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('screen-blocks').classList.add('active');
-    updateHeader('blocks');
+    document.getElementById('screen-preview').classList.add('active');
+    updateHeader('preview');
+    renderPreview();
 }
 
 function finishCreation() {
-    // Save block selections
+    // Save block selections from toggles
     const checkboxes = document.querySelectorAll('.toggle-switch input');
     checkboxes.forEach(cb => {
-        selectedBlocks[cb.getAttribute('data-block')] = cb.checked;
+        const key = cb.getAttribute('data-block');
+        if (!selectedBlocks[key]) selectedBlocks[key] = {};
+        selectedBlocks[key].visible = cb.checked;
     });
 
+    saveUserData();
+    
+    // Go to preview screen
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-preview').classList.add('active');
+    updateHeader('preview');
+    renderPreview();
+}
+
+// Preview Logic
+function renderPreview() {
+    const container = document.getElementById('preview-list-container');
+    container.innerHTML = '';
+    const t = translations[currentLang];
+
+    // Get all possible blocks in order
+    const blockKeys = ['links', 'socials', 'hours', 'cta', 'contacts', 'price', 'discounts', 'reviews', 'faq', 'facts', 'video', 'share', 'gallery', 'map'];
+    
+    blockKeys.forEach(key => {
+        const blockData = selectedBlocks[key];
+        if (blockData && blockData.visible) {
+            // Get translation key for title if custom title not set
+            const defaultTitleKey = `blk_${key}`;
+            const title = blockData.title || t[defaultTitleKey] || key;
+            const isVisible = blockData.visible !== false; // Default true if not explicitly false
+
+            const card = document.createElement('div');
+            card.className = `preview-card ${isVisible ? '' : 'hidden-block'}`;
+            card.id = `preview-card-${key}`;
+            
+            card.innerHTML = `
+                <div class="preview-card-header">
+                    <div class="preview-card-title">${title}</div>
+                    <div class="preview-card-actions">
+                        <button class="action-btn ${isVisible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                        <button class="action-btn" onclick="openEditBlock('${key}')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="preview-card-body">
+                    ${t.preview_placeholder}
+                </div>
+            `;
+            container.appendChild(card);
+        }
+    });
+
+    if (container.children.length === 0) {
+        container.innerHTML = `<div style="text-align:center; color:var(--text-secondary); padding: 40px 0;">${t.empty_h3}</div>`;
+    }
+}
+
+function toggleBlockVisibility(key) {
+    if (!selectedBlocks[key]) selectedBlocks[key] = {};
+    selectedBlocks[key].visible = !selectedBlocks[key].visible;
+    
+    const card = document.getElementById(`preview-card-${key}`);
+    const btn = card.querySelector('.action-btn'); // First button is eye
+    
+    if (selectedBlocks[key].visible) {
+        card.classList.remove('hidden-block');
+        btn.classList.add('active-eye');
+    } else {
+        card.classList.add('hidden-block');
+        btn.classList.remove('active-eye');
+    }
+    
+    saveUserData();
+}
+
+// Edit Block Modal Logic
+const editModalOverlay = document.getElementById('editModalOverlay');
+const editModalSheet = document.getElementById('editModalSheet');
+const editInput = document.getElementById('edit-block-input');
+
+function openEditBlock(key) {
+    currentEditingBlockId = key;
+    const blockData = selectedBlocks[key] || {};
+    const t = translations[currentLang];
+    const defaultTitle = t[`blk_${key}`] || key;
+    
+    editInput.value = blockData.title || defaultTitle;
+    
+    editModalOverlay.classList.add('open');
+    editModalSheet.classList.add('open');
+}
+
+function closeEditModal() {
+    editModalOverlay.classList.remove('open');
+    editModalSheet.classList.remove('open');
+    currentEditingBlockId = null;
+}
+
+function saveBlockEdit() {
+    if (currentEditingBlockId) {
+        const newTitle = editInput.value.trim();
+        if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
+        
+        // If title is same as default, remove custom title to save space, otherwise save it
+        const t = translations[currentLang];
+        const defaultTitle = t[`blk_${currentEditingBlockId}`];
+        
+        if (newTitle === defaultTitle) {
+            delete selectedBlocks[currentEditingBlockId].title;
+        } else {
+            selectedBlocks[currentEditingBlockId].title = newTitle;
+        }
+        
+        saveUserData();
+        renderPreview(); // Re-render to show new title
+        closeEditModal();
+    }
+}
+
+function finalizeCard() {
     saveUserData();
     goToDashboard();
 }
