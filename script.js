@@ -27,7 +27,13 @@ const translations = {
         cr_label_city: "Город — по желанию", cr_ph_city: "напр. Батуми",
         btn_next_arrow: "Далее →",
         action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить навсегда",
-        toast_copy: "Ссылка скопирована!", toast_deleted: "Визитка удалена"
+        toast_copy: "Ссылка скопирована!", toast_deleted: "Визитка удалена",
+        bl_title: "Что ", bl_title_grad: "показать", bl_desc: "Отметь нужные блоки — соберу визитку из них. Остальное добавишь потом.",
+        blk_links: "Ссылки-кнопки", blk_socials: "Соцсети", blk_hours: "Часы работы", blk_cta: "Кнопка-призыв",
+        blk_contacts: "Контакты", blk_price: "Прайс / Цены", blk_discounts: "Скидки / Акции",
+        blk_reviews: "Отзывы", blk_faq: "Вопрос-Ответ", blk_facts: "Цифры / Факты",
+        blk_video: "Видео", blk_share: "Поделиться", blk_gallery: "Фотогалерея", blk_map: "Карта + Такси",
+        btn_back: "Назад", btn_assemble: "Собрать визитку"
     },
     en: {
         s1_title: "Your business card ", s1_title_grad: "inside MAX",
@@ -56,7 +62,13 @@ const translations = {
         cr_label_city: "City — optional", cr_ph_city: "e.g. Batumi",
         btn_next_arrow: "Next →",
         action_edit: "Edit", action_share: "Share", action_delete: "Delete forever",
-        toast_copy: "Link copied!", toast_deleted: "Card deleted"
+        toast_copy: "Link copied!", toast_deleted: "Card deleted",
+        bl_title: "What to ", bl_title_grad: "show", bl_desc: "Select blocks to build your card. Add more later.",
+        blk_links: "Links", blk_socials: "Socials", blk_hours: "Working hours", blk_cta: "Call-to-action",
+        blk_contacts: "Contacts", blk_price: "Price list", blk_discounts: "Discounts",
+        blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts & Figures",
+        blk_video: "Video", blk_share: "Share", blk_gallery: "Gallery", blk_map: "Map + Taxi",
+        btn_back: "Back", btn_assemble: "Assemble card"
     },
     de: {
         s1_title: "Deine Visitenkarte ", s1_title_grad: "in MAX",
@@ -85,15 +97,52 @@ const translations = {
         cr_label_city: "Stadt — optional", cr_ph_city: "z.B. Batumi",
         btn_next_arrow: "Weiter →",
         action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Für immer löschen",
-        toast_copy: "Link kopiert!", toast_deleted: "Karte gelöscht"
+        toast_copy: "Link kopiert!", toast_deleted: "Karte gelöscht",
+        bl_title: "Was ", bl_title_grad: "zeigen?", bl_desc: "Wähle Blöcke für deine Karte. Den Rest fügst du später hinzu.",
+        blk_links: "Links", blk_socials: "Soziale Netzwerke", blk_hours: "Öffnungszeiten", blk_cta: "Handlungsaufruf",
+        blk_contacts: "Kontakte", blk_price: "Preisliste", blk_discounts: "Rabatte",
+        blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten & Zahlen",
+        blk_video: "Video", blk_share: "Teilen", blk_gallery: "Galerie", blk_map: "Karte + Taxi",
+        btn_back: "Zurück", btn_assemble: "Karte erstellen"
     }
 };
 
 let currentLang = 'ru';
 let hasUserCards = false; 
 let userCardData = null;
+let selectedBlocks = {}; // Stores block states
 
-// Language Switcher Logic (Header)
+// --- LOCAL STORAGE HELPERS ---
+function saveUserData() {
+    const userData = {
+        lang: currentLang,
+        hasCards: hasUserCards,
+        cardData: userCardData,
+        blocks: selectedBlocks
+    };
+    localStorage.setItem('synthes_user_data', JSON.stringify(userData));
+}
+
+function loadUserData() {
+    const savedData = localStorage.getItem('synthes_user_data');
+    if (savedData) {
+        try {
+            const parsed = JSON.parse(savedData);
+            currentLang = parsed.lang || 'ru';
+            hasUserCards = parsed.hasCards || false;
+            userCardData = parsed.cardData || null;
+            selectedBlocks = parsed.blocks || {};
+            
+            document.querySelectorAll('.lang-btn-header').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.getAttribute('data-lang') === currentLang) btn.classList.add('active');
+            });
+            applyTranslations();
+        } catch (e) { console.error("Error loading data", e); }
+    }
+}
+
+// Language Switcher Logic
 const langBtns = document.querySelectorAll('.lang-btn-header');
 langBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -101,6 +150,7 @@ langBtns.forEach(btn => {
         btn.classList.add('active');
         currentLang = btn.getAttribute('data-lang');
         applyTranslations();
+        saveUserData();
     });
 });
 
@@ -129,6 +179,7 @@ function goToDashboard() {
     document.getElementById('screen-dashboard').classList.add('active');
     updateHeader('dashboard');
     renderCardsList();
+    saveUserData();
 }
 
 function openCreator(isEdit = false) {
@@ -159,7 +210,13 @@ function goBack() {
         goToDashboard();
     } else if (document.getElementById('screen-creator').classList.contains('active')) {
         goToDashboard();
+    } else if (document.getElementById('screen-blocks').classList.contains('active')) {
+        goBackFromBlocks();
     }
+}
+
+function goBackFromBlocks() {
+    openCreator(true); // Return to creator with filled data
 }
 
 // Header State Management
@@ -170,19 +227,34 @@ function updateHeader(state) {
     const menuBtn = document.getElementById('globalMenuBtn');
     const langSwitch = document.querySelector('.lang-switch-header');
 
-    if (state === 'onboarding' || state === 'creator') {
-        backBtn.style.display = (state === 'creator') ? 'flex' : 'none';
-        logo.style.display = (state === 'creator') ? 'none' : 'flex';
+    if (state === 'onboarding' || state === 'blocks') {
+        backBtn.style.display = (state === 'blocks') ? 'flex' : 'none';
+        logo.style.display = 'none';
         title.style.display = 'none';
         menuBtn.style.display = 'none';
-        langSwitch.style.display = 'none';
-    } else if (state === 'dashboard') {
+        
+        langSwitch.style.display = 'flex';
+        langSwitch.style.background = (state === 'blocks') ? 'transparent' : 'rgba(255,255,255,0.1)';
+    } 
+    else if (state === 'creator') {
+        backBtn.style.display = 'flex';
+        logo.style.display = 'none';
+        title.style.display = 'none';
+        menuBtn.style.display = 'none';
+        
+        langSwitch.style.display = 'flex';
+        langSwitch.style.background = 'transparent'; 
+    } 
+    else if (state === 'dashboard') {
         backBtn.style.display = 'none';
         logo.style.display = 'flex';
         title.style.display = 'none';
         menuBtn.style.display = 'block';
+        
         langSwitch.style.display = 'flex';
-    } else if (state === 'analytics') {
+        langSwitch.style.background = 'rgba(255,255,255,0.1)';
+    } 
+    else if (state === 'analytics') {
         backBtn.style.display = 'flex';
         logo.style.display = 'none';
         title.style.display = 'block';
@@ -191,7 +263,7 @@ function updateHeader(state) {
     }
 }
 
-// Modal Logic (Main Menu)
+// Modal Logic
 const modalOverlay = document.getElementById('modalOverlay');
 const modalSheet = document.getElementById('modalSheet');
 
@@ -205,7 +277,6 @@ function closeMenu() {
     modalSheet.classList.remove('open');
 }
 
-// Card Actions Modal Logic
 const cardModalOverlay = document.getElementById('cardModalOverlay');
 const cardModalSheet = document.getElementById('cardModalSheet');
 
@@ -219,19 +290,12 @@ function closeCardMenu() {
     cardModalSheet.classList.remove('open');
 }
 
-// Menu Actions
-function showWelcome() {
-    closeMenu();
-    nextScreen(1);
-}
+function showWelcome() { closeMenu(); nextScreen(1); }
 
 function handleMyCardsClick() {
     closeMenu();
-    if (hasUserCards) {
-        goToDashboard();
-    } else {
-        alert(translations[currentLang].no_cards_msg);
-    }
+    if (hasUserCards) goToDashboard();
+    else alert(translations[currentLang].no_cards_msg);
 }
 
 // Creator Logic
@@ -240,7 +304,7 @@ function selectCreatorLang(btn, langCode) {
     btn.classList.add('active');
 }
 
-function saveCardAndGoBack() {
+function saveBasicInfoAndNext() {
     const name = document.getElementById('input-name').value.trim();
     const desc = document.getElementById('input-desc').value.trim();
     const city = document.getElementById('input-city').value.trim();
@@ -250,36 +314,59 @@ function saveCardAndGoBack() {
         return;
     }
 
-    userCardData = { name, desc, city };
+    // Save basic info temporarily
+    userCardData = { ...userCardData, name, desc, city };
     hasUserCards = true;
+    
+    // Load previously saved blocks if any
+    const checkboxes = document.querySelectorAll('.toggle-switch input');
+    checkboxes.forEach(cb => {
+        const key = cb.getAttribute('data-block');
+        if (selectedBlocks[key] !== undefined) {
+            cb.checked = selectedBlocks[key];
+        } else {
+            selectedBlocks[key] = cb.checked;
+        }
+    });
+
+    // Go to blocks screen
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-blocks').classList.add('active');
+    updateHeader('blocks');
+}
+
+function finishCreation() {
+    // Save block selections
+    const checkboxes = document.querySelectorAll('.toggle-switch input');
+    checkboxes.forEach(cb => {
+        selectedBlocks[cb.getAttribute('data-block')] = cb.checked;
+    });
+
+    saveUserData();
     goToDashboard();
 }
 
 // Card Actions
 function editCurrentCard() {
     closeCardMenu();
-    openCreator(true); // Open creator in edit mode
+    openCreator(true);
 }
 
 function shareCurrentCard() {
     closeCardMenu();
-    // Simulate copying link
     const dummyLink = `https://max.app/vizitka/${userCardData.name.replace(/\s+/g, '-').toLowerCase()}`;
-    
-    // Copy to clipboard
     navigator.clipboard.writeText(dummyLink).then(() => {
         showToast(translations[currentLang].toast_copy);
-    }).catch(() => {
-        // Fallback if clipboard API fails
-        showToast(translations[currentLang].toast_copy);
-    });
+    }).catch(() => showToast(translations[currentLang].toast_copy));
 }
 
 function deleteCurrentCard() {
     closeCardMenu();
-    if (confirm(currentLang === 'ru' ? 'Вы уверены, что хотите удалить визитку? Это действие нельзя отменить.' : 'Are you sure you want to delete this card? This action cannot be undone.')) {
+    if (confirm(currentLang === 'ru' ? 'Вы уверены, что хотите удалить визитку? Это действие нельзя отменить.' : 'Are you sure?')) {
         userCardData = null;
         hasUserCards = false;
+        selectedBlocks = {};
+        saveUserData();
         renderCardsList();
         showToast(translations[currentLang].toast_deleted);
     }
@@ -309,45 +396,29 @@ function renderCardsList() {
     } else {
         container.innerHTML = `
             <div class="empty-state-viz">
-                <div class="mini-card">
-                    <div class="mc-header"></div>
-                    <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div>
-                    <div class="mc-footer"></div>
-                </div>
-                <div class="mini-card">
-                    <div class="mc-header" style="background: var(--color-blue)"></div>
-                    <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div><div class="mc-block"></div></div>
-                    <div class="mc-footer"></div>
-                </div>
-                <div class="mini-card">
-                    <div class="mc-header" style="background: var(--color-blue)"></div>
-                    <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div>
-                    <div class="mc-footer"></div>
-                </div>
+                <div class="mini-card"><div class="mc-header"></div><div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div><div class="mc-footer"></div></div>
+                <div class="mini-card"><div class="mc-header" style="background: var(--color-blue)"></div><div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div><div class="mc-block"></div></div><div class="mc-footer"></div></div>
+                <div class="mini-card"><div class="mc-header" style="background: var(--color-blue)"></div><div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div><div class="mc-footer"></div></div>
             </div>
-
             <div class="empty-text-block">
                 <h3>${t.empty_h3}</h3>
                 <p>${t.empty_p}</p>
             </div>
-
             <button class="btn-create" onclick="openCreator()">${t.btn_create}</button>
         `;
     }
 }
 
-// Toast Notification
 function showToast(message) {
     const toast = document.getElementById('toast');
     toast.innerText = message;
     toast.classList.add('show');
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, 2000);
+    setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
 // Initial Setup
 window.onload = function() {
+    loadUserData();
     nextScreen(1);
     applyTranslations();
 };
