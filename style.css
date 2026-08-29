@@ -76,13 +76,38 @@ body {
 
 /* --- Screens Container --- */
 .screen {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    display: flex; flex-direction: column; opacity: 0; pointer-events: none;
-    transition: opacity 0.3s ease-in-out; background-color: var(--bg-color);
-    overflow-y: auto; z-index: 1;
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; /* Занимает весь экран */
+    display: flex; 
+    flex-direction: column; 
+    opacity: 0; 
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out; 
+    background-color: var(--bg-color);
+    overflow-y: auto; 
+    z-index: 1;
+    
+    /* ИСПРАВЛЕНИЕ: Добавляем отступ сверху, равный высоте хедера (примерно 76px) */
+    padding-top: 76px; 
+    
+    /* Чтобы при скролле к элементам они не прятались под хедером */
+    scroll-padding-top: 80px; 
 }
 
-.screen.active { opacity: 1; pointer-events: all; z-index: 2; }
+#screen-1 .onboarding-content,
+#screen-2 .onboarding-content,
+#screen-3 .onboarding-content {
+    padding-top: 20px; /* Компенсация, чтобы визуально было по центру */
+}
+
+.screen.active { 
+    opacity: 1; 
+    pointer-events: all; 
+    z-index: 2; 
+}
 
 /* --- Onboarding Common Styles --- */
 .onboarding-content {
@@ -127,7 +152,12 @@ p.description { color: var(--text-secondary); font-size: 16px; line-height: 1.5;
 .m-line { height: 4px; background: #2a2a35; border-radius: 2px; }
 
 /* --- Dashboard Styles --- */
-.dashboard-container { padding: 0 20px 40px 20px; max-width: 600px; margin: 0 auto; width: 100%; }
+.dashboard-container { 
+    padding: 0 20px 40px 20px; 
+    max-width: 600px; 
+    margin: 0 auto; 
+    width: 100%; 
+}
 .dash-header-text { margin-bottom: 24px; }
 .dash-title { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
 .dash-subtitle { color: var(--text-secondary); font-size: 15px; line-height: 1.4; }
@@ -205,7 +235,11 @@ p.description { color: var(--text-secondary); font-size: 16px; line-height: 1.5;
 .analytics-text { color: var(--text-secondary); font-size: 16px; line-height: 1.5; }
 
 /* --- CREATOR SCREEN (STEP 1) --- */
-.creator-container { padding: 20px 24px 40px 24px; flex: 1; overflow-y: auto; }
+.creator-container { 
+    padding: 0 24px 40px 24px; 
+    flex: 1; 
+    overflow-y: visible; /* Скроллится родитель .screen */
+}
 .creator-header { margin-bottom: 30px; }
 .creator-title { font-size: 32px; font-weight: 800; margin-bottom: 12px; line-height: 1.1; }
 .creator-subtitle { color: var(--text-secondary); font-size: 15px; line-height: 1.4; margin-bottom: 24px; }
@@ -239,9 +273,13 @@ p.description { color: var(--text-secondary); font-size: 16px; line-height: 1.5;
 
 /* --- BLOCKS SELECTION SCREEN (STEP 2) --- */
 .blocks-header-section {
-    padding: 30px 24px 20px 24px;
-    position: sticky; top: 0; background: var(--bg-color);
-    z-index: 10; border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 10px 24px 20px 24px; /* Уменьшен верхний padding */
+    position: sticky; 
+    top: 0; /* Прилипает к верху области прокрутки (учитывая padding родителя) */
+    background: var(--bg-color);
+    z-index: 10; 
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    /* Важно: sticky работает относительно scrolling parent (.screen) */
 }
 
 .blocks-list { padding: 20px 24px 100px 24px; display: flex; flex-direction: column; gap: 12px; }
@@ -279,11 +317,13 @@ input:checked + .slider:before { transform: translateX(20px); }
 
 /* --- PREVIEW SCREEN (STEP 3) --- */
 .preview-header-section {
-    padding: 30px 24px 20px 24px;
-    position: sticky; top: 0; background: var(--bg-color);
-    z-index: 10; border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 10px 24px 20px 24px; /* Уменьшен верхний padding */
+    position: sticky; 
+    top: 0; 
+    background: var(--bg-color);
+    z-index: 10; 
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-
 .preview-list {
     padding: 20px 24px 100px 24px;
     display: flex;
