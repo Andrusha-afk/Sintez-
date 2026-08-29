@@ -563,10 +563,17 @@ input:checked + .slider:before { transform: translateX(20px); }
     fill: currentColor;
 }
 
-.preview-card.hidden-block {
-    opacity: 0.4;
-    filter: grayscale(0.8);
-    border-style: dashed;
+/* Стили для скрытого (полупрозрачного) блока */
+.preview-block-section.hidden-block {
+    opacity: 0.3;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+
+/* Кнопка глаза для скрытого блока тоже должна быть менее яркой */
+.preview-block-section.hidden-block .action-btn.active-eye {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
 }
 
 .preview-card-header {

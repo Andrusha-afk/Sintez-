@@ -349,26 +349,29 @@ function renderPreview() {
     
     // Helper function to create block section HTML
     const createBlockSection = (key, blockData, title, contentHtml) => {
-        const section = document.createElement('div');
-        section.className = 'preview-block-section';
-        section.innerHTML = `
-            <div class="block-section-header">
-                <div class="block-section-title">${title.toUpperCase()}</div>
-                <div class="block-actions">
-                    <button class="action-btn ${blockData.visible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                    </button>
-                    <button class="action-btn" onclick="openEditBlock('${key}')">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                    </button>
-                </div>
+    const section = document.createElement('div');
+    // Добавляем класс hidden-block, если блок невидим
+    section.className = `preview-block-section ${blockData.visible ? '' : 'hidden-block'}`;
+    
+    section.innerHTML = `
+        <div class="block-section-header">
+            <div class="block-section-title">${title.toUpperCase()}</div>
+            <div class="block-actions">
+                <button class="action-btn ${blockData.visible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+                <button class="action-btn" onclick="openEditBlock('${key}')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                </button>
             </div>
-            <div class="preview-card-body">
-                ${contentHtml}
-            </div>
-        `;
-        return section;
-    };
+        </div>
+        <div class="preview-card-body">
+            ${contentHtml}
+        </div>
+    `;
+    return section;
+};
+
 
     // Render About Blocks First
     aboutKeys.forEach(key => {
@@ -443,8 +446,35 @@ function renderPreview() {
 
 function toggleBlockVisibility(key) {
     if (!selectedBlocks[key]) selectedBlocks[key] = {};
+    
+    // Переключаем состояние видимости
     selectedBlocks[key].visible = !selectedBlocks[key].visible;
-    renderPreview();
+    
+    // Находим соответствующую секцию в DOM
+    // Так как у нас динамический список, проще найти по onclick атрибуту или перебрать children
+    const sections = document.querySelectorAll('.preview-block-section');
+    let targetSection = null;
+    
+    // Ищем секцию, внутри которой есть кнопка с нужным key
+    sections.forEach(sec => {
+        const btn = sec.querySelector(`button[onclick="toggleBlockVisibility('${key}')"]`);
+        if (btn) targetSection = sec;
+    });
+
+    if (targetSection) {
+        const btn = targetSection.querySelector('.action-btn'); // Первая кнопка - это глаз
+        
+        if (selectedBlocks[key].visible) {
+            // Показываем блок
+            targetSection.classList.remove('hidden-block');
+            if(btn) btn.classList.add('active-eye');
+        } else {
+            // Делаем полупрозрачным
+            targetSection.classList.add('hidden-block');
+            if(btn) btn.classList.remove('active-eye');
+        }
+    }
+    
     saveUserData();
 }
 
