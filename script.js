@@ -553,6 +553,98 @@ function renderPreview() {
                     </div>
                 `;
             }
+            // Special rendering for CTA block
+            else if (key === 'cta' || key.startsWith('cta_copy')) {
+                const ctaText = blockData.text || 'Кнопка';
+                const ctaLink = blockData.link || '#';
+                const ctaStyle = blockData.style || 'normal';
+                
+                // Формируем классы для анимации
+                let animClass = '';
+                if (ctaStyle === 'shimmer') animClass = 'cta-style-shimmer';
+                if (ctaStyle === 'flash') animClass = 'cta-style-flash';
+                if (ctaStyle === 'pulse') animClass = 'cta-style-pulse';
+
+                contentHtml = `
+                    <a href="${ctaLink}" target="_blank" class="cta-button-preview ${animClass}">
+                        ${ctaText}
+                    </a>
+                `;
+            }
+            // Special rendering for Contacts block
+            else if (key === 'contacts' || key.startsWith('contacts_copy')) {
+                const phone = blockData.phone || '';
+                const email = blockData.email || '';
+                const showVcard = blockData.showVcard !== false;
+                
+                // Формируем кнопки
+                let buttonsHtml = '<div class="contacts-actions-grid">';
+                
+                // Кнопка Позвонить (если есть телефон)
+                if (phone) {
+                    const cleanPhone = phone.replace(/[^\d+]/g, '');
+                    buttonsHtml += `
+                        <a href="tel:${cleanPhone}" class="contact-btn">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            Позвонить
+                        </a>
+                    `;
+                }
+                
+                // Кнопка Email (если есть email)
+                if (email) {
+                    buttonsHtml += `
+                        <a href="mailto:${email}" class="contact-btn">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            Email
+                        </a>
+                    `;
+                }
+                
+                // Если кнопок нет, показываем заглушку
+                if (!phone && !email) {
+                    buttonsHtml += `<div style="grid-column: 1/-1; text-align:center; color: var(--text-secondary); padding: 10px;">Нет добавленных контактов</div>`;
+                }
+                
+                buttonsHtml += '</div>'; // Закрываем grid
+
+                // Кнопка vCard (если включена и есть данные)
+                if (showVcard && (phone || email)) {
+                    const safeKey = key.replace(/[^a-zA-Z0-9]/g, '');
+                    const vcardFuncName = `downloadVcard_${safeKey}`;
+                    
+                    window[vcardFuncName] = function() {
+                        const name = userCardData?.name || 'Контакт';
+                        const vcardData = [
+                            'BEGIN:VCARD',
+                            'VERSION:3.0',
+                            `FN:${name}`,
+                            phone ? `TEL;TYPE=CELL:${phone.replace(/[^\d+]/g, '')}` : '',
+                            email ? `EMAIL:${email}` : '',
+                            'END:VCARD'
+                        ].filter(line => line).join('\n');
+
+                        const blob = new Blob([vcardData], { type: 'text/vcard' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `${name.replace(/\s+/g, '_')}.vcf`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    };
+
+                    buttonsHtml += `
+                        <button onclick="${vcardFuncName}()" class="contact-btn full-width" style="margin-top: 10px;">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            Сохранить в контакты
+                        </button>
+                    `;
+                }
+
+                contentHtml = buttonsHtml;
+            }
             else {
                 // Default placeholder for other blocks
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
@@ -583,7 +675,6 @@ function toggleBlockVisibility(key) {
     if (!selectedBlocks[key]) selectedBlocks[key] = {};
     selectedBlocks[key].visible = !selectedBlocks[key].visible;
     
-    // Find the section and toggle class without full re-render for smoothness
     const sections = document.querySelectorAll('.preview-block-section');
     let targetSection = null;
     sections.forEach(sec => {
@@ -605,7 +696,7 @@ function toggleBlockVisibility(key) {
     saveUserData();
 }
 
-// Edit Block Modal Logic (With Socials & Hours Support)
+// Edit Block Modal Logic
 const editModalOverlay = document.getElementById('editModalOverlay');
 const editModalSheet = document.getElementById('editModalSheet');
 
@@ -625,7 +716,6 @@ function openEditBlock(key) {
             <div class="form-group"><label class="form-label">Текст</label><textarea class="form-input" id="edit-input-2" rows="4" style="resize: none;">${blockData.text || ''}</textarea></div>
         `;
     } else if (key === 'hours' || key.startsWith('hours_copy')) {
-        // ЛОГИКА ДЛЯ ЧАСОВ РАБОТЫ (С ПОЛЗУНКОМ И ШАБЛОНАМИ)
         titleEl.innerText = 'Часы работы';
         
         const defaultSchedule = {
@@ -635,10 +725,8 @@ function openEditBlock(key) {
             individual: {} 
         };
         
-        // Инициализация данных
         if (!blockData.schedule) blockData.schedule = JSON.parse(JSON.stringify(defaultSchedule));
         
-        // Синхронизируем individual с simple, если его нет или он пустой
         for (let i = 1; i <= 7; i++) {
             if (!blockData.schedule.individual[i]) {
                 blockData.schedule.individual[i] = { 
@@ -655,7 +743,6 @@ function openEditBlock(key) {
         const openTime = sched.simple.open || '10:00';
         const closeTime = sched.simple.close || '22:00';
 
-        // 1. Быстрые шаблоны
         const templatesDiv = document.createElement('div');
         templatesDiv.className = 'hours-templates';
         templatesDiv.style.marginBottom = '20px';
@@ -679,7 +766,6 @@ function openEditBlock(key) {
         `;
         fieldsContainer.appendChild(templatesDiv);
 
-        // 2. Переключатель "Разные часы по дням"
         const modesDiv = document.createElement('div');
         modesDiv.innerHTML = `
             <div class="hours-mode-item mode-highlight" style="margin-bottom: 20px;">
@@ -692,12 +778,10 @@ function openEditBlock(key) {
         `;
         fieldsContainer.appendChild(modesDiv);
 
-        // 3. Контейнер настроек (меняется в зависимости от режима)
         const settingsDiv = document.createElement('div');
         settingsDiv.id = 'hours-settings-container';
         
         if (isIndividual) {
-            // РЕЖИМ: ИНДИВИДУАЛЬНЫЕ ДНИ (СПИСОК С ПОЛЗУНКАМИ)
             const dayNames = ['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
             let listHtml = '<div class="individual-days-list">';
             
@@ -727,7 +811,6 @@ function openEditBlock(key) {
             listHtml += '</div>';
             settingsDiv.innerHTML = listHtml;
 
-            // Обработчики для индивидуального режима
             setTimeout(() => {
                 settingsDiv.querySelectorAll('.day-active-toggle').forEach(toggle => {
                     toggle.addEventListener('change', (e) => {
@@ -745,7 +828,6 @@ function openEditBlock(key) {
             }, 0);
 
         } else {
-            // РЕЖИМ: ПРОСТОЙ (КНОПКИ ДНЕЙ + ОБЩЕЕ ВРЕМЯ)
             let html = `
                 <label class="hours-editor-label">Рабочие дни</label>
                 <div class="days-selector-grid" id="hours-days-grid">
@@ -776,7 +858,6 @@ function openEditBlock(key) {
             `;
             settingsDiv.innerHTML = html;
 
-            // Обработчик клика по дням недели (простой режим)
             setTimeout(() => {
                 const grid = document.getElementById('hours-days-grid');
                 if(grid) {
@@ -791,7 +872,6 @@ function openEditBlock(key) {
         
         fieldsContainer.appendChild(settingsDiv);
 
-        // Глобальный обработчик переключения режима (простой <-> индивидуальный)
         setTimeout(() => {
             const toggleIndividual = document.getElementById('hours-individual-toggle');
             if(toggleIndividual) {
@@ -800,7 +880,7 @@ function openEditBlock(key) {
                     if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
                     selectedBlocks[currentEditingBlockId].schedule = selectedBlocks[currentEditingBlockId].schedule || {};
                     selectedBlocks[currentEditingBlockId].schedule.mode = isIndiv ? 'individual' : 'simple';
-                    openEditBlock(currentEditingBlockId); // Перезагрузка модалки для смены UI
+                    openEditBlock(currentEditingBlockId);
                 });
             }
         }, 0);
@@ -845,6 +925,88 @@ function openEditBlock(key) {
         addBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Добавить ссылку`;
         addBtn.onclick = () => linksListDiv.appendChild(createLinkItemElement('', '', linksListDiv.children.length));
         fieldsContainer.appendChild(addBtn);
+    } else if (key === 'cta' || key.startsWith('cta_copy')) {
+        titleEl.innerText = 'Кнопка-призыв';
+        
+        const ctaText = blockData.text || 'Написать мне';
+        const ctaLink = blockData.link || '';
+        const ctaStyle = blockData.style || 'normal';
+
+        fieldsContainer.innerHTML = `
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Текст кнопки</label>
+                <input type="text" class="form-input" id="edit-cta-text" value="${ctaText}" placeholder="Например: Записаться">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 24px;">
+                <label class="form-label">Куда ведёт кнопка</label>
+                <input type="text" class="form-input" id="edit-cta-link" value="${ctaLink}" placeholder="@username в Telegram или https://...">
+            </div>
+
+            <label class="form-label" style="margin-bottom: 10px; display:block;">Оформление</label>
+            <div class="style-selector-grid">
+                <div class="style-option-btn ${ctaStyle === 'normal' ? 'active' : ''}" data-style="normal" onclick="selectCtaStyle(this)">
+                    <div class="style-mini-preview"></div>
+                    <span class="style-option-label">Обычное</span>
+                </div>
+                <div class="style-option-btn ${ctaStyle === 'shimmer' ? 'active' : ''}" data-style="shimmer" onclick="selectCtaStyle(this)">
+                    <div class="style-mini-preview"></div>
+                    <span class="style-option-label">Перелив</span>
+                </div>
+                <div class="style-option-btn ${ctaStyle === 'flash' ? 'active' : ''}" data-style="flash" onclick="selectCtaStyle(this)">
+                    <div class="style-mini-preview"></div>
+                    <span class="style-option-label">Проблеск</span>
+                </div>
+                <div class="style-option-btn ${ctaStyle === 'pulse' ? 'active' : ''}" data-style="pulse" onclick="selectCtaStyle(this)">
+                    <div class="style-mini-preview"></div>
+                    <span class="style-option-label">Пульсация</span>
+                </div>
+            </div>
+            <input type="hidden" id="edit-cta-style" value="${ctaStyle}">
+        `;
+    } else if (key === 'contacts' || key.startsWith('contacts_copy')) {
+        titleEl.innerText = 'Контакты';
+        
+        const phone = blockData.phone || '';
+        const email = blockData.email || '';
+        const showVcard = blockData.showVcard !== false;
+
+        fieldsContainer.innerHTML = `
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Заголовок</label>
+                <input type="text" class="form-input" id="edit-contacts-title" value="${blockData.title || 'Контакты'}" placeholder="Контакты">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Телефон</label>
+                <input type="tel" class="form-input" id="edit-contacts-phone" value="${phone}" placeholder="+995 ...">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 24px;">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" id="edit-contacts-email" value="${email}" placeholder="hello@example.com">
+            </div>
+
+            <div class="contact-toggle-row">
+                <div class="contact-toggle-info">
+                    <div class="contact-toggle-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div class="contact-toggle-text">
+                        <h4>Кнопка «Сохранить в контакты»</h4>
+                        <p>клиент сохранит визитку в тел. книжку (vCard)</p>
+                    </div>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="edit-contacts-vcard-toggle" ${showVcard ? 'checked' : ''}>
+                    <span class="slider-toggle"></span>
+                </label>
+            </div>
+            
+            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; line-height: 1.4;">
+                «Позвонить» сразу набирает номер. «Сохранить в контакты» скачивает vCard-файл — имя берётся из шапки, телефон и email из этого блока.
+            </div>
+        `;
     } else {
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
@@ -857,9 +1019,14 @@ function openEditBlock(key) {
     editModalSheet.classList.add('open');
 }
 
-// Вспомогательная функция для шаблонов часов
+// Helper functions
+function selectCtaStyle(element) {
+    document.querySelectorAll('.style-option-btn').forEach(btn => btn.classList.remove('active'));
+    element.classList.add('active');
+    document.getElementById('edit-cta-style').value = element.dataset.style;
+}
+
 function applyHoursTemplate(type) {
-    // Если включен режим "Разные часы", сбрасываем его в простой
     const toggleIndividual = document.getElementById('hours-individual-toggle');
     if(toggleIndividual && toggleIndividual.checked) {
         toggleIndividual.checked = false;
@@ -873,31 +1040,23 @@ function applyHoursTemplate(type) {
     
     if (!grid || !openInput || !closeInput) return;
 
-    // Сброс всех дней
     grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.remove('active'));
 
     if (type === 'work') {
-        openInput.value = '09:00';
-        closeInput.value = '18:00';
-        // Пн-Пт (индексы 0-4 в NodeList)
+        openInput.value = '09:00'; closeInput.value = '18:00';
         for(let i=0; i<5; i++) grid.children[i].classList.add('active');
     } else if (type === 'weekend') {
-        openInput.value = '10:00';
-        closeInput.value = '20:00';
-        // Пн-Сб (индексы 0-5)
+        openInput.value = '10:00'; closeInput.value = '20:00';
         for(let i=0; i<6; i++) grid.children[i].classList.add('active');
     } else if (type === 'daily') {
-        openInput.value = '10:00';
-        closeInput.value = '22:00';
+        openInput.value = '10:00'; closeInput.value = '22:00';
         grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.add('active'));
     } else if (type === '247') {
-        openInput.value = '00:00';
-        closeInput.value = '23:59';
+        openInput.value = '00:00'; closeInput.value = '23:59';
         grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.add('active'));
     }
 }
 
-// Helper to create link item DOM element
 function createLinkItemElement(name, url, index) {
     const item = document.createElement('div');
     item.className = 'link-edit-item';
@@ -930,7 +1089,6 @@ function saveBlockEdit() {
         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-input-1').value.trim() || 'О бизнесе';
         selectedBlocks[currentEditingBlockId].text = document.getElementById('edit-input-2').value.trim();
     } else if (currentEditingBlockId === 'hours' || currentEditingBlockId.startsWith('hours_copy')) {
-        // СОХРАНЕНИЕ ЧАСОВ (УНИВЕРСАЛЬНОЕ)
         const isIndividual = document.getElementById('hours-individual-toggle')?.checked;
         
         const schedule = {
@@ -940,7 +1098,6 @@ function saveBlockEdit() {
         };
 
         if (isIndividual) {
-            // Сохранение из списка строк
             const rows = document.querySelectorAll('.day-row-item');
             rows.forEach(row => {
                 const dayIndex = parseInt(row.dataset.day);
@@ -948,13 +1105,8 @@ function saveBlockEdit() {
                 const open = row.querySelector('.day-open').value;
                 const close = row.querySelector('.day-close').value;
                 
-                schedule.individual[dayIndex] = {
-                    active: isActive,
-                    open: open,
-                    close: close
-                };
+                schedule.individual[dayIndex] = { active: isActive, open: open, close: close };
                 
-                // Заполняем simple для совместимости (берем первый активный)
                 if (isActive && schedule.simple.days.length === 0) {
                     schedule.simple.days.push(dayIndex);
                     schedule.simple.open = open;
@@ -964,7 +1116,6 @@ function saveBlockEdit() {
                 }
             });
         } else {
-            // Сохранение из кнопок дней и общих инпутов
             const openVal = document.getElementById('hours-open-global')?.value || '10:00';
             const closeVal = document.getElementById('hours-close-global')?.value || '22:00';
             
@@ -973,22 +1124,12 @@ function saveBlockEdit() {
                 newActiveDays.push(parseInt(btn.dataset.day));
             });
 
-            schedule.simple = { 
-                days: newActiveDays.sort(), 
-                open: openVal, 
-                close: closeVal 
-            };
+            schedule.simple = { days: newActiveDays.sort(), open: openVal, close: closeVal };
 
-            // Заполняем individual для совместимости с превью
             for(let i=1; i<=7; i++) {
-                schedule.individual[i] = {
-                    active: newActiveDays.includes(i),
-                    open: openVal,
-                    close: closeVal
-                };
+                schedule.individual[i] = { active: newActiveDays.includes(i), open: openVal, close: closeVal };
             }
         }
-
         selectedBlocks[currentEditingBlockId].schedule = schedule;
     } else if (currentEditingBlockId === 'socials' || currentEditingBlockId.startsWith('socials_copy')) {
         const items = {};
@@ -1011,6 +1152,19 @@ function saveBlockEdit() {
         }
         if (linksItems.length === 0) linksItems.push({ name: 'Наш сайт', url: '' });
         selectedBlocks[currentEditingBlockId].items = linksItems;
+    } else if (currentEditingBlockId === 'cta' || currentEditingBlockId.startsWith('cta_copy')) {
+        const text = document.getElementById('edit-cta-text').value.trim();
+        const link = document.getElementById('edit-cta-link').value.trim();
+        const style = document.getElementById('edit-cta-style').value;
+        
+        selectedBlocks[currentEditingBlockId].text = text || 'Кнопка';
+        selectedBlocks[currentEditingBlockId].link = link;
+        selectedBlocks[currentEditingBlockId].style = style;
+    } else if (currentEditingBlockId === 'contacts' || currentEditingBlockId.startsWith('contacts_copy')) {
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-contacts-title').value.trim() || 'Контакты';
+        selectedBlocks[currentEditingBlockId].phone = document.getElementById('edit-contacts-phone').value.trim();
+        selectedBlocks[currentEditingBlockId].email = document.getElementById('edit-contacts-email').value.trim();
+        selectedBlocks[currentEditingBlockId].showVcard = document.getElementById('edit-contacts-vcard-toggle').checked;
     } else {
         const val1 = document.getElementById('edit-input-1').value.trim();
         const val2 = document.getElementById('edit-input-2').value.trim();
@@ -1026,7 +1180,6 @@ function saveBlockEdit() {
     closeEditModal();
 }
 
-// Duplicate Block Function
 function duplicateCurrentBlock() {
     if (!currentEditingBlockId) return;
     const originalData = selectedBlocks[currentEditingBlockId];
@@ -1040,7 +1193,6 @@ function duplicateCurrentBlock() {
     showToast('Блок дублирован');
 }
 
-// Delete Block Function
 function deleteCurrentBlock() {
     if (!currentEditingBlockId) return;
     if (confirm('Удалить этот блок?')) {

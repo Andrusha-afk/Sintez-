@@ -1324,3 +1324,218 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     background: rgba(165, 180, 252, 0.05);
     border-color: rgba(165, 180, 252, 0.2);
 }
+
+/* --- Стили для кнопки CTA и её анимаций --- */
+
+/* Базовая кнопка CTA в превью */
+.cta-button-preview {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    background: var(--btn-primary); /* Основной цвет (светло-фиолетовый) */
+    color: var(--btn-primary-text); /* Темный текст */
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden; /* Важно для эффекта "проблеск" */
+    transition: transform 0.1s;
+    box-sizing: border-box;
+}
+
+.cta-button-preview:active {
+    transform: scale(0.98);
+}
+
+/* Эффект 1: Перелив (Shimmer) - медленное движение блика */
+.cta-style-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; bottom: 0; width: 50%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmerAnim 4s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes shimmerAnim {
+    0% { left: -100%; }
+    50% { left: 200%; }
+    100% { left: 200%; }
+}
+
+/* Эффект 2: Проблеск (Flash) - быстрый пробег полосы */
+.cta-style-flash::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; bottom: 0; width: 40%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
+    transform: skewX(-20deg);
+    animation: flashAnim 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes flashAnim {
+    0% { left: -100%; opacity: 0; }
+    5% { opacity: 1; }
+    15% { left: 200%; opacity: 0; }
+    100% { left: 200%; opacity: 0; }
+}
+
+/* Эффект 3: Пульсация (Pulse) - мягкое свечение */
+.cta-style-pulse {
+    animation: pulseAnim 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulseAnim {
+    0% { box-shadow: 0 0 0 0 rgba(165, 180, 252, 0.7); }
+    70% { box-shadow: 0 0 0 12px rgba(165, 180, 252, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(165, 180, 252, 0); }
+}
+
+/* --- Стили для выбора оформления в модалке --- */
+.style-selector-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.style-option-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.style-option-btn.active {
+    border-color: var(--color-blue);
+    background: rgba(96, 165, 250, 0.1);
+}
+
+.style-mini-preview {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--btn-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Мини-анимации для превью выбора */
+.style-option-btn[data-style="shimmer"] .style-mini-preview::after {
+    content: ''; position: absolute; top:0; left:-100%; bottom:0; width:50%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmerAnim 2s infinite;
+}
+.style-option-btn[data-style="flash"] .style-mini-preview::before {
+    content: ''; position: absolute; top:0; left:-100%; bottom:0; width:40%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
+    transform: skewX(-20deg); animation: flashAnim 2s infinite;
+}
+.style-option-btn[data-style="pulse"] .style-mini-preview {
+    animation: pulseAnim 1.5s infinite;
+}
+
+.style-option-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+.style-option-btn.active .style-option-label {
+    color: var(--text-main);
+}
+
+/* --- Стили для блока Контакты --- */
+
+.contacts-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки для верхних кнопок */
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 14px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.contact-btn:active {
+    transform: scale(0.97);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.contact-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+/* Кнопка "Сохранить в контакты" на всю ширину */
+.contact-btn.full-width {
+    grid-column: 1 / -1; /* Растянуть на всю ширину сетки */
+    margin-top: 0;
+}
+
+/* Стили для модалки редактирования контактов */
+.contact-toggle-row {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-toggle-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.contact-toggle-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(96, 165, 250, 0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-blue);
+}
+
+.contact-toggle-text h4 {
+    font-size: 14px;
+    margin: 0 0 4px 0;
+    font-weight: 600;
+}
+
+.contact-toggle-text p {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.3;
+}
