@@ -1154,54 +1154,7 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
 }
 
 /* Время работы справа от статуса */
-.current-hours-time {
-    font-weight: 500;
-    font-size: 15px;
-    color: var(--text-main);
-}
-
-/* Список дней недели (Нижняя часть) */
-.hours-days-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.hours-day-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 15px;
-    transition: opacity 0.2s;
-}
-
-/* Название дня (Пн, Вт...) */
-.day-name {
-    font-weight: 600;
-    color: var(--color-blue); /* Синий цвет как на скриншоте */
-    min-width: 40px;
-}
-
-/* Время дня */
-.day-time {
-    color: var(--text-main);
-    font-weight: 500;
-}
-
-/* Выходной день (полупрозрачный) */
-.hours-day-item.is-weekend {
-    opacity: 0.4;
-}
-
-.hours-day-item.is-weekend .day-name {
-    color: var(--text-secondary); /* Серый текст для выходного */
-}
-
-.hours-day-item.is-weekend .day-time {
-    color: var(--text-secondary);
-}
-
-/* --- Стили для редактора Часов Работы (Кнопки дней) --- */
+/* --- Стили для редактора Часов Работы (Смешанный режим) --- */
 
 .hours-editor-label {
     font-size: 13px;
@@ -1210,7 +1163,7 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     display: block;
 }
 
-/* Сетка дней недели */
+/* Сетка кнопок дней (для простого режима) */
 .days-selector-grid {
     display: flex;
     justify-content: space-between;
@@ -1220,7 +1173,7 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
 
 .day-toggle-btn {
     flex: 1;
-    aspect-ratio: 1; /* Делает кнопки квадратными/круглыми */
+    aspect-ratio: 1;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     background: transparent;
@@ -1234,7 +1187,6 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     justify-content: center;
 }
 
-/* Активный день (Рабочий) */
 .day-toggle-btn.active {
     border-color: var(--color-blue);
     background: rgba(96, 165, 250, 0.1);
@@ -1242,7 +1194,76 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     box-shadow: 0 0 10px rgba(96, 165, 250, 0.1);
 }
 
-/* Блок выбора времени */
+/* Контейнер для списка дней (для сложного режима) */
+.individual-days-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* Строка одного дня */
+.day-row-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: opacity 0.3s;
+}
+
+/* Неактивный день (выходной) */
+.day-row-item.is-disabled {
+    opacity: 0.4;
+    pointer-events: none; /* Блокируем клики, но оставляем видимость */
+}
+
+.day-row-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 80px;
+}
+
+.day-name-text {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.day-row-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+/* Поля времени в строке дня */
+.mini-time-input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 6px 8px;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    width: 70px;
+    outline: none;
+}
+
+.mini-time-input:focus {
+    border-color: var(--color-blue);
+}
+
+.time-separator {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Общие стили для выбора времени */
 .time-range-container {
     display: flex;
     align-items: center;
@@ -1267,7 +1288,7 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    padding: 12px 40px 12px 16px; /* Отступ справа для иконки */
+    padding: 12px 40px 12px 16px;
     color: white;
     font-size: 16px;
     font-family: inherit;
@@ -1281,7 +1302,6 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     border-color: var(--color-blue);
 }
 
-/* Иконка часов внутри инпута */
 .time-icon {
     position: absolute;
     right: 14px;
@@ -1297,4 +1317,10 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     color: var(--text-secondary);
     opacity: 0.7;
     margin-top: 8px;
+}
+
+/* Режим "Разные часы" выделен */
+.mode-highlight {
+    background: rgba(165, 180, 252, 0.05);
+    border-color: rgba(165, 180, 252, 0.2);
 }

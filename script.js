@@ -83,7 +83,7 @@ const translations = {
         edit_modal_title: "Блок", btn_save: "Сохранить", preview_placeholder: "Содержимое",
         modal_header_title: "Шапка", header_format_label: "Формат",
         tab_avatar: "Аватар", tab_cover: "Обложка", tab_banner: "Баннер", tab_carousel: "Карусель",
-        desc_avatar: "Круглый аватар.", btn_upload_device: "📷 Загрузить", btn_upload_tg: "👤 Из MAX",
+        desc_avatar: "Круглый аватар.", btn_upload_device: " Загрузить", btn_upload_tg: " Из MAX",
         upload_hint: "Фото сохранится.", or_link: "...или ссылка",
         desc_cover: "Широкая обложка.", ph_company_name: "Имя компании", hint_example: "Пример ниже",
         lbl_cover: "ОБЛОЖКА", btn_upload_cover: "Загрузить", lbl_cover_link: "Ссылка на фото",
@@ -625,7 +625,7 @@ function openEditBlock(key) {
             <div class="form-group"><label class="form-label">Текст</label><textarea class="form-input" id="edit-input-2" rows="4" style="resize: none;">${blockData.text || ''}</textarea></div>
         `;
     } else if (key === 'hours' || key.startsWith('hours_copy')) {
-        // ЛОГИКА ДЛЯ ЧАСОВ РАБОТЫ (ДИЗАЙН С КНОПКАМИ ДНЕЙ)
+        // ЛОГИКА ДЛЯ ЧАСОВ РАБОТЫ (С ПОЛЗУНКОМ И ШАБЛОНАМИ)
         titleEl.innerText = 'Часы работы';
         
         const defaultSchedule = {
@@ -637,7 +637,8 @@ function openEditBlock(key) {
         
         // Инициализация данных
         if (!blockData.schedule) blockData.schedule = JSON.parse(JSON.stringify(defaultSchedule));
-        // Синхронизируем individual с simple, если его нет
+        
+        // Синхронизируем individual с simple, если его нет или он пустой
         for (let i = 1; i <= 7; i++) {
             if (!blockData.schedule.individual[i]) {
                 blockData.schedule.individual[i] = { 
@@ -649,56 +650,157 @@ function openEditBlock(key) {
         }
 
         const sched = blockData.schedule;
+        const isIndividual = sched.mode === 'individual';
         const activeDays = sched.simple.days || [];
         const openTime = sched.simple.open || '10:00';
         const closeTime = sched.simple.close || '22:00';
 
-        fieldsContainer.innerHTML = `
-            <!-- Быстрые шаблоны -->
-            <div class="hours-templates" style="margin-bottom: 20px;">
-                <button class="template-btn" onclick="applyHoursTemplate('work')">Пн-Пт 9-18</button>
-                <button class="template-btn" onclick="applyHoursTemplate('daily')">Ежедневно</button>
-                <button class="template-btn" onclick="applyHoursTemplate('247')">24/7</button>
-            </div>
+        // 1. Быстрые шаблоны
+        const templatesDiv = document.createElement('div');
+        templatesDiv.className = 'hours-templates';
+        templatesDiv.style.marginBottom = '20px';
+        templatesDiv.innerHTML = `
+            <button class="template-btn" onclick="applyHoursTemplate('work')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 
+                Пн-Пт 9:00–18:00
+            </button>
+            <button class="template-btn" onclick="applyHoursTemplate('weekend')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 
+                Пн-Сб 10:00–20:00
+            </button>
+            <button class="template-btn" onclick="applyHoursTemplate('daily')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 
+                Каждый день 10:00–22:00
+            </button>
+            <button class="template-btn" onclick="applyHoursTemplate('247')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 
+                24/7
+            </button>
+        `;
+        fieldsContainer.appendChild(templatesDiv);
 
-            <!-- Выбор дней -->
-            <label class="hours-editor-label">Рабочие дни</label>
-            <div class="days-selector-grid" id="hours-days-grid">
-                ${['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map((d, i) => {
-                    if (i===0) return '';
-                    const isActive = activeDays.includes(i);
-                    return `<button class="day-toggle-btn ${isActive ? 'active' : ''}" data-day="${i}">${d}</button>`;
-                }).join('')}
+        // 2. Переключатель "Разные часы по дням"
+        const modesDiv = document.createElement('div');
+        modesDiv.innerHTML = `
+            <div class="hours-mode-item mode-highlight" style="margin-bottom: 20px;">
+                <div class="hours-mode-info">
+                    <div class="hours-mode-icon" style="color: var(--text-main);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+                    <div class="hours-mode-text"><h4>Разные часы по дням</h4><p>свой график для каждого дня</p></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" id="hours-individual-toggle" ${isIndividual ? 'checked' : ''}><span class="slider-toggle"></span></label>
             </div>
+        `;
+        fieldsContainer.appendChild(modesDiv);
 
-            <!-- Выбор времени -->
-            <div class="time-range-container">
-                <div class="time-input-wrapper">
-                    <label>Открытие</label>
-                    <input type="time" class="custom-time-input" id="hours-open-global" value="${openTime}">
-                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        // 3. Контейнер настроек (меняется в зависимости от режима)
+        const settingsDiv = document.createElement('div');
+        settingsDiv.id = 'hours-settings-container';
+        
+        if (isIndividual) {
+            // РЕЖИМ: ИНДИВИДУАЛЬНЫЕ ДНИ (СПИСОК С ПОЛЗУНКАМИ)
+            const dayNames = ['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+            let listHtml = '<div class="individual-days-list">';
+            
+            for (let i = 1; i <= 7; i++) {
+                const dayData = sched.individual[i] || { active: true, open: '10:00', close: '22:00' };
+                const isActive = dayData.active;
+                const disabledClass = isActive ? '' : 'is-disabled';
+                const checkedAttr = isActive ? 'checked' : '';
+                
+                listHtml += `
+                    <div class="day-row-item ${disabledClass}" data-day="${i}">
+                        <div class="day-row-left">
+                            <label class="toggle-switch" style="transform: scale(0.8); transform-origin: left;">
+                                <input type="checkbox" class="day-active-toggle" data-day="${i}" ${checkedAttr}>
+                                <span class="slider-toggle"></span>
+                            </label>
+                            <span class="day-name-text">${dayNames[i]}</span>
+                        </div>
+                        <div class="day-row-right">
+                            <input type="time" class="mini-time-input day-open" data-day="${i}" value="${dayData.open}" ${!isActive ? 'disabled' : ''}>
+                            <span class="time-separator">–</span>
+                            <input type="time" class="mini-time-input day-close" data-day="${i}" value="${dayData.close}" ${!isActive ? 'disabled' : ''}>
+                        </div>
+                    </div>
+                `;
+            }
+            listHtml += '</div>';
+            settingsDiv.innerHTML = listHtml;
+
+            // Обработчики для индивидуального режима
+            setTimeout(() => {
+                settingsDiv.querySelectorAll('.day-active-toggle').forEach(toggle => {
+                    toggle.addEventListener('change', (e) => {
+                        const row = e.target.closest('.day-row-item');
+                        const inputs = row.querySelectorAll('input[type="time"]');
+                        if (e.target.checked) {
+                            row.classList.remove('is-disabled');
+                            inputs.forEach(inp => inp.removeAttribute('disabled'));
+                        } else {
+                            row.classList.add('is-disabled');
+                            inputs.forEach(inp => inp.setAttribute('disabled', 'true'));
+                        }
+                    });
+                });
+            }, 0);
+
+        } else {
+            // РЕЖИМ: ПРОСТОЙ (КНОПКИ ДНЕЙ + ОБЩЕЕ ВРЕМЯ)
+            let html = `
+                <label class="hours-editor-label">Рабочие дни</label>
+                <div class="days-selector-grid" id="hours-days-grid">
+                    ${['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map((d, i) => {
+                        if (i===0) return '';
+                        const isActive = activeDays.includes(i);
+                        return `<button class="day-toggle-btn ${isActive ? 'active' : ''}" data-day="${i}">${d}</button>`;
+                    }).join('')}
+                </div>
+
+                <div class="time-range-container">
+                    <div class="time-input-wrapper">
+                        <label>Открытие</label>
+                        <input type="time" class="custom-time-input" id="hours-open-global" value="${openTime}">
+                        <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    
+                    <div style="padding-top: 20px; color: var(--text-secondary);">–</div>
+
+                    <div class="time-input-wrapper">
+                        <label>Закрытие</label>
+                        <input type="time" class="custom-time-input" id="hours-close-global" value="${closeTime}">
+                        <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
                 </div>
                 
-                <div style="padding-top: 20px; color: var(--text-secondary);">–</div>
+                <div class="hours-hint-text">Статус «открыто / закрыто» считается автоматически по времени.</div>
+            `;
+            settingsDiv.innerHTML = html;
 
-                <div class="time-input-wrapper">
-                    <label>Закрытие</label>
-                    <input type="time" class="custom-time-input" id="hours-close-global" value="${closeTime}">
-                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                </div>
-            </div>
-            
-            <div class="hours-hint-text">Статус «открыто / закрыто» считается автоматически по времени.</div>
-        `;
-
-        // Обработчик клика по дням недели
-        setTimeout(() => {
-            const grid = document.getElementById('hours-days-grid');
-            if(grid) {
-                grid.querySelectorAll('.day-toggle-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        btn.classList.toggle('active');
+            // Обработчик клика по дням недели (простой режим)
+            setTimeout(() => {
+                const grid = document.getElementById('hours-days-grid');
+                if(grid) {
+                    grid.querySelectorAll('.day-toggle-btn').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            btn.classList.toggle('active');
+                        });
                     });
+                }
+            }, 0);
+        }
+        
+        fieldsContainer.appendChild(settingsDiv);
+
+        // Глобальный обработчик переключения режима (простой <-> индивидуальный)
+        setTimeout(() => {
+            const toggleIndividual = document.getElementById('hours-individual-toggle');
+            if(toggleIndividual) {
+                toggleIndividual.addEventListener('change', (e) => {
+                    const isIndiv = e.target.checked;
+                    if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
+                    selectedBlocks[currentEditingBlockId].schedule = selectedBlocks[currentEditingBlockId].schedule || {};
+                    selectedBlocks[currentEditingBlockId].schedule.mode = isIndiv ? 'individual' : 'simple';
+                    openEditBlock(currentEditingBlockId); // Перезагрузка модалки для смены UI
                 });
             }
         }, 0);
@@ -757,6 +859,14 @@ function openEditBlock(key) {
 
 // Вспомогательная функция для шаблонов часов
 function applyHoursTemplate(type) {
+    // Если включен режим "Разные часы", сбрасываем его в простой
+    const toggleIndividual = document.getElementById('hours-individual-toggle');
+    if(toggleIndividual && toggleIndividual.checked) {
+        toggleIndividual.checked = false;
+        toggleIndividual.dispatchEvent(new Event('change'));
+        return; 
+    }
+
     const openInput = document.getElementById('hours-open-global');
     const closeInput = document.getElementById('hours-close-global');
     const grid = document.getElementById('hours-days-grid');
@@ -771,6 +881,11 @@ function applyHoursTemplate(type) {
         closeInput.value = '18:00';
         // Пн-Пт (индексы 0-4 в NodeList)
         for(let i=0; i<5; i++) grid.children[i].classList.add('active');
+    } else if (type === 'weekend') {
+        openInput.value = '10:00';
+        closeInput.value = '20:00';
+        // Пн-Сб (индексы 0-5)
+        for(let i=0; i<6; i++) grid.children[i].classList.add('active');
     } else if (type === 'daily') {
         openInput.value = '10:00';
         closeInput.value = '22:00';
@@ -815,34 +930,63 @@ function saveBlockEdit() {
         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-input-1').value.trim() || 'О бизнесе';
         selectedBlocks[currentEditingBlockId].text = document.getElementById('edit-input-2').value.trim();
     } else if (currentEditingBlockId === 'hours' || currentEditingBlockId.startsWith('hours_copy')) {
-        // СОХРАНЕНИЕ ЧАСОВ (ДЛЯ ДИЗАЙНА С КНОПКАМИ)
-        const openVal = document.getElementById('hours-open-global')?.value || '10:00';
-        const closeVal = document.getElementById('hours-close-global')?.value || '22:00';
+        // СОХРАНЕНИЕ ЧАСОВ (УНИВЕРСАЛЬНОЕ)
+        const isIndividual = document.getElementById('hours-individual-toggle')?.checked;
         
-        const newActiveDays = [];
-        document.querySelectorAll('#hours-days-grid .day-toggle-btn.active').forEach(btn => {
-            newActiveDays.push(parseInt(btn.dataset.day));
-        });
-
-        // Формируем структуру данных
         const schedule = {
-            mode: 'simple', // Всегда простой режим для этого дизайна
-            is247: false,
-            simple: { 
+            mode: isIndividual ? 'individual' : 'simple',
+            individual: {},
+            simple: { days: [], open: '10:00', close: '22:00' } 
+        };
+
+        if (isIndividual) {
+            // Сохранение из списка строк
+            const rows = document.querySelectorAll('.day-row-item');
+            rows.forEach(row => {
+                const dayIndex = parseInt(row.dataset.day);
+                const isActive = row.querySelector('.day-active-toggle').checked;
+                const open = row.querySelector('.day-open').value;
+                const close = row.querySelector('.day-close').value;
+                
+                schedule.individual[dayIndex] = {
+                    active: isActive,
+                    open: open,
+                    close: close
+                };
+                
+                // Заполняем simple для совместимости (берем первый активный)
+                if (isActive && schedule.simple.days.length === 0) {
+                    schedule.simple.days.push(dayIndex);
+                    schedule.simple.open = open;
+                    schedule.simple.close = close;
+                } else if (isActive) {
+                    schedule.simple.days.push(dayIndex);
+                }
+            });
+        } else {
+            // Сохранение из кнопок дней и общих инпутов
+            const openVal = document.getElementById('hours-open-global')?.value || '10:00';
+            const closeVal = document.getElementById('hours-close-global')?.value || '22:00';
+            
+            const newActiveDays = [];
+            document.querySelectorAll('#hours-days-grid .day-toggle-btn.active').forEach(btn => {
+                newActiveDays.push(parseInt(btn.dataset.day));
+            });
+
+            schedule.simple = { 
                 days: newActiveDays.sort(), 
                 open: openVal, 
                 close: closeVal 
-            },
-            individual: {}
-        };
-
-        // Заполняем individual для совместимости с превью
-        for(let i=1; i<=7; i++) {
-            schedule.individual[i] = {
-                active: newActiveDays.includes(i),
-                open: openVal,
-                close: closeVal
             };
+
+            // Заполняем individual для совместимости с превью
+            for(let i=1; i<=7; i++) {
+                schedule.individual[i] = {
+                    active: newActiveDays.includes(i),
+                    open: openVal,
+                    close: closeVal
+                };
+            }
         }
 
         selectedBlocks[currentEditingBlockId].schedule = schedule;
