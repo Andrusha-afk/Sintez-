@@ -741,3 +741,71 @@ window.onload = function() {
     nextScreen(1);
     applyTranslations();
 };
+
+// --- ЛОГИКА ЗАГРУЗКИ ФОТО ---
+
+// 1. Загрузка с устройства
+const deviceInput = document.getElementById('device-upload-input');
+if (deviceInput) {
+    deviceInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            // Проверка типа файла
+            if (!['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
+                alert('Пожалуйста, выберите изображение в формате JPG или PNG');
+                return;
+            }
+            
+            // Чтение файла и отображение
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const base64String = event.target.result;
+                updateAvatarFromUrl(base64String); // Используем существующую функцию
+                showToast('Фото загружено с устройства');
+            };
+            reader.readAsDataURL(file);
+        }
+        // Сброс значения инпута, чтобы можно было выбрать тот же файл повторно
+        this.value = '';
+    });
+}
+
+// 2. Загрузка из профиля MAX (Имитация)
+function handleMaxProfilePhoto() {
+    // В реальном приложении здесь был бы вызов Telegram WebApp API:
+    // const user = window.Telegram.WebApp.initDataUnsafe.user;
+    // if (user && user.photo_url) { ... }
+    
+    // Для демонстрации используем заглушку или случайное фото
+    const mockProfilePhotos = [
+        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop',
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop',
+        'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&h=200&fit=crop'
+    ];
+    
+    const randomPhoto = mockProfilePhotos[Math.floor(Math.random() * mockProfilePhotos.length)];
+    
+    updateAvatarFromUrl(randomPhoto);
+    showToast('Фото взято из профиля MAX');
+}
+
+// Убедитесь, что функция updateAvatarFromUrl сохраняет данные в userCardData
+// (она уже есть в вашем коде, но проверьте, что она обновляет и превью в модалке)
+function updateAvatarFromUrl(url) {
+    const modalAvatar = document.getElementById('modal-avatar-img');
+    if (url) {
+        modalAvatar.style.backgroundImage = `url(${url})`;
+        modalAvatar.innerHTML = ''; // Убираем иконку-заглушку
+        
+        if (!userCardData) userCardData = {};
+        userCardData.avatarUrl = url;
+        
+        // Также обновляем поле ссылки, если оно есть
+        const avatarUrlInput = document.getElementById('input-avatar-url');
+        if (avatarUrlInput) avatarUrlInput.value = url;
+    } else {
+        modalAvatar.style.backgroundImage = 'none';
+        modalAvatar.innerHTML = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
+        if (userCardData) delete userCardData.avatarUrl;
+    }
+}

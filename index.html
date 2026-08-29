@@ -349,8 +349,8 @@
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
-            <button class="btn-upload" data-i18n="btn_upload_device">📷 Загрузить фото с устройства</button>
-            <button class="btn-upload-secondary" data-i18n="btn_upload_tg">👤 Взять фото из MAX</button>
+            <button class="btn-upload" data-i18n="btn_upload_device" onclick="document.getElementById('device-upload-input').click()">📷 Загрузить фото с устройства</button>
+            <button class="btn-upload-secondary" data-i18n="btn_upload_tg" onclick="handleMaxProfilePhoto()">👤 Взять фото из MAX</button>
             <p class="upload-hint" data-i18n="upload_hint">Фото сохранится в визитке. Поменяешь аватар в MAX — нажми ещё раз.</p>
             <div class="or-divider" data-i18n="or_link">...или ссылка на фото</div>
             <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
@@ -376,7 +376,7 @@
             <div class="modal-banner-preview">
                 <div class="banner-placeholder" data-i18n="banner_placeholder">Баннер</div>
             </div>
-            <button class="btn-upload" data-i18n="btn_upload_banner">🖼️ Загрузить баннер</button>
+            <button class="btn-upload" data-i18n="btn_upload_device" onclick="document.getElementById('device-upload-input').click()">📷 Загрузить баннер</button>
         </div>
 
         <!-- Carousel Tab Content -->
@@ -387,7 +387,8 @@
                 <div class="carousel-slide"></div>
                 <div class="carousel-slide"></div>
             </div>
-            <button class="btn-upload" data-i18n="btn_upload_carousel">️ Загрузить фото</button>
+            <button class="btn-upload" data-i18n="btn_upload_device" onclick="document.getElementById('device-upload-input').click()">📷 Загрузить фото с устройства</button>
+            
         </div>
 
         <!-- ЕДИНЫЙ БЛОК РЕДАКТИРОВАНИЯ ТЕКСТА (Теперь в самом низу) -->
@@ -401,7 +402,9 @@
             </div>
         </div>
         <!-- КОНЕЦ БЛОКА ТЕКСТА -->
-        
+        <!-- Добавьте это в конец #headerModalSheet, перед </div> -->
+        <input type="file" id="device-upload-input" accept="image/png, image/jpeg, image/jpg" style="display: none;">
+        <input type="file" id="tg-profile-input" accept="image/png, image/jpeg" style="display: none;">
     </div>
 
     <!-- BLOCK EDIT MODAL -->
