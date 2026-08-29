@@ -421,15 +421,146 @@ input:checked + .slider:before { transform: translateX(20px); }
 }
 
 /* Block Cards in Preview */
-.preview-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 20px;
+.preview-list {
+    padding: 20px 24px 120px 24px; /* Увеличен нижний отступ для кнопки Telegram */
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    transition: all 0.3s ease;
+    gap: 32px; /* Большие отступы между блоками вместо рамок */
+}
+.block-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.block-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-blue); /* Синий цвет как на скриншоте */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.block-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.action-btn:hover, .action-btn:active {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-main);
+}
+
+.action-btn.active-eye {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Контейнер содержимого блока (без рамок и фона) */
+.preview-card-body {
+    background: transparent;
+    border: none;
+    padding: 0;
+    min-height: auto;
+    color: var(--text-main);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Специфичные стили для контента */
+.preview-card-body p {
+    margin: 0;
+    color: var(--text-secondary); /* Текст "О бизнесе" серый */
+}
+
+/* Стиль для блока ссылок (внутренняя плашка) */
+.link-item {
+    background: #1c1c22; /* Темный фон для самой кнопки */
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.1s;
+}
+
+.link-item:active {
+    transform: scale(0.98);
+}
+
+.link-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.link-icon-box {
+    width: 36px;
+    height: 36px;
+    background: rgba(96, 165, 250, 0.15); /* Синеватый фон под иконкой */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-blue);
+}
+
+.link-title {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.link-arrow {
+    color: var(--text-secondary);
+}
+
+/* Кнопка Telegram внизу визитки */
+.telegram-fab {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: #2a2a35; /* Цвет как на иконках действий */
+    border-radius: 20px; /* Squircle форма */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 50;
+    cursor: pointer;
+    border: none;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.telegram-fab:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.telegram-fab svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
 }
 
 .preview-card.hidden-block {

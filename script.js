@@ -307,12 +307,13 @@ function showWelcome() { closeMenu(); nextScreen(1); }
 function handleMyCardsClick() { closeMenu(); if (hasUserCards) goToDashboard(); else alert(translations[currentLang].no_cards_msg); }
 
 // Preview Logic
+// --- ОБНОВЛЕННАЯ ФУНКЦИЯ RENDER PREVIEW ---
 function renderPreview() {
     const container = document.getElementById('preview-list-container');
     container.innerHTML = '';
     const t = translations[currentLang];
 
-    // Header Card
+    // 1. Render Header Card (Остается прежним, но можно убрать рамку если нужно)
     const headerCard = document.createElement('div');
     headerCard.className = 'preview-header-card';
     headerCard.onclick = openHeaderModal;
@@ -342,28 +343,23 @@ function renderPreview() {
     }
     container.appendChild(headerCard);
 
-    // Block Cards (Динамический рендеринг всех блоков включая дубликаты)
-    Object.keys(selectedBlocks).forEach(key => {
+    // --- НОВАЯ ЛОГИКА ОТРИСОВКИ БЛОКОВ ---
+    
+    // 1. Сначала рисуем "О БИЗНЕСЕ", если он включен
+    const aboutKeys = Object.keys(selectedBlocks).filter(k => k.startsWith('about'));
+    aboutKeys.forEach(key => {
         const blockData = selectedBlocks[key];
         if (blockData && blockData.visible) {
-            let title = blockData.title;
-            if (!title) title = t[`blk_${key}`] || key;
+            const title = blockData.title || 'О БИЗНЕСЕ';
             
-            const isVisible = blockData.visible !== false;
-            const card = document.createElement('div');
-            card.className = `preview-card ${isVisible ? '' : 'hidden-block'}`;
+            const section = document.createElement('div');
+            section.className = 'preview-block-section'; // Обертка для секции
             
-            // Особый рендер для блока "О бизнесе"
-            let bodyContent = t.preview_placeholder;
-            if (key.startsWith('about')) {
-                bodyContent = blockData.text ? `<p style="text-align:left; line-height: 1.5; margin:0;">${blockData.text}</p>` : '<p style="color:var(--text-secondary); margin:0;">Нет текста</p>';
-            }
-
-            card.innerHTML = `
-                <div class="preview-card-header">
-                    <div class="preview-card-title">${title}</div>
-                    <div class="preview-card-actions">
-                        <button class="action-btn ${isVisible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
+            section.innerHTML = `
+                <div class="block-section-header">
+                    <div class="block-section-title">${title.toUpperCase()}</div>
+                    <div class="block-actions">
+                        <button class="action-btn active-eye" onclick="toggleBlockVisibility('${key}')">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                         </button>
                         <button class="action-btn" onclick="openEditBlock('${key}')">
@@ -371,13 +367,80 @@ function renderPreview() {
                         </button>
                     </div>
                 </div>
-                <div class="preview-card-body" style="min-height: auto; padding: 12px;">
-                    ${bodyContent}
+                <div class="preview-card-body">
+                    ${blockData.text ? `<p>${blockData.text}</p>` : '<p style="opacity:0.5">Нет текста</p>'}
                 </div>
             `;
-            container.appendChild(card);
+            container.appendChild(section);
         }
     });
+
+    // 2. Рисуем остальные блоки (Ссылки и т.д.)
+    const otherKeys = Object.keys(selectedBlocks).filter(k => !k.startsWith('about'));
+    
+    otherKeys.forEach(key => {
+        const blockData = selectedBlocks[key];
+        if (blockData && blockData.visible) {
+            let title = blockData.title;
+            if (!title) title = t[`blk_${key}`] || key;
+            
+            const section = document.createElement('div');
+            section.className = 'preview-block-section';
+
+            // Генерация контента в зависимости от типа
+            let contentHtml = '';
+            
+            if (key === 'links') {
+                // Пример отображения ссылок как на скриншоте
+                contentHtml = `
+                    <div class="link-item">
+                        <div class="link-left">
+                            <div class="link-icon-box">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                            </div>
+                            <div class="link-title">Наш сайт</div>
+                        </div>
+                        <div class="link-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Стандартный плейсхолдер для остальных блоков
+                contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
+            }
+
+            section.innerHTML = `
+                <div class="block-section-header">
+                    <div class="block-section-title">${title.toUpperCase()}</div>
+                    <div class="block-actions">
+                        <button class="action-btn active-eye" onclick="toggleBlockVisibility('${key}')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                        <button class="action-btn" onclick="openEditBlock('${key}')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="preview-card-body">
+                    ${contentHtml}
+                </div>
+            `;
+            container.appendChild(section);
+        }
+    });
+
+    // 3. Добавляем кнопку Telegram внизу (вне списка блоков, но внутри контейнера экрана)
+    // Лучше добавить её в HTML экрана preview, но можно и здесь динамически, если её нет
+    if (!document.getElementById('telegram-fab')) {
+        const fab = document.createElement('button');
+        fab.id = 'telegram-fab';
+        fab.className = 'telegram-fab';
+        fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
+        // Находим родительский экран preview и добавляем туда
+        const previewScreen = document.getElementById('screen-preview');
+        previewScreen.appendChild(fab);
+    }
 
     if (container.children.length <= 1) { 
         const emptyMsg = document.createElement('div');
