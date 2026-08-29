@@ -720,3 +720,58 @@ input:checked + .slider:before { transform: translateX(20px); }
     border-color: var(--btn-primary);
     background: rgba(0,0,0,0.3);
 }
+
+/* --- Стили для режима БАННЕР (Обложка + Аватар) --- */
+.header-preview-cover.banner-mode {
+    height: 140px; /* Высота баннера */
+    opacity: 1;
+}
+
+.header-preview-avatar.overlay-mode {
+    position: absolute;
+    top: 80px; /* Смещение вниз, чтобы перекрывать край обложки */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    border: 4px solid var(--card-bg); /* Рамка цветом фона карточки */
+    z-index: 5;
+    margin-bottom: 0;
+}
+
+.header-preview-info.banner-info {
+    margin-top: 50px; /* Отступ текста от аватара */
+    z-index: 4;
+}
+
+/* --- Стили для КАРУСЕЛИ --- */
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+.carousel-item {
+    min-width: 200px;
+    height: 140px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+.add-slide-btn {
+    min-width: 100px;
+    height: 140px;
+    border-radius: 12px;
+    border: 2px dashed rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+}

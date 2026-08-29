@@ -392,15 +392,20 @@
         </div>
 
         <!-- Carousel Tab Content -->
+                <!-- Carousel Tab Content -->
         <div class="header-tab-content hidden" id="tab-content-carousel">
-            <p class="tab-desc" data-i18n="desc_carousel">Несколько фото в ряд.</p>
-            <div class="modal-carousel-preview">
-                <div class="carousel-slide"></div>
-                <div class="carousel-slide"></div>
-                <div class="carousel-slide"></div>
-            </div>
-            <button class="btn-upload" data-i18n="btn_upload_device" onclick="document.getElementById('device-upload-input').click()">📷 Загрузить фото с устройства</button>
+            <p class="tab-desc" data-i18n="desc_carousel">Несколько фото — листаются свайпом.</p>
             
+            <div class="section-label-small">Фото карусели</div>
+            <div class="carousel-container" id="modal-carousel-list">
+                <!-- Сюда будут добавляться слайды через JS -->
+                <div class="add-slide-btn" onclick="document.getElementById('carousel-upload-input').click()">+</div>
+            </div>
+            
+            <!-- Скрытый инпут для карусели -->
+            <input type="file" id="carousel-upload-input" accept="image/png, image/jpeg" multiple style="display: none;">
+            
+            <button class="btn-upload-secondary" style="margin-top: 10px;" onclick="document.getElementById('carousel-upload-input').click()">+ Добавить плитку</button>
         </div>
 
         <!-- ЕДИНЫЙ БЛОК РЕДАКТИРОВАНИЯ ТЕКСТА (Теперь в самом низу) -->
