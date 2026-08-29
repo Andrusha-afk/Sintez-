@@ -97,12 +97,6 @@ body {
     scroll-padding-top: 80px; 
 }
 
-#screen-1 .onboarding-content,
-#screen-2 .onboarding-content,
-#screen-3 .onboarding-content {
-    padding-top: 20px; /* Компенсация, чтобы визуально было по центру */
-}
-
 .screen.active { 
     opacity: 1; 
     pointer-events: all; 
