@@ -330,10 +330,7 @@
             </button>
         </div>
 
-<div class="header-format-label" data-i18n="header_format_label">Формат шапки</div>
-...
-
-        <div class="header-format-label" data-i18n="header_format_label">Формат шапки</div>
+    <div class="header-format-label" data-i18n="header_format_label">Формат шапки</div>
         <div class="header-tabs">
             <button class="header-tab active" onclick="switchHeaderTab('avatar')" data-i18n="tab_avatar">Аватар</button>
             <button class="header-tab" onclick="switchHeaderTab('cover')" data-i18n="tab_cover">Обложка</button>
@@ -354,6 +351,14 @@
             <p class="upload-hint" data-i18n="upload_hint">Фото сохранится в визитке. Поменяешь аватар в MAX — нажми ещё раз.</p>
             <div class="or-divider" data-i18n="or_link">...или ссылка на фото</div>
             <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
+            <div class="header-text-edit-section">
+            <div class="form-group" style="margin-bottom: 12px;">
+            <input type="text" class="form-input" id="modal-input-name" placeholder="Имя или название компании">
+                </div>
+            <div class="form-group" style="margin-bottom: 0;">
+            <input type="text" class="form-input" id="modal-input-desc" placeholder="Подзаголовок / Описание">
+                </div>
+            </div>
         </div>
 
         <!-- Cover Tab Content -->
@@ -385,6 +390,14 @@
                 <div class="banner-placeholder" data-i18n="banner_placeholder">Баннер</div>
             </div>
             <button class="btn-upload" data-i18n="btn_upload_banner">️ Загрузить баннер</button>
+            <div class="header-text-edit-section">
+            <div class="form-group" style="margin-bottom: 12px;">
+            <input type="text" class="form-input" id="modal-input-name" placeholder="Имя или название компании">
+                </div>
+            <div class="form-group" style="margin-bottom: 0;">
+            <input type="text" class="form-input" id="modal-input-desc" placeholder="Подзаголовок / Описание">
+                </div>
+            </div>
         </div>
 
         <!-- Carousel Tab Content -->
@@ -397,6 +410,14 @@
             </div>
             <button class="btn-upload" data-i18n="btn_upload_carousel">️ Загрузить фото</button>
         </div>
+        <div class="header-text-edit-section">
+            <div class="form-group" style="margin-bottom: 12px;">
+            <input type="text" class="form-input" id="modal-input-name" placeholder="Имя или название компании">
+                </div>
+            <div class="form-group" style="margin-bottom: 0;">
+            <input type="text" class="form-input" id="modal-input-desc" placeholder="Подзаголовок / Описание">
+                </div>
+            </div>
     </div>
 
     <!-- BLOCK EDIT MODAL -->
