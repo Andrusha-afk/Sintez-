@@ -23,7 +23,7 @@ const translations = {
         cr_subtitle_step1: "Расскажи немного о себе. Это будет видно всем.",
         cr_label_name: "Имя или название компании", cr_ph_name: "напр. Студия Анны",
         cr_label_desc: "Подзаголовок", cr_ph_desc: "чем ты занимаешься",
-        cr_label_city: "Город", cr_ph_city: "напр. Москва", // NEW
+        cr_label_city: "Город", cr_ph_city: "напр. Москва",
         btn_next_arrow: "Далее →", btn_finish: "Готово",
         action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить навсегда",
         toast_copy: "Ссылка скопирована!", toast_deleted: "Визитка удалена",
@@ -39,110 +39,110 @@ const translations = {
         modal_header_title: "Шапка", header_format_label: "Формат шапки",
         tab_avatar: "Аватар", tab_cover: "Обложка", tab_banner: "Баннер", tab_carousel: "Карусель",
         desc_avatar: "Круглый аватар — иконка, эмодзи или фото. Без обложки.",
-        btn_upload_device: "📷 Загрузить фото с устройства", btn_upload_tg: " Взять фото из MAX",
+        btn_upload_device: " Загрузить фото с устройства", btn_upload_tg: "👤 Взять фото из MAX",
         upload_hint: "Фото сохранится в визитке. Поменяешь аватар в MAX — нажми ещё раз.",
         or_link: "...или ссылка на фото",
         desc_cover: "Широкая обложка на всю ширину, имя под ней. Без аватара.",
         ph_company_name: "Имя или название компании", hint_example: "Пример — загрузите своё фото ниже",
-        lbl_cover: "ОБЛОЖКА", btn_upload_cover: "️ Загрузить обложку", lbl_cover_link: "Обложка — ссылка на фото",
+        lbl_cover: "ОБЛОЖКА", btn_upload_cover: "🖼️ Загрузить обложку", lbl_cover_link: "Обложка — ссылка на фото",
         desc_banner: "Длинный баннер с текстом внутри.", banner_placeholder: "Баннер", btn_upload_banner: "🖼️ Загрузить баннер",
-        desc_carousel: "Несколько фото в ряд.", btn_upload_carousel: "️ Загрузить фото"
+        desc_carousel: "Несколько фото в ряд.", btn_upload_carousel: "🖼️ Загрузить фото"
     },
     en: {
         s1_title: "Your business card ", s1_title_grad: "inside MAX",
-        s1_desc: "Opens via link in a second. No installation needed — neither for you nor for the recipient.",
+        s1_desc: "Opens via link in a second. No installation needed.",
         s2_title: "Built from ", s2_title_grad: "blocks",
-        s2_desc: "Price list, reviews, photo gallery, map, working hours, booking button. Blocks are rearranged by dragging, you set the order.",
+        s2_desc: "Price list, reviews, gallery, map, hours. Rearrange by dragging.",
         s3_title: "Your own bot and<br>link",
-        s3_desc: "The business card gets its own bot. The link can be sent in chat, put in profile bio or printed on a physical card.",
+        s3_desc: "The card gets its own bot. Share the link anywhere.",
         btn_skip: "Skip", btn_next: "Next", btn_start: "Start",
-        dash_title: "Your cards", dash_subtitle: "Open to edit. Send the link to anyone.",
+        dash_title: "Your cards", dash_subtitle: "Open to edit. Send link to anyone.",
         label_my_cards: "MY CARDS", empty_h3: "Your cards will appear here", 
-        empty_p: "The first one is assembled in a few minutes: name, a couple of blocks — and it's ready.",
+        empty_p: "First one takes minutes: name, blocks — done.",
         btn_create: "Create your card",
-        info_box: "This is how it looks in the example. Your numbers will appear here when you create your first card.",
-        menu_stats: "Statistics", menu_stats_sub: "Views, clicks and requests",
-        menu_links: "Promotion links", menu_links_sub: "Separate link for each channel",
-        analytics_empty: "No views yet — share your card and statistics will appear here",
-        menu_title: "Menu", menu_welcome: "View welcome screen", menu_mycards: "My cards",
-        menu_footer: "Welcome screen is shown once on first login. You can open it again from here.",
-        no_cards_msg: "You don't have any cards yet", page_analytics: "Analytics",
+        info_box: "Example view. Your stats will appear after first card.",
+        menu_stats: "Statistics", menu_stats_sub: "Views, clicks, requests",
+        menu_links: "Promo links", menu_links_sub: "Separate link per channel",
+        analytics_empty: "No views yet — share your card to see stats",
+        menu_title: "Menu", menu_welcome: "View welcome", menu_mycards: "My cards",
+        menu_footer: "Welcome shown once on login. Open again from here.",
+        no_cards_msg: "You have no cards yet", page_analytics: "Analytics",
         cr_title_step1: "About Business",
-        cr_subtitle_step1: "Tell us a bit about yourself. This will be visible to everyone.",
-        cr_label_name: "Name or company title", cr_ph_name: "e.g. Anna's Studio",
+        cr_subtitle_step1: "Tell us about yourself. Visible to everyone.",
+        cr_label_name: "Name or company", cr_ph_name: "e.g. Anna's Studio",
         cr_label_desc: "Subtitle", cr_ph_desc: "what you do",
-        cr_label_city: "City", cr_ph_city: "e.g. Moscow", // NEW
+        cr_label_city: "City", cr_ph_city: "e.g. Moscow",
         btn_next_arrow: "Next →", btn_finish: "Finish",
         action_edit: "Edit", action_share: "Share", action_delete: "Delete forever",
         toast_copy: "Link copied!", toast_deleted: "Card deleted",
-        bl_title: "What to ", bl_title_grad: "show", bl_desc: "Select blocks to build your card. Add more later.",
-        blk_links: "Links", blk_socials: "Socials", blk_hours: "Working hours", blk_cta: "Call-to-action",
-        blk_contacts: "Contacts", blk_price: "Price list", blk_discounts: "Discounts",
-        blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts & Figures",
+        bl_title: "What to ", bl_title_grad: "show", bl_desc: "Select blocks. Add more later.",
+        blk_links: "Links", blk_socials: "Socials", blk_hours: "Hours", blk_cta: "Call-to-action",
+        blk_contacts: "Contacts", blk_price: "Prices", blk_discounts: "Discounts",
+        blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts",
         blk_video: "Video", blk_share: "Share", blk_gallery: "Gallery", blk_map: "Map + Taxi",
         btn_back: "Back", btn_assemble: "Next",
-        pv_title: "Your card", pv_desc: "Adjust header and blocks. Tap avatar to change format.",
+        pv_title: "Your card", pv_desc: "Adjust header & blocks. Tap avatar to change format.",
         edit_modal_title: "Edit block", btn_save: "Save",
         preview_placeholder: "Block content",
         modal_header_title: "Header", header_format_label: "Header format",
         tab_avatar: "Avatar", tab_cover: "Cover", tab_banner: "Banner", tab_carousel: "Carousel",
-        desc_avatar: "Round avatar — icon, emoji or photo. No cover.",
+        desc_avatar: "Round avatar. No cover.",
         btn_upload_device: "📷 Upload from device", btn_upload_tg: "👤 Get from MAX",
-        upload_hint: "Photo will be saved. Change avatar in MAX — tap again.",
+        upload_hint: "Photo saved. Change in MAX — tap again.",
         or_link: "...or photo link",
-        desc_cover: "Wide cover full width, name below it. No avatar.",
-        ph_company_name: "Company name or title", hint_example: "Example — upload your photo below",
-        lbl_cover: "COVER", btn_upload_cover: "🖼️ Upload cover", lbl_cover_link: "Cover — photo link",
-        desc_banner: "Long banner with text inside.", banner_placeholder: "Banner", btn_upload_banner: "🖼️ Upload banner",
-        desc_carousel: "Several photos in a row.", btn_upload_carousel: "️ Upload photos"
+        desc_cover: "Wide cover, name below. No avatar.",
+        ph_company_name: "Company name", hint_example: "Example — upload photo below",
+        lbl_cover: "COVER", btn_upload_cover: "️ Upload cover", lbl_cover_link: "Cover — photo link",
+        desc_banner: "Long banner with text.", banner_placeholder: "Banner", btn_upload_banner: "🖼️ Upload banner",
+        desc_carousel: "Several photos in row.", btn_upload_carousel: "🖼️ Upload photos"
     },
     de: {
         s1_title: "Deine Visitenkarte ", s1_title_grad: "in MAX",
-        s1_desc: "Öffnet sich per Link in einer Sekunde. Keine Installation nötig — weder für dich noch für den Empfänger.",
+        s1_desc: "Öffnet per Link sofort. Keine Installation nötig.",
         s2_title: "Zusammengestellt aus ", s2_title_grad: "Blöcken",
-        s2_desc: "Preisliste, Bewertungen, Fotogalerie, Karte, Öffnungszeiten, Buchungsbutton. Blöcke werden per Drag & Drop neu angeordnet.",
-        s3_title: "Eigener Bot und<br>eigener Link",
-        s3_desc: "Die Visitenkarte erhält einen eigenen Bot. Der Link kann im Chat gesendet, in die Profilbio eingefügt oder auf eine Karte gedruckt werden.",
+        s2_desc: "Preise, Bewertungen, Galerie, Karte. Per Drag & Drop sortieren.",
+        s3_title: "Eigener Bot und<br>Link",
+        s3_desc: "Karte erhält eigenen Bot. Link überall teilen.",
         btn_skip: "Überspringen", btn_next: "Weiter", btn_start: "Starten",
-        dash_title: "Deine Karten", dash_subtitle: "Zum Bearbeiten öffnen. Sende den Link an jeden.",
+        dash_title: "Deine Karten", dash_subtitle: "Zum Bearbeiten öffnen. Link senden.",
         label_my_cards: "MEINE KARTEN", empty_h3: "Hier erscheinen deine Karten", 
-        empty_p: "Die erste ist in wenigen Minuten erstellt: Name, ein paar Blöcke — und fertig.",
+        empty_p: "Erste Karte in Minuten fertig.",
         btn_create: "Karte erstellen",
-        info_box: "So sieht es im Beispiel aus. Ihre Zahlen erscheinen hier, wenn Sie Ihre erste Karte erstellen.",
-        menu_stats: "Statistik", menu_stats_sub: "Aufrufe, Klicks und Anfragen",
-        menu_links: "Werbelinks", menu_links_sub: "Separater Link für jeden Kanal",
-        analytics_empty: "Noch keine Aufrufe — teile deine Karte und hier erscheint die Statistik",
+        info_box: "Beispielansicht. Deine Daten erscheinen nach Erstellung.",
+        menu_stats: "Statistik", menu_stats_sub: "Aufrufe, Klicks, Anfragen",
+        menu_links: "Werbelinks", menu_links_sub: "Separater Link pro Kanal",
+        analytics_empty: "Keine Aufrufe — teile deine Karte für Statistik",
         menu_title: "Menü", menu_welcome: "Begrüßung ansehen", menu_mycards: "Meine Karten",
-        menu_footer: "Der Begrüßungsbildschirm wird beim ersten Login einmal angezeigt. Du kannst ihn von hier aus wieder öffnen.",
-        no_cards_msg: "Sie haben noch keine Karten", page_analytics: "Analytik",
+        menu_footer: "Begrüßung beim ersten Login. Hier wieder öffnen.",
+        no_cards_msg: "Noch keine Karten", page_analytics: "Analytik",
         cr_title_step1: "Über das Unternehmen",
-        cr_subtitle_step1: "Erzählen Sie etwas über sich. Das wird allen angezeigt.",
-        cr_label_name: "Name oder Firmenname", cr_ph_name: "z.B. Annas Studio",
+        cr_subtitle_step1: "Erzählen Sie etwas über sich. Für alle sichtbar.",
+        cr_label_name: "Name oder Firma", cr_ph_name: "z.B. Annas Studio",
         cr_label_desc: "Untertitel", cr_ph_desc: "was du machst",
-        cr_label_city: "Stadt", cr_ph_city: "z.B. Moskau", // NEW
+        cr_label_city: "Stadt", cr_ph_city: "z.B. Moskau",
         btn_next_arrow: "Weiter →", btn_finish: "Fertig",
-        action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Für immer löschen",
+        action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Löschen",
         toast_copy: "Link kopiert!", toast_deleted: "Karte gelöscht",
-        bl_title: "Was ", bl_title_grad: "zeigen?", bl_desc: "Wähle Blöcke für deine Karte. Den Rest fügst du später hinzu.",
+        bl_title: "Was ", bl_title_grad: "zeigen?", bl_desc: "Blöcke wählen. Rest später.",
         blk_links: "Links", blk_socials: "Soziale Netzwerke", blk_hours: "Öffnungszeiten", blk_cta: "Handlungsaufruf",
-        blk_contacts: "Kontakte", blk_price: "Preisliste", blk_discounts: "Rabatte",
-        blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten & Zahlen",
+        blk_contacts: "Kontakte", blk_price: "Preise", blk_discounts: "Rabatte",
+        blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten",
         blk_video: "Video", blk_share: "Teilen", blk_gallery: "Galerie", blk_map: "Karte + Taxi",
         btn_back: "Zurück", btn_assemble: "Weiter",
-        pv_title: "Deine Karte", pv_desc: "Kopfzeile und Blöcke anpassen. Tippe auf Avatar, um Format zu ändern.",
+        pv_title: "Deine Karte", pv_desc: "Kopfzeile & Blöcke anpassen. Avatar tippen für Format.",
         edit_modal_title: "Block bearbeiten", btn_save: "Speichern",
         preview_placeholder: "Blockinhalt",
         modal_header_title: "Kopfzeile", header_format_label: "Format der Kopfzeile",
         tab_avatar: "Avatar", tab_cover: "Titelbild", tab_banner: "Banner", tab_carousel: "Karussell",
-        desc_avatar: "Runder Avatar — Symbol, Emoji oder Foto. Ohne Titelbild.",
-        btn_upload_device: "📷 Foto vom Gerät laden", btn_upload_tg: " Aus MAX holen",
-        upload_hint: "Foto wird gespeichert. Ändere Avatar in MAX — tippe erneut.",
+        desc_avatar: "Runder Avatar. Kein Titelbild.",
+        btn_upload_device: "📷 Foto vom Gerät", btn_upload_tg: "👤 Aus MAX holen",
+        upload_hint: "Foto gespeichert. In MAX ändern — erneut tippen.",
         or_link: "...oder Fotolink",
-        desc_cover: "Breites Titelbild über die ganze Breite, Name darunter. Kein Avatar.",
-        ph_company_name: "Firmenname oder Titel", hint_example: "Beispiel — lade dein Foto unten hoch",
-        lbl_cover: "TITELBILD", btn_upload_cover: "🖼️ Titelbild laden", lbl_cover_link: "Titelbild — Fotolink",
-        desc_banner: "Langes Banner mit Text darin.", banner_placeholder: "Banner", btn_upload_banner: "🖼️ Banner laden",
-        desc_carousel: "Mehrere Fotos in einer Reihe.", btn_upload_carousel: "️ Fotos laden"
+        desc_cover: "Breites Titelbild, Name darunter. Kein Avatar.",
+        ph_company_name: "Firmenname", hint_example: "Beispiel — Foto unten laden",
+        lbl_cover: "TITELBILD", btn_upload_cover: "🖼️ Titelbild laden", lbl_cover_link: "Titelbild — Link",
+        desc_banner: "Langes Banner mit Text.", banner_placeholder: "Banner", btn_upload_banner: "️ Banner laden",
+        desc_carousel: "Mehrere Fotos.", btn_upload_carousel: "🖼️ Fotos laden"
     }
 };
 
@@ -150,7 +150,7 @@ let currentLang = 'ru';
 let hasUserCards = false; 
 let userCardData = null;
 let selectedBlocks = {}; 
-let currentHeaderFormat = 'avatar'; // 'avatar', 'cover', 'banner', 'carousel'
+let currentHeaderFormat = 'avatar'; 
 let currentEditingBlockId = null;
 
 // --- LOCAL STORAGE HELPERS ---
@@ -207,13 +207,15 @@ function applyTranslations() {
         const key = el.getAttribute('data-i18n-ph');
         if (t[key]) el.placeholder = t[key];
     });
-    document.getElementById('pageTitle').innerText = t.page_analytics;
+    const pageTitleEl = document.getElementById('pageTitle');
+    if(pageTitleEl) pageTitleEl.innerText = t.page_analytics;
 }
 
 // Navigation Logic
 function nextScreen(screenNum) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(`screen-${screenNum}`).classList.add('active');
+    const target = document.getElementById(`screen-${screenNum}`);
+    if(target) target.classList.add('active');
     updateHeader('onboarding');
 }
 
@@ -226,12 +228,10 @@ function goToDashboard() {
 }
 
 function startCreationFlow() {
-    // Step 1: Go to creator (About Business)
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-creator').classList.add('active');
     updateHeader('creator');
     
-    // Reset inputs if starting fresh
     if (!userCardData) {
         document.getElementById('input-name').value = '';
         document.getElementById('input-desc').value = '';
@@ -246,39 +246,34 @@ function startCreationFlow() {
 function goToBlocksSelection() {
     const name = document.getElementById('input-name').value.trim();
     const desc = document.getElementById('input-desc').value.trim();
-    const city = document.getElementById('input-city').value.trim(); // NEW
+    const city = document.getElementById('input-city').value.trim();
 
     if (!name) {
         alert(currentLang === 'ru' ? 'Введите название или имя' : 'Enter name or title');
         return;
     }
 
-    // Save basic info
     if (!userCardData) userCardData = {};
     userCardData.name = name;
     userCardData.desc = desc;
-    userCardData.city = city; // NEW
+    userCardData.city = city;
 
-    // Step 2: Go to blocks selection
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-blocks').classList.add('active');
     updateHeader('blocks');
     
-    // Sync checkboxes with saved state
     const checkboxes = document.querySelectorAll('.toggle-switch input');
     checkboxes.forEach(cb => {
         const key = cb.getAttribute('data-block');
         if (selectedBlocks[key]) {
             cb.checked = selectedBlocks[key].visible;
         } else {
-            // Initialize if not exists
             selectedBlocks[key] = { visible: cb.checked, title: null };
         }
     });
 }
 
 function finishBlocksSelection() {
-    // Save block selections from toggles
     const checkboxes = document.querySelectorAll('.toggle-switch input');
     checkboxes.forEach(cb => {
         const key = cb.getAttribute('data-block');
@@ -286,7 +281,6 @@ function finishBlocksSelection() {
         selectedBlocks[key].visible = cb.checked;
     });
 
-    // Step 3: Go to preview screen
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-preview').classList.add('active');
     updateHeader('preview');
@@ -294,21 +288,18 @@ function finishBlocksSelection() {
 }
 
 function goBackFromBlocks() {
-    // Return to creator
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-creator').classList.add('active');
     updateHeader('creator');
 }
 
 function goBackFromPreview() {
-    // Return to blocks selection
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-blocks').classList.add('active');
     updateHeader('blocks');
 }
 
 function openCreator(isEdit = false) {
-    // If editing existing card, go straight to creator
     if (isEdit && userCardData) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById('screen-creator').classList.add('active');
@@ -438,7 +429,7 @@ function renderPreview() {
     
     if (currentHeaderFormat === 'cover' && userCardData && userCardData.coverUrl) {
         coverStyle = `background-image: url(${userCardData.coverUrl});`;
-        avatarDisplay = 'none'; // No avatar in cover mode
+        avatarDisplay = 'none'; 
     } else if (userCardData && userCardData.avatarUrl) {
         avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
     }
@@ -499,7 +490,7 @@ function renderPreview() {
         }
     });
 
-    if (container.children.length <= 1) { // Only header card
+    if (container.children.length <= 1) { 
         const emptyMsg = document.createElement('div');
         emptyMsg.style.textAlign = 'center';
         emptyMsg.style.color = 'var(--text-secondary)';
@@ -514,14 +505,16 @@ function toggleBlockVisibility(key) {
     selectedBlocks[key].visible = !selectedBlocks[key].visible;
     
     const card = document.getElementById(`preview-card-${key}`);
-    const btn = card.querySelector('.action-btn'); // First button is eye
-    
-    if (selectedBlocks[key].visible) {
-        card.classList.remove('hidden-block');
-        btn.classList.add('active-eye');
-    } else {
-        card.classList.add('hidden-block');
-        btn.classList.remove('active-eye');
+    if(card) {
+        const btn = card.querySelector('.action-btn'); 
+        
+        if (selectedBlocks[key].visible) {
+            card.classList.remove('hidden-block');
+            if(btn) btn.classList.add('active-eye');
+        } else {
+            card.classList.add('hidden-block');
+            if(btn) btn.classList.remove('active-eye');
+        }
     }
     
     saveUserData();
@@ -573,13 +566,13 @@ function saveBlockEdit() {
 // Header Modal Logic
 const headerModalOverlay = document.getElementById('headerModalOverlay');
 const headerModalSheet = document.getElementById('headerModalSheet');
-// --- ОБНОВЛЕННАЯ ФУНКЦИЯ ОТКРЫТИЯ МОДАЛКИ ---
+
 function openHeaderModal() {
     headerModalOverlay.classList.add('open');
     headerModalSheet.classList.add('open');
     switchHeaderTab(currentHeaderFormat);
     
-    // Заполняем поля текущими значениями
+    // Заполняем поля текста
     const nameInput = document.getElementById('modal-input-name');
     const descInput = document.getElementById('modal-input-desc');
     
@@ -605,16 +598,14 @@ function closeHeaderModal() {
 
     if (!userCardData) userCardData = {};
     
-    // Обновляем данные только если они не пустые (или оставляем как есть, если хотите разрешать очистку)
     if (nameVal) userCardData.name = nameVal;
     if (descVal) userCardData.desc = descVal;
     
-    saveUserData(); // Сохраняем в localStorage
+    saveUserData(); 
     
     headerModalOverlay.classList.remove('open');
     headerModalSheet.classList.remove('open');
     
-    // Перерисовываем превью с новыми данными
     renderPreview();
 }
 
@@ -633,30 +624,103 @@ function switchHeaderTab(tab) {
     }
 }
 
-function updateAvatarFromUrl(url) {
-    const modalAvatar = document.getElementById('modal-avatar-img');
-    
-    if (url) {
-        modalAvatar.style.backgroundImage = `url(${url})`;
-        if (!userCardData) userCardData = {};
-        userCardData.avatarUrl = url;
-    } else {
-        modalAvatar.style.backgroundImage = 'none';
-        if (userCardData) delete userCardData.avatarUrl;
-    }
+// --- PHOTO UPLOAD LOGIC ---
+
+// 1. Загрузка АВАТАРА с устройства
+const deviceInput = document.getElementById('device-upload-input');
+if (deviceInput) {
+    deviceInput.addEventListener('change', function(e) {
+        handleFileUpload(e, updateAvatarFromUrl);
+    });
 }
 
+// 2. Загрузка ОБЛОЖКИ с устройства
+const coverInput = document.getElementById('cover-upload-input');
+if (coverInput) {
+    coverInput.addEventListener('change', function(e) {
+        handleFileUpload(e, updateCoverFromUrl);
+    });
+}
+
+// Универсальная функция обработки файла
+function handleFileUpload(event, updateCallback) {
+    const file = event.target.files[0];
+    if (file) {
+        if (!['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
+            alert('Пожалуйста, выберите изображение в формате JPG или PNG');
+            return;
+        }
+        
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            updateCallback(evt.target.result); 
+            showToast('Фото успешно загружено');
+        };
+        reader.readAsDataURL(file);
+    }
+    event.target.value = '';
+}
+
+// Функция обновления ТОЛЬКО ОБЛОЖКИ
 function updateCoverFromUrl(url) {
     const modalCoverBg = document.getElementById('modal-cover-preview-bg');
     
     if (url) {
         modalCoverBg.style.backgroundImage = `url(${url})`;
+        modalCoverBg.style.backgroundSize = 'cover';
+        modalCoverBg.style.backgroundPosition = 'center';
+        
         if (!userCardData) userCardData = {};
         userCardData.coverUrl = url;
+        
+        const coverUrlInput = document.getElementById('input-cover-url');
+        if (coverUrlInput) coverUrlInput.value = url;
     } else {
         modalCoverBg.style.backgroundImage = 'none';
         if (userCardData) delete userCardData.coverUrl;
     }
+}
+
+// Функция обновления АВАТАРА
+function updateAvatarFromUrl(url) {
+    const modalAvatar = document.getElementById('modal-avatar-img');
+    if (url) {
+        modalAvatar.style.backgroundImage = `url(${url})`;
+        modalAvatar.innerHTML = ''; 
+        
+        if (!userCardData) userCardData = {};
+        userCardData.avatarUrl = url;
+        
+        const avatarUrlInput = document.getElementById('input-avatar-url');
+        if (avatarUrlInput) avatarUrlInput.value = url;
+    } else {
+        modalAvatar.style.backgroundImage = 'none';
+        modalAvatar.innerHTML = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
+        if (userCardData) delete userCardData.avatarUrl;
+    }
+}
+
+// Имитация загрузки обложки из MAX
+function handleMaxCoverPhoto() {
+    const mockCovers = [
+        'https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=300&fit=crop',
+        'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&h=300&fit=crop',
+        'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&h=300&fit=crop'
+    ];
+    const randomCover = mockCovers[Math.floor(Math.random() * mockCovers.length)];
+    updateCoverFromUrl(randomCover);
+    showToast('Обложка взята из профиля MAX');
+}
+
+// Имитация загрузки аватара из MAX
+function handleMaxProfilePhoto() {
+    const mockAvatars = [
+        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop',
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop'
+    ];
+    const randomAvatar = mockAvatars[Math.floor(Math.random() * mockAvatars.length)];
+    updateAvatarFromUrl(randomAvatar);
+    showToast('Аватар взят из профиля MAX');
 }
 
 function finalizeCard() {
@@ -741,71 +805,3 @@ window.onload = function() {
     nextScreen(1);
     applyTranslations();
 };
-
-// --- ЛОГИКА ЗАГРУЗКИ ФОТО ---
-
-// 1. Загрузка с устройства
-const deviceInput = document.getElementById('device-upload-input');
-if (deviceInput) {
-    deviceInput.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            // Проверка типа файла
-            if (!['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
-                alert('Пожалуйста, выберите изображение в формате JPG или PNG');
-                return;
-            }
-            
-            // Чтение файла и отображение
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const base64String = event.target.result;
-                updateAvatarFromUrl(base64String); // Используем существующую функцию
-                showToast('Фото загружено с устройства');
-            };
-            reader.readAsDataURL(file);
-        }
-        // Сброс значения инпута, чтобы можно было выбрать тот же файл повторно
-        this.value = '';
-    });
-}
-
-// 2. Загрузка из профиля MAX (Имитация)
-function handleMaxProfilePhoto() {
-    // В реальном приложении здесь был бы вызов Telegram WebApp API:
-    // const user = window.Telegram.WebApp.initDataUnsafe.user;
-    // if (user && user.photo_url) { ... }
-    
-    // Для демонстрации используем заглушку или случайное фото
-    const mockProfilePhotos = [
-        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop',
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop',
-        'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&h=200&fit=crop'
-    ];
-    
-    const randomPhoto = mockProfilePhotos[Math.floor(Math.random() * mockProfilePhotos.length)];
-    
-    updateAvatarFromUrl(randomPhoto);
-    showToast('Фото взято из профиля MAX');
-}
-
-// Убедитесь, что функция updateAvatarFromUrl сохраняет данные в userCardData
-// (она уже есть в вашем коде, но проверьте, что она обновляет и превью в модалке)
-function updateAvatarFromUrl(url) {
-    const modalAvatar = document.getElementById('modal-avatar-img');
-    if (url) {
-        modalAvatar.style.backgroundImage = `url(${url})`;
-        modalAvatar.innerHTML = ''; // Убираем иконку-заглушку
-        
-        if (!userCardData) userCardData = {};
-        userCardData.avatarUrl = url;
-        
-        // Также обновляем поле ссылки, если оно есть
-        const avatarUrlInput = document.getElementById('input-avatar-url');
-        if (avatarUrlInput) avatarUrlInput.value = url;
-    } else {
-        modalAvatar.style.backgroundImage = 'none';
-        modalAvatar.innerHTML = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
-        if (userCardData) delete userCardData.avatarUrl;
-    }
-}
