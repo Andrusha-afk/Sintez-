@@ -754,3 +754,122 @@ function updateBannerAvatar(url) {
     if (modalAvatar) setAvatarStyle(modalAvatar);
     if (input) input.value = url;
 }
+
+// --- ЛОГИКА СИНХРОНИЗАЦИИ И ЗАГРУЗКИ ---
+
+// 1. Универсальная обработка файлов
+function handleFileUpload(event, updateCallback) {
+    const file = event.target.files[0];
+    if (file) {
+        if (!['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
+            alert('Пожалуйста, выберите изображение JPG/PNG');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            updateCallback(evt.target.result); // Вызываем функцию обновления
+            showToast('Фото загружено');
+        };
+        reader.readAsDataURL(file);
+    }
+    event.target.value = ''; // Сброс для повторной загрузки
+}
+
+// Привязка инпутов к функциям
+// device-upload-input используется и в "Аватар", и в "Баннер"
+const deviceInput = document.getElementById('device-upload-input');
+if (deviceInput) deviceInput.addEventListener('change', (e) => handleFileUpload(e, updateAvatarFromUrl));
+
+// cover-upload-input используется и в "Обложка", и в "Баннер"
+const coverInput = document.getElementById('cover-upload-input');
+if (coverInput) coverInput.addEventListener('change', (e) => handleFileUpload(e, updateCoverFromUrl));
+
+
+// 2. Функция обновления АВАТАРА (Синхронизирует все превью)
+function updateAvatarFromUrl(url) {
+    // Обновляем данные
+    if (!userCardData) userCardData = {};
+    userCardData.avatarUrl = url;
+
+    // Обновляем поле ссылки во всех вкладках (если они есть)
+    const avatarInputs = document.querySelectorAll('#input-avatar-url, #banner-avatar-url');
+    avatarInputs.forEach(input => input.value = url);
+
+    // Обновляем визуальные превью
+    // 1. Стандартный аватар (вкладка Аватар)
+    const stdAvatar = document.getElementById('modal-avatar-img');
+    // 2. Аватар в баннере (может быть тем же элементом или отдельным, зависит от HTML)
+    // В исправленном HTML выше я использовал ТОТ ЖЕ ID 'modal-avatar-img' для наложения в баннере.
+    // Это гарантирует идеальную синхронизацию.
+    
+    if (stdAvatar) {
+        if (url) {
+            stdAvatar.style.backgroundImage = `url(${url})`;
+            stdAvatar.style.backgroundSize = 'cover';
+            stdAvatar.style.backgroundPosition = 'center';
+            stdAvatar.innerHTML = '';
+        } else {
+            stdAvatar.style.backgroundImage = 'none';
+            stdAvatar.innerHTML = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
+        }
+    }
+}
+
+// 3. Функция обновления ОБЛОЖКИ (Синхронизирует все превью)
+function updateCoverFromUrl(url) {
+    if (!userCardData) userCardData = {};
+    userCardData.coverUrl = url;
+
+    // Обновляем поля ссылок
+    const coverInputs = document.querySelectorAll('#input-cover-url, #banner-cover-url');
+    coverInputs.forEach(input => input.value = url);
+
+    // Обновляем превью
+    const coverBg = document.getElementById('modal-cover-preview-bg');
+    if (coverBg) {
+        if (url) {
+            coverBg.style.backgroundImage = `url(${url})`;
+            coverBg.style.backgroundSize = 'cover';
+            coverBg.style.backgroundPosition = 'center';
+        } else {
+            coverBg.style.backgroundImage = 'none';
+        }
+    }
+}
+
+// 4. Открытие модалки (Заполняет все поля текущими данными)
+function openHeaderModal() {
+    headerModalOverlay.classList.add('open'); 
+    headerModalSheet.classList.add('open');
+    switchHeaderTab(currentHeaderFormat);
+    
+    if (userCardData) {
+        // Текст
+        const nameInput = document.getElementById('modal-input-name');
+        const descInput = document.getElementById('modal-input-desc');
+        if(nameInput) nameInput.value = userCardData.name || '';
+        if(descInput) descInput.value = userCardData.desc || '';
+
+        // Картинки (вызываем функции обновления, чтобы заполнить все инпуты и превью)
+        updateAvatarFromUrl(userCardData.avatarUrl || '');
+        updateCoverFromUrl(userCardData.coverUrl || '');
+        
+        renderCarouselPreview();
+    }
+}
+
+// 5. Закрытие модалки (Сохраняет текст)
+function closeHeaderModal() {
+    // Берем текст из ЕДИНОГО блока внизу
+    const nameVal = document.getElementById('modal-input-name')?.value.trim();
+    const descVal = document.getElementById('modal-input-desc')?.value.trim();
+
+    if (!userCardData) userCardData = {};
+    if (nameVal) userCardData.name = nameVal;
+    if (descVal) userCardData.desc = descVal;
+    
+    saveUserData(); 
+    headerModalOverlay.classList.remove('open'); 
+    headerModalSheet.classList.remove('open');
+    renderPreview();
+}
