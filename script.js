@@ -459,44 +459,75 @@ const headerModalOverlay = document.getElementById('headerModalOverlay');
 const headerModalSheet = document.getElementById('headerModalSheet');
 
 function openHeaderModal() {
-    headerModalOverlay.classList.add('open'); headerModalSheet.classList.add('open');
+    headerModalOverlay.classList.add('open'); 
+    headerModalSheet.classList.add('open');
     switchHeaderTab(currentHeaderFormat);
     
+    // Заполняем общие поля текста
     const nameInput = document.getElementById('modal-input-name');
     const descInput = document.getElementById('modal-input-desc');
-    
     if (userCardData) {
         nameInput.value = userCardData.name || '';
         descInput.value = userCardData.desc || '';
-        document.getElementById('input-avatar-url').value = userCardData.avatarUrl || '';
-        document.getElementById('input-cover-url').value = userCardData.coverUrl || '';
+        
+        // Заполняем поля для обычных вкладок
         updateAvatarFromUrl(userCardData.avatarUrl || '');
         updateCoverFromUrl(userCardData.coverUrl || '');
-        renderCarouselPreview(); // Обновляем превью карусели
-    } else { nameInput.value = ''; descInput.value = ''; }
+        
+        // ЗАПОЛНЯЕМ ПОЛЯ ДЛЯ БАННЕРА
+        updateBannerAvatar(userCardData.avatarUrl || ''); // В баннере используется тот же аватар
+        updateBannerCover(userCardData.coverUrl || '');   // И та же обложка
+        
+        const bName = document.getElementById('banner-input-name');
+        const bDesc = document.getElementById('banner-input-desc');
+        if(bName) bName.value = userCardData.name || '';
+        if(bDesc) bDesc.value = userCardData.desc || '';
+        
+        renderCarouselPreview();
+    }
 }
 
 function closeHeaderModal() {
-    const nameVal = document.getElementById('modal-input-name').value.trim();
-    const descVal = document.getElementById('modal-input-desc').value.trim();
+    // Сохраняем данные из активных полей в зависимости от вкладки
+    let nameVal, descVal;
+    
+    if (currentHeaderFormat === 'banner') {
+        // Если открыт баннер, берем текст из его полей
+        nameVal = document.getElementById('banner-input-name')?.value.trim();
+        descVal = document.getElementById('banner-input-desc')?.value.trim();
+    } else {
+        // Иначе берем из общих полей
+        nameVal = document.getElementById('modal-input-name').value.trim();
+        descVal = document.getElementById('modal-input-desc').value.trim();
+    }
+
     if (!userCardData) userCardData = {};
     if (nameVal) userCardData.name = nameVal;
     if (descVal) userCardData.desc = descVal;
+    
     saveUserData(); 
-    headerModalOverlay.classList.remove('open'); headerModalSheet.classList.remove('open');
+    headerModalOverlay.classList.remove('open'); 
+    headerModalSheet.classList.remove('open');
     renderPreview();
 }
 
 function switchHeaderTab(tab) {
     currentHeaderFormat = tab;
+    
+    // Переключаем кнопки
     document.querySelectorAll('.header-tab').forEach(t => t.classList.remove('active'));
     const activeTabBtn = Array.from(document.querySelectorAll('.header-tab')).find(t => t.getAttribute('onclick').includes(`'${tab}'`));
     if (activeTabBtn) activeTabBtn.classList.add('active');
     
+    // Переключаем контент
     document.querySelectorAll('.header-tab-content').forEach(c => c.classList.add('hidden'));
     document.getElementById(`tab-content-${tab}`).classList.remove('hidden');
     
-    if (tab === 'cover' || tab === 'banner') updateCoverFromUrl(document.getElementById('input-cover-url').value);
+    // Инициализация превью при переключении
+    if (tab === 'cover' || tab === 'banner') {
+        updateCoverFromUrl(document.getElementById('input-cover-url').value);
+        updateBannerCover(document.getElementById('banner-cover-url')?.value || '');
+    }
 }
 
 // --- PHOTO UPLOAD LOGIC ---
@@ -599,11 +630,22 @@ function handleMaxCoverPhoto() {
     updateCoverFromUrl(mockCovers[0]); showToast('Обложка из MAX');
 }
 
-function handleMaxProfilePhoto() {
-    const mockAvatars = ['https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop'];
-    updateAvatarFromUrl(mockAvatars[0]); showToast('Аватар из MAX');
+function handleMaxProfilePhoto(mode = 'avatar') {
+    const mockAvatars = [
+        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop',
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop'
+    ];
+    const randomAvatar = mockAvatars[Math.floor(Math.random() * mockAvatars.length)];
+    
+    if (mode === 'banner') {
+        updateBannerAvatar(randomAvatar);
+        updateAvatarFromUrl(randomAvatar); // Синхронизация
+        showToast('Аватар для баннера взят из MAX');
+    } else {
+        updateAvatarFromUrl(randomAvatar);
+        showToast('Аватар взят из профиля MAX');
+    }
 }
-
 function finalizeCard() { saveUserData(); hasUserCards = true; goToDashboard(); }
 
 // Card Actions
@@ -650,3 +692,65 @@ function showToast(message) {
 }
 
 window.onload = function() { loadUserData(); nextScreen(1); applyTranslations(); };
+
+const bannerCoverInput = document.getElementById('banner-cover-input');
+if (bannerCoverInput) {
+    bannerCoverInput.addEventListener('change', function(e) {
+        handleFileUpload(e, (url) => {
+            updateBannerCover(url);
+            // Синхронизируем с обычной обложкой, чтобы данные сохранялись统一
+            updateCoverFromUrl(url); 
+        });
+    });
+}
+
+const bannerAvatarInput = document.getElementById('banner-avatar-input');
+if (bannerAvatarInput) {
+    bannerAvatarInput.addEventListener('change', function(e) {
+        handleFileUpload(e, (url) => {
+            updateBannerAvatar(url);
+            // Синхронизируем с обычным аватаром
+            updateAvatarFromUrl(url);
+        });
+    });
+}
+
+// 2. Обновление превью ОБЛОЖКИ в Баннере
+function updateBannerCover(url) {
+    const bg = document.getElementById('banner-cover-preview-bg');
+    const input = document.getElementById('banner-cover-url');
+    if (bg) {
+        if (url) {
+            bg.style.backgroundImage = `url(${url})`;
+            bg.style.backgroundSize = 'cover';
+            bg.style.backgroundPosition = 'center';
+        } else {
+            bg.style.backgroundImage = 'none';
+            bg.style.background = 'rgba(255,255,255,0.05)';
+        }
+    }
+    if (input) input.value = url;
+}
+
+// 3. Обновление превью АВАТАРА в Баннере
+function updateBannerAvatar(url) {
+    const avatar = document.getElementById('banner-avatar-preview'); // Маленький в превью карточки
+    const modalAvatar = document.getElementById('banner-avatar-img'); // Большой в настройках
+    const input = document.getElementById('banner-avatar-url');
+    
+    const setAvatarStyle = (el) => {
+        if (url) {
+            el.style.backgroundImage = `url(${url})`;
+            el.style.backgroundSize = 'cover';
+            el.style.backgroundPosition = 'center';
+            el.innerHTML = '';
+        } else {
+            el.style.backgroundImage = 'none';
+            el.innerHTML = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
+        }
+    };
+
+    if (avatar) setAvatarStyle(avatar);
+    if (modalAvatar) setAvatarStyle(modalAvatar);
+    if (input) input.value = url;
+}
