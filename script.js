@@ -307,13 +307,12 @@ function showWelcome() { closeMenu(); nextScreen(1); }
 function handleMyCardsClick() { closeMenu(); if (hasUserCards) goToDashboard(); else alert(translations[currentLang].no_cards_msg); }
 
 // Preview Logic
-// --- ОБНОВЛЕННАЯ ФУНКЦИЯ RENDER PREVIEW ---
 function renderPreview() {
     const container = document.getElementById('preview-list-container');
     container.innerHTML = '';
     const t = translations[currentLang];
 
-    // 1. Render Header Card (Остается прежним, но можно убрать рамку если нужно)
+    // 1. Render Header Card
     const headerCard = document.createElement('div');
     headerCard.className = 'preview-header-card';
     headerCard.onclick = openHeaderModal;
@@ -343,103 +342,95 @@ function renderPreview() {
     }
     container.appendChild(headerCard);
 
-    // --- НОВАЯ ЛОГИКА ОТРИСОВКИ БЛОКОВ ---
+    // 2. Render Block Cards (Dynamic Order: About first, then others)
+    const allKeys = Object.keys(selectedBlocks);
+    const aboutKeys = allKeys.filter(k => k.startsWith('about'));
+    const otherKeys = allKeys.filter(k => !k.startsWith('about'));
     
-    // 1. Сначала рисуем "О БИЗНЕСЕ", если он включен
-    const aboutKeys = Object.keys(selectedBlocks).filter(k => k.startsWith('about'));
+    // Helper function to create block section HTML
+    const createBlockSection = (key, blockData, title, contentHtml) => {
+        const section = document.createElement('div');
+        section.className = 'preview-block-section';
+        section.innerHTML = `
+            <div class="block-section-header">
+                <div class="block-section-title">${title.toUpperCase()}</div>
+                <div class="block-actions">
+                    <button class="action-btn ${blockData.visible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                    <button class="action-btn" onclick="openEditBlock('${key}')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="preview-card-body">
+                ${contentHtml}
+            </div>
+        `;
+        return section;
+    };
+
+    // Render About Blocks First
     aboutKeys.forEach(key => {
         const blockData = selectedBlocks[key];
         if (blockData && blockData.visible) {
             const title = blockData.title || 'О БИЗНЕСЕ';
-            
-            const section = document.createElement('div');
-            section.className = 'preview-block-section'; // Обертка для секции
-            
-            section.innerHTML = `
-                <div class="block-section-header">
-                    <div class="block-section-title">${title.toUpperCase()}</div>
-                    <div class="block-actions">
-                        <button class="action-btn active-eye" onclick="toggleBlockVisibility('${key}')">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                        </button>
-                        <button class="action-btn" onclick="openEditBlock('${key}')">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="preview-card-body">
-                    ${blockData.text ? `<p>${blockData.text}</p>` : '<p style="opacity:0.5">Нет текста</p>'}
-                </div>
-            `;
-            container.appendChild(section);
+            const bodyContent = blockData.text ? `<p>${blockData.text}</p>` : '<p style="opacity:0.5">Нет текста</p>';
+            container.appendChild(createBlockSection(key, blockData, title, bodyContent));
         }
     });
 
-    // 2. Рисуем остальные блоки (Ссылки и т.д.)
-    const otherKeys = Object.keys(selectedBlocks).filter(k => !k.startsWith('about'));
-    
+    // Render Other Blocks
     otherKeys.forEach(key => {
         const blockData = selectedBlocks[key];
         if (blockData && blockData.visible) {
             let title = blockData.title;
             if (!title) title = t[`blk_${key}`] || key;
             
-            const section = document.createElement('div');
-            section.className = 'preview-block-section';
-
-            // Генерация контента в зависимости от типа
             let contentHtml = '';
             
-            if (key === 'links') {
-                // Пример отображения ссылок как на скриншоте
-                contentHtml = `
-                    <div class="link-item">
-                        <div class="link-left">
-                            <div class="link-icon-box">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                            </div>
-                            <div class="link-title">Наш сайт</div>
-                        </div>
-                        <div class="link-arrow">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                        </div>
-                    </div>
-                `;
+            // Special rendering for Links block
+            if (key === 'links' || key.startsWith('links_copy')) {
+                const links = blockData.items || [];
+                if (links.length > 0) {
+                    contentHtml = `<div style="display: flex; flex-direction: column; gap: 10px;">`;
+                    links.forEach(link => {
+                        const href = link.url ? link.url : '#';
+                        const target = link.url ? '_blank' : '_self';
+                        contentHtml += `
+                            <a href="${href}" target="${target}" class="link-item" style="text-decoration: none;">
+                                <div class="link-left">
+                                    <div class="link-icon-box">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                    </div>
+                                    <div class="link-title">${link.name}</div>
+                                </div>
+                                <div class="link-arrow">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>
+                        `;
+                    });
+                    contentHtml += `</div>`;
+                } else {
+                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет добавленных ссылок</div>`;
+                }
             } else {
-                // Стандартный плейсхолдер для остальных блоков
+                // Default placeholder for other blocks
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
             }
 
-            section.innerHTML = `
-                <div class="block-section-header">
-                    <div class="block-section-title">${title.toUpperCase()}</div>
-                    <div class="block-actions">
-                        <button class="action-btn active-eye" onclick="toggleBlockVisibility('${key}')">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                        </button>
-                        <button class="action-btn" onclick="openEditBlock('${key}')">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="preview-card-body">
-                    ${contentHtml}
-                </div>
-            `;
-            container.appendChild(section);
+            container.appendChild(createBlockSection(key, blockData, title, contentHtml));
         }
     });
 
-    // 3. Добавляем кнопку Telegram внизу (вне списка блоков, но внутри контейнера экрана)
-    // Лучше добавить её в HTML экрана preview, но можно и здесь динамически, если её нет
+    // Add Telegram FAB if not exists
     if (!document.getElementById('telegram-fab')) {
         const fab = document.createElement('button');
         fab.id = 'telegram-fab';
         fab.className = 'telegram-fab';
         fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
-        // Находим родительский экран preview и добавляем туда
-        const previewScreen = document.getElementById('screen-preview');
-        previewScreen.appendChild(fab);
+        document.getElementById('screen-preview').appendChild(fab);
     }
 
     if (container.children.length <= 1) { 
@@ -457,7 +448,7 @@ function toggleBlockVisibility(key) {
     saveUserData();
 }
 
-// Edit Block Modal Logic (С поддержкой "О бизнесе", дублирования и удаления)
+// Edit Block Modal Logic (With Links Support)
 const editModalOverlay = document.getElementById('editModalOverlay');
 const editModalSheet = document.getElementById('editModalSheet');
 
@@ -467,53 +458,94 @@ function openEditBlock(key) {
     const t = translations[currentLang];
     
     const titleEl = document.getElementById('edit-modal-title');
-    const label1El = document.getElementById('edit-label-1');
-    const input1El = document.getElementById('edit-input-1');
-    const label2El = document.getElementById('edit-label-2');
-    const input2El = document.getElementById('edit-input-2');
-    
+    const fieldsContainer = document.getElementById('edit-modal-fields');
+    fieldsContainer.innerHTML = ''; // Clear previous fields
+
     if (key.startsWith('about')) {
+        // About Business Logic
         titleEl.innerText = 'О бизнесе';
-        label1El.innerText = 'Заголовок';
-        input1El.placeholder = 'О бизнесе';
-        label2El.innerText = 'Текст';
-        input2El.placeholder = 'Расскажите о себе...';
+        fieldsContainer.innerHTML = `
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Заголовок</label>
+                <input type="text" class="form-input" id="edit-input-1" placeholder="О бизнесе" value="${blockData.title || 'О бизнесе'}">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Текст</label>
+                <textarea class="form-input" id="edit-input-2" rows="4" placeholder="Расскажите о себе..." style="resize: none;">${blockData.text || ''}</textarea>
+            </div>
+        `;
+    } else if (key === 'links' || key.startsWith('links_copy')) {
+        // Links Logic
+        titleEl.innerText = 'Ссылки-кнопки';
         
-        input1El.value = blockData.title || 'О бизнесе';
-        input2El.value = blockData.text || '';
+        // Section Title Input
+        const sectionTitleDiv = document.createElement('div');
+        sectionTitleDiv.className = 'form-group';
+        sectionTitleDiv.style.marginBottom = '24px';
+        sectionTitleDiv.innerHTML = `
+            <label class="form-label">Заголовок секции</label>
+            <input type="text" class="form-input" id="edit-section-title" placeholder="Ссылки" value="${blockData.title || 'Ссылки'}">
+        `;
+        fieldsContainer.appendChild(sectionTitleDiv);
+
+        // Links List Container
+        const linksListDiv = document.createElement('div');
+        linksListDiv.id = 'links-editor-list';
+        linksListDiv.className = 'links-editor-list';
         
-        // Делаем второе поле textarea для "О бизнесе"
-        if (input2El.tagName !== 'TEXTAREA') {
-            const textarea = document.createElement('textarea');
-            textarea.className = input2El.className;
-            textarea.id = input2El.id;
-            textarea.rows = 4;
-            textarea.style.resize = 'none';
-            input2El.parentNode.replaceChild(textarea, input2El);
-        }
+        // Populate existing links
+        const links = blockData.items || [{name: 'Наш сайт', url: ''}];
+        links.forEach((link, index) => {
+            linksListDiv.appendChild(createLinkItemElement(link.name, link.url, index));
+        });
+        
+        fieldsContainer.appendChild(linksListDiv);
+
+        // Add Link Button
+        const addBtn = document.createElement('button');
+        addBtn.className = 'btn-add-link';
+        addBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Добавить ссылку`;
+        addBtn.onclick = () => {
+            linksListDiv.appendChild(createLinkItemElement('', '', linksListDiv.children.length));
+        };
+        fieldsContainer.appendChild(addBtn);
+
     } else {
+        // Standard Block Logic
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
-        label1El.innerText = 'Название блока';
-        input1El.placeholder = 'Например: Прайс';
-        label2El.innerText = 'Описание (опционально)';
-        input2El.placeholder = 'Дополнительный текст';
-        
-        const defaultTitle = t[`blk_${key}`] || key;
-        input1El.value = blockData.title || defaultTitle;
-        input2El.value = blockData.desc || '';
-        
-        // Возвращаем input type text для остальных блоков
-        if (document.getElementById('edit-input-2').tagName === 'TEXTAREA') {
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.className = 'form-input';
-            input.id = 'edit-input-2';
-            document.getElementById('edit-input-2').parentNode.replaceChild(input, document.getElementById('edit-input-2'));
-        }
+        fieldsContainer.innerHTML = `
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Название блока</label>
+                <input type="text" class="form-input" id="edit-input-1" placeholder="Например: Прайс" value="${blockData.title || t[`blk_${key}`] || key}">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Описание (опционально)</label>
+                <input type="text" class="form-input" id="edit-input-2" placeholder="Дополнительный текст" value="${blockData.desc || ''}">
+            </div>
+        `;
     }
     
     editModalOverlay.classList.add('open'); 
     editModalSheet.classList.add('open');
+}
+
+// Helper to create link item DOM element
+function createLinkItemElement(name, url, index) {
+    const item = document.createElement('div');
+    item.className = 'link-edit-item';
+    item.innerHTML = `
+        <div class="link-input-group">
+            <div class="link-icon-placeholder">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            </div>
+            <input type="text" class="link-name-input" placeholder="Название кнопки" value="${name}">
+            <button class="btn-remove-link" onclick="this.parentElement.parentElement.remove()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <input type="text" class="link-url-input" placeholder="https://..." value="${url}">
+    `;
+    return item;
 }
 
 function closeEditModal() { 
@@ -525,15 +557,40 @@ function closeEditModal() {
 function saveBlockEdit() {
     if (!currentEditingBlockId) return;
     
-    const val1 = document.getElementById('edit-input-1').value.trim();
-    const val2 = document.getElementById('edit-input-2').value.trim();
-    
     if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
     
     if (currentEditingBlockId.startsWith('about')) {
+        const val1 = document.getElementById('edit-input-1').value.trim();
+        const val2 = document.getElementById('edit-input-2').value.trim();
         selectedBlocks[currentEditingBlockId].title = val1 || 'О бизнесе';
         selectedBlocks[currentEditingBlockId].text = val2;
+    } else if (currentEditingBlockId === 'links' || currentEditingBlockId.startsWith('links_copy')) {
+        // Save Links Data
+        const sectionTitle = document.getElementById('edit-section-title').value.trim();
+        selectedBlocks[currentEditingBlockId].title = sectionTitle || 'Ссылки';
+        
+        const listContainer = document.getElementById('links-editor-list');
+        const items = [];
+        
+        if (listContainer) {
+            const linkElements = listContainer.querySelectorAll('.link-edit-item');
+            linkElements.forEach(el => {
+                const name = el.querySelector('.link-name-input').value.trim();
+                const url = el.querySelector('.link-url-input').value.trim();
+                if (name || url) {
+                    items.push({ name: name || 'Ссылка', url: url });
+                }
+            });
+        }
+        
+        // Keep at least one empty slot if all deleted
+        if (items.length === 0) items.push({ name: 'Наш сайт', url: '' });
+        
+        selectedBlocks[currentEditingBlockId].items = items;
     } else {
+        // Standard Save
+        const val1 = document.getElementById('edit-input-1').value.trim();
+        const val2 = document.getElementById('edit-input-2').value.trim();
         const t = translations[currentLang];
         const defaultTitle = t[`blk_${currentEditingBlockId}`] || currentEditingBlockId;
         
@@ -548,27 +605,23 @@ function saveBlockEdit() {
     closeEditModal();
 }
 
-// Функция дублирования блока
+// Duplicate Block Function
 function duplicateCurrentBlock() {
     if (!currentEditingBlockId) return;
-    
     const originalData = selectedBlocks[currentEditingBlockId];
     const newKey = `${currentEditingBlockId}_copy_${Date.now()}`;
-    
     selectedBlocks[newKey] = JSON.parse(JSON.stringify(originalData));
     selectedBlocks[newKey].title = (originalData.title || '') + ' (копия)';
     selectedBlocks[newKey].visible = true;
-    
     saveUserData();
     renderPreview();
     closeEditModal();
     showToast('Блок дублирован');
 }
 
-// Функция удаления блока
+// Delete Block Function
 function deleteCurrentBlock() {
     if (!currentEditingBlockId) return;
-    
     if (confirm('Удалить этот блок?')) {
         delete selectedBlocks[currentEditingBlockId];
         saveUserData();
@@ -625,7 +678,7 @@ function switchHeaderTab(tab) {
     if (tab === 'cover' || tab === 'banner') updateCoverFromUrl(document.getElementById('input-cover-url').value);
 }
 
-// --- PHOTO UPLOAD LOGIC (СИНХРОНИЗИРОВАННАЯ) ---
+// --- PHOTO UPLOAD LOGIC ---
 
 function handleFileUpload(event, updateCallback) {
     const file = event.target.files[0];

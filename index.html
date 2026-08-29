@@ -239,30 +239,24 @@
     </div>
 
     <!-- BLOCK EDIT MODAL -->
+        <!-- BLOCK EDIT MODAL (ОБНОВЛЕННЫЙ) -->
     <div class="modal-overlay" id="editModalOverlay" onclick="closeEditModal()"></div>
-    <div class="modal-sheet" id="editModalSheet" style="padding-bottom: 20px;">
+    <div class="modal-sheet" id="editModalSheet" style="max-height: 85vh; overflow-y: auto;">
         <div class="modal-handle"></div>
-        <div class="modal-header" style="margin-bottom: 10px;">
+        <div class="modal-header" style="margin-bottom: 20px;">
             <div class="modal-title" id="edit-modal-title">Редактировать блок</div>
             <button class="close-modal" onclick="closeEditModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
         </div>
         
-        <!-- Поля ввода (динамически заполняются JS) -->
+        <!-- Контейнер для динамических полей -->
         <div id="edit-modal-fields">
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label" id="edit-label-1">Заголовок</label>
-                <input type="text" class="form-input" id="edit-input-1" placeholder="Введите заголовок">
-            </div>
-            <div class="form-group" style="margin-bottom: 0;">
-                <label class="form-label" id="edit-label-2">Текст</label>
-                <textarea class="form-input" id="edit-input-2" rows="4" placeholder="Введите текст" style="resize: none;"></textarea>
-            </div>
+            <!-- Сюда JS будет вставлять поля -->
         </div>
 
         <!-- Кнопка Готово -->
         <button class="btn btn-primary" onclick="saveBlockEdit()" style="margin-top: 24px; margin-bottom: 12px;" data-i18n="btn_save">Готово</button>
         
-        <!-- Нижние кнопки: Дублировать и Удалить -->
+        <!-- Нижние кнопки -->
         <div style="display: flex; gap: 12px;">
             <button class="btn btn-secondary" onclick="duplicateCurrentBlock()" style="flex: 1; font-weight: 600;">Дублировать</button>
             <button class="btn btn-secondary" onclick="deleteCurrentBlock()" style="flex: 1; color: #ef4444; border-color: rgba(239, 68, 68, 0.3); font-weight: 600;">Удалить</button>
