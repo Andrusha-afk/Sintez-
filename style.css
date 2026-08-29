@@ -80,7 +80,7 @@ body {
     top: 0; 
     left: 0; 
     width: 100%; 
-    height: 100%; /* Занимает весь экран */
+    height: 100%;
     display: flex; 
     flex-direction: column; 
     opacity: 0; 
@@ -90,11 +90,8 @@ body {
     overflow-y: auto; 
     z-index: 1;
     
-    /* ИСПРАВЛЕНИЕ: Добавляем отступ сверху, равный высоте хедера (примерно 76px) */
+    /* Базовый отступ под хедер */
     padding-top: 76px; 
-    
-    /* Чтобы при скролле к элементам они не прятались под хедером */
-    scroll-padding-top: 80px; 
 }
 
 .screen.active { 
@@ -105,8 +102,15 @@ body {
 
 /* --- Onboarding Common Styles --- */
 .onboarding-content {
-    flex: 1; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; padding: 0 24px; text-align: center;
+    flex: 1; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    padding: 0 24px; /* Убрали вертикальный padding */
+    text-align: center;
+    /* Небольшая компенсация, чтобы визуально центр был чуть выше геометрического центра */
+    margin-top: -20px; 
 }
 
 .hero-icon {
@@ -230,11 +234,16 @@ p.description { color: var(--text-secondary); font-size: 16px; line-height: 1.5;
 
 /* --- CREATOR SCREEN (STEP 1) --- */
 .creator-container { 
+    /* Убираем верхний padding, используем только боковые и нижний */
     padding: 0 24px 40px 24px; 
     flex: 1; 
-    overflow-y: visible; /* Скроллится родитель .screen */
+    overflow-y: visible; 
 }
-.creator-header { margin-bottom: 30px; }
+.creator-header { 
+    /* Добавляем небольшой отступ внутри контейнера, чтобы заголовок не прилипал к краю зоны прокрутки */
+    margin-bottom: 30px; 
+    margin-top: 10px;
+}
 .creator-title { font-size: 32px; font-weight: 800; margin-bottom: 12px; line-height: 1.1; }
 .creator-subtitle { color: var(--text-secondary); font-size: 15px; line-height: 1.4; margin-bottom: 24px; }
 
@@ -310,8 +319,13 @@ input:checked + .slider { background-color: #3f3f4e; }
 input:checked + .slider:before { transform: translateX(20px); }
 
 /* --- PREVIEW SCREEN (STEP 3) --- */
+.blocks-header-section,
 .preview-header-section {
-    padding: 10px 24px 20px 24px; /* Уменьшен верхний padding */
+    /* Sticky работает относительно родителя .screen. 
+       Так как у .screen есть padding-top 76px, sticky элемент 
+       будет "прилипать" к началу видимой области контента, а не к самому верху окна.
+       Это идеально решает проблему перекрытия. */
+    padding: 10px 24px 20px 24px;
     position: sticky; 
     top: 0; 
     background: var(--bg-color);
