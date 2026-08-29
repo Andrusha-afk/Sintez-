@@ -1,4 +1,4 @@
-// --- TRANSLATIONS & STATE ---
+// --- TRANSLATIONS ---
 const translations = {
     ru: {
         s1_title: "Твоя визитка ", s1_title_grad: "внутри MAX", s1_desc: "Открывается по ссылке за секунду.",
@@ -10,10 +10,14 @@ const translations = {
         empty_p: "Первая собирается за несколько минут.", btn_create: "Создать свою визитку",
         info_box: "Пример. Цифры появятся после создания.",
         menu_stats: "Статистика", menu_stats_sub: "Просмотры и заявки",
-        analytics_empty: "Пока нет просмотров.", menu_title: "Меню", menu_welcome: "Приветствие", menu_mycards: "Мои визитки",
-        menu_footer: "Приветствие показано при первом входе.", no_cards_msg: "Нет визиток", page_analytics: "Аналитика",
+        analytics_empty: "Пока нет просмотров.",
+        menu_title: "Меню", menu_welcome: "Приветствие", menu_mycards: "Мои визитки",
+        menu_footer: "Приветствие показано при первом входе.",
+        no_cards_msg: "Нет визиток", page_analytics: "Аналитика",
         cr_title_step1: "О бизнесе", cr_subtitle_step1: "Расскажи о себе.",
-        cr_label_name: "Имя или компания", cr_label_desc: "Подзаголовок", cr_label_city: "Город",
+        cr_label_name: "Имя или компания", cr_ph_name: "напр. Студия Анны",
+        cr_label_desc: "Подзаголовок", cr_ph_desc: "чем занимаешься",
+        cr_label_city: "Город", cr_ph_city: "напр. Москва",
         btn_next_arrow: "Далее →", btn_finish: "Готово",
         action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить",
         toast_copy: "Ссылка скопирована!", toast_deleted: "Удалено",
@@ -27,9 +31,12 @@ const translations = {
         edit_modal_title: "Блок", btn_save: "Сохранить", preview_placeholder: "Содержимое",
         modal_header_title: "Шапка", header_format_label: "Формат",
         tab_avatar: "Аватар", tab_cover: "Обложка", tab_banner: "Баннер", tab_carousel: "Карусель",
-        desc_avatar: "Круглый аватар.", desc_cover: "Широкая обложка.", desc_banner: "Обложка + аватар поверх.", desc_carousel: "Листаются свайпом.",
-        btn_upload_device: " Загрузить", btn_upload_tg: "👤 Из MAX", upload_hint: "Фото сохранится.", or_link: "...или ссылка",
-        lbl_cover: "ОБЛОЖКА", lbl_cover_link: "Ссылка на фото"
+        desc_avatar: "Круглый аватар.", btn_upload_device: "📷 Загрузить", btn_upload_tg: "👤 Из MAX",
+        upload_hint: "Фото сохранится.", or_link: "...или ссылка",
+        desc_cover: "Широкая обложка.", ph_company_name: "Имя компании", hint_example: "Пример ниже",
+        lbl_cover: "ОБЛОЖКА", btn_upload_cover: "Загрузить", lbl_cover_link: "Ссылка на фото",
+        desc_banner: "Обложка + аватар поверх.", banner_placeholder: "Баннер", btn_upload_banner: "Загрузить",
+        desc_carousel: "Листаются свайпом."
     },
     en: {
         s1_title: "Your card ", s1_title_grad: "inside MAX", s1_desc: "Opens via link instantly.",
@@ -39,11 +46,13 @@ const translations = {
         dash_title: "Your cards", dash_subtitle: "Open to edit.",
         label_my_cards: "MY CARDS", empty_h3: "Cards appear here", empty_p: "First one takes minutes.",
         btn_create: "Create card", info_box: "Example view.",
-        menu_stats: "Stats", menu_stats_sub: "Views & clicks", analytics_empty: "No views yet.",
-        menu_title: "Menu", menu_welcome: "Welcome", menu_mycards: "My cards",
+        menu_stats: "Stats", menu_stats_sub: "Views & clicks",
+        analytics_empty: "No views yet.", menu_title: "Menu", menu_welcome: "Welcome", menu_mycards: "My cards",
         menu_footer: "Welcome shown once.", no_cards_msg: "No cards", page_analytics: "Analytics",
         cr_title_step1: "About", cr_subtitle_step1: "Tell about yourself.",
-        cr_label_name: "Name/Company", cr_label_desc: "Subtitle", cr_label_city: "City",
+        cr_label_name: "Name/Company", cr_ph_name: "e.g. Anna's Studio",
+        cr_label_desc: "Subtitle", cr_ph_desc: "what you do",
+        cr_label_city: "City", cr_ph_city: "e.g. Moscow",
         btn_next_arrow: "Next →", btn_finish: "Finish",
         action_edit: "Edit", action_share: "Share", action_delete: "Delete",
         toast_copy: "Copied!", toast_deleted: "Deleted",
@@ -57,9 +66,12 @@ const translations = {
         edit_modal_title: "Block", btn_save: "Save", preview_placeholder: "Content",
         modal_header_title: "Header", header_format_label: "Format",
         tab_avatar: "Avatar", tab_cover: "Cover", tab_banner: "Banner", tab_carousel: "Carousel",
-        desc_avatar: "Round avatar.", desc_cover: "Wide cover.", desc_banner: "Cover + Avatar overlay.", desc_carousel: "Swipeable photos.",
-        btn_upload_device: "📷 Upload", btn_upload_tg: "👤 From MAX", upload_hint: "Photo saved.", or_link: "...or link",
-        lbl_cover: "COVER", lbl_cover_link: "Photo link"
+        desc_avatar: "Round avatar.", btn_upload_device: "📷 Upload", btn_upload_tg: "👤 From MAX",
+        upload_hint: "Photo saved.", or_link: "...or link",
+        desc_cover: "Wide cover.", ph_company_name: "Company name", hint_example: "Example below",
+        lbl_cover: "COVER", btn_upload_cover: "Upload", lbl_cover_link: "Photo link",
+        desc_banner: "Cover + Avatar overlay.", banner_placeholder: "Banner", btn_upload_banner: "Upload",
+        desc_carousel: "Swipeable photos."
     },
     de: {
         s1_title: "Deine Karte ", s1_title_grad: "in MAX", s1_desc: "Öffnet per Link sofort.",
@@ -69,11 +81,13 @@ const translations = {
         dash_title: "Deine Karten", dash_subtitle: "Zum Bearbeiten öffnen.",
         label_my_cards: "MEINE KARTEN", empty_h3: "Karten erscheinen hier", empty_p: "Erste in Minuten fertig.",
         btn_create: "Karte erstellen", info_box: "Beispielansicht.",
-        menu_stats: "Statistik", menu_stats_sub: "Aufrufe", analytics_empty: "Keine Aufrufe.",
-        menu_title: "Menü", menu_welcome: "Begrüßung", menu_mycards: "Meine Karten",
+        menu_stats: "Statistik", menu_stats_sub: "Aufrufe",
+        analytics_empty: "Keine Aufrufe.", menu_title: "Menü", menu_welcome: "Begrüßung", menu_mycards: "Meine Karten",
         menu_footer: "Begrüßung beim Start.", no_cards_msg: "Keine Karten", page_analytics: "Analytik",
         cr_title_step1: "Über dich", cr_subtitle_step1: "Erzähl etwas.",
-        cr_label_name: "Name/Firma", cr_label_desc: "Untertitel", cr_label_city: "Stadt",
+        cr_label_name: "Name/Firma", cr_ph_name: "z.B. Annas Studio",
+        cr_label_desc: "Untertitel", cr_ph_desc: "was du machst",
+        cr_label_city: "Stadt", cr_ph_city: "z.B. Moskau",
         btn_next_arrow: "Weiter →", btn_finish: "Fertig",
         action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Löschen",
         toast_copy: "Kopiert!", toast_deleted: "Gelöscht",
@@ -87,9 +101,12 @@ const translations = {
         edit_modal_title: "Block", btn_save: "Speichern", preview_placeholder: "Inhalt",
         modal_header_title: "Header", header_format_label: "Format",
         tab_avatar: "Avatar", tab_cover: "Titelbild", tab_banner: "Banner", tab_carousel: "Karussell",
-        desc_avatar: "Runder Avatar.", desc_cover: "Breites Bild.", desc_banner: "Bild + Avatar darüber.", desc_carousel: "Fotos zum Wischen.",
-        btn_upload_device: "📷 Laden", btn_upload_tg: "👤 Aus MAX", upload_hint: "Foto gespeichert.", or_link: "...oder Link",
-        lbl_cover: "TITELBILD", lbl_cover_link: "Foto-Link"
+        desc_avatar: "Runder Avatar.", btn_upload_device: "📷 Laden", btn_upload_tg: "👤 Aus MAX",
+        upload_hint: "Foto gespeichert.", or_link: "...oder Link",
+        desc_cover: "Breites Bild.", ph_company_name: "Firmenname", hint_example: "Beispiel unten",
+        lbl_cover: "TITELBILD", btn_upload_cover: "Laden", lbl_cover_link: "Foto-Link",
+        desc_banner: "Bild + Avatar darüber.", banner_placeholder: "Banner", btn_upload_banner: "Laden",
+        desc_carousel: "Fotos zum Wischen."
     }
 };
 
@@ -143,11 +160,15 @@ function applyTranslations() {
         const key = el.getAttribute('data-i18n');
         if (t[key]) el.innerHTML = t[key];
     });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.getAttribute('data-i18n-ph');
+        if (t[key]) el.placeholder = t[key];
+    });
     const pageTitleEl = document.getElementById('pageTitle');
     if(pageTitleEl) pageTitleEl.innerText = t.page_analytics;
 }
 
-// Navigation
+// Navigation Logic
 function nextScreen(screenNum) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const target = document.getElementById(`screen-${screenNum}`);
@@ -296,33 +317,16 @@ function renderPreview() {
     headerCard.className = 'preview-header-card';
     headerCard.onclick = openHeaderModal;
     
-    let coverStyle = '';
-    let avatarStyle = '';
-    let avatarDisplay = 'flex';
-    let avatarClass = 'header-preview-avatar';
-    let infoClass = 'header-preview-info';
-    let coverClass = 'header-preview-cover';
+    let coverStyle = '', avatarStyle = '', avatarDisplay = 'flex', avatarClass = 'header-preview-avatar', infoClass = 'header-preview-info', coverClass = 'header-preview-cover';
 
     if (currentHeaderFormat === 'cover' && userCardData?.coverUrl) {
-        coverStyle = `background-image: url(${userCardData.coverUrl});`;
-        avatarDisplay = 'none'; 
+        coverStyle = `background-image: url(${userCardData.coverUrl});`; avatarDisplay = 'none'; 
     } else if (currentHeaderFormat === 'banner') {
         if (userCardData?.coverUrl) coverStyle = `background-image: url(${userCardData.coverUrl});`;
         if (userCardData?.avatarUrl) avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
-        
-        avatarDisplay = 'flex';
-        avatarClass += ' overlay-mode';
-        coverClass += ' banner-mode';
-        infoClass += ' banner-info';
+        avatarDisplay = 'flex'; avatarClass += ' overlay-mode'; coverClass += ' banner-mode'; infoClass += ' banner-info';
     } else if (currentHeaderFormat === 'carousel' && userCardData?.carouselImages?.length > 0) {
-        headerCard.innerHTML = `<div class="carousel-container" style="pointer-events: none;">
-            ${userCardData.carouselImages.map(img => `<div class="carousel-item" style="background-image: url(${img})"></div>`).join('')}
-        </div>
-        <div class="header-preview-info" style="margin-top: 10px;">
-            <h3>${userCardData?.name || t.cr_label_name}</h3>
-            <p>${userCardData?.desc || t.cr_label_desc}</p>
-        </div>
-        <div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>`;
+        headerCard.innerHTML = `<div class="carousel-container" style="pointer-events: none;">${userCardData.carouselImages.map(img => `<div class="carousel-item" style="background-image: url(${img})"></div>`).join('')}</div><div class="header-preview-info" style="margin-top: 10px;"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div><div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>`;
         container.appendChild(headerCard);
     } else if (userCardData?.avatarUrl) {
         avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
@@ -331,34 +335,30 @@ function renderPreview() {
     if (currentHeaderFormat !== 'carousel') {
         headerCard.innerHTML = `
             <div class="${coverClass}" style="${coverStyle}"></div>
-            <div class="${avatarClass}" style="display: ${avatarDisplay}; ${avatarStyle}">
-                ${!userCardData?.avatarUrl ? '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' : ''}
-            </div>
-            <div class="${infoClass}">
-                <h3>${userCardData?.name || t.cr_label_name}</h3>
-                <p>${userCardData?.desc || t.cr_label_desc}</p>
-            </div>
-            <div class="edit-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                <span>${t.modal_header_title}</span>
-            </div>
+            <div class="${avatarClass}" style="display: ${avatarDisplay}; ${avatarStyle}">${!userCardData?.avatarUrl ? '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' : ''}</div>
+            <div class="${infoClass}"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>
+            <div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>
         `;
     }
     container.appendChild(headerCard);
 
-    // Block Cards
-    const blockKeys = ['links', 'socials', 'hours', 'cta', 'contacts', 'price', 'discounts', 'reviews', 'faq', 'facts', 'video', 'share', 'gallery', 'map'];
-    blockKeys.forEach(key => {
+    // Block Cards (Динамический рендеринг всех блоков включая дубликаты)
+    Object.keys(selectedBlocks).forEach(key => {
         const blockData = selectedBlocks[key];
         if (blockData && blockData.visible) {
-            const defaultTitleKey = `blk_${key}`;
-            const title = blockData.title || t[defaultTitleKey] || key;
+            let title = blockData.title;
+            if (!title) title = t[`blk_${key}`] || key;
+            
             const isVisible = blockData.visible !== false;
-
             const card = document.createElement('div');
             card.className = `preview-card ${isVisible ? '' : 'hidden-block'}`;
-            card.id = `preview-card-${key}`;
             
+            // Особый рендер для блока "О бизнесе"
+            let bodyContent = t.preview_placeholder;
+            if (key.startsWith('about')) {
+                bodyContent = blockData.text ? `<p style="text-align:left; line-height: 1.5; margin:0;">${blockData.text}</p>` : '<p style="color:var(--text-secondary); margin:0;">Нет текста</p>';
+            }
+
             card.innerHTML = `
                 <div class="preview-card-header">
                     <div class="preview-card-title">${title}</div>
@@ -371,7 +371,9 @@ function renderPreview() {
                         </button>
                     </div>
                 </div>
-                <div class="preview-card-body">${t.preview_placeholder}</div>
+                <div class="preview-card-body" style="min-height: auto; padding: 12px;">
+                    ${bodyContent}
+                </div>
             `;
             container.appendChild(card);
         }
@@ -388,38 +390,128 @@ function renderPreview() {
 function toggleBlockVisibility(key) {
     if (!selectedBlocks[key]) selectedBlocks[key] = {};
     selectedBlocks[key].visible = !selectedBlocks[key].visible;
-    const card = document.getElementById(`preview-card-${key}`);
-    if(card) {
-        const btn = card.querySelector('.action-btn'); 
-        if (selectedBlocks[key].visible) { card.classList.remove('hidden-block'); if(btn) btn.classList.add('active-eye'); } 
-        else { card.classList.add('hidden-block'); if(btn) btn.classList.remove('active-eye'); }
-    }
+    renderPreview();
     saveUserData();
 }
 
-// Edit Block Modal
+// Edit Block Modal Logic (С поддержкой "О бизнесе", дублирования и удаления)
 const editModalOverlay = document.getElementById('editModalOverlay');
 const editModalSheet = document.getElementById('editModalSheet');
-const editInput = document.getElementById('edit-block-input');
 
 function openEditBlock(key) {
     currentEditingBlockId = key;
     const blockData = selectedBlocks[key] || {};
     const t = translations[currentLang];
-    editInput.value = blockData.title || t[`blk_${key}`] || key;
-    editModalOverlay.classList.add('open'); editModalSheet.classList.add('open');
+    
+    const titleEl = document.getElementById('edit-modal-title');
+    const label1El = document.getElementById('edit-label-1');
+    const input1El = document.getElementById('edit-input-1');
+    const label2El = document.getElementById('edit-label-2');
+    const input2El = document.getElementById('edit-input-2');
+    
+    if (key.startsWith('about')) {
+        titleEl.innerText = 'О бизнесе';
+        label1El.innerText = 'Заголовок';
+        input1El.placeholder = 'О бизнесе';
+        label2El.innerText = 'Текст';
+        input2El.placeholder = 'Расскажите о себе...';
+        
+        input1El.value = blockData.title || 'О бизнесе';
+        input2El.value = blockData.text || '';
+        
+        // Делаем второе поле textarea для "О бизнесе"
+        if (input2El.tagName !== 'TEXTAREA') {
+            const textarea = document.createElement('textarea');
+            textarea.className = input2El.className;
+            textarea.id = input2El.id;
+            textarea.rows = 4;
+            textarea.style.resize = 'none';
+            input2El.parentNode.replaceChild(textarea, input2El);
+        }
+    } else {
+        titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
+        label1El.innerText = 'Название блока';
+        input1El.placeholder = 'Например: Прайс';
+        label2El.innerText = 'Описание (опционально)';
+        input2El.placeholder = 'Дополнительный текст';
+        
+        const defaultTitle = t[`blk_${key}`] || key;
+        input1El.value = blockData.title || defaultTitle;
+        input2El.value = blockData.desc || '';
+        
+        // Возвращаем input type text для остальных блоков
+        if (document.getElementById('edit-input-2').tagName === 'TEXTAREA') {
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'form-input';
+            input.id = 'edit-input-2';
+            document.getElementById('edit-input-2').parentNode.replaceChild(input, document.getElementById('edit-input-2'));
+        }
+    }
+    
+    editModalOverlay.classList.add('open'); 
+    editModalSheet.classList.add('open');
 }
 
-function closeEditModal() { editModalOverlay.classList.remove('open'); editModalSheet.classList.remove('open'); currentEditingBlockId = null; }
+function closeEditModal() { 
+    editModalOverlay.classList.remove('open'); 
+    editModalSheet.classList.remove('open'); 
+    currentEditingBlockId = null; 
+}
 
 function saveBlockEdit() {
-    if (currentEditingBlockId) {
-        const newTitle = editInput.value.trim();
-        if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
+    if (!currentEditingBlockId) return;
+    
+    const val1 = document.getElementById('edit-input-1').value.trim();
+    const val2 = document.getElementById('edit-input-2').value.trim();
+    
+    if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
+    
+    if (currentEditingBlockId.startsWith('about')) {
+        selectedBlocks[currentEditingBlockId].title = val1 || 'О бизнесе';
+        selectedBlocks[currentEditingBlockId].text = val2;
+    } else {
         const t = translations[currentLang];
-        if (newTitle === (t[`blk_${currentEditingBlockId}`] || currentEditingBlockId)) delete selectedBlocks[currentEditingBlockId].title;
-        else selectedBlocks[currentEditingBlockId].title = newTitle;
-        saveUserData(); renderPreview(); closeEditModal();
+        const defaultTitle = t[`blk_${currentEditingBlockId}`] || currentEditingBlockId;
+        
+        if (val1 && val1 !== defaultTitle) selectedBlocks[currentEditingBlockId].title = val1;
+        else delete selectedBlocks[currentEditingBlockId].title;
+        
+        selectedBlocks[currentEditingBlockId].desc = val2;
+    }
+    
+    saveUserData();
+    renderPreview();
+    closeEditModal();
+}
+
+// Функция дублирования блока
+function duplicateCurrentBlock() {
+    if (!currentEditingBlockId) return;
+    
+    const originalData = selectedBlocks[currentEditingBlockId];
+    const newKey = `${currentEditingBlockId}_copy_${Date.now()}`;
+    
+    selectedBlocks[newKey] = JSON.parse(JSON.stringify(originalData));
+    selectedBlocks[newKey].title = (originalData.title || '') + ' (копия)';
+    selectedBlocks[newKey].visible = true;
+    
+    saveUserData();
+    renderPreview();
+    closeEditModal();
+    showToast('Блок дублирован');
+}
+
+// Функция удаления блока
+function deleteCurrentBlock() {
+    if (!currentEditingBlockId) return;
+    
+    if (confirm('Удалить этот блок?')) {
+        delete selectedBlocks[currentEditingBlockId];
+        saveUserData();
+        renderPreview();
+        closeEditModal();
+        showToast('Блок удален');
     }
 }
 
@@ -438,8 +530,6 @@ function openHeaderModal() {
     if (userCardData) {
         nameInput.value = userCardData.name || '';
         descInput.value = userCardData.desc || '';
-        
-        // Синхронизация картинок при открытии
         updateAvatarFromUrl(userCardData.avatarUrl || '');
         updateCoverFromUrl(userCardData.coverUrl || '');
         renderCarouselPreview();
@@ -469,26 +559,28 @@ function switchHeaderTab(tab) {
     document.querySelectorAll('.header-tab-content').forEach(c => c.classList.add('hidden'));
     document.getElementById(`tab-content-${tab}`).classList.remove('hidden');
     
-    // При переключении обновляем превью, чтобы синхронизация была видна сразу
-    if (tab === 'cover' || tab === 'banner') {
-        updateCoverFromUrl(document.getElementById('input-cover-url').value);
-    }
+    if (tab === 'cover' || tab === 'banner') updateCoverFromUrl(document.getElementById('input-cover-url').value);
 }
 
-// --- PHOTO UPLOAD LOGIC (СИНХРОНИЗАЦИЯ) ---
+// --- PHOTO UPLOAD LOGIC (СИНХРОНИЗИРОВАННАЯ) ---
 
 function handleFileUpload(event, updateCallback) {
     const file = event.target.files[0];
     if (file) {
-        if (!['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) { alert('JPG/PNG only'); return; }
+        if (!['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
+            alert('Пожалуйста, выберите изображение JPG/PNG');
+            return;
+        }
         const reader = new FileReader();
-        reader.onload = function(evt) { updateCallback(evt.target.result); showToast('Фото загружено'); };
+        reader.onload = function(evt) {
+            updateCallback(evt.target.result);
+            showToast('Фото загружено');
+        };
         reader.readAsDataURL(file);
     }
     event.target.value = '';
 }
 
-// Привязка инпутов
 const deviceInput = document.getElementById('device-upload-input');
 if (deviceInput) deviceInput.addEventListener('change', (e) => handleFileUpload(e, updateAvatarFromUrl));
 
@@ -517,24 +609,21 @@ if (carouselInput) {
     });
 }
 
-// Функции обновления (Синхронизируют все элементы с одинаковыми ID)
 function updateAvatarFromUrl(url) {
     if (!userCardData) userCardData = {};
     userCardData.avatarUrl = url;
-
-    // Обновляем все поля ссылок
-    document.querySelectorAll('#input-avatar-url').forEach(input => input.value = url);
-
-    // Обновляем все визуальные превью аватара (в т.ч. внутри баннера, т.к. ID совпадают)
-    document.querySelectorAll('#modal-avatar-img').forEach(el => {
+    const avatarInputs = document.querySelectorAll('#input-avatar-url');
+    avatarInputs.forEach(input => input.value = url);
+    const avatars = document.querySelectorAll('#modal-avatar-img');
+    avatars.forEach(stdAvatar => {
         if (url) {
-            el.style.backgroundImage = `url(${url})`;
-            el.style.backgroundSize = 'cover';
-            el.style.backgroundPosition = 'center';
-            el.innerHTML = '';
+            stdAvatar.style.backgroundImage = `url(${url})`;
+            stdAvatar.style.backgroundSize = 'cover';
+            stdAvatar.style.backgroundPosition = 'center';
+            stdAvatar.innerHTML = '';
         } else {
-            el.style.backgroundImage = 'none';
-            el.innerHTML = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
+            stdAvatar.style.backgroundImage = 'none';
+            stdAvatar.innerHTML = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
         }
     });
 }
@@ -542,16 +631,16 @@ function updateAvatarFromUrl(url) {
 function updateCoverFromUrl(url) {
     if (!userCardData) userCardData = {};
     userCardData.coverUrl = url;
-
-    document.querySelectorAll('#input-cover-url').forEach(input => input.value = url);
-
-    document.querySelectorAll('#modal-cover-preview-bg').forEach(el => {
+    const coverInputs = document.querySelectorAll('#input-cover-url');
+    coverInputs.forEach(input => input.value = url);
+    const coverBgs = document.querySelectorAll('#modal-cover-preview-bg');
+    coverBgs.forEach(coverBg => {
         if (url) {
-            el.style.backgroundImage = `url(${url})`;
-            el.style.backgroundSize = 'cover';
-            el.style.backgroundPosition = 'center';
+            coverBg.style.backgroundImage = `url(${url})`;
+            coverBg.style.backgroundSize = 'cover';
+            coverBg.style.backgroundPosition = 'center';
         } else {
-            el.style.backgroundImage = 'none';
+            coverBg.style.backgroundImage = 'none';
         }
     });
 }
@@ -561,14 +650,13 @@ function renderCarouselPreview() {
     if (!list) return;
     const addBtn = list.querySelector('.add-slide-btn');
     list.innerHTML = '';
-    
     if (userCardData && userCardData.carouselImages) {
         userCardData.carouselImages.forEach((img, index) => {
             const slide = document.createElement('div');
             slide.className = 'carousel-item';
             slide.style.backgroundImage = `url(${img})`;
             slide.onclick = () => {
-                if(confirm('Удалить фото?')) {
+                if(confirm('Удалить это фото?')) {
                     userCardData.carouselImages.splice(index, 1);
                     renderCarouselPreview();
                     saveUserData();
@@ -582,7 +670,7 @@ function renderCarouselPreview() {
 
 function handleMaxProfilePhoto() {
     const mockAvatars = ['https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop'];
-    updateAvatarFromUrl(mockAvatars[0]);
+    updateAvatarFromUrl(mockAvatars[0]); 
     showToast('Аватар из MAX');
 }
 

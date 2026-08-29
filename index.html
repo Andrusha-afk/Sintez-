@@ -109,7 +109,8 @@
             <h1 data-i18n="bl_title">Что <span class="gradient-text" data-i18n="bl_title_grad">показать</span></h1>
             <p class="description" data-i18n="bl_desc">Выбери блоки.</p>
         </div>
-        <div class="blocks-list">
+        <div class="blocks-list"> 
+            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div><div class="item-title">О бизнесе</div></div><div class="toggle-switch"><input type="checkbox" checked data-block="about"><span class="slider"></span></div></label>
             <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path></svg></div><div class="item-title" data-i18n="blk_links">Ссылки</div></div><div class="toggle-switch"><input type="checkbox" checked data-block="links"><span class="slider"></span></div></label>
             <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line></svg></div><div class="item-title" data-i18n="blk_socials">Соцсети</div></div><div class="toggle-switch"><input type="checkbox" checked data-block="socials"><span class="slider"></span></div></label>
             <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div><div class="item-title" data-i18n="blk_hours">Часы</div></div><div class="toggle-switch"><input type="checkbox" checked data-block="hours"><span class="slider"></span></div></label>
@@ -239,13 +240,34 @@
 
     <!-- BLOCK EDIT MODAL -->
     <div class="modal-overlay" id="editModalOverlay" onclick="closeEditModal()"></div>
-    <div class="modal-sheet" id="editModalSheet">
+    <div class="modal-sheet" id="editModalSheet" style="padding-bottom: 20px;">
         <div class="modal-handle"></div>
-        <div class="modal-header"><div class="modal-title" data-i18n="edit_modal_title">Редактировать блок</div><button class="close-modal" onclick="closeEditModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div>
-        <div class="form-group" style="margin-bottom: 20px;"><input type="text" class="form-input" id="edit-block-input" placeholder="Название блока"></div>
-        <button class="btn btn-primary" onclick="saveBlockEdit()" data-i18n="btn_save">Сохранить</button>
-    </div>
+        <div class="modal-header" style="margin-bottom: 10px;">
+            <div class="modal-title" id="edit-modal-title">Редактировать блок</div>
+            <button class="close-modal" onclick="closeEditModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        </div>
+        
+        <!-- Поля ввода (динамически заполняются JS) -->
+        <div id="edit-modal-fields">
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label" id="edit-label-1">Заголовок</label>
+                <input type="text" class="form-input" id="edit-input-1" placeholder="Введите заголовок">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" id="edit-label-2">Текст</label>
+                <textarea class="form-input" id="edit-input-2" rows="4" placeholder="Введите текст" style="resize: none;"></textarea>
+            </div>
+        </div>
 
+        <!-- Кнопка Готово -->
+        <button class="btn btn-primary" onclick="saveBlockEdit()" style="margin-top: 24px; margin-bottom: 12px;" data-i18n="btn_save">Готово</button>
+        
+        <!-- Нижние кнопки: Дублировать и Удалить -->
+        <div style="display: flex; gap: 12px;">
+            <button class="btn btn-secondary" onclick="duplicateCurrentBlock()" style="flex: 1; font-weight: 600;">Дублировать</button>
+            <button class="btn btn-secondary" onclick="deleteCurrentBlock()" style="flex: 1; color: #ef4444; border-color: rgba(239, 68, 68, 0.3); font-weight: 600;">Удалить</button>
+        </div>
+    </div>
     <!-- MENU MODALS -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeMenu()"></div>
     <div class="modal-sheet" id="modalSheet">
