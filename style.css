@@ -701,3 +701,22 @@ input:checked + .slider:before { transform: translateX(20px); }
     box-shadow: 0 10px 30px rgba(0,0,0,0.5); pointer-events: none;
 }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* Секция редактирования текста в модалке шапки */
+.header-text-edit-section {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+#modal-input-name, 
+#modal-input-desc {
+    background: rgba(0,0,0,0.2); /* Чуть темнее фон для контраста */
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+#modal-input-name:focus, 
+#modal-input-desc:focus {
+    border-color: var(--btn-primary);
+    background: rgba(0,0,0,0.3);
+}

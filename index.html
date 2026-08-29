@@ -329,6 +329,21 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
         </div>
+        <!-- ВСТАВИТЬ ЭТОТ БЛОК ПОСЛЕ .header-tabs -->
+         
+<div class="header-text-edit-section">
+    <div class="section-label-small">Текст шапки</div>
+    <div class="form-group" style="margin-bottom: 12px;">
+        <input type="text" class="form-input" id="modal-input-name" placeholder="Имя или название компании">
+    </div>
+    <div class="form-group" style="margin-bottom: 0;">
+        <input type="text" class="form-input" id="modal-input-desc" placeholder="Подзаголовок / Описание">
+    </div>
+</div>
+<!-- КОНЕЦ ВСТАВКИ -->
+
+<div class="header-format-label" data-i18n="header_format_label">Формат шапки</div>
+...
 
         <div class="header-format-label" data-i18n="header_format_label">Формат шапки</div>
         <div class="header-tabs">
@@ -347,8 +362,8 @@
                 </div>
             </div>
             <button class="btn-upload" data-i18n="btn_upload_device"> Загрузить фото с устройства</button>
-            <button class="btn-upload-secondary" data-i18n="btn_upload_tg"> Взять фото из Telegram</button>
-            <p class="upload-hint" data-i18n="upload_hint">Фото сохранится в визитке. Поменяешь аватар в Telegram — нажми ещё раз.</p>
+            <button class="btn-upload-secondary" data-i18n="btn_upload_tg"> Взять фото из MAX</button>
+            <p class="upload-hint" data-i18n="upload_hint">Фото сохранится в визитке. Поменяешь аватар в MAX — нажми ещё раз.</p>
             <div class="or-divider" data-i18n="or_link">...или ссылка на фото</div>
             <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
         </div>

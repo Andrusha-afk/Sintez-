@@ -39,8 +39,8 @@ const translations = {
         modal_header_title: "Шапка", header_format_label: "Формат шапки",
         tab_avatar: "Аватар", tab_cover: "Обложка", tab_banner: "Баннер", tab_carousel: "Карусель",
         desc_avatar: "Круглый аватар — иконка, эмодзи или фото. Без обложки.",
-        btn_upload_device: "📷 Загрузить фото с устройства", btn_upload_tg: " Взять фото из Telegram",
-        upload_hint: "Фото сохранится в визитке. Поменяешь аватар в Telegram — нажми ещё раз.",
+        btn_upload_device: "📷 Загрузить фото с устройства", btn_upload_tg: " Взять фото из MAX",
+        upload_hint: "Фото сохранится в визитке. Поменяешь аватар в MAX — нажми ещё раз.",
         or_link: "...или ссылка на фото",
         desc_cover: "Широкая обложка на всю ширину, имя под ней. Без аватара.",
         ph_company_name: "Имя или название компании", hint_example: "Пример — загрузите своё фото ниже",
@@ -87,8 +87,8 @@ const translations = {
         modal_header_title: "Header", header_format_label: "Header format",
         tab_avatar: "Avatar", tab_cover: "Cover", tab_banner: "Banner", tab_carousel: "Carousel",
         desc_avatar: "Round avatar — icon, emoji or photo. No cover.",
-        btn_upload_device: "📷 Upload from device", btn_upload_tg: "👤 Get from Telegram",
-        upload_hint: "Photo will be saved. Change avatar in Telegram — tap again.",
+        btn_upload_device: "📷 Upload from device", btn_upload_tg: "👤 Get from MAX",
+        upload_hint: "Photo will be saved. Change avatar in MAX — tap again.",
         or_link: "...or photo link",
         desc_cover: "Wide cover full width, name below it. No avatar.",
         ph_company_name: "Company name or title", hint_example: "Example — upload your photo below",
@@ -135,8 +135,8 @@ const translations = {
         modal_header_title: "Kopfzeile", header_format_label: "Format der Kopfzeile",
         tab_avatar: "Avatar", tab_cover: "Titelbild", tab_banner: "Banner", tab_carousel: "Karussell",
         desc_avatar: "Runder Avatar — Symbol, Emoji oder Foto. Ohne Titelbild.",
-        btn_upload_device: "📷 Foto vom Gerät laden", btn_upload_tg: " Aus Telegram holen",
-        upload_hint: "Foto wird gespeichert. Ändere Avatar in Telegram — tippe erneut.",
+        btn_upload_device: "📷 Foto vom Gerät laden", btn_upload_tg: " Aus MAX holen",
+        upload_hint: "Foto wird gespeichert. Ändere Avatar in MAX — tippe erneut.",
         or_link: "...oder Fotolink",
         desc_cover: "Breites Titelbild über die ganze Breite, Name darunter. Kein Avatar.",
         ph_company_name: "Firmenname oder Titel", hint_example: "Beispiel — lade dein Foto unten hoch",
@@ -573,24 +573,48 @@ function saveBlockEdit() {
 // Header Modal Logic
 const headerModalOverlay = document.getElementById('headerModalOverlay');
 const headerModalSheet = document.getElementById('headerModalSheet');
-
+// --- ОБНОВЛЕННАЯ ФУНКЦИЯ ОТКРЫТИЯ МОДАЛКИ ---
 function openHeaderModal() {
     headerModalOverlay.classList.add('open');
     headerModalSheet.classList.add('open');
     switchHeaderTab(currentHeaderFormat);
     
+    // Заполняем поля текущими значениями
+    const nameInput = document.getElementById('modal-input-name');
+    const descInput = document.getElementById('modal-input-desc');
+    
     if (userCardData) {
+        nameInput.value = userCardData.name || '';
+        descInput.value = userCardData.desc || '';
+        
+        // Обновляем превью картинок
         document.getElementById('input-avatar-url').value = userCardData.avatarUrl || '';
         document.getElementById('input-cover-url').value = userCardData.coverUrl || '';
         updateAvatarFromUrl(userCardData.avatarUrl || '');
         updateCoverFromUrl(userCardData.coverUrl || '');
+    } else {
+        nameInput.value = '';
+        descInput.value = '';
     }
 }
 
 function closeHeaderModal() {
+    // Сохраняем текст перед закрытием
+    const nameVal = document.getElementById('modal-input-name').value.trim();
+    const descVal = document.getElementById('modal-input-desc').value.trim();
+
+    if (!userCardData) userCardData = {};
+    
+    // Обновляем данные только если они не пустые (или оставляем как есть, если хотите разрешать очистку)
+    if (nameVal) userCardData.name = nameVal;
+    if (descVal) userCardData.desc = descVal;
+    
+    saveUserData(); // Сохраняем в localStorage
+    
     headerModalOverlay.classList.remove('open');
     headerModalSheet.classList.remove('open');
-    // Update preview after closing modal
+    
+    // Перерисовываем превью с новыми данными
     renderPreview();
 }
 
