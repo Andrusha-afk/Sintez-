@@ -645,6 +645,28 @@ function renderPreview() {
 
                 contentHtml = buttonsHtml;
             }
+            // Special rendering for Price block
+            else if (key === 'price' || key.startsWith('price_copy')) {
+                const items = blockData.items || [];
+                
+                if (items.length > 0 && (items[0].name || items[0].cost)) {
+                    contentHtml = `<div class="price-list-container">`;
+                    items.forEach(item => {
+                        const displayName = item.name || 'Позиция';
+                        const displayCost = item.cost ? item.cost : '';
+                        
+                        contentHtml += `
+                            <div class="price-row-item">
+                                <span class="price-item-name">${displayName}</span>
+                                ${displayCost ? `<span class="price-item-cost">${displayCost}</span>` : ''}
+                            </div>
+                        `;
+                    });
+                    contentHtml += `</div>`;
+                } else {
+                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных позиций</div>`;
+                }
+            }
             else {
                 // Default placeholder for other blocks
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
@@ -1007,6 +1029,45 @@ function openEditBlock(key) {
                 «Позвонить» сразу набирает номер. «Сохранить в контакты» скачивает vCard-файл — имя берётся из шапки, телефон и email из этого блока.
             </div>
         `;
+    } else if (key === 'price' || key.startsWith('price_copy')) {
+        titleEl.innerText = 'Прайс / меню';
+        
+        const items = blockData.items || [{name: '', cost: ''}];
+        const limit = 5; // Бесплатный лимит
+
+        let itemsHtml = '<div class="price-items-list">';
+        items.forEach((item, index) => {
+            itemsHtml += `
+                <div class="price-item-row">
+                    <input type="text" class="price-input-name" placeholder="Название" value="${item.name}" data-index="${index}">
+                    <input type="text" class="price-input-cost" placeholder="Цена" value="${item.cost}" data-index="${index}">
+                    <button class="btn-remove-price" onclick="removePriceItem(this)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+            `;
+        });
+        itemsHtml += '</div>';
+
+        fieldsContainer.innerHTML = `
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Заголовок</label>
+                <input type="text" class="form-input" id="edit-price-title" value="${blockData.title || 'Прайс'}" placeholder="Прайс">
+            </div>
+            
+            <label class="form-label" style="margin-bottom: 10px; display:block;">Позиции</label>
+            ${itemsHtml}
+            
+            <button class="btn-add-price" onclick="addPriceItem()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Добавить позицию
+            </button>
+            
+            <div class="price-limit-hint">
+                <span class="limit-badge">${items.length}/${limit}</span>
+                бесплатно — до ${limit} элементов, дальше расширение блока
+            </div>
+        `;
     } else {
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
@@ -1073,6 +1134,36 @@ function createLinkItemElement(name, url, index) {
         <input type="text" class="link-url-input" placeholder="https://..." value="${url}">
     `;
     return item;
+}
+
+// Functions for Price Block
+function addPriceItem() {
+    const list = document.querySelector('.price-items-list');
+    const index = list.children.length;
+    
+    const row = document.createElement('div');
+    row.className = 'price-item-row';
+    row.innerHTML = `
+        <input type="text" class="price-input-name" placeholder="Название" data-index="${index}">
+        <input type="text" class="price-input-cost" placeholder="Цена" data-index="${index}">
+        <button class="btn-remove-price" onclick="removePriceItem(this)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    `;
+    list.appendChild(row);
+    updatePriceCounter();
+}
+
+function removePriceItem(btn) {
+    const row = btn.closest('.price-item-row');
+    row.remove();
+    updatePriceCounter();
+}
+
+function updatePriceCounter() {
+    const count = document.querySelectorAll('.price-item-row').length;
+    const badge = document.querySelector('.limit-badge');
+    if(badge) badge.innerText = `${count}/5`;
 }
 
 function closeEditModal() { 
@@ -1165,6 +1256,21 @@ function saveBlockEdit() {
         selectedBlocks[currentEditingBlockId].phone = document.getElementById('edit-contacts-phone').value.trim();
         selectedBlocks[currentEditingBlockId].email = document.getElementById('edit-contacts-email').value.trim();
         selectedBlocks[currentEditingBlockId].showVcard = document.getElementById('edit-contacts-vcard-toggle').checked;
+    } else if (currentEditingBlockId === 'price' || currentEditingBlockId.startsWith('price_copy')) {
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-price-title').value.trim() || 'Прайс';
+        
+        const items = [];
+        document.querySelectorAll('.price-item-row').forEach(row => {
+            const name = row.querySelector('.price-input-name').value.trim();
+            const cost = row.querySelector('.price-input-cost').value.trim();
+            if (name || cost) {
+                items.push({ name: name || 'Услуга', cost: cost });
+            }
+        });
+        
+        if (items.length === 0) items.push({ name: '', cost: '' });
+        
+        selectedBlocks[currentEditingBlockId].items = items;
     } else {
         const val1 = document.getElementById('edit-input-1').value.trim();
         const val2 = document.getElementById('edit-input-2').value.trim();

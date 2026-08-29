@@ -1539,3 +1539,125 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     margin: 0;
     line-height: 1.3;
 }
+
+/* --- Стили для блока Прайс/Меню --- */
+
+/* Редактор: Список позиций */
+.price-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.price-item-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.price-input-name {
+    flex: 2;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.price-input-cost {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: white;
+    font-size: 14px;
+    text-align: right;
+    outline: none;
+}
+
+.btn-remove-price {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(239, 68, 68, 0.1);
+    border: none;
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.btn-add-price {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.price-limit-hint {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.limit-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Отображение на визитке: Строка прайса */
+.price-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.price-row-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.price-item-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.price-item-cost {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-blue); /* Цена синим цветом как на скриншоте */
+    white-space: nowrap;
+    margin-left: 10px;
+}
