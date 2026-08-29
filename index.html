@@ -322,6 +322,7 @@
     <!-- HEADER FORMAT MODAL -->
     <div class="modal-overlay" id="headerModalOverlay" onclick="closeHeaderModal()"></div>
         <!-- HEADER FORMAT MODAL -->
+        <!-- HEADER FORMAT MODAL -->
     <div class="modal-overlay" id="headerModalOverlay" onclick="closeHeaderModal()"></div>
     <div class="modal-sheet header-modal-sheet" id="headerModalSheet">
         <div class="modal-handle"></div>
@@ -332,18 +333,6 @@
             </button>
         </div>
 
-        <!-- ЕДИНЫЙ БЛОК РЕДАКТИРОВАНИЯ ТЕКСТА (Вынесен над табами) -->
-        <div class="header-text-edit-section">
-            <div class="section-label-small">Текст шапки</div>
-            <div class="form-group" style="margin-bottom: 12px;">
-                <input type="text" class="form-input" id="modal-input-name" placeholder="Имя или название компании">
-            </div>
-            <div class="form-group" style="margin-bottom: 0;">
-                <input type="text" class="form-input" id="modal-input-desc" placeholder="Подзаголовок / Описание">
-            </div>
-        </div>
-        <!-- КОНЕЦ БЛОКА ТЕКСТА -->
-
         <div class="header-format-label" data-i18n="header_format_label">Формат шапки</div>
         <div class="header-tabs">
             <button class="header-tab active" onclick="switchHeaderTab('avatar')" data-i18n="tab_avatar">Аватар</button>
@@ -352,7 +341,7 @@
             <button class="header-tab" onclick="switchHeaderTab('carousel')" data-i18n="tab_carousel">Карусель</button>
         </div>
 
-        <!-- Avatar Tab Content (Без дублей полей ввода) -->
+        <!-- Avatar Tab Content -->
         <div class="header-tab-content" id="tab-content-avatar">
             <p class="tab-desc" data-i18n="desc_avatar">Круглый аватар — иконка, эмодзи или фото. Без обложки.</p>
             <div class="modal-avatar-preview">
@@ -360,14 +349,14 @@
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
-            <button class="btn-upload" data-i18n="btn_upload_device"> Загрузить фото с устройства</button>
+            <button class="btn-upload" data-i18n="btn_upload_device">📷 Загрузить фото с устройства</button>
             <button class="btn-upload-secondary" data-i18n="btn_upload_tg">👤 Взять фото из MAX</button>
             <p class="upload-hint" data-i18n="upload_hint">Фото сохранится в визитке. Поменяешь аватар в MAX — нажми ещё раз.</p>
             <div class="or-divider" data-i18n="or_link">...или ссылка на фото</div>
             <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
         </div>
 
-        <!-- Cover Tab Content (Без дублей полей ввода) -->
+        <!-- Cover Tab Content -->
         <div class="header-tab-content hidden" id="tab-content-cover">
             <p class="tab-desc" data-i18n="desc_cover">Широкая обложка на всю ширину, имя под ней. Без аватара.</p>
             <div class="modal-cover-preview">
@@ -381,7 +370,7 @@
             <input type="text" class="form-input" id="input-cover-url" placeholder="https://..." oninput="updateCoverFromUrl(this.value)">
         </div>
 
-        <!-- Banner Tab Content (Без дублей полей ввода) -->
+        <!-- Banner Tab Content -->
         <div class="header-tab-content hidden" id="tab-content-banner">
             <p class="tab-desc" data-i18n="desc_banner">Длинный баннер с текстом внутри.</p>
             <div class="modal-banner-preview">
@@ -390,7 +379,7 @@
             <button class="btn-upload" data-i18n="btn_upload_banner">🖼️ Загрузить баннер</button>
         </div>
 
-        <!-- Carousel Tab Content (Без дублей полей ввода) -->
+        <!-- Carousel Tab Content -->
         <div class="header-tab-content hidden" id="tab-content-carousel">
             <p class="tab-desc" data-i18n="desc_carousel">Несколько фото в ряд.</p>
             <div class="modal-carousel-preview">
@@ -398,10 +387,21 @@
                 <div class="carousel-slide"></div>
                 <div class="carousel-slide"></div>
             </div>
-            <button class="btn-upload" data-i18n="btn_upload_carousel">🖼️ Загрузить фото</button>
+            <button class="btn-upload" data-i18n="btn_upload_carousel">️ Загрузить фото</button>
         </div>
+
+        <!-- ЕДИНЫЙ БЛОК РЕДАКТИРОВАНИЯ ТЕКСТА (Теперь в самом низу) -->
+        <div class="header-text-edit-section" style="margin-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;">
+            <div class="section-label-small">Текст шапки</div>
+            <div class="form-group" style="margin-bottom: 12px;">
+                <input type="text" class="form-input" id="modal-input-name" placeholder="Имя или название компании">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <input type="text" class="form-input" id="modal-input-desc" placeholder="Подзаголовок / Описание">
+            </div>
+        </div>
+        <!-- КОНЕЦ БЛОКА ТЕКСТА -->
         
-        <!-- Удален лишний дублирующийся блок .header-text-edit-section, который был здесь -->
     </div>
 
     <!-- BLOCK EDIT MODAL -->
