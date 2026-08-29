@@ -1,3 +1,56 @@
+// --- КОНФИГУРАЦИЯ СОЦСЕТЕЙ (MAX вместо Telegram) ---
+const socialNetworksConfig = [
+    { 
+        id: 'max', 
+        name: 'MAX', 
+        // Иконка для MAX (абстрактная звезда/логотип)
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>', 
+        placeholder: '@username' 
+    },
+    { 
+        id: 'instagram', 
+        name: 'Instagram', 
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>', 
+        placeholder: 'https://instagram.com/username' 
+    },
+    { 
+        id: 'whatsapp', 
+        name: 'WhatsApp', 
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>', 
+        placeholder: 'https://wa.me/number' 
+    },
+    { 
+        id: 'youtube', 
+        name: 'YouTube', 
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>', 
+        placeholder: 'https://youtube.com/channel' 
+    },
+    { 
+        id: 'facebook', 
+        name: 'Facebook', 
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>', 
+        placeholder: 'https://facebook.com/username' 
+    },
+    { 
+        id: 'threads', 
+        name: 'Threads', 
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6 6 6 0 0 0 6-6 6 6 0 0 0-6-6z"/></svg>', 
+        placeholder: 'https://threads.net/@username' 
+    },
+    { 
+        id: 'linkedin', 
+        name: 'LinkedIn', 
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>', 
+        placeholder: 'https://linkedin.com/in/username' 
+    },
+    { 
+        id: 'website', 
+        name: 'Сайт', 
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>', 
+        placeholder: 'https://твой-сайт.com' 
+    }
+];
+
 // --- TRANSLATIONS ---
 const translations = {
     ru: {
@@ -66,7 +119,7 @@ const translations = {
         edit_modal_title: "Block", btn_save: "Save", preview_placeholder: "Content",
         modal_header_title: "Header", header_format_label: "Format",
         tab_avatar: "Avatar", tab_cover: "Cover", tab_banner: "Banner", tab_carousel: "Carousel",
-        desc_avatar: "Round avatar.", btn_upload_device: "📷 Upload", btn_upload_tg: "👤 From MAX",
+        desc_avatar: "Round avatar.", btn_upload_device: " Upload", btn_upload_tg: " From MAX",
         upload_hint: "Photo saved.", or_link: "...or link",
         desc_cover: "Wide cover.", ph_company_name: "Company name", hint_example: "Example below",
         lbl_cover: "COVER", btn_upload_cover: "Upload", lbl_cover_link: "Photo link",
@@ -349,29 +402,26 @@ function renderPreview() {
     
     // Helper function to create block section HTML
     const createBlockSection = (key, blockData, title, contentHtml) => {
-    const section = document.createElement('div');
-    // Добавляем класс hidden-block, если блок невидим
-    section.className = `preview-block-section ${blockData.visible ? '' : 'hidden-block'}`;
-    
-    section.innerHTML = `
-        <div class="block-section-header">
-            <div class="block-section-title">${title.toUpperCase()}</div>
-            <div class="block-actions">
-                <button class="action-btn ${blockData.visible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                </button>
-                <button class="action-btn" onclick="openEditBlock('${key}')">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                </button>
+        const section = document.createElement('div');
+        section.className = `preview-block-section ${blockData.visible ? '' : 'hidden-block'}`;
+        section.innerHTML = `
+            <div class="block-section-header">
+                <div class="block-section-title">${title.toUpperCase()}</div>
+                <div class="block-actions">
+                    <button class="action-btn ${blockData.visible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                    <button class="action-btn" onclick="openEditBlock('${key}')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="preview-card-body">
-            ${contentHtml}
-        </div>
-    `;
-    return section;
-};
-
+            <div class="preview-card-body">
+                ${contentHtml}
+            </div>
+        `;
+        return section;
+    };
 
     // Render About Blocks First
     aboutKeys.forEach(key => {
@@ -418,7 +468,28 @@ function renderPreview() {
                 } else {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет добавленных ссылок</div>`;
                 }
-            } else {
+            } 
+            // Special rendering for Socials block
+            else if (key === 'socials' || key.startsWith('socials_copy')) {
+                const socialsData = blockData.items || {};
+                const activeSocials = socialNetworksConfig.filter(net => socialsData[net.id]?.enabled && socialsData[net.id]?.url);
+                
+                if (activeSocials.length > 0) {
+                    contentHtml = `<div class="socials-grid-preview">`;
+                    activeSocials.forEach(net => {
+                        const url = socialsData[net.id].url;
+                        contentHtml += `
+                            <a href="${url}" target="_blank" class="social-icon-btn" title="${net.name}">
+                                ${net.icon}
+                            </a>
+                        `;
+                    });
+                    contentHtml += `</div>`;
+                } else {
+                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет активных соцсетей</div>`;
+                }
+            }
+            else {
                 // Default placeholder for other blocks
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
             }
@@ -446,30 +517,22 @@ function renderPreview() {
 
 function toggleBlockVisibility(key) {
     if (!selectedBlocks[key]) selectedBlocks[key] = {};
-    
-    // Переключаем состояние видимости
     selectedBlocks[key].visible = !selectedBlocks[key].visible;
     
-    // Находим соответствующую секцию в DOM
-    // Так как у нас динамический список, проще найти по onclick атрибуту или перебрать children
+    // Find the section and toggle class without full re-render for smoothness
     const sections = document.querySelectorAll('.preview-block-section');
     let targetSection = null;
-    
-    // Ищем секцию, внутри которой есть кнопка с нужным key
     sections.forEach(sec => {
         const btn = sec.querySelector(`button[onclick="toggleBlockVisibility('${key}')"]`);
         if (btn) targetSection = sec;
     });
 
     if (targetSection) {
-        const btn = targetSection.querySelector('.action-btn'); // Первая кнопка - это глаз
-        
+        const btn = targetSection.querySelector('.action-btn'); 
         if (selectedBlocks[key].visible) {
-            // Показываем блок
             targetSection.classList.remove('hidden-block');
             if(btn) btn.classList.add('active-eye');
         } else {
-            // Делаем полупрозрачным
             targetSection.classList.add('hidden-block');
             if(btn) btn.classList.remove('active-eye');
         }
@@ -478,7 +541,7 @@ function toggleBlockVisibility(key) {
     saveUserData();
 }
 
-// Edit Block Modal Logic (With Links Support)
+// Edit Block Modal Logic (With Socials Support)
 const editModalOverlay = document.getElementById('editModalOverlay');
 const editModalSheet = document.getElementById('editModalSheet');
 
@@ -489,10 +552,9 @@ function openEditBlock(key) {
     
     const titleEl = document.getElementById('edit-modal-title');
     const fieldsContainer = document.getElementById('edit-modal-fields');
-    fieldsContainer.innerHTML = ''; // Clear previous fields
+    fieldsContainer.innerHTML = ''; 
 
     if (key.startsWith('about')) {
-        // About Business Logic
         titleEl.innerText = 'О бизнесе';
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;">
@@ -504,44 +566,66 @@ function openEditBlock(key) {
                 <textarea class="form-input" id="edit-input-2" rows="4" placeholder="Расскажите о себе..." style="resize: none;">${blockData.text || ''}</textarea>
             </div>
         `;
-    } else if (key === 'links' || key.startsWith('links_copy')) {
-        // Links Logic
-        titleEl.innerText = 'Ссылки-кнопки';
+    } else if (key === 'socials' || key.startsWith('socials_copy')) {
+        // LOGIC FOR SOCIALS
+        titleEl.innerText = 'Соцсети';
         
-        // Section Title Input
+        const savedSocials = blockData.items || {};
+        
+        socialNetworksConfig.forEach(net => {
+            const isEnabled = savedSocials[net.id]?.enabled ?? true; // Default enabled
+            const url = savedSocials[net.id]?.url || '';
+            
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'social-item';
+            itemDiv.innerHTML = `
+                <div class="social-header">
+                    <div class="social-info">
+                        <div class="social-icon-box">${net.icon}</div>
+                        <div class="social-name">${net.name}</div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" class="social-toggle" data-id="${net.id}" ${isEnabled ? 'checked' : ''}>
+                        <span class="slider-toggle"></span>
+                    </label>
+                </div>
+                <input type="text" class="social-input" data-id="${net.id}" placeholder="${net.placeholder}" value="${url}" ${!isEnabled ? 'disabled' : ''}>
+            `;
+            fieldsContainer.appendChild(itemDiv);
+        });
+
+        // Toggle handler
+        fieldsContainer.querySelectorAll('.social-toggle').forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                const input = fieldsContainer.querySelector(`.social-input[data-id="${e.target.dataset.id}"]`);
+                if (e.target.checked) {
+                    input.removeAttribute('disabled');
+                    input.focus();
+                } else {
+                    input.setAttribute('disabled', 'true');
+                }
+            });
+        });
+
+    } else if (key === 'links' || key.startsWith('links_copy')) {
+        titleEl.innerText = 'Ссылки-кнопки';
         const sectionTitleDiv = document.createElement('div');
         sectionTitleDiv.className = 'form-group';
         sectionTitleDiv.style.marginBottom = '24px';
-        sectionTitleDiv.innerHTML = `
-            <label class="form-label">Заголовок секции</label>
-            <input type="text" class="form-input" id="edit-section-title" placeholder="Ссылки" value="${blockData.title || 'Ссылки'}">
-        `;
+        sectionTitleDiv.innerHTML = `<label class="form-label">Заголовок секции</label><input type="text" class="form-input" id="edit-section-title" placeholder="Ссылки" value="${blockData.title || 'Ссылки'}">`;
         fieldsContainer.appendChild(sectionTitleDiv);
-
-        // Links List Container
         const linksListDiv = document.createElement('div');
         linksListDiv.id = 'links-editor-list';
         linksListDiv.className = 'links-editor-list';
-        
-        // Populate existing links
         const links = blockData.items || [{name: 'Наш сайт', url: ''}];
-        links.forEach((link, index) => {
-            linksListDiv.appendChild(createLinkItemElement(link.name, link.url, index));
-        });
-        
+        links.forEach((link, index) => linksListDiv.appendChild(createLinkItemElement(link.name, link.url, index)));
         fieldsContainer.appendChild(linksListDiv);
-
-        // Add Link Button
         const addBtn = document.createElement('button');
         addBtn.className = 'btn-add-link';
         addBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Добавить ссылку`;
-        addBtn.onclick = () => {
-            linksListDiv.appendChild(createLinkItemElement('', '', linksListDiv.children.length));
-        };
+        addBtn.onclick = () => linksListDiv.appendChild(createLinkItemElement('', '', linksListDiv.children.length));
         fieldsContainer.appendChild(addBtn);
-
     } else {
-        // Standard Block Logic
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;">
@@ -586,47 +670,45 @@ function closeEditModal() {
 
 function saveBlockEdit() {
     if (!currentEditingBlockId) return;
-    
     if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
     
     if (currentEditingBlockId.startsWith('about')) {
-        const val1 = document.getElementById('edit-input-1').value.trim();
-        const val2 = document.getElementById('edit-input-2').value.trim();
-        selectedBlocks[currentEditingBlockId].title = val1 || 'О бизнесе';
-        selectedBlocks[currentEditingBlockId].text = val2;
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-input-1').value.trim() || 'О бизнесе';
+        selectedBlocks[currentEditingBlockId].text = document.getElementById('edit-input-2').value.trim();
+    } else if (currentEditingBlockId === 'socials' || currentEditingBlockId.startsWith('socials_copy')) {
+        // SAVE SOCIALS
+        const items = {};
+        socialNetworksConfig.forEach(net => {
+            const toggle = document.querySelector(`.social-toggle[data-id="${net.id}"]`);
+            const input = document.querySelector(`.social-input[data-id="${net.id}"]`);
+            if (toggle && input) {
+                items[net.id] = {
+                    enabled: toggle.checked,
+                    url: input.value.trim()
+                };
+            }
+        });
+        selectedBlocks[currentEditingBlockId].items = items;
     } else if (currentEditingBlockId === 'links' || currentEditingBlockId.startsWith('links_copy')) {
-        // Save Links Data
-        const sectionTitle = document.getElementById('edit-section-title').value.trim();
-        selectedBlocks[currentEditingBlockId].title = sectionTitle || 'Ссылки';
-        
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-section-title').value.trim() || 'Ссылки';
         const listContainer = document.getElementById('links-editor-list');
-        const items = [];
-        
+        const linksItems = [];
         if (listContainer) {
-            const linkElements = listContainer.querySelectorAll('.link-edit-item');
-            linkElements.forEach(el => {
+            listContainer.querySelectorAll('.link-edit-item').forEach(el => {
                 const name = el.querySelector('.link-name-input').value.trim();
                 const url = el.querySelector('.link-url-input').value.trim();
-                if (name || url) {
-                    items.push({ name: name || 'Ссылка', url: url });
-                }
+                if (name || url) linksItems.push({ name: name || 'Ссылка', url: url });
             });
         }
-        
-        // Keep at least one empty slot if all deleted
-        if (items.length === 0) items.push({ name: 'Наш сайт', url: '' });
-        
-        selectedBlocks[currentEditingBlockId].items = items;
+        if (linksItems.length === 0) linksItems.push({ name: 'Наш сайт', url: '' });
+        selectedBlocks[currentEditingBlockId].items = linksItems;
     } else {
-        // Standard Save
         const val1 = document.getElementById('edit-input-1').value.trim();
         const val2 = document.getElementById('edit-input-2').value.trim();
         const t = translations[currentLang];
         const defaultTitle = t[`blk_${currentEditingBlockId}`] || currentEditingBlockId;
-        
         if (val1 && val1 !== defaultTitle) selectedBlocks[currentEditingBlockId].title = val1;
         else delete selectedBlocks[currentEditingBlockId].title;
-        
         selectedBlocks[currentEditingBlockId].desc = val2;
     }
     

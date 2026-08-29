@@ -240,21 +240,22 @@
 
     <!-- BLOCK EDIT MODAL -->
         <!-- BLOCK EDIT MODAL (ОБНОВЛЕННЫЙ) -->
+    <!-- BLOCK EDIT MODAL (ОБНОВЛЕННЫЙ ДЛЯ СОЦСЕТЕЙ) -->
     <div class="modal-overlay" id="editModalOverlay" onclick="closeEditModal()"></div>
     <div class="modal-sheet" id="editModalSheet" style="max-height: 85vh; overflow-y: auto;">
         <div class="modal-handle"></div>
-        <div class="modal-header" style="margin-bottom: 20px;">
+        <div class="modal-header" style="margin-bottom: 10px;">
             <div class="modal-title" id="edit-modal-title">Редактировать блок</div>
             <button class="close-modal" onclick="closeEditModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
         </div>
         
         <!-- Контейнер для динамических полей -->
-        <div id="edit-modal-fields">
-            <!-- Сюда JS будет вставлять поля -->
+        <div id="edit-modal-fields" style="padding-bottom: 20px;">
+            <!-- Сюда JS будет вставлять поля соцсетей -->
         </div>
 
         <!-- Кнопка Готово -->
-        <button class="btn btn-primary" onclick="saveBlockEdit()" style="margin-top: 24px; margin-bottom: 12px;" data-i18n="btn_save">Готово</button>
+        <button class="btn btn-primary" onclick="saveBlockEdit()" style="margin-top: 10px; margin-bottom: 12px;" data-i18n="btn_save">Готово</button>
         
         <!-- Нижние кнопки -->
         <div style="display: flex; gap: 12px;">

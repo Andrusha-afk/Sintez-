@@ -1019,3 +1019,96 @@ input:checked + .slider:before { transform: translateX(20px); }
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.4);
 }
+
+/* Стили для редактора соцсетей */
+.social-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.social-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.social-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-icon-box {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+}
+
+.social-name {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* Toggle Switch Style */
+.toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.slider-toggle {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #3f3f4e; transition: .4s; border-radius: 34px;
+}
+.slider-toggle:before {
+    position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
+    background-color: white; transition: .4s; border-radius: 50%;
+}
+input:checked + .slider-toggle { background-color: #a5b4fc; } /* Цвет как на скриншоте */
+input:checked + .slider-toggle:before { transform: translateX(20px); }
+
+.social-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+.social-input:focus { border-color: var(--color-blue); color: white; }
+
+/* Сетка иконок для превью (последний скриншот) */
+.socials-grid-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    justify-items: center;
+}
+
+.social-icon-btn {
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.social-icon-btn:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+.social-icon-btn svg { width: 24px; height: 24px; fill: currentColor; }
