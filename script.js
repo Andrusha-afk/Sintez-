@@ -50,6 +50,40 @@ const socialNetworksConfig = [
     }
 ];
 
+// --- КОНФИГУРАЦИЯ ПЛАТФОРМ ДЛЯ ОТЗЫВОВ ---
+const reviewPlatformsConfig = [
+    { 
+        id: 'google', 
+        name: 'Google Карты', 
+        icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',
+        color: '#FF0000'
+    },
+    { 
+        id: 'yandex', 
+        name: 'Яндекс Карты', 
+        icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>', // Используем похожую иконку пина, но красную для Яндекса
+        color: '#FF0000'
+    },
+    { 
+        id: 'maps', 
+        name: '2ГИС / Карты', 
+        icon: '<svg viewBox="0 0 24 24" fill="#2ECC71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',
+        color: '#2ECC71'
+    },
+    { 
+        id: 'flamp', 
+        name: 'Flamp', 
+        icon: '<svg viewBox="0 0 24 24" fill="#3498DB"><path d="M18.9 13.2c-.4-.4-1-.4-1.4 0l-1.4 1.4-1.4-1.4c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l1.4 1.4-1.4 1.4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l1.4-1.4 1.4 1.4c.4.4 1 .4 1.4 0s.4-1 0-1.4l-1.4-1.4 1.4-1.4c.4-.4.4-1 0-1.4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>',
+        color: '#3498DB'
+    },
+    { 
+        id: 'custom', 
+        name: 'Свой отзыв', 
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>',
+        color: 'var(--color-blue)'
+    }
+];
+
 // --- TRANSLATIONS ---
 const translations = {
     ru: {
@@ -698,6 +732,43 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных акций</div>`;
                 }
             }
+            // Special rendering for Reviews block
+            else if (key === 'reviews' || key.startsWith('reviews_copy')) {
+                const items = blockData.items || [];
+                
+                if (items.length > 0) {
+                    contentHtml = `<div class="reviews-list-container">`;
+                    items.forEach(item => {
+                        const platform = reviewPlatformsConfig.find(p => p.id === item.platform) || reviewPlatformsConfig[4];
+                        
+                        if (item.type === 'link') {
+                            // Ссылка на внешний отзыв
+                            contentHtml += `
+                                <a href="${item.url || '#'}" target="_blank" class="review-link-item">
+                                    <div class="review-platform-icon" style="color: ${platform.color}">
+                                        ${platform.icon}
+                                    </div>
+                                    <div class="review-platform-name">${item.name || platform.name}</div>
+                                    <div class="review-action">Читать отзывы ›</div>
+                                </a>
+                            `;
+                        } else {
+                            // Текстовый отзыв
+                            const stars = '★'.repeat(parseInt(item.rating) || 5);
+                            contentHtml += `
+                                <div class="review-text-item">
+                                    <div class="review-stars" style="color: #F1C40F;">${stars}</div>
+                                    <div class="review-text-content">${item.text || ''}</div>
+                                    <div class="review-author">— ${item.author || 'Аноним'}</div>
+                                </div>
+                            `;
+                        }
+                    });
+                    contentHtml += `</div>`;
+                } else {
+                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных отзывов</div>`;
+                }
+            }
             else {
                 // Default placeholder for other blocks
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
@@ -1149,6 +1220,82 @@ function openEditBlock(key) {
                 Оставь «%» пустым — посчитаю сам из цен «до» и «после». Или укажи процент вручную.
             </div>
         `;
+    } else if (key === 'reviews' || key.startsWith('reviews_copy')) {
+        titleEl.innerText = 'Отзывы';
+        
+        const items = blockData.items || [{type: 'link', platform: 'yandex', name: 'Яндекс Карты', url: ''}];
+        const limit = 4;
+
+        let itemsHtml = '';
+        items.forEach((item, index) => {
+            if (item.type === 'link') {
+                // Редактор ссылки на платформу
+                itemsHtml += `
+                    <div class="review-edit-item" data-index="${index}">
+                        <label class="form-label" style="margin-bottom: 8px;">Ссылки на отзывы</label>
+                        <div class="platform-selector">
+                            ${reviewPlatformsConfig.map(p => `
+                                <div class="platform-icon-btn ${item.platform === p.id ? 'active' : ''}" 
+                                     data-platform="${p.id}" 
+                                     onclick="selectReviewPlatform(this)"
+                                     style="border-color: ${item.platform === p.id ? p.color : 'rgba(255,255,255,0.1)'}">
+                                    ${p.icon}
+                                </div>
+                            `).join('')}
+                        </div>
+                        <input type="text" class="form-input review-link-input" placeholder="https://..." value="${item.url || ''}" data-index="${index}" style="margin-top: 10px;">
+                        <input type="hidden" class="review-type-input" value="link">
+                        <button class="btn-remove-review" onclick="removeReviewItem(this)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                `;
+            } else {
+                // Редактор текстового отзыва
+                itemsHtml += `
+                    <div class="review-edit-item" data-index="${index}">
+                        <label class="form-label" style="margin-bottom: 8px;">Свои отзывы вручную</label>
+                        <div class="review-manual-fields">
+                            <div style="display:flex; gap:8px; margin-bottom:8px;">
+                                <input type="text" class="form-input review-author-input" placeholder="Имя (напр. Анна)" value="${item.author || ''}" style="flex:2;">
+                                <div class="rating-selector">
+                                    ${[1,2,3,4,5].map(star => `
+                                        <span class="star-btn ${star <= (item.rating || 5) ? 'active' : ''}" data-star="${star}" onclick="selectReviewRating(this)">&#9733;</span>
+                                    `).join('')}
+                                </div>
+                                <button class="btn-remove-review" onclick="removeReviewItem(this)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                </button>
+                            </div>
+                            <textarea class="form-input review-text-input" placeholder="Текст отзыва..." rows="2" style="resize:none;">${item.text || ''}</textarea>
+                            <input type="hidden" class="review-type-input" value="text">
+                            <input type="hidden" class="review-rating-hidden" value="${item.rating || 5}">
+                        </div>
+                    </div>
+                `;
+            }
+        });
+
+        fieldsContainer.innerHTML = `
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Заголовок</label>
+                <input type="text" class="form-input" id="edit-reviews-title" value="${blockData.title || 'Отзывы'}" placeholder="Отзывы">
+            </div>
+            
+            <div id="reviews-list-container">
+                ${itemsHtml}
+            </div>
+            
+            <button class="btn-add-price" onclick="addReviewItem()" style="margin-bottom: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Добавить отзыв
+            </button>
+            
+            <div class="price-limit-hint">
+                <span class="limit-badge" id="reviews-counter">${items.length}/${limit}</span>
+                бесплатно — до ${limit} элементов, в PRO больше
+            </div>
+        `;
     } else {
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
@@ -1299,6 +1446,76 @@ function updateDiscountCounter() {
     if(badge) badge.innerText = `${count}/3`;
 }
 
+// Functions for Reviews Block
+function addReviewItem() {
+    const container = document.getElementById('reviews-list-container');
+    const index = container.children.length;
+    
+    // По умолчанию добавляем ссылку на Яндекс
+    const row = document.createElement('div');
+    row.className = 'review-edit-item';
+    row.setAttribute('data-index', index);
+    row.innerHTML = `
+        <label class="form-label" style="margin-bottom: 8px;">Ссылки на отзывы</label>
+        <div class="platform-selector">
+            ${reviewPlatformsConfig.map(p => `
+                <div class="platform-icon-btn ${p.id === 'yandex' ? 'active' : ''}" 
+                     data-platform="${p.id}" 
+                     onclick="selectReviewPlatform(this)"
+                     style="border-color: ${p.id === 'yandex' ? p.color : 'rgba(255,255,255,0.1)'}">
+                    ${p.icon}
+                </div>
+            `).join('')}
+        </div>
+        <input type="text" class="form-input review-link-input" placeholder="https://..." data-index="${index}" style="margin-top: 10px;">
+        <input type="hidden" class="review-type-input" value="link">
+        <button class="btn-remove-review" onclick="removeReviewItem(this)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    `;
+    container.appendChild(row);
+    updateReviewCounter();
+}
+
+function removeReviewItem(btn) {
+    const row = btn.closest('.review-edit-item');
+    row.remove();
+    updateReviewCounter();
+}
+
+function selectReviewPlatform(btn) {
+    const parent = btn.closest('.review-edit-item');
+    parent.querySelectorAll('.platform-icon-btn').forEach(b => {
+        b.classList.remove('active');
+        const pid = b.dataset.platform;
+        const pConfig = reviewPlatformsConfig.find(p => p.id === pid);
+        b.style.borderColor = 'rgba(255,255,255,0.1)';
+    });
+    
+    btn.classList.add('active');
+    const pid = btn.dataset.platform;
+    const pConfig = reviewPlatformsConfig.find(p => p.id === pid);
+    btn.style.borderColor = pConfig.color;
+}
+
+function selectReviewRating(btn) {
+    const parent = btn.closest('.review-edit-item');
+    const starVal = parseInt(btn.dataset.star);
+    const hiddenInput = parent.querySelector('.review-rating-hidden');
+    if(hiddenInput) hiddenInput.value = starVal;
+    
+    parent.querySelectorAll('.star-btn').forEach(s => {
+        if(parseInt(s.dataset.star) <= starVal) s.classList.add('active');
+        else s.classList.remove('active');
+    });
+}
+
+function updateReviewCounter() {
+    const count = document.querySelectorAll('.review-edit-item').length;
+    const badge = document.getElementById('reviews-counter');
+    if(badge) badge.innerText = `${count}/4`;
+}
+
 function closeEditModal() { 
     editModalOverlay.classList.remove('open'); 
     editModalSheet.classList.remove('open'); 
@@ -1426,6 +1643,46 @@ function saveBlockEdit() {
         });
         
         if (items.length === 0) items.push({ name: '', oldPrice: '', newPrice: '', percent: '' });
+        
+        selectedBlocks[currentEditingBlockId].items = items;
+    } else if (currentEditingBlockId === 'reviews' || currentEditingBlockId.startsWith('reviews_copy')) {
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-reviews-title').value.trim() || 'Отзывы';
+        
+        const items = [];
+        document.querySelectorAll('.review-edit-item').forEach(row => {
+            const type = row.querySelector('.review-type-input').value;
+            
+            if (type === 'link') {
+                const activeIcon = row.querySelector('.platform-icon-btn.active');
+                const platformId = activeIcon ? activeIcon.dataset.platform : 'yandex';
+                const platformName = reviewPlatformsConfig.find(p => p.id === platformId)?.name || 'Отзывы';
+                const url = row.querySelector('.review-link-input').value.trim();
+                
+                if (url || platformId) {
+                    items.push({ 
+                        type: 'link', 
+                        platform: platformId, 
+                        name: platformName, 
+                        url: url 
+                    });
+                }
+            } else {
+                const author = row.querySelector('.review-author-input').value.trim();
+                const text = row.querySelector('.review-text-input').value.trim();
+                const rating = row.querySelector('.review-rating-hidden').value || 5;
+                
+                if (author || text) {
+                    items.push({ 
+                        type: 'text', 
+                        author: author || 'Аноним', 
+                        text: text, 
+                        rating: parseInt(rating) 
+                    });
+                }
+            }
+        });
+        
+        if (items.length === 0) items.push({ type: 'link', platform: 'yandex', name: 'Яндекс Карты', url: '' });
         
         selectedBlocks[currentEditingBlockId].items = items;
     } else {

@@ -1,3 +1,4 @@
+/* --- CSS VARIABLES --- */
 :root {
     --bg-color: #0f0f13;
     --card-bg: #18181d;
@@ -76,41 +77,21 @@ body {
 
 /* --- Screens Container --- */
 .screen {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    display: flex; 
-    flex-direction: column; 
-    opacity: 0; 
-    pointer-events: none;
-    transition: opacity 0.3s ease-in-out; 
-    background-color: var(--bg-color);
-    overflow-y: auto; 
-    z-index: 1;
-    
-    /* Базовый отступ под хедер */
-    padding-top: 76px; 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease-in-out; background-color: var(--bg-color);
+    overflow-y: auto; z-index: 1;
+    padding-top: 76px; /* Отступ под хедер */
+    scroll-padding-top: 80px;
 }
 
-.screen.active { 
-    opacity: 1; 
-    pointer-events: all; 
-    z-index: 2; 
-}
+.screen.active { opacity: 1; pointer-events: all; z-index: 2; }
 
 /* --- Onboarding Common Styles --- */
 .onboarding-content {
-    flex: 1; 
-    display: flex; 
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-    padding: 0 24px; /* Убрали вертикальный padding */
-    text-align: center;
-    /* Небольшая компенсация, чтобы визуально центр был чуть выше геометрического центра */
-    margin-top: -20px; 
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 0 24px; text-align: center;
+    margin-top: -20px;
 }
 
 .hero-icon {
@@ -138,7 +119,6 @@ p.description { color: var(--text-secondary); font-size: 16px; line-height: 1.5;
 .btn-secondary { background: var(--btn-secondary); color: var(--text-main); }
 .btn-primary { background: var(--btn-primary); color: var(--btn-primary-text); }
 
-/* Mockup */
 .mockup-container {
     width: 140px; height: 180px; background: #16161a; border-radius: 20px;
     border: 2px solid #2a2a35; padding: 10px; display: flex; flex-direction: column;
@@ -150,12 +130,7 @@ p.description { color: var(--text-secondary); font-size: 16px; line-height: 1.5;
 .m-line { height: 4px; background: #2a2a35; border-radius: 2px; }
 
 /* --- Dashboard Styles --- */
-.dashboard-container { 
-    padding: 0 20px 40px 20px; 
-    max-width: 600px; 
-    margin: 0 auto; 
-    width: 100%; 
-}
+.dashboard-container { padding: 0 20px 40px 20px; max-width: 600px; margin: 0 auto; width: 100%; }
 .dash-header-text { margin-bottom: 24px; }
 .dash-title { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
 .dash-subtitle { color: var(--text-secondary); font-size: 15px; line-height: 1.4; }
@@ -233,17 +208,8 @@ p.description { color: var(--text-secondary); font-size: 16px; line-height: 1.5;
 .analytics-text { color: var(--text-secondary); font-size: 16px; line-height: 1.5; }
 
 /* --- CREATOR SCREEN (STEP 1) --- */
-.creator-container { 
-    /* Убираем верхний padding, используем только боковые и нижний */
-    padding: 0 24px 40px 24px; 
-    flex: 1; 
-    overflow-y: visible; 
-}
-.creator-header { 
-    /* Добавляем небольшой отступ внутри контейнера, чтобы заголовок не прилипал к краю зоны прокрутки */
-    margin-bottom: 30px; 
-    margin-top: 10px;
-}
+.creator-container { padding: 0 24px 40px 24px; flex: 1; overflow-y: visible; }
+.creator-header { margin-bottom: 30px; margin-top: 10px; }
 .creator-title { font-size: 32px; font-weight: 800; margin-bottom: 12px; line-height: 1.1; }
 .creator-subtitle { color: var(--text-secondary); font-size: 15px; line-height: 1.4; margin-bottom: 24px; }
 
@@ -276,13 +242,9 @@ p.description { color: var(--text-secondary); font-size: 16px; line-height: 1.5;
 
 /* --- BLOCKS SELECTION SCREEN (STEP 2) --- */
 .blocks-header-section {
-    padding: 10px 24px 20px 24px; /* Уменьшен верхний padding */
-    position: sticky; 
-    top: 0; /* Прилипает к верху области прокрутки (учитывая padding родителя) */
-    background: var(--bg-color);
-    z-index: 10; 
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    /* Важно: sticky работает относительно scrolling parent (.screen) */
+    padding: 10px 24px 20px 24px;
+    position: sticky; top: 0; background: var(--bg-color);
+    z-index: 10; border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .blocks-list { padding: 20px 24px 100px 24px; display: flex; flex-direction: column; gap: 12px; }
@@ -319,24 +281,17 @@ input:checked + .slider { background-color: #3f3f4e; }
 input:checked + .slider:before { transform: translateX(20px); }
 
 /* --- PREVIEW SCREEN (STEP 3) --- */
-.blocks-header-section,
 .preview-header-section {
-    /* Sticky работает относительно родителя .screen. 
-       Так как у .screen есть padding-top 76px, sticky элемент 
-       будет "прилипать" к началу видимой области контента, а не к самому верху окна.
-       Это идеально решает проблему перекрытия. */
     padding: 10px 24px 20px 24px;
-    position: sticky; 
-    top: 0; 
-    background: var(--bg-color);
-    z-index: 10; 
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    position: sticky; top: 0; background: var(--bg-color);
+    z-index: 10; border-bottom: 1px solid rgba(255,255,255,0.05);
 }
+
 .preview-list {
-    padding: 20px 24px 100px 24px;
+    padding: 20px 24px 120px 24px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 32px;
 }
 
 /* Header Card in Preview */
@@ -370,6 +325,11 @@ input:checked + .slider:before { transform: translateX(20px); }
     background-position: center;
 }
 
+.header-preview-cover.banner-mode {
+    height: 140px;
+    opacity: 1;
+}
+
 .header-preview-avatar {
     width: 70px;
     height: 70px;
@@ -387,9 +347,26 @@ input:checked + .slider:before { transform: translateX(20px); }
     background-position: center;
 }
 
+.header-preview-avatar.overlay-mode {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    border: 4px solid var(--card-bg);
+    z-index: 5;
+    margin-bottom: 0;
+}
+
 .header-preview-info {
     text-align: center;
     z-index: 2;
+}
+
+.header-preview-info.banner-info {
+    margin-top: 50px;
+    z-index: 4;
 }
 
 .header-preview-info h3 {
@@ -421,12 +398,11 @@ input:checked + .slider:before { transform: translateX(20px); }
 }
 
 /* Block Cards in Preview */
-.preview-list {
-    padding: 20px 24px 120px 24px; /* Увеличен нижний отступ для кнопки Telegram */
+.preview-block-section {
     display: flex;
     flex-direction: column;
-    gap: 32px; /* Большие отступы между блоками вместо рамок */
 }
+
 .block-section-header {
     display: flex;
     justify-content: space-between;
@@ -437,7 +413,7 @@ input:checked + .slider:before { transform: translateX(20px); }
 .block-section-title {
     font-size: 13px;
     font-weight: 700;
-    color: var(--color-blue); /* Синий цвет как на скриншоте */
+    color: var(--color-blue);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -468,11 +444,11 @@ input:checked + .slider:before { transform: translateX(20px); }
 }
 
 .action-btn.active-eye {
-    color: var(--text-main);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(165, 180, 252, 0.1);
+    color: var(--btn-primary);
+    border-color: rgba(165, 180, 252, 0.3);
 }
 
-/* Контейнер содержимого блока (без рамок и фона) */
 .preview-card-body {
     background: transparent;
     border: none;
@@ -483,15 +459,20 @@ input:checked + .slider:before { transform: translateX(20px); }
     line-height: 1.5;
 }
 
-/* Специфичные стили для контента */
-.preview-card-body p {
-    margin: 0;
-    color: var(--text-secondary); /* Текст "О бизнесе" серый */
+.preview-block-section.hidden-block {
+    opacity: 0.3;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
 }
 
-/* Стиль для блока ссылок (внутренняя плашка) */
+.preview-block-section.hidden-block .action-btn.active-eye {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+}
+
+/* Стили для блока ссылок */
 .link-item {
-    background: #1c1c22; /* Темный фон для самой кнопки */
+    background: #1c1c22;
     border-radius: 16px;
     padding: 16px 20px;
     display: flex;
@@ -515,7 +496,7 @@ input:checked + .slider:before { transform: translateX(20px); }
 .link-icon-box {
     width: 36px;
     height: 36px;
-    background: rgba(96, 165, 250, 0.15); /* Синеватый фон под иконкой */
+    background: rgba(96, 165, 250, 0.15);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -532,7 +513,439 @@ input:checked + .slider:before { transform: translateX(20px); }
     color: var(--text-secondary);
 }
 
-/* Кнопка Telegram внизу визитки */
+/* Стили для соцсетей */
+.socials-grid-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    justify-items: center;
+}
+
+.social-icon-btn {
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.social-icon-btn:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+.social-icon-btn svg { width: 24px; height: 24px; fill: currentColor; }
+
+/* Стили для часов работы */
+.hours-preview-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 12px;
+}
+
+.status-text-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-open .status-text-group { color: #4ade80; }
+.status-open .status-dot { 
+    background: #4ade80; 
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.6); 
+}
+
+.status-closed .status-text-group { color: #ef4444; }
+.status-closed .status-dot { 
+    background: #ef4444; 
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.6); 
+}
+
+.current-hours-time {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.hours-days-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hours-day-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    transition: opacity 0.2s;
+}
+
+.day-name {
+    font-weight: 600;
+    color: var(--color-blue);
+    min-width: 40px;
+}
+
+.day-time {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.hours-day-item.is-weekend {
+    opacity: 0.4;
+}
+
+.hours-day-item.is-weekend .day-name {
+    color: var(--text-secondary);
+}
+
+.hours-day-item.is-weekend .day-time {
+    color: var(--text-secondary);
+}
+
+/* Стили для кнопки CTA */
+.cta-button-preview {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    background: var(--btn-primary);
+    color: var(--btn-primary-text);
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.1s;
+    box-sizing: border-box;
+}
+
+.cta-button-preview:active {
+    transform: scale(0.98);
+}
+
+.cta-style-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; bottom: 0; width: 50%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmerAnim 4s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes shimmerAnim {
+    0% { left: -100%; }
+    50% { left: 200%; }
+    100% { left: 200%; }
+}
+
+.cta-style-flash::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; bottom: 0; width: 40%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
+    transform: skewX(-20deg);
+    animation: flashAnim 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes flashAnim {
+    0% { left: -100%; opacity: 0; }
+    5% { opacity: 1; }
+    15% { left: 200%; opacity: 0; }
+    100% { left: 200%; opacity: 0; }
+}
+
+.cta-style-pulse {
+    animation: pulseAnim 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulseAnim {
+    0% { box-shadow: 0 0 0 0 rgba(165, 180, 252, 0.7); }
+    70% { box-shadow: 0 0 0 12px rgba(165, 180, 252, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(165, 180, 252, 0); }
+}
+
+/* Стили для контактов */
+.contacts-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 14px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.contact-btn:active {
+    transform: scale(0.97);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.contact-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+.contact-btn.full-width {
+    grid-column: 1 / -1;
+    margin-top: 0;
+}
+
+.contact-toggle-row {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-toggle-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.contact-toggle-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(96, 165, 250, 0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-blue);
+}
+
+.contact-toggle-text h4 {
+    font-size: 14px;
+    margin: 0 0 4px 0;
+    font-weight: 600;
+}
+
+.contact-toggle-text p {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Стили для прайса */
+.price-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.price-row-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.price-item-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.price-item-cost {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-blue);
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+/* Стили для скидок */
+.discounts-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.discount-card-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.discount-card-item::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; bottom: 0; width: 50%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+    animation: shimmerAnim 3s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.discount-badge {
+    background: #ef4444;
+    color: white;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    margin-right: 14px;
+    flex-shrink: 0;
+}
+
+.discount-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.discount-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.discount-prices-display {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.old-price {
+    color: var(--text-secondary);
+    text-decoration: line-through;
+}
+
+.new-price {
+    color: var(--color-blue);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* Стили для отзывов */
+.reviews-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review-link-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    color: var(--text-main);
+    transition: transform 0.1s;
+}
+
+.review-link-item:active {
+    transform: scale(0.98);
+}
+
+.review-platform-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.review-platform-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.review-platform-name {
+    flex: 1;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.review-action {
+    color: var(--color-blue);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.review-text-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.review-stars {
+    font-size: 18px;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.review-text-content {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.review-author {
+    font-size: 13px;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* Telegram FAB */
 .telegram-fab {
     position: fixed;
     bottom: 30px;
@@ -540,8 +953,8 @@ input:checked + .slider:before { transform: translateX(20px); }
     transform: translateX(-50%);
     width: 60px;
     height: 60px;
-    background: #2a2a35; /* Цвет как на иконках действий */
-    border-radius: 20px; /* Squircle форма */
+    background: #2a2a35;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -563,73 +976,15 @@ input:checked + .slider:before { transform: translateX(20px); }
     fill: currentColor;
 }
 
-/* Стили для скрытого (полупрозрачного) блока */
-.preview-block-section.hidden-block {
-    opacity: 0.3;
-    filter: grayscale(100%);
-    transition: all 0.3s ease;
+/* Toast Notification */
+.toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+    background: #2a2a35; color: white; padding: 12px 24px; border-radius: 30px;
+    font-size: 14px; font-weight: 600; z-index: 200; opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); pointer-events: none;
 }
-
-/* Кнопка глаза для скрытого блока тоже должна быть менее яркой */
-.preview-block-section.hidden-block .action-btn.active-eye {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-secondary);
-}
-
-.preview-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.preview-card-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-main);
-}
-
-.preview-card-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.action-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--text-secondary);
-    transition: all 0.2s;
-}
-
-.action-btn:hover, .action-btn:active {
-    background: rgba(255,255,255,0.1);
-    color: var(--text-main);
-}
-
-.action-btn.active-eye {
-    background: rgba(165, 180, 252, 0.1);
-    color: var(--btn-primary);
-    border-color: rgba(165, 180, 252, 0.3);
-}
-
-.preview-card-body {
-    background: rgba(0,0,0,0.2);
-    border-radius: 12px;
-    padding: 16px;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    font-size: 14px;
-    border: 1px dashed rgba(255,255,255,0.1);
-}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
 /* --- HEADER MODAL STYLES --- */
 .header-modal-sheet {
@@ -748,7 +1103,6 @@ input:checked + .slider:before { transform: translateX(20px); }
     font-style: italic;
 }
 
-/* Cover Preview in Modal */
 .modal-cover-preview {
     background: var(--card-bg);
     border-radius: 16px;
@@ -798,7 +1152,6 @@ input:checked + .slider:before { transform: translateX(20px); }
     font-weight: 600;
 }
 
-/* Banner Preview */
 .modal-banner-preview {
     height: 80px;
     background: rgba(255,255,255,0.05);
@@ -815,7 +1168,6 @@ input:checked + .slider:before { transform: translateX(20px); }
     font-weight: 600;
 }
 
-/* Carousel Preview */
 .modal-carousel-preview {
     display: flex;
     gap: 8px;
@@ -830,26 +1182,15 @@ input:checked + .slider:before { transform: translateX(20px); }
     border: 1px dashed rgba(255,255,255,0.1);
 }
 
-/* Toast */
-.toast {
-    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
-    background: #2a2a35; color: white; padding: 12px 24px; border-radius: 30px;
-    font-size: 14px; font-weight: 600; z-index: 200; opacity: 0;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); pointer-events: none;
-}
-.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
-/* Секция редактирования текста в модалке шапки */
 .header-text-edit-section {
-    margin-bottom: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
 }
 
 #modal-input-name, 
 #modal-input-desc {
-    background: rgba(0,0,0,0.2); /* Чуть темнее фон для контраста */
+    background: rgba(0,0,0,0.2);
     border: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -859,30 +1200,7 @@ input:checked + .slider:before { transform: translateX(20px); }
     background: rgba(0,0,0,0.3);
 }
 
-/* --- Стили для режима БАННЕР (Обложка + Аватар) --- */
-.header-preview-cover.banner-mode {
-    height: 140px; /* Высота баннера */
-    opacity: 1;
-}
-
-.header-preview-avatar.overlay-mode {
-    position: absolute;
-    top: 80px; /* Смещение вниз, чтобы перекрывать край обложки */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 80px;
-    border: 4px solid var(--card-bg); /* Рамка цветом фона карточки */
-    z-index: 5;
-    margin-bottom: 0;
-}
-
-.header-preview-info.banner-info {
-    margin-top: 50px; /* Отступ текста от аватара */
-    z-index: 4;
-}
-
-/* --- Стили для КАРУСЕЛИ --- */
+/* Carousel styles */
 .carousel-container {
     display: flex;
     overflow-x: auto;
@@ -914,7 +1232,459 @@ input:checked + .slider:before { transform: translateX(20px); }
     flex-shrink: 0;
 }
 
-/* Стили для редактора ссылок */
+/* Hours Editor Styles */
+.hours-editor-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.days-selector-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.day-toggle-btn {
+    flex: 1;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.day-toggle-btn.active {
+    border-color: var(--color-blue);
+    background: rgba(96, 165, 250, 0.1);
+    color: var(--color-blue);
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.1);
+}
+
+.time-range-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.time-input-wrapper {
+    flex: 1;
+    position: relative;
+}
+
+.time-input-wrapper label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.custom-time-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 40px 12px 16px;
+    color: white;
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    text-align: center;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.custom-time-input:focus {
+    border-color: var(--color-blue);
+}
+
+.time-icon {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 18px;
+    height: 18px;
+    stroke: var(--text-secondary);
+    pointer-events: none;
+}
+
+.hours-hint-text {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+.individual-days-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.day-row-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: opacity 0.3s;
+}
+
+.day-row-item.is-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.day-row-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 80px;
+}
+
+.day-name-text {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.day-row-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.mini-time-input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 6px 8px;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    width: 70px;
+    outline: none;
+}
+
+.time-separator {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.mode-highlight {
+    background: rgba(165, 180, 252, 0.05);
+    border-color: rgba(165, 180, 252, 0.2);
+}
+
+.hours-templates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.template-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+    color: var(--text-main);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.template-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--color-blue); }
+.template-btn svg { width: 16px; height: 16px; stroke: var(--text-secondary); }
+
+.hours-mode-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hours-mode-info { display: flex; align-items: center; gap: 12px; }
+.hours-mode-icon { 
+    width: 32px; height: 32px; background: rgba(255,255,255,0.05); 
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; 
+}
+.hours-mode-text h4 { font-size: 15px; margin: 0 0 4px 0; }
+.hours-mode-text p { font-size: 12px; color: var(--text-secondary); margin: 0; }
+
+/* Price Editor Styles */
+.price-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.price-item-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.price-input-name {
+    flex: 2;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.price-input-cost {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: white;
+    font-size: 14px;
+    text-align: right;
+    outline: none;
+}
+
+.btn-remove-price {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(239, 68, 68, 0.1);
+    border: none;
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.btn-add-price {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.price-limit-hint {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.limit-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Discounts Editor Styles */
+.discount-item-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.discount-top-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.discount-input-name {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.btn-remove-discount {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: rgba(239, 68, 68, 0.1);
+    border: none;
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.discount-prices-row {
+    display: flex;
+    gap: 8px;
+}
+
+.discount-input-price, .discount-input-percent {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+}
+
+.discount-hint-text {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Reviews Editor Styles */
+.review-edit-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.platform-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.platform-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.platform-icon-btn.active {
+    background: rgba(255,255,255,0.1);
+}
+
+.platform-icon-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.review-link-input {
+    width: 100%;
+}
+
+.btn-remove-review {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(239, 68, 68, 0.1);
+    border: none;
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.review-manual-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.review-author-input {
+    flex: 2;
+}
+
+.rating-selector {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.star-btn {
+    font-size: 20px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-btn.active {
+    color: #F1C40F;
+}
+
+.review-text-input {
+    width: 100%;
+    resize: none;
+}
+
+/* Links Editor Styles */
 .links-editor-list {
     display: flex;
     flex-direction: column;
@@ -1020,7 +1790,7 @@ input:checked + .slider:before { transform: translateX(20px); }
     border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Стили для редактора соцсетей */
+/* Socials Editor Styles */
 .social-item {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 16px;
@@ -1058,13 +1828,6 @@ input:checked + .slider:before { transform: translateX(20px); }
     font-size: 16px;
 }
 
-/* Toggle Switch Style */
-.toggle-switch {
-    position: relative;
-    width: 44px;
-    height: 24px;
-}
-.toggle-switch input { opacity: 0; width: 0; height: 0; }
 .slider-toggle {
     position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
     background-color: #3f3f4e; transition: .4s; border-radius: 34px;
@@ -1073,7 +1836,7 @@ input:checked + .slider:before { transform: translateX(20px); }
     position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
     background-color: white; transition: .4s; border-radius: 50%;
 }
-input:checked + .slider-toggle { background-color: #a5b4fc; } /* Цвет как на скриншоте */
+input:checked + .slider-toggle { background-color: #a5b4fc; }
 input:checked + .slider-toggle:before { transform: translateX(20px); }
 
 .social-input {
@@ -1087,314 +1850,10 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     outline: none;
     box-sizing: border-box;
 }
+
 .social-input:focus { border-color: var(--color-blue); color: white; }
 
-/* Сетка иконок для превью (последний скриншот) */
-.socials-grid-preview {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    justify-items: center;
-}
-
-.social-icon-btn {
-    width: 56px;
-    height: 56px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    transition: all 0.2s;
-}
-.social-icon-btn:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
-.social-icon-btn svg { width: 24px; height: 24px; fill: currentColor; }
-
-/* --- Стили для блока Часов Работы (Минимализм) --- */
-
-/* Контейнер статуса (Верхняя часть) */
-.hours-preview-status {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Тонкая линия разделителя */
-    margin-bottom: 12px;
-}
-
-/* Текст статуса (Открыто/Закрыто) */
-.status-text-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    font-size: 16px;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-}
-
-/* Цвета статусов */
-.status-open .status-text-group { color: #4ade80; } /* Зеленый */
-.status-open .status-dot { 
-    background: #4ade80; 
-    box-shadow: 0 0 8px rgba(74, 222, 128, 0.6); 
-}
-
-.status-closed .status-text-group { color: #ef4444; } /* Красный */
-.status-closed .status-dot { 
-    background: #ef4444; 
-    box-shadow: 0 0 8px rgba(239, 68, 68, 0.6); 
-}
-
-/* Время работы справа от статуса */
-/* --- Стили для редактора Часов Работы (Смешанный режим) --- */
-
-.hours-editor-label {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 10px;
-    display: block;
-}
-
-/* Сетка кнопок дней (для простого режима) */
-.days-selector-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 6px;
-    margin-bottom: 24px;
-}
-
-.day-toggle-btn {
-    flex: 1;
-    aspect-ratio: 1;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: transparent;
-    color: var(--text-secondary);
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.day-toggle-btn.active {
-    border-color: var(--color-blue);
-    background: rgba(96, 165, 250, 0.1);
-    color: var(--color-blue);
-    box-shadow: 0 0 10px rgba(96, 165, 250, 0.1);
-}
-
-/* Контейнер для списка дней (для сложного режима) */
-.individual-days-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-/* Строка одного дня */
-.day-row-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 10px 12px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: opacity 0.3s;
-}
-
-/* Неактивный день (выходной) */
-.day-row-item.is-disabled {
-    opacity: 0.4;
-    pointer-events: none; /* Блокируем клики, но оставляем видимость */
-}
-
-.day-row-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 80px;
-}
-
-.day-name-text {
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--text-main);
-}
-
-.day-row-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex: 1;
-    justify-content: flex-end;
-}
-
-/* Поля времени в строке дня */
-.mini-time-input {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 6px 8px;
-    color: white;
-    font-size: 13px;
-    text-align: center;
-    width: 70px;
-    outline: none;
-}
-
-.mini-time-input:focus {
-    border-color: var(--color-blue);
-}
-
-.time-separator {
-    color: var(--text-secondary);
-    font-size: 14px;
-}
-
-/* Общие стили для выбора времени */
-.time-range-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 8px;
-}
-
-.time-input-wrapper {
-    flex: 1;
-    position: relative;
-}
-
-.time-input-wrapper label {
-    display: block;
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin-bottom: 6px;
-}
-
-.custom-time-input {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 12px 40px 12px 16px;
-    color: white;
-    font-size: 16px;
-    font-family: inherit;
-    outline: none;
-    text-align: center;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-}
-
-.custom-time-input:focus {
-    border-color: var(--color-blue);
-}
-
-.time-icon {
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
-    width: 18px;
-    height: 18px;
-    stroke: var(--text-secondary);
-    pointer-events: none;
-}
-
-.hours-hint-text {
-    font-size: 12px;
-    color: var(--text-secondary);
-    opacity: 0.7;
-    margin-top: 8px;
-}
-
-/* Режим "Разные часы" выделен */
-.mode-highlight {
-    background: rgba(165, 180, 252, 0.05);
-    border-color: rgba(165, 180, 252, 0.2);
-}
-
-/* --- Стили для кнопки CTA и её анимаций --- */
-
-/* Базовая кнопка CTA в превью */
-.cta-button-preview {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    border-radius: 14px;
-    background: var(--btn-primary); /* Основной цвет (светло-фиолетовый) */
-    color: var(--btn-primary-text); /* Темный текст */
-    text-align: center;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden; /* Важно для эффекта "проблеск" */
-    transition: transform 0.1s;
-    box-sizing: border-box;
-}
-
-.cta-button-preview:active {
-    transform: scale(0.98);
-}
-
-/* Эффект 1: Перелив (Shimmer) - медленное движение блика */
-.cta-style-shimmer::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%; bottom: 0; width: 50%;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
-    animation: shimmerAnim 4s infinite ease-in-out;
-    pointer-events: none;
-}
-
-@keyframes shimmerAnim {
-    0% { left: -100%; }
-    50% { left: 200%; }
-    100% { left: 200%; }
-}
-
-/* Эффект 2: Проблеск (Flash) - быстрый пробег полосы */
-.cta-style-flash::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%; bottom: 0; width: 40%;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
-    transform: skewX(-20deg);
-    animation: flashAnim 3s infinite;
-    pointer-events: none;
-}
-
-@keyframes flashAnim {
-    0% { left: -100%; opacity: 0; }
-    5% { opacity: 1; }
-    15% { left: 200%; opacity: 0; }
-    100% { left: 200%; opacity: 0; }
-}
-
-/* Эффект 3: Пульсация (Pulse) - мягкое свечение */
-.cta-style-pulse {
-    animation: pulseAnim 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-@keyframes pulseAnim {
-    0% { box-shadow: 0 0 0 0 rgba(165, 180, 252, 0.7); }
-    70% { box-shadow: 0 0 0 12px rgba(165, 180, 252, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(165, 180, 252, 0); }
-}
-
-/* --- Стили для выбора оформления в модалке --- */
+/* CTA Style Selector */
 .style-selector-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1429,7 +1888,6 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     overflow: hidden;
 }
 
-/* Мини-анимации для превью выбора */
 .style-option-btn[data-style="shimmer"] .style-mini-preview::after {
     content: ''; position: absolute; top:0; left:-100%; bottom:0; width:50%;
     background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
@@ -1451,364 +1909,4 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
 }
 .style-option-btn.active .style-option-label {
     color: var(--text-main);
-}
-
-/* --- Стили для блока Контакты --- */
-
-.contacts-actions-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Две колонки для верхних кнопок */
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.contact-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
-    padding: 14px;
-    color: var(--text-main);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    transition: all 0.2s;
-}
-
-.contact-btn:active {
-    transform: scale(0.97);
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.contact-btn svg {
-    width: 18px;
-    height: 18px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2;
-}
-
-/* Кнопка "Сохранить в контакты" на всю ширину */
-.contact-btn.full-width {
-    grid-column: 1 / -1; /* Растянуть на всю ширину сетки */
-    margin-top: 0;
-}
-
-/* Стили для модалки редактирования контактов */
-.contact-toggle-row {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 16px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.contact-toggle-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex: 1;
-}
-
-.contact-toggle-icon {
-    width: 32px;
-    height: 32px;
-    background: rgba(96, 165, 250, 0.15);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-blue);
-}
-
-.contact-toggle-text h4 {
-    font-size: 14px;
-    margin: 0 0 4px 0;
-    font-weight: 600;
-}
-
-.contact-toggle-text p {
-    font-size: 11px;
-    color: var(--text-secondary);
-    margin: 0;
-    line-height: 1.3;
-}
-
-/* --- Стили для блока Прайс/Меню --- */
-
-/* Редактор: Список позиций */
-.price-items-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 16px;
-}
-
-.price-item-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 8px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.price-input-name {
-    flex: 2;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 10px 12px;
-    color: white;
-    font-size: 14px;
-    outline: none;
-}
-
-.price-input-cost {
-    flex: 1;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 10px 12px;
-    color: white;
-    font-size: 14px;
-    text-align: right;
-    outline: none;
-}
-
-.btn-remove-price {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(239, 68, 68, 0.1);
-    border: none;
-    color: #ef4444;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.btn-add-price {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    background: transparent;
-    border: 1px dashed rgba(255, 255, 255, 0.2);
-    color: var(--text-main);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-
-.price-limit-hint {
-    font-size: 11px;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.limit-badge {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2px 6px;
-    border-radius: 6px;
-    font-weight: 600;
-    color: var(--text-main);
-}
-
-/* Отображение на визитке: Строка прайса */
-.price-list-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.price-row-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 14px 16px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.price-item-name {
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--text-main);
-}
-
-.price-item-cost {
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--color-blue); /* Цена синим цветом как на скриншоте */
-    white-space: nowrap;
-    margin-left: 10px;
-}
-
-/* --- Стили для блока Скидки/Акции --- */
-
-/* Редактор: Сетка полей */
-.discount-item-row {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 12px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.discount-top-row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.discount-input-name {
-    flex: 1;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 10px 12px;
-    color: white;
-    font-size: 14px;
-    outline: none;
-}
-
-.btn-remove-discount {
-    width: 32px;
-    height: 32px;
-    border-radius: 10px;
-    background: rgba(239, 68, 68, 0.1);
-    border: none;
-    color: #ef4444;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.discount-prices-row {
-    display: flex;
-    gap: 8px;
-}
-
-.discount-input-price, .discount-input-percent {
-    flex: 1;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 10px 12px;
-    color: white;
-    font-size: 14px;
-    text-align: center;
-    outline: none;
-}
-
-.discount-hint-text {
-    font-size: 11px;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-    line-height: 1.4;
-}
-
-/* Отображение на визитке: Карточка акции */
-.discounts-list-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.discount-card-item {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 12px 16px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    /* Анимация перелива как у кнопки CTA */
-    position: relative;
-    overflow: hidden;
-}
-
-/* Эффект перелива для карточки акции */
-.discount-card-item::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%; bottom: 0; width: 50%;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-    animation: shimmerAnim 3s infinite ease-in-out;
-    pointer-events: none;
-}
-
-@keyframes shimmerAnim {
-    0% { left: -100%; }
-    50% { left: 200%; }
-    100% { left: 200%; }
-}
-
-.discount-badge {
-    background: #ef4444; /* Красный цвет */
-    color: white;
-    font-weight: 800;
-    font-size: 13px;
-    padding: 6px 10px;
-    border-radius: 10px;
-    margin-right: 14px;
-    flex-shrink: 0;
-}
-
-.discount-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0; /* Для обрезки текста */
-}
-
-.discount-title {
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--text-main);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.discount-prices-display {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    font-size: 14px;
-}
-
-.old-price {
-    color: var(--text-secondary);
-    text-decoration: line-through;
-}
-
-.new-price {
-    color: var(--color-blue); /* Синяя новая цена */
-    font-weight: 700;
-    font-size: 16px;
 }
