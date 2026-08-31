@@ -1661,3 +1661,154 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     white-space: nowrap;
     margin-left: 10px;
 }
+
+/* --- Стили для блока Скидки/Акции --- */
+
+/* Редактор: Сетка полей */
+.discount-item-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.discount-top-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.discount-input-name {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.btn-remove-discount {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: rgba(239, 68, 68, 0.1);
+    border: none;
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.discount-prices-row {
+    display: flex;
+    gap: 8px;
+}
+
+.discount-input-price, .discount-input-percent {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+}
+
+.discount-hint-text {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Отображение на визитке: Карточка акции */
+.discounts-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.discount-card-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Анимация перелива как у кнопки CTA */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект перелива для карточки акции */
+.discount-card-item::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; bottom: 0; width: 50%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+    animation: shimmerAnim 3s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes shimmerAnim {
+    0% { left: -100%; }
+    50% { left: 200%; }
+    100% { left: 200%; }
+}
+
+.discount-badge {
+    background: #ef4444; /* Красный цвет */
+    color: white;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    margin-right: 14px;
+    flex-shrink: 0;
+}
+
+.discount-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0; /* Для обрезки текста */
+}
+
+.discount-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.discount-prices-display {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.old-price {
+    color: var(--text-secondary);
+    text-decoration: line-through;
+}
+
+.new-price {
+    color: var(--color-blue); /* Синяя новая цена */
+    font-weight: 700;
+    font-size: 16px;
+}

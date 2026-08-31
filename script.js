@@ -667,6 +667,37 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных позиций</div>`;
                 }
             }
+            // Special rendering for Discounts block
+            else if (key === 'discounts' || key.startsWith('discounts_copy')) {
+                const items = blockData.items || [];
+                
+                if (items.length > 0 && (items[0].name || items[0].newPrice)) {
+                    contentHtml = `<div class="discounts-list-container">`;
+                    items.forEach(item => {
+                        const displayName = item.name || 'Акция';
+                        const oldP = item.oldPrice ? item.oldPrice : '';
+                        const newP = item.newPrice ? item.newPrice : '';
+                        const perc = item.percent ? `-${item.percent}%` : '';
+                        
+                        // Формируем HTML карточки
+                        contentHtml += `
+                            <div class="discount-card-item">
+                                ${perc ? `<div class="discount-badge">${perc}</div>` : ''}
+                                <div class="discount-info">
+                                    <div class="discount-title">${displayName}</div>
+                                    <div class="discount-prices-display">
+                                        ${oldP ? `<span class="old-price">${oldP}</span>` : ''}
+                                        ${newP ? `<span class="new-price">${newP}</span>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    contentHtml += `</div>`;
+                } else {
+                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных акций</div>`;
+                }
+            }
             else {
                 // Default placeholder for other blocks
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
@@ -1068,6 +1099,56 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, дальше расширение блока
             </div>
         `;
+    } else if (key === 'discounts' || key.startsWith('discounts_copy')) {
+        titleEl.innerText = 'Скидки / Акции';
+        
+        const items = blockData.items || [{name: '', oldPrice: '', newPrice: '', percent: ''}];
+        const limit = 3;
+
+        let itemsHtml = '';
+        items.forEach((item, index) => {
+            itemsHtml += `
+                <div class="discount-item-row">
+                    <div class="discount-top-row">
+                        <input type="text" class="discount-input-name" placeholder="Название акции" value="${item.name}" data-index="${index}">
+                        <button class="btn-remove-discount" onclick="removeDiscountItem(this)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                    <div class="discount-prices-row">
+                        <input type="number" class="discount-input-price discount-old" placeholder="Цена до" value="${item.oldPrice}" data-index="${index}" oninput="calculateDiscountPercent(this)">
+                        <input type="number" class="discount-input-price discount-new" placeholder="Цена после" value="${item.newPrice}" data-index="${index}" oninput="calculateDiscountPercent(this)">
+                        <input type="text" class="discount-input-percent" placeholder="% скидк" value="${item.percent}" data-index="${index}">
+                    </div>
+                </div>
+            `;
+        });
+
+        fieldsContainer.innerHTML = `
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Заголовок</label>
+                <input type="text" class="form-input" id="edit-discounts-title" value="${blockData.title || 'Акции'}" placeholder="Акции">
+            </div>
+            
+            <label class="form-label" style="margin-bottom: 10px; display:block;">Скидки</label>
+            <div id="discounts-list-container">
+                ${itemsHtml}
+            </div>
+            
+            <button class="btn-add-price" onclick="addDiscountItem()" style="margin-bottom: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Добавить скидку
+            </button>
+            
+            <div class="price-limit-hint">
+                <span class="limit-badge" id="discounts-counter">${items.length}/${limit}</span>
+                бесплатно — до ${limit} элементов, в PRO больше
+            </div>
+            
+            <div class="discount-hint-text">
+                Оставь «%» пустым — посчитаю сам из цен «до» и «после». Или укажи процент вручную.
+            </div>
+        `;
     } else {
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
@@ -1164,6 +1245,58 @@ function updatePriceCounter() {
     const count = document.querySelectorAll('.price-item-row').length;
     const badge = document.querySelector('.limit-badge');
     if(badge) badge.innerText = `${count}/5`;
+}
+
+// Functions for Discounts Block
+function addDiscountItem() {
+    const container = document.getElementById('discounts-list-container');
+    const index = container.children.length;
+    
+    const row = document.createElement('div');
+    row.className = 'discount-item-row';
+    row.innerHTML = `
+        <div class="discount-top-row">
+            <input type="text" class="discount-input-name" placeholder="Название акции" data-index="${index}">
+            <button class="btn-remove-discount" onclick="removeDiscountItem(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="discount-prices-row">
+            <input type="number" class="discount-input-price discount-old" placeholder="Цена до" data-index="${index}" oninput="calculateDiscountPercent(this)">
+            <input type="number" class="discount-input-price discount-new" placeholder="Цена после" data-index="${index}" oninput="calculateDiscountPercent(this)">
+            <input type="text" class="discount-input-percent" placeholder="% скидк" data-index="${index}">
+        </div>
+    `;
+    container.appendChild(row);
+    updateDiscountCounter();
+}
+
+function removeDiscountItem(btn) {
+    const row = btn.closest('.discount-item-row');
+    row.remove();
+    updateDiscountCounter();
+}
+
+function calculateDiscountPercent(input) {
+    const row = input.closest('.discount-item-row');
+    const oldPriceInput = row.querySelector('.discount-old');
+    const newPriceInput = row.querySelector('.discount-new');
+    const percentInput = row.querySelector('.discount-input-percent');
+    
+    const oldP = parseFloat(oldPriceInput.value);
+    const newP = parseFloat(newPriceInput.value);
+    
+    // Считаем только если оба поля заполнены и цены валидны
+    if (!isNaN(oldP) && !isNaN(newP) && oldP > 0 && newP < oldP) {
+        const percent = Math.round(((oldP - newP) / oldP) * 100);
+        percentInput.value = percent;
+    }
+}
+
+function updateDiscountCounter() {
+    const count = document.querySelectorAll('.discount-item-row').length;
+    const badge = document.getElementById('discounts-counter');
+    if(badge) badge.innerText = `${count}/3`;
 }
 
 function closeEditModal() { 
@@ -1269,6 +1402,30 @@ function saveBlockEdit() {
         });
         
         if (items.length === 0) items.push({ name: '', cost: '' });
+        
+        selectedBlocks[currentEditingBlockId].items = items;
+    } else if (currentEditingBlockId === 'discounts' || currentEditingBlockId.startsWith('discounts_copy')) {
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-discounts-title').value.trim() || 'Акции';
+        
+        const items = [];
+        document.querySelectorAll('.discount-item-row').forEach(row => {
+            const name = row.querySelector('.discount-input-name').value.trim();
+            const oldPrice = row.querySelector('.discount-old').value.trim();
+            const newPrice = row.querySelector('.discount-new').value.trim();
+            const percent = row.querySelector('.discount-input-percent').value.trim();
+            
+            // Сохраняем если есть название или цены
+            if (name || oldPrice || newPrice) {
+                items.push({ 
+                    name: name || 'Акция', 
+                    oldPrice: oldPrice, 
+                    newPrice: newPrice, 
+                    percent: percent 
+                });
+            }
+        });
+        
+        if (items.length === 0) items.push({ name: '', oldPrice: '', newPrice: '', percent: '' });
         
         selectedBlocks[currentEditingBlockId].items = items;
     } else {
