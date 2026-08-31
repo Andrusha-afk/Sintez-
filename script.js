@@ -61,7 +61,7 @@ const reviewPlatformsConfig = [
     { 
         id: 'yandex', 
         name: 'Яндекс Карты', 
-        icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>', // Используем похожую иконку пина, но красную для Яндекса
+        icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',
         color: '#FF0000'
     },
     { 
@@ -110,7 +110,7 @@ const translations = {
         bl_title: "Что ", bl_title_grad: "показать", bl_desc: "Выбери блоки.",
         blk_links: "Ссылки", blk_socials: "Соцсети", blk_hours: "Часы работы", blk_cta: "Призыв",
         blk_contacts: "Контакты", blk_price: "Прайс", blk_discounts: "Скидки",
-        blk_reviews: "Отзывы", blk_faq: "FAQ", blk_facts: "Факты",
+        blk_reviews: "Отзывы", blk_faq: "Вопрос-ответ", blk_facts: "Факты",
         blk_video: "Видео", blk_share: "Поделиться", blk_gallery: "Галерея", blk_map: "Карта",
         btn_back: "Назад", btn_assemble: "Далее",
         pv_title: "Твоя визитка", pv_desc: "Нажми на шапку, чтобы изменить формат.",
@@ -145,7 +145,7 @@ const translations = {
         bl_title: "What to ", bl_title_grad: "show", bl_desc: "Select blocks.",
         blk_links: "Links", blk_socials: "Socials", blk_hours: "Hours", blk_cta: "CTA",
         blk_contacts: "Contacts", blk_price: "Price", blk_discounts: "Discounts",
-        blk_reviews: "Reviews", blk_faq: "FAQ", blk_facts: "Facts",
+        blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts",
         blk_video: "Video", blk_share: "Share", blk_gallery: "Gallery", blk_map: "Map",
         btn_back: "Back", btn_assemble: "Next",
         pv_title: "Your card", pv_desc: "Tap header to change format.",
@@ -769,6 +769,35 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных отзывов</div>`;
                 }
             }
+            // Special rendering for FAQ block
+            else if (key === 'faq' || key.startsWith('faq_copy')) {
+                const items = blockData.items || [];
+                
+                if (items.length > 0) {
+                    contentHtml = `<div class="faq-list-container">`;
+                    items.forEach((item, index) => {
+                        const qId = `faq-q-${key}-${index}`;
+                        const aId = `faq-a-${key}-${index}`;
+                        
+                        contentHtml += `
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq('${qId}', '${aId}', this)">
+                                    <span>${item.question || 'Вопрос'}</span>
+                                    <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                </div>
+                                <div class="faq-answer" id="${aId}">
+                                    <div class="faq-answer-inner">
+                                        ${item.answer || 'Ответ'}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    contentHtml += `</div>`;
+                } else {
+                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных вопросов</div>`;
+                }
+            }
             else {
                 // Default placeholder for other blocks
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
@@ -1296,6 +1325,47 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, в PRO больше
             </div>
         `;
+    } else if (key === 'faq' || key.startsWith('faq_copy')) {
+        titleEl.innerText = 'Вопрос-ответ';
+        
+        const items = blockData.items || [{question: '', answer: ''}];
+        const limit = 4;
+
+        let itemsHtml = '';
+        items.forEach((item, index) => {
+            itemsHtml += `
+                <div class="faq-edit-item" data-index="${index}">
+                    <div style="display:flex; gap:8px; margin-bottom:8px;">
+                        <input type="text" class="form-input faq-question-input" placeholder="Вопрос" value="${item.question || ''}" style="flex:1;">
+                        <button class="btn-remove-review" onclick="removeFaqItem(this)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                    <textarea class="form-input faq-answer-input" placeholder="Ответ" rows="2" style="resize:none;">${item.answer || ''}</textarea>
+                </div>
+            `;
+        });
+
+        fieldsContainer.innerHTML = `
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Заголовок</label>
+                <input type="text" class="form-input" id="edit-faq-title" value="${blockData.title || 'Частые вопросы'}" placeholder="Частые вопросы">
+            </div>
+            
+            <div id="faq-list-container">
+                ${itemsHtml}
+            </div>
+            
+            <button class="btn-add-price" onclick="addFaqItem()" style="margin-bottom: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Добавить вопрос
+            </button>
+            
+            <div class="price-limit-hint">
+                <span class="limit-badge" id="faq-counter">${items.length}/${limit}</span>
+                бесплатно — до ${limit} элементов, в PRO больше
+            </div>
+        `;
     } else {
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
@@ -1516,6 +1586,55 @@ function updateReviewCounter() {
     if(badge) badge.innerText = `${count}/4`;
 }
 
+// Functions for FAQ Block
+function addFaqItem() {
+    const container = document.getElementById('faq-list-container');
+    const index = container.children.length;
+    
+    const row = document.createElement('div');
+    row.className = 'faq-edit-item';
+    row.setAttribute('data-index', index);
+    row.innerHTML = `
+        <div style="display:flex; gap:8px; margin-bottom:8px;">
+            <input type="text" class="form-input faq-question-input" placeholder="Вопрос" style="flex:1;">
+            <button class="btn-remove-review" onclick="removeFaqItem(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <textarea class="form-input faq-answer-input" placeholder="Ответ" rows="2" style="resize:none;"></textarea>
+    `;
+    container.appendChild(row);
+    updateFaqCounter();
+}
+
+function removeFaqItem(btn) {
+    const row = btn.closest('.faq-edit-item');
+    row.remove();
+    updateFaqCounter();
+}
+
+function updateFaqCounter() {
+    const count = document.querySelectorAll('.faq-edit-item').length;
+    const badge = document.getElementById('faq-counter');
+    if(badge) badge.innerText = `${count}/4`;
+}
+
+// Toggle FAQ Accordion in Preview
+function toggleFaq(qId, aId, questionEl) {
+    const answerEl = document.getElementById(aId);
+    const chevron = questionEl.querySelector('.faq-chevron');
+    
+    if (answerEl.classList.contains('open')) {
+        answerEl.classList.remove('open');
+        answerEl.style.maxHeight = null;
+        chevron.style.transform = 'rotate(0deg)';
+    } else {
+        answerEl.classList.add('open');
+        answerEl.style.maxHeight = answerEl.scrollHeight + "px";
+        chevron.style.transform = 'rotate(180deg)';
+    }
+}
+
 function closeEditModal() { 
     editModalOverlay.classList.remove('open'); 
     editModalSheet.classList.remove('open'); 
@@ -1683,6 +1802,25 @@ function saveBlockEdit() {
         });
         
         if (items.length === 0) items.push({ type: 'link', platform: 'yandex', name: 'Яндекс Карты', url: '' });
+        
+        selectedBlocks[currentEditingBlockId].items = items;
+    } else if (currentEditingBlockId === 'faq' || currentEditingBlockId.startsWith('faq_copy')) {
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-faq-title').value.trim() || 'Частые вопросы';
+        
+        const items = [];
+        document.querySelectorAll('.faq-edit-item').forEach(row => {
+            const question = row.querySelector('.faq-question-input').value.trim();
+            const answer = row.querySelector('.faq-answer-input').value.trim();
+            
+            if (question || answer) {
+                items.push({ 
+                    question: question || 'Вопрос', 
+                    answer: answer || 'Ответ' 
+                });
+            }
+        });
+        
+        if (items.length === 0) items.push({ question: '', answer: '' });
         
         selectedBlocks[currentEditingBlockId].items = items;
     } else {
