@@ -110,7 +110,7 @@ const translations = {
         bl_title: "Что ", bl_title_grad: "показать", bl_desc: "Выбери блоки.",
         blk_links: "Ссылки", blk_socials: "Соцсети", blk_hours: "Часы работы", blk_cta: "Призыв",
         blk_contacts: "Контакты", blk_price: "Прайс", blk_discounts: "Скидки",
-        blk_reviews: "Отзывы", blk_faq: "Вопрос-ответ", blk_facts: "Факты",
+        blk_reviews: "Отзывы", blk_faq: "Вопрос-ответ", blk_facts: "Цифры / Факты",
         blk_video: "Видео", blk_share: "Поделиться", blk_gallery: "Галерея", blk_map: "Карта",
         btn_back: "Назад", btn_assemble: "Далее",
         pv_title: "Твоя визитка", pv_desc: "Нажми на шапку, чтобы изменить формат.",
@@ -187,7 +187,7 @@ const translations = {
         edit_modal_title: "Block", btn_save: "Speichern", preview_placeholder: "Inhalt",
         modal_header_title: "Header", header_format_label: "Format",
         tab_avatar: "Avatar", tab_cover: "Titelbild", tab_banner: "Banner", tab_carousel: "Karussell",
-        desc_avatar: "Runder Avatar.", btn_upload_device: "📷 Laden", btn_upload_tg: "👤 Aus MAX",
+        desc_avatar: "Runder Avatar.", btn_upload_device: " Laden", btn_upload_tg: "👤 Aus MAX",
         upload_hint: "Foto gespeichert.", or_link: "...oder Link",
         desc_cover: "Breites Bild.", ph_company_name: "Firmenname", hint_example: "Beispiel unten",
         lbl_cover: "TITELBILD", btn_upload_cover: "Laden", lbl_cover_link: "Foto-Link",
@@ -798,6 +798,26 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных вопросов</div>`;
                 }
             }
+            // Special rendering for Facts block
+            else if (key === 'facts' || key.startsWith('facts_copy')) {
+                const items = blockData.items || [];
+                const visibleItems = items.filter(item => item.visible !== false);
+                
+                if (visibleItems.length > 0) {
+                    contentHtml = `<div class="facts-grid">`;
+                    visibleItems.forEach(item => {
+                        contentHtml += `
+                            <div class="fact-card">
+                                <div class="fact-number">${item.number || '0'}</div>
+                                <div class="fact-label">${item.label || ''}</div>
+                            </div>
+                        `;
+                    });
+                    contentHtml += `</div>`;
+                } else {
+                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных фактов</div>`;
+                }
+            }
             else {
                 // Default placeholder for other blocks
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
@@ -1366,6 +1386,51 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, в PRO больше
             </div>
         `;
+    } else if (key === 'facts' || key.startsWith('facts_copy')) {
+        titleEl.innerText = 'Цифры / факты';
+        
+        const items = blockData.items || [{number: '', label: '', visible: true}];
+        const limit = 3;
+
+        let itemsHtml = '';
+        items.forEach((item, index) => {
+            itemsHtml += `
+                <div class="fact-edit-item" data-index="${index}">
+                    <div style="display:flex; gap:8px; margin-bottom:8px;">
+                        <input type="text" class="form-input fact-number-input" placeholder="500+" value="${item.number || ''}" style="flex:1;">
+                        <input type="text" class="form-input fact-label-input" placeholder="клиентов" value="${item.label || ''}" style="flex:2;">
+                        <button class="action-btn ${item.visible !== false ? 'active-eye' : ''}" onclick="toggleFactVisibility(this)" style="width:32px; height:32px; padding:0;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                        <button class="btn-remove-review" onclick="removeFactItem(this)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+
+        fieldsContainer.innerHTML = `
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Заголовок</label>
+                <input type="text" class="form-input" id="edit-facts-title" value="${blockData.title || 'Цифры'}" placeholder="Цифры">
+            </div>
+            
+            <label class="form-label" style="margin-bottom: 10px; display:block;">Цифры</label>
+            <div id="facts-list-container">
+                ${itemsHtml}
+            </div>
+            
+            <button class="btn-add-price" onclick="addFactItem()" style="margin-bottom: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Добавить цифру
+            </button>
+            
+            <div class="price-limit-hint">
+                <span class="limit-badge" id="facts-counter">${items.length}/${limit}</span>
+                бесплатно — до ${limit} элементов, в PRO больше
+            </div>
+        `;
     } else {
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
@@ -1635,6 +1700,46 @@ function toggleFaq(qId, aId, questionEl) {
     }
 }
 
+// Functions for Facts Block
+function addFactItem() {
+    const container = document.getElementById('facts-list-container');
+    const index = container.children.length;
+    
+    const row = document.createElement('div');
+    row.className = 'fact-edit-item';
+    row.setAttribute('data-index', index);
+    row.innerHTML = `
+        <div style="display:flex; gap:8px; margin-bottom:8px;">
+            <input type="text" class="form-input fact-number-input" placeholder="500+" style="flex:1;">
+            <input type="text" class="form-input fact-label-input" placeholder="клиентов" style="flex:2;">
+            <button class="action-btn active-eye" onclick="toggleFactVisibility(this)" style="width:32px; height:32px; padding:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+            <button class="btn-remove-review" onclick="removeFactItem(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+    `;
+    container.appendChild(row);
+    updateFactsCounter();
+}
+
+function removeFactItem(btn) {
+    const row = btn.closest('.fact-edit-item');
+    row.remove();
+    updateFactsCounter();
+}
+
+function toggleFactVisibility(btn) {
+    btn.classList.toggle('active-eye');
+}
+
+function updateFactsCounter() {
+    const count = document.querySelectorAll('.fact-edit-item').length;
+    const badge = document.getElementById('facts-counter');
+    if(badge) badge.innerText = `${count}/3`;
+}
+
 function closeEditModal() { 
     editModalOverlay.classList.remove('open'); 
     editModalSheet.classList.remove('open'); 
@@ -1821,6 +1926,27 @@ function saveBlockEdit() {
         });
         
         if (items.length === 0) items.push({ question: '', answer: '' });
+        
+        selectedBlocks[currentEditingBlockId].items = items;
+    } else if (currentEditingBlockId === 'facts' || currentEditingBlockId.startsWith('facts_copy')) {
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-facts-title').value.trim() || 'Цифры';
+        
+        const items = [];
+        document.querySelectorAll('.fact-edit-item').forEach(row => {
+            const number = row.querySelector('.fact-number-input').value.trim();
+            const label = row.querySelector('.fact-label-input').value.trim();
+            const isVisible = row.querySelector('.action-btn').classList.contains('active-eye');
+            
+            if (number || label) {
+                items.push({ 
+                    number: number || '0', 
+                    label: label || '',
+                    visible: isVisible
+                });
+            }
+        });
+        
+        if (items.length === 0) items.push({ number: '', label: '', visible: true });
         
         selectedBlocks[currentEditingBlockId].items = items;
     } else {
