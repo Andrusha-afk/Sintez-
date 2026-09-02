@@ -801,11 +801,10 @@ function renderPreview() {
             // Special rendering for Facts block
             else if (key === 'facts' || key.startsWith('facts_copy')) {
                 const items = blockData.items || [];
-                const visibleItems = items.filter(item => item.visible !== false);
                 
-                if (visibleItems.length > 0) {
+                if (items.length > 0) {
                     contentHtml = `<div class="facts-grid">`;
-                    visibleItems.forEach(item => {
+                    items.forEach(item => {
                         contentHtml += `
                             <div class="fact-card">
                                 <div class="fact-number">${item.number || '0'}</div>
