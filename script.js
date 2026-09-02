@@ -817,6 +817,67 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных фактов</div>`;
                 }
             }
+            // Special rendering for Video block
+            else if (key === 'video' || key.startsWith('video_copy')) {
+                const url = blockData.url || '';
+                
+                if (url) {
+                    let embedCode = '';
+                    let isYoutube = false;
+
+                    // Логика преобразования ссылок в embed-код
+                    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                        isYoutube = true;
+                        let videoId = '';
+                        if (url.includes('youtu.be')) {
+                            videoId = url.split('/').pop().split('?')[0];
+                        } else if (url.includes('v=')) {
+                            videoId = url.split('v=')[1].split('&')[0];
+                        } else if (url.includes('shorts/')) {
+                            videoId = url.split('shorts/')[1].split('?')[0];
+                        }
+                        
+                        if (videoId) {
+                            embedCode = `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen></iframe>`;
+                        }
+                    } 
+                    else if (url.includes('tiktok.com')) {
+                        // Для TikTok используем их официальный embed (упрощенно)
+                        // В реальном проекте лучше использовать их API, но для простоты оставим ссылку или iframe если пользователь дал embed код
+                        embedCode = `<iframe src="${url}" style="width:100%; height:100%;" frameborder="0" allowfullscreen></iframe>`;
+                    }
+                    else if (url.includes('vimeo.com')) {
+                        const vimeoId = url.split('/').pop();
+                        embedCode = `<iframe src="https://player.vimeo.com/video/${vimeoId}" allowfullscreen></iframe>`;
+                    }
+                    else if (url.endsWith('.mp4')) {
+                        embedCode = `<video controls playsinline><source src="${url}" type="video/mp4">Ваш браузер не поддерживает видео.</video>`;
+                    }
+                    else {
+                        // Если ссылка непонятная, пробуем вставить как есть (на случай если пользователь скопировал уже готовый iframe код, хотя input type text это не пропустит, но на всякий случай)
+                        // Или просто показываем кнопку перехода
+                    }
+
+                    if (embedCode) {
+                        contentHtml = `
+                            <div class="video-wrapper">
+                                ${embedCode}
+                                ${isYoutube ? `<a href="${url}" target="_blank" class="video-fallback-btn">
+                                    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                    Смотреть на YouTube
+                                </a>` : ''}
+                            </div>
+                        `;
+                    } else {
+                         contentHtml = `<a href="${url}" target="_blank" class="video-fallback-btn" style="position:static; transform:none; width:100%; justify-content:center;">
+                                            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                            Открыть видео
+                                        </a>`;
+                    }
+                } else {
+                    contentHtml = `<div style="padding: 20px; text-align:center; color: var(--text-secondary); border: 1px dashed var(--border-color); border-radius: 16px;">Нет ссылки на видео</div>`;
+                }
+            }
             else {
                 // Default placeholder for other blocks
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
@@ -1388,20 +1449,17 @@ function openEditBlock(key) {
     } else if (key === 'facts' || key.startsWith('facts_copy')) {
         titleEl.innerText = 'Цифры / факты';
         
-        const items = blockData.items || [{number: '', label: '', visible: true}];
+        const items = blockData.items || [{number: '', label: ''}];
         const limit = 3;
 
         let itemsHtml = '';
         items.forEach((item, index) => {
             itemsHtml += `
                 <div class="fact-edit-item" data-index="${index}">
-                    <div style="display:flex; gap:8px; margin-bottom:8px;">
+                    <div style="display:flex; gap:8px; align-items: center;">
                         <input type="text" class="form-input fact-number-input" placeholder="500+" value="${item.number || ''}" style="flex:1;">
                         <input type="text" class="form-input fact-label-input" placeholder="клиентов" value="${item.label || ''}" style="flex:2;">
-                        <button class="action-btn ${item.visible !== false ? 'active-eye' : ''}" onclick="toggleFactVisibility(this)" style="width:32px; height:32px; padding:0;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                        </button>
-                        <button class="btn-remove-review" onclick="removeFactItem(this)">
+                        <button class="btn-remove-review" onclick="removeFactItem(this)" style="flex-shrink: 0;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                         </button>
                     </div>
@@ -1428,6 +1486,36 @@ function openEditBlock(key) {
             <div class="price-limit-hint">
                 <span class="limit-badge" id="facts-counter">${items.length}/${limit}</span>
                 бесплатно — до ${limit} элементов, в PRO больше
+            </div>
+        `;
+    } else if (key === 'video' || key.startsWith('video_copy')) {
+        titleEl.innerText = 'Видео';
+        
+        const videoUrl = blockData.url || '';
+
+        fieldsContainer.innerHTML = `
+            <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label">Заголовок</label>
+                <input type="text" class="form-input" id="edit-video-title" value="${blockData.title || 'Видео'}" placeholder="Видео">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 8px;">
+                <label class="form-label">Ссылка на видео</label>
+                <input type="text" class="form-input" id="edit-video-url" value="${videoUrl}" placeholder="YouTube, Shorts, TikTok, Reels, Vimeo или .mp4">
+            </div>
+            
+            <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.4;">
+                Вставь ссылку — плеер появится сразу. Подходят YouTube, TikTok, Shorts, Reels, Vimeo.
+            </p>
+
+            <div class="video-info-box">
+                <div class="video-info-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                </div>
+                <div class="video-info-text">
+                    <h4>Видео прямо из Telegram</h4>
+                    <p>После создания бота сможешь присылать видео и кружочки прямо в чат — они появятся здесь. Обычные до 20 МБ; что больше — ссылкой с видеохостинга.</p>
+                </div>
             </div>
         `;
     } else {
@@ -1708,13 +1796,10 @@ function addFactItem() {
     row.className = 'fact-edit-item';
     row.setAttribute('data-index', index);
     row.innerHTML = `
-        <div style="display:flex; gap:8px; margin-bottom:8px;">
+        <div style="display:flex; gap:8px; align-items: center;">
             <input type="text" class="form-input fact-number-input" placeholder="500+" style="flex:1;">
             <input type="text" class="form-input fact-label-input" placeholder="клиентов" style="flex:2;">
-            <button class="action-btn active-eye" onclick="toggleFactVisibility(this)" style="width:32px; height:32px; padding:0;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-            </button>
-            <button class="btn-remove-review" onclick="removeFactItem(this)">
+            <button class="btn-remove-review" onclick="removeFactItem(this)" style="flex-shrink: 0;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
         </div>
@@ -1727,10 +1812,6 @@ function removeFactItem(btn) {
     const row = btn.closest('.fact-edit-item');
     row.remove();
     updateFactsCounter();
-}
-
-function toggleFactVisibility(btn) {
-    btn.classList.toggle('active-eye');
 }
 
 function updateFactsCounter() {
@@ -1934,20 +2015,23 @@ function saveBlockEdit() {
         document.querySelectorAll('.fact-edit-item').forEach(row => {
             const number = row.querySelector('.fact-number-input').value.trim();
             const label = row.querySelector('.fact-label-input').value.trim();
-            const isVisible = row.querySelector('.action-btn').classList.contains('active-eye');
             
+            // Сохраняем, если заполнено хотя бы одно поле
             if (number || label) {
                 items.push({ 
                     number: number || '0', 
-                    label: label || '',
-                    visible: isVisible
+                    label: label || ''
                 });
             }
         });
         
-        if (items.length === 0) items.push({ number: '', label: '', visible: true });
+        // Если ничего не ввели, оставляем один пустой элемент для удобства
+        if (items.length === 0) items.push({ number: '', label: '' });
         
         selectedBlocks[currentEditingBlockId].items = items;
+    } else if (currentEditingBlockId === 'video' || currentEditingBlockId.startsWith('video_copy')) {
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-video-title').value.trim() || 'Видео';
+        selectedBlocks[currentEditingBlockId].url = document.getElementById('edit-video-url').value.trim();
     } else {
         const val1 = document.getElementById('edit-input-1').value.trim();
         const val2 = document.getElementById('edit-input-2').value.trim();
