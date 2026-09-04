@@ -1213,7 +1213,7 @@ function openEditBlock(key) {
             
             <div class="form-group" style="margin-bottom: 24px;">
                 <label class="form-label">Куда ведёт кнопка</label>
-                <input type="text" class="form-input" id="edit-cta-link" value="${ctaLink}" placeholder="@username в Telegram или https://...">
+                <input type="text" class="form-input" id="edit-cta-link" value="${ctaLink}" placeholder="Номер в МАХ или https://...">
             </div>
 
             <label class="form-label" style="margin-bottom: 10px; display:block;">Оформление</label>
@@ -1551,7 +1551,7 @@ function openEditBlock(key) {
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
                 </div>
                 <div class="video-info-text">
-                    <h4>Видео прямо из Telegram</h4>
+                    <h4>Видео прямо из МАХ</h4>
                     <p>После создания бота сможешь присылать видео и кружочки прямо в чат — они появятся здесь. Обычные до 20 МБ; что больше — ссылкой с видеохостинга.</p>
                 </div>
             </div>
