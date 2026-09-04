@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Global Header -->
     <div class="header">
         <div class="header-left">
             <button class="back-btn" id="globalBackBtn" onclick="goBack()">
@@ -32,7 +30,6 @@
         </div>
     </div>
 
-    <!-- SCREENS -->
     <div id="screen-1" class="screen active">
         <div class="onboarding-content">
             <div class="hero-icon"><svg viewBox="0 0 24 24" stroke="var(--color-blue)"><rect x="3" y="3" width="18" height="18" rx="4"></rect><circle cx="12" cy="10" r="3"></circle><path d="M7 20v-2a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"></path></svg></div>
@@ -153,7 +150,6 @@
         </div>
     </div>
 
-    <!-- HEADER MODAL -->
     <div class="modal-overlay" id="headerModalOverlay" onclick="closeHeaderModal()"></div>
     <div class="modal-sheet header-modal-sheet" id="headerModalSheet">
         <div class="modal-handle"></div>
@@ -170,7 +166,6 @@
             <button class="header-tab" onclick="switchHeaderTab('carousel')" data-i18n="tab_carousel">Карусель</button>
         </div>
 
-        <!-- Avatar Tab -->
         <div class="header-tab-content" id="tab-content-avatar">
             <p class="tab-desc" data-i18n="desc_avatar">Круглый аватар.</p>
             <div class="modal-avatar-preview"><div class="modal-avatar-circle" id="modal-avatar-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div></div>
@@ -181,7 +176,6 @@
             <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
         </div>
 
-        <!-- Cover Tab -->
         <div class="header-tab-content hidden" id="tab-content-cover">
             <p class="tab-desc" data-i18n="desc_cover">Широкая обложка.</p>
             <div class="modal-cover-preview"><div class="preview-cover-bg" id="modal-cover-preview-bg"></div><div class="preview-cover-name">Имя компании</div></div>
@@ -191,7 +185,6 @@
             <input type="text" class="form-input" id="input-cover-url" placeholder="https://..." oninput="updateCoverFromUrl(this.value)">
         </div>
 
-        <!-- Banner Tab (СИНХРОНИЗИРОВАННЫЙ) -->
         <div class="header-tab-content hidden" id="tab-content-banner">
             <p class="tab-desc" data-i18n="desc_banner">Обложка + аватар поверх.</p>
             
@@ -215,7 +208,6 @@
             <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
         </div>
 
-        <!-- Carousel Tab -->
         <div class="header-tab-content hidden" id="tab-content-carousel">
             <p class="tab-desc" data-i18n="desc_carousel">Листаются свайпом.</p>
             <div class="section-label-small">Фото карусели</div>
@@ -226,19 +218,16 @@
             <input type="file" id="carousel-upload-input" accept="image/png, image/jpeg" multiple style="display: none;">
         </div>
 
-        <!-- ЕДИНЫЙ БЛОК ТЕКСТА (Внизу) -->
         <div class="header-text-edit-section" style="margin-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;">
             <div class="section-label-small">Текст шапки</div>
             <div class="form-group" style="margin-bottom: 12px;"><input type="text" class="form-input" id="modal-input-name" placeholder="Имя или название компании"></div>
             <div class="form-group" style="margin-bottom: 0;"><input type="text" class="form-input" id="modal-input-desc" placeholder="Подзаголовок / Описание"></div>
         </div>
 
-        <!-- Скрытые инпуты -->
         <input type="file" id="device-upload-input" accept="image/png, image/jpeg" style="display: none;">
         <input type="file" id="cover-upload-input" accept="image/png, image/jpeg" style="display: none;">
     </div>
 
-        <!-- BLOCK EDIT MODAL (ОБНОВЛЕННЫЙ ДЛЯ ЧАСОВ РАБОТЫ) -->
     <div class="modal-overlay" id="editModalOverlay" onclick="closeEditModal()"></div>
     <div class="modal-sheet" id="editModalSheet" style="max-height: 90vh; overflow-y: auto;">
         <div class="modal-handle"></div>
@@ -247,21 +236,16 @@
             <button class="close-modal" onclick="closeEditModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
         </div>
         
-        <!-- Контейнер для динамических полей -->
         <div id="edit-modal-fields" style="padding-bottom: 20px;">
-            <!-- Сюда JS будет вставлять поля -->
         </div>
 
-        <!-- Кнопка Готово -->
         <button class="btn btn-primary" onclick="saveBlockEdit()" style="margin-top: 10px; margin-bottom: 12px;" data-i18n="btn_save">Готово</button>
         
-        <!-- Нижние кнопки -->
         <div style="display: flex; gap: 12px;">
             <button class="btn btn-secondary" onclick="duplicateCurrentBlock()" style="flex: 1; font-weight: 600;">Дублировать</button>
             <button class="btn btn-secondary" onclick="deleteCurrentBlock()" style="flex: 1; color: #ef4444; border-color: rgba(239, 68, 68, 0.3); font-weight: 600;">Удалить</button>
         </div>
     </div>
-    <!-- MENU MODALS -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeMenu()"></div>
     <div class="modal-sheet" id="modalSheet">
         <div class="modal-handle"></div>

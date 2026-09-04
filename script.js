@@ -1,4 +1,3 @@
-// --- КОНФИГУРАЦИЯ СОЦСЕТЕЙ (MAX вместо Telegram) ---
 const socialNetworksConfig = [
     { 
         id: 'max', 
@@ -50,7 +49,6 @@ const socialNetworksConfig = [
     }
 ];
 
-// --- КОНФИГУРАЦИЯ ПЛАТФОРМ ДЛЯ ОТЗЫВОВ ---
 const reviewPlatformsConfig = [
     { 
         id: 'google', 
@@ -84,7 +82,6 @@ const reviewPlatformsConfig = [
     }
 ];
 
-// --- TRANSLATIONS ---
 const translations = {
     ru: {
         s1_title: "Твоя визитка ", s1_title_grad: "внутри MAX", s1_desc: "Открывается по ссылке за секунду.",
@@ -122,7 +119,23 @@ const translations = {
         desc_cover: "Широкая обложка.", ph_company_name: "Имя компании", hint_example: "Пример ниже",
         lbl_cover: "ОБЛОЖКА", btn_upload_cover: "Загрузить", lbl_cover_link: "Ссылка на фото",
         desc_banner: "Обложка + аватар поверх.", banner_placeholder: "Баннер", btn_upload_banner: "Загрузить",
-        desc_carousel: "Листаются свайпом."
+        desc_carousel: "Листаются свайпом.",
+        share_title: "Заголовок",
+        share_image_label: "Картинка для сторис и карточки",
+        share_upload_btn: "Загрузить фото с устройства",
+        share_desc_hint: "Кнопки шеринга твоей визитки — клиенты делятся ею в один тап.",
+        share_caption_label: "Подпись открытки",
+        share_caption_placeholder: "Чем занимаешься — одной строкой",
+        share_caption_info: "Появится в открытке после публикации, рядом с именем. Ссылки, @упоминания и телефоны из неё убираются: если оставить только ссылку, подпись станет пустой и в открытке будет подзаголовок.",
+        share_layout_label: "Расположение",
+        share_layout_compact: "Компакт",
+        share_layout_stories: "Сторис",
+        share_layout_grid: "Сетка",
+        share_layout_list: "Список",
+        share_preview_label: "Предпросмотр",
+        share_btn_copy: "Скопировать",
+        share_btn_stories: "В сторис",
+        share_btn_share: "Поделиться"
     },
     en: {
         s1_title: "Your card ", s1_title_grad: "inside MAX", s1_desc: "Opens via link instantly.",
@@ -157,7 +170,23 @@ const translations = {
         desc_cover: "Wide cover.", ph_company_name: "Company name", hint_example: "Example below",
         lbl_cover: "COVER", btn_upload_cover: "Upload", lbl_cover_link: "Photo link",
         desc_banner: "Cover + Avatar overlay.", banner_placeholder: "Banner", btn_upload_banner: "Upload",
-        desc_carousel: "Swipeable photos."
+        desc_carousel: "Swipeable photos.",
+        share_title: "Title",
+        share_image_label: "Image for stories and card",
+        share_upload_btn: "Upload photo from device",
+        share_desc_hint: "Sharing buttons for your card — clients share it in one tap.",
+        share_caption_label: "Postcard caption",
+        share_caption_placeholder: "What you do — in one line",
+        share_caption_info: "Will appear on the postcard after publishing, next to the name. Links, @mentions and phones are removed from it: if you leave only a link, the caption will become empty and the subtitle will be on the postcard.",
+        share_layout_label: "Layout",
+        share_layout_compact: "Compact",
+        share_layout_stories: "Stories",
+        share_layout_grid: "Grid",
+        share_layout_list: "List",
+        share_preview_label: "Preview",
+        share_btn_copy: "Copy",
+        share_btn_stories: "To Stories",
+        share_btn_share: "Share"
     },
     de: {
         s1_title: "Deine Karte ", s1_title_grad: "in MAX", s1_desc: "Öffnet per Link sofort.",
@@ -192,7 +221,23 @@ const translations = {
         desc_cover: "Breites Bild.", ph_company_name: "Firmenname", hint_example: "Beispiel unten",
         lbl_cover: "TITELBILD", btn_upload_cover: "Laden", lbl_cover_link: "Foto-Link",
         desc_banner: "Bild + Avatar darüber.", banner_placeholder: "Banner", btn_upload_banner: "Laden",
-        desc_carousel: "Fotos zum Wischen."
+        desc_carousel: "Fotos zum Wischen.",
+        share_title: "Titel",
+        share_image_label: "Bild für Stories und Karte",
+        share_upload_btn: "Foto vom Gerät hochladen",
+        share_desc_hint: "Sharing-Buttons für deine Karte — Kunden teilen sie mit einem Tipp.",
+        share_caption_label: "Postkarten-Unterschrift",
+        share_caption_placeholder: "Was du machst — in einer Zeile",
+        share_caption_info: "Erscheint auf der Postkarte nach der Veröffentlichung neben dem Namen. Links, @Erwähnungen und Telefone werden daraus entfernt: Wenn du nur einen Link lässt, wird die Unterschrift leer und der Untertitel erscheint auf der Postkarte.",
+        share_layout_label: "Anordnung",
+        share_layout_compact: "Kompakt",
+        share_layout_stories: "Stories",
+        share_layout_grid: "Raster",
+        share_layout_list: "Liste",
+        share_preview_label: "Vorschau",
+        share_btn_copy: "Kopieren",
+        share_btn_stories: "In Stories",
+        share_btn_share: "Teilen"
     }
 };
 
@@ -203,7 +248,6 @@ let selectedBlocks = {};
 let currentHeaderFormat = 'avatar'; 
 let currentEditingBlockId = null;
 
-// --- LOCAL STORAGE ---
 function saveUserData() {
     const userData = { lang: currentLang, hasCards: hasUserCards, cardData: userCardData, blocks: selectedBlocks, headerFormat: currentHeaderFormat };
     localStorage.setItem('synthes_user_data', JSON.stringify(userData));
@@ -229,7 +273,6 @@ function loadUserData() {
     }
 }
 
-// Language Switcher
 document.querySelectorAll('.lang-btn-header').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('.lang-btn-header').forEach(b => b.classList.remove('active'));
@@ -254,7 +297,6 @@ function applyTranslations() {
     if(pageTitleEl) pageTitleEl.innerText = t.page_analytics;
 }
 
-// Navigation Logic
 function nextScreen(screenNum) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const target = document.getElementById(`screen-${screenNum}`);
@@ -312,7 +354,19 @@ function goToBlocksSelection() {
 function finishBlocksSelection() {
     document.querySelectorAll('.toggle-switch input').forEach(cb => {
         const key = cb.getAttribute('data-block');
-        if (!selectedBlocks[key]) selectedBlocks[key] = {};
+        if (!selectedBlocks[key]) {
+            if (key === 'share') {
+                selectedBlocks[key] = { 
+                    visible: cb.checked, 
+                    title: 'Поделиться',
+                    imageUrl: '',
+                    caption: '',
+                    layout: 'compact'
+                };
+            } else {
+                selectedBlocks[key] = { visible: cb.checked, title: null };
+            }
+        }
         selectedBlocks[key].visible = cb.checked;
     });
 
@@ -359,7 +413,6 @@ function goBack() {
     else if (document.getElementById('screen-creator').classList.contains('active')) goToDashboard();
 }
 
-// Header State
 function updateHeader(state) {
     const backBtn = document.getElementById('globalBackBtn');
     const logo = document.getElementById('mainLogo');
@@ -384,7 +437,6 @@ function updateHeader(state) {
     }
 }
 
-// Modals
 function openMenu() { document.getElementById('modalOverlay').classList.add('open'); document.getElementById('modalSheet').classList.add('open'); }
 function closeMenu() { document.getElementById('modalOverlay').classList.remove('open'); document.getElementById('modalSheet').classList.remove('open'); }
 function openCardMenu() { document.getElementById('cardModalOverlay').classList.add('open'); document.getElementById('cardModalSheet').classList.add('open'); }
@@ -392,13 +444,11 @@ function closeCardMenu() { document.getElementById('cardModalOverlay').classList
 function showWelcome() { closeMenu(); nextScreen(1); }
 function handleMyCardsClick() { closeMenu(); if (hasUserCards) goToDashboard(); else alert(translations[currentLang].no_cards_msg); }
 
-// Preview Logic
 function renderPreview() {
     const container = document.getElementById('preview-list-container');
     container.innerHTML = '';
     const t = translations[currentLang];
 
-    // 1. Render Header Card
     const headerCard = document.createElement('div');
     headerCard.className = 'preview-header-card';
     headerCard.onclick = openHeaderModal;
@@ -428,12 +478,10 @@ function renderPreview() {
     }
     container.appendChild(headerCard);
 
-    // 2. Render Block Cards (Dynamic Order: About first, then others)
     const allKeys = Object.keys(selectedBlocks);
     const aboutKeys = allKeys.filter(k => k.startsWith('about'));
     const otherKeys = allKeys.filter(k => !k.startsWith('about'));
     
-    // Helper function to create block section HTML
     const createBlockSection = (key, blockData, title, contentHtml) => {
         const section = document.createElement('div');
         section.className = `preview-block-section ${blockData.visible ? '' : 'hidden-block'}`;
@@ -456,7 +504,6 @@ function renderPreview() {
         return section;
     };
 
-    // Render About Blocks First
     aboutKeys.forEach(key => {
         const blockData = selectedBlocks[key];
         if (blockData && blockData.visible) {
@@ -466,7 +513,6 @@ function renderPreview() {
         }
     });
 
-    // Render Other Blocks
     otherKeys.forEach(key => {
         const blockData = selectedBlocks[key];
         if (blockData && blockData.visible) {
@@ -475,7 +521,6 @@ function renderPreview() {
             
             let contentHtml = '';
             
-            // Special rendering for Links block
             if (key === 'links' || key.startsWith('links_copy')) {
                 const links = blockData.items || [];
                 if (links.length > 0) {
@@ -502,7 +547,6 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет добавленных ссылок</div>`;
                 }
             } 
-            // Special rendering for Socials block
             else if (key === 'socials' || key.startsWith('socials_copy')) {
                 const socialsData = blockData.items || {};
                 const activeSocials = socialNetworksConfig.filter(net => socialsData[net.id]?.enabled && socialsData[net.id]?.url);
@@ -522,13 +566,11 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет активных соцсетей</div>`;
                 }
             }
-            // Special rendering for Hours block
             else if (key === 'hours' || key.startsWith('hours_copy')) {
                 const sched = blockData.schedule || { mode: 'simple', individual: {}, simple: {days: [], open: '10:00', close: '22:00'} };
                 
-                // Определение статуса (Открыто/Закрыто)
                 const now = new Date();
-                const currentDay = now.getDay() === 0 ? 7 : now.getDay(); // 1-7
+                const currentDay = now.getDay() === 0 ? 7 : now.getDay();
                 const currentMinutes = now.getHours() * 60 + now.getMinutes();
                 
                 let isOpen = false;
@@ -542,7 +584,6 @@ function renderPreview() {
                     const startMin = oh * 60 + om;
                     const endMin = ch * 60 + cm;
                     
-                    // Обработка перехода через полночь
                     if (endMin < startMin) {
                         isOpen = currentMinutes >= startMin || currentMinutes < endMin;
                     } else {
@@ -557,7 +598,6 @@ function renderPreview() {
                 const statusText = isOpen ? 'Открыто сейчас' : 'Закрыто сейчас';
                 const currentTimeDisplay = todayOpen ? `${todayOpen}–${todayClose}` : '—';
                 
-                // Формирование списка дней для превью
                 const dayNames = ['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
                 let daysHtml = '';
                 
@@ -587,13 +627,11 @@ function renderPreview() {
                     </div>
                 `;
             }
-            // Special rendering for CTA block
             else if (key === 'cta' || key.startsWith('cta_copy')) {
                 const ctaText = blockData.text || 'Кнопка';
                 const ctaLink = blockData.link || '#';
                 const ctaStyle = blockData.style || 'normal';
                 
-                // Формируем классы для анимации
                 let animClass = '';
                 if (ctaStyle === 'shimmer') animClass = 'cta-style-shimmer';
                 if (ctaStyle === 'flash') animClass = 'cta-style-flash';
@@ -605,16 +643,13 @@ function renderPreview() {
                     </a>
                 `;
             }
-            // Special rendering for Contacts block
             else if (key === 'contacts' || key.startsWith('contacts_copy')) {
                 const phone = blockData.phone || '';
                 const email = blockData.email || '';
                 const showVcard = blockData.showVcard !== false;
                 
-                // Формируем кнопки
                 let buttonsHtml = '<div class="contacts-actions-grid">';
                 
-                // Кнопка Позвонить (если есть телефон)
                 if (phone) {
                     const cleanPhone = phone.replace(/[^\d+]/g, '');
                     buttonsHtml += `
@@ -625,7 +660,6 @@ function renderPreview() {
                     `;
                 }
                 
-                // Кнопка Email (если есть email)
                 if (email) {
                     buttonsHtml += `
                         <a href="mailto:${email}" class="contact-btn">
@@ -635,14 +669,12 @@ function renderPreview() {
                     `;
                 }
                 
-                // Если кнопок нет, показываем заглушку
                 if (!phone && !email) {
                     buttonsHtml += `<div style="grid-column: 1/-1; text-align:center; color: var(--text-secondary); padding: 10px;">Нет добавленных контактов</div>`;
                 }
                 
-                buttonsHtml += '</div>'; // Закрываем grid
+                buttonsHtml += '</div>'; 
 
-                // Кнопка vCard (если включена и есть данные)
                 if (showVcard && (phone || email)) {
                     const safeKey = key.replace(/[^a-zA-Z0-9]/g, '');
                     const vcardFuncName = `downloadVcard_${safeKey}`;
@@ -679,7 +711,6 @@ function renderPreview() {
 
                 contentHtml = buttonsHtml;
             }
-            // Special rendering for Price block
             else if (key === 'price' || key.startsWith('price_copy')) {
                 const items = blockData.items || [];
                 
@@ -701,7 +732,6 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных позиций</div>`;
                 }
             }
-            // Special rendering for Discounts block
             else if (key === 'discounts' || key.startsWith('discounts_copy')) {
                 const items = blockData.items || [];
                 
@@ -713,7 +743,6 @@ function renderPreview() {
                         const newP = item.newPrice ? item.newPrice : '';
                         const perc = item.percent ? `-${item.percent}%` : '';
                         
-                        // Формируем HTML карточки
                         contentHtml += `
                             <div class="discount-card-item">
                                 ${perc ? `<div class="discount-badge">${perc}</div>` : ''}
@@ -732,7 +761,6 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных акций</div>`;
                 }
             }
-            // Special rendering for Reviews block
             else if (key === 'reviews' || key.startsWith('reviews_copy')) {
                 const items = blockData.items || [];
                 
@@ -742,7 +770,6 @@ function renderPreview() {
                         const platform = reviewPlatformsConfig.find(p => p.id === item.platform) || reviewPlatformsConfig[4];
                         
                         if (item.type === 'link') {
-                            // Ссылка на внешний отзыв
                             contentHtml += `
                                 <a href="${item.url || '#'}" target="_blank" class="review-link-item">
                                     <div class="review-platform-icon" style="color: ${platform.color}">
@@ -753,7 +780,6 @@ function renderPreview() {
                                 </a>
                             `;
                         } else {
-                            // Текстовый отзыв
                             const stars = '★'.repeat(parseInt(item.rating) || 5);
                             contentHtml += `
                                 <div class="review-text-item">
@@ -769,7 +795,6 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных отзывов</div>`;
                 }
             }
-            // Special rendering for FAQ block
             else if (key === 'faq' || key.startsWith('faq_copy')) {
                 const items = blockData.items || [];
                 
@@ -798,7 +823,6 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных вопросов</div>`;
                 }
             }
-            // Special rendering for Facts block
             else if (key === 'facts' || key.startsWith('facts_copy')) {
                 const items = blockData.items || [];
                 
@@ -817,7 +841,6 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных фактов</div>`;
                 }
             }
-            // Special rendering for Video block
             else if (key === 'video' || key.startsWith('video_copy')) {
                 const url = blockData.url || '';
                 
@@ -825,7 +848,6 @@ function renderPreview() {
                     let embedCode = '';
                     let isYoutube = false;
 
-                    // Логика преобразования ссылок в embed-код
                     if (url.includes('youtube.com') || url.includes('youtu.be')) {
                         isYoutube = true;
                         let videoId = '';
@@ -842,8 +864,6 @@ function renderPreview() {
                         }
                     } 
                     else if (url.includes('tiktok.com')) {
-                        // Для TikTok используем их официальный embed (упрощенно)
-                        // В реальном проекте лучше использовать их API, но для простоты оставим ссылку или iframe если пользователь дал embed код
                         embedCode = `<iframe src="${url}" style="width:100%; height:100%;" frameborder="0" allowfullscreen></iframe>`;
                     }
                     else if (url.includes('vimeo.com')) {
@@ -852,10 +872,6 @@ function renderPreview() {
                     }
                     else if (url.endsWith('.mp4')) {
                         embedCode = `<video controls playsinline><source src="${url}" type="video/mp4">Ваш браузер не поддерживает видео.</video>`;
-                    }
-                    else {
-                        // Если ссылка непонятная, пробуем вставить как есть (на случай если пользователь скопировал уже готовый iframe код, хотя input type text это не пропустит, но на всякий случай)
-                        // Или просто показываем кнопку перехода
                     }
 
                     if (embedCode) {
@@ -877,8 +893,35 @@ function renderPreview() {
                     contentHtml = `<div style="padding: 20px; text-align:center; color: var(--text-secondary); border: 1px dashed var(--border-color); border-radius: 16px;">Нет ссылки на видео</div>`;
                 }
             }
+            else if (key === 'share' || key.startsWith('share_copy')) {
+                const layout = blockData.layout || 'compact';
+                const imageUrl = blockData.imageUrl;
+                const caption = blockData.caption || userCardData?.desc || '';
+                
+                const copyBtn = `<button class="share-btn share-btn-copy" onclick="copyToClipboard('${window.location.href}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> ${t.share_btn_copy}</button>`;
+                const storiesBtn = `<button class="share-btn share-btn-stories" onclick="shareToStories('${imageUrl || ''}', '${caption.replace(/'/g, "\\'")}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> ${t.share_btn_stories}</button>`;
+                const shareBtn = `<button class="share-btn share-btn-share" onclick="shareViaBot('${imageUrl || ''}', '${caption.replace(/'/g, "\\'")}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> ${t.share_btn_share}</button>`;
+
+                let buttonsHtml = '';
+                if (layout === 'compact') {
+                    buttonsHtml = `<div class="share-layout-compact">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+                } else if (layout === 'stories') {
+                    buttonsHtml = `<div class="share-layout-stories">${storiesBtn}${copyBtn}${shareBtn}</div>`;
+                } else if (layout === 'grid') {
+                    buttonsHtml = `<div class="share-layout-grid">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+                } else if (layout === 'list') {
+                    buttonsHtml = `<div class="share-layout-list">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+                }
+
+                contentHtml = `
+                    <div class="share-block-preview">
+                        ${imageUrl ? `<img src="${imageUrl}" alt="Share image" class="share-preview-image">` : ''}
+                        ${caption ? `<p class="share-preview-caption">${caption}</p>` : ''}
+                        ${buttonsHtml}
+                    </div>
+                `;
+            }
             else {
-                // Default placeholder for other blocks
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
             }
 
@@ -886,7 +929,6 @@ function renderPreview() {
         }
     });
 
-    // Add Telegram FAB if not exists
     if (!document.getElementById('telegram-fab')) {
         const fab = document.createElement('button');
         fab.id = 'telegram-fab';
@@ -928,7 +970,6 @@ function toggleBlockVisibility(key) {
     saveUserData();
 }
 
-// Edit Block Modal Logic
 const editModalOverlay = document.getElementById('editModalOverlay');
 const editModalSheet = document.getElementById('editModalSheet');
 
@@ -1243,7 +1284,7 @@ function openEditBlock(key) {
         titleEl.innerText = 'Прайс / меню';
         
         const items = blockData.items || [{name: '', cost: ''}];
-        const limit = 5; // Бесплатный лимит
+        const limit = 5; 
 
         let itemsHtml = '<div class="price-items-list">';
         items.forEach((item, index) => {
@@ -1337,7 +1378,6 @@ function openEditBlock(key) {
         let itemsHtml = '';
         items.forEach((item, index) => {
             if (item.type === 'link') {
-                // Редактор ссылки на платформу
                 itemsHtml += `
                     <div class="review-edit-item" data-index="${index}">
                         <label class="form-label" style="margin-bottom: 8px;">Ссылки на отзывы</label>
@@ -1359,7 +1399,6 @@ function openEditBlock(key) {
                     </div>
                 `;
             } else {
-                // Редактор текстового отзыва
                 itemsHtml += `
                     <div class="review-edit-item" data-index="${index}">
                         <label class="form-label" style="margin-bottom: 8px;">Свои отзывы вручную</label>
@@ -1517,6 +1556,68 @@ function openEditBlock(key) {
                 </div>
             </div>
         `;
+    } else if (key === 'share' || key.startsWith('share_copy')) {
+        titleEl.innerText = t.blk_share;
+        
+        const imageUrl = blockData.imageUrl || '';
+        const caption = blockData.caption || '';
+        const layout = blockData.layout || 'compact';
+
+        fieldsContainer.innerHTML = `
+            <div class="form-group">
+                <label class="form-label">${t.share_title}</label>
+                <input type="text" class="form-input" id="edit-share-title" value="${blockData.title || 'Поделиться'}">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">${t.share_image_label}</label>
+                <input type="text" class="form-input" id="edit-share-image-url" placeholder="https://..." value="${imageUrl}">
+                <div class="share-upload-area" onclick="document.getElementById('share-image-upload').click()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                    <span>${t.share_upload_btn}</span>
+                </div>
+                <input type="file" id="share-image-upload" accept="image/*" style="display:none" onchange="handleShareImageUpload(this)">
+                ${imageUrl ? `<img src="${imageUrl}" class="share-uploaded-preview" style="display:block;">` : '<img class="share-uploaded-preview" style="display:none;">'}
+            </div>
+
+            <p class="share-hint-text">${t.share_desc_hint}</p>
+
+            <div class="form-group">
+                <label class="form-label">${t.share_caption_label}</label>
+                <textarea class="form-input" id="edit-share-caption" rows="3" maxlength="200" placeholder="${t.share_caption_placeholder}" oninput="updateCaptionCounter(this)">${caption}</textarea>
+                <div class="share-caption-counter" id="share-caption-counter">${caption.length}/200</div>
+                <p class="share-info-text">${t.share_caption_info}</p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">${t.share_layout_label}</label>
+                <div class="share-layout-selector">
+                    <div class="share-layout-option ${layout === 'compact' ? 'active' : ''}" data-layout="compact" onclick="selectShareLayout(this)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        <span>${t.share_layout_compact}</span>
+                    </div>
+                    <div class="share-layout-option ${layout === 'stories' ? 'active' : ''}" data-layout="stories" onclick="selectShareLayout(this)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        <span>${t.share_layout_stories}</span>
+                    </div>
+                    <div class="share-layout-option ${layout === 'grid' ? 'active' : ''}" data-layout="grid" onclick="selectShareLayout(this)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        <span>${t.share_layout_grid}</span>
+                    </div>
+                    <div class="share-layout-option ${layout === 'list' ? 'active' : ''}" data-layout="list" onclick="selectShareLayout(this)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                        <span>${t.share_layout_list}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="share-preview-section">
+                <label class="form-label">${t.share_preview_label}</label>
+                <div class="share-preview-container" id="share-preview-container"></div>
+            </div>
+        `;
+        
+        setTimeout(() => updateSharePreview(layout, imageUrl, caption), 0);
     } else {
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
@@ -1529,7 +1630,6 @@ function openEditBlock(key) {
     editModalSheet.classList.add('open');
 }
 
-// Helper functions
 function selectCtaStyle(element) {
     document.querySelectorAll('.style-option-btn').forEach(btn => btn.classList.remove('active'));
     element.classList.add('active');
@@ -1585,7 +1685,6 @@ function createLinkItemElement(name, url, index) {
     return item;
 }
 
-// Functions for Price Block
 function addPriceItem() {
     const list = document.querySelector('.price-items-list');
     const index = list.children.length;
@@ -1615,7 +1714,6 @@ function updatePriceCounter() {
     if(badge) badge.innerText = `${count}/5`;
 }
 
-// Functions for Discounts Block
 function addDiscountItem() {
     const container = document.getElementById('discounts-list-container');
     const index = container.children.length;
@@ -1654,7 +1752,6 @@ function calculateDiscountPercent(input) {
     const oldP = parseFloat(oldPriceInput.value);
     const newP = parseFloat(newPriceInput.value);
     
-    // Считаем только если оба поля заполнены и цены валидны
     if (!isNaN(oldP) && !isNaN(newP) && oldP > 0 && newP < oldP) {
         const percent = Math.round(((oldP - newP) / oldP) * 100);
         percentInput.value = percent;
@@ -1667,12 +1764,10 @@ function updateDiscountCounter() {
     if(badge) badge.innerText = `${count}/3`;
 }
 
-// Functions for Reviews Block
 function addReviewItem() {
     const container = document.getElementById('reviews-list-container');
     const index = container.children.length;
     
-    // По умолчанию добавляем ссылку на Яндекс
     const row = document.createElement('div');
     row.className = 'review-edit-item';
     row.setAttribute('data-index', index);
@@ -1737,7 +1832,6 @@ function updateReviewCounter() {
     if(badge) badge.innerText = `${count}/4`;
 }
 
-// Functions for FAQ Block
 function addFaqItem() {
     const container = document.getElementById('faq-list-container');
     const index = container.children.length;
@@ -1770,7 +1864,6 @@ function updateFaqCounter() {
     if(badge) badge.innerText = `${count}/4`;
 }
 
-// Toggle FAQ Accordion in Preview
 function toggleFaq(qId, aId, questionEl) {
     const answerEl = document.getElementById(aId);
     const chevron = questionEl.querySelector('.faq-chevron');
@@ -1786,7 +1879,6 @@ function toggleFaq(qId, aId, questionEl) {
     }
 }
 
-// Functions for Facts Block
 function addFactItem() {
     const container = document.getElementById('facts-list-container');
     const index = container.children.length;
@@ -1817,6 +1909,93 @@ function updateFactsCounter() {
     const count = document.querySelectorAll('.fact-edit-item').length;
     const badge = document.getElementById('facts-counter');
     if(badge) badge.innerText = `${count}/3`;
+}
+
+function handleShareImageUpload(input) {
+    const file = input.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const url = e.target.result;
+            document.getElementById('edit-share-image-url').value = url;
+            const previewImg = document.querySelector('.share-uploaded-preview');
+            if (previewImg) {
+                previewImg.src = url;
+                previewImg.style.display = 'block';
+            } else {
+                const img = document.createElement('img');
+                img.src = url;
+                img.className = 'share-uploaded-preview';
+                img.style.display = 'block';
+                input.parentElement.appendChild(img);
+            }
+            const currentLayout = document.querySelector('.share-layout-option.active')?.dataset.layout || 'compact';
+            updateSharePreview(currentLayout, url, document.getElementById('edit-share-caption').value);
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function updateCaptionCounter(textarea) {
+    const counter = document.getElementById('share-caption-counter');
+    counter.textContent = `${textarea.value.length}/200`;
+    const currentLayout = document.querySelector('.share-layout-option.active')?.dataset.layout || 'compact';
+    const imageUrl = document.getElementById('edit-share-image-url').value;
+    updateSharePreview(currentLayout, imageUrl, textarea.value);
+}
+
+function selectShareLayout(optionEl) {
+    document.querySelectorAll('.share-layout-option').forEach(el => el.classList.remove('active'));
+    optionEl.classList.add('active');
+    const layout = optionEl.dataset.layout;
+    const imageUrl = document.getElementById('edit-share-image-url').value;
+    const caption = document.getElementById('edit-share-caption').value;
+    updateSharePreview(layout, imageUrl, caption);
+}
+
+function updateSharePreview(layout, imageUrl, caption) {
+    const container = document.getElementById('share-preview-container');
+    if (!container) return;
+    
+    const t = translations[currentLang];
+    
+    let buttonsHtml = '';
+    const copyBtn = `<button class="share-btn share-btn-copy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> ${t.share_btn_copy}</button>`;
+    const storiesBtn = `<button class="share-btn share-btn-stories"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> ${t.share_btn_stories}</button>`;
+    const shareBtn = `<button class="share-btn share-btn-share"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> ${t.share_btn_share}</button>`;
+
+    if (layout === 'compact') {
+        buttonsHtml = `<div class="share-layout-compact">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+    } else if (layout === 'stories') {
+        buttonsHtml = `<div class="share-layout-stories">${storiesBtn}${copyBtn}${shareBtn}</div>`;
+    } else if (layout === 'grid') {
+        buttonsHtml = `<div class="share-layout-grid">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+    } else if (layout === 'list') {
+        buttonsHtml = `<div class="share-layout-list">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+    }
+
+    container.innerHTML = `
+        <div class="share-block-preview">
+            ${imageUrl ? `<img src="${imageUrl}" alt="Share image" class="share-preview-image">` : ''}
+            ${caption ? `<p class="share-preview-caption">${caption}</p>` : ''}
+            ${buttonsHtml}
+        </div>
+    `;
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => showToast(translations[currentLang].toast_copy));
+}
+
+function shareToStories(imageUrl, caption) {
+    console.log('Share to stories:', imageUrl, caption);
+    alert('Функция "В сторис" будет реализована через нативный шеринг или API соцсетей.');
+}
+
+function shareViaBot(imageUrl, caption) {
+    const text = encodeURIComponent(caption);
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
 }
 
 function closeEditModal() { 
@@ -1934,7 +2113,6 @@ function saveBlockEdit() {
             const newPrice = row.querySelector('.discount-new').value.trim();
             const percent = row.querySelector('.discount-input-percent').value.trim();
             
-            // Сохраняем если есть название или цены
             if (name || oldPrice || newPrice) {
                 items.push({ 
                     name: name || 'Акция', 
@@ -2015,7 +2193,6 @@ function saveBlockEdit() {
             const number = row.querySelector('.fact-number-input').value.trim();
             const label = row.querySelector('.fact-label-input').value.trim();
             
-            // Сохраняем, если заполнено хотя бы одно поле
             if (number || label) {
                 items.push({ 
                     number: number || '0', 
@@ -2024,13 +2201,17 @@ function saveBlockEdit() {
             }
         });
         
-        // Если ничего не ввели, оставляем один пустой элемент для удобства
         if (items.length === 0) items.push({ number: '', label: '' });
         
         selectedBlocks[currentEditingBlockId].items = items;
     } else if (currentEditingBlockId === 'video' || currentEditingBlockId.startsWith('video_copy')) {
         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-video-title').value.trim() || 'Видео';
         selectedBlocks[currentEditingBlockId].url = document.getElementById('edit-video-url').value.trim();
+    } else if (currentEditingBlockId === 'share' || currentEditingBlockId.startsWith('share_copy')) {
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-share-title').value.trim() || 'Поделиться';
+        selectedBlocks[currentEditingBlockId].imageUrl = document.getElementById('edit-share-image-url').value.trim();
+        selectedBlocks[currentEditingBlockId].caption = document.getElementById('edit-share-caption').value.trim();
+        selectedBlocks[currentEditingBlockId].layout = document.querySelector('.share-layout-option.active')?.dataset.layout || 'compact';
     } else {
         const val1 = document.getElementById('edit-input-1').value.trim();
         const val2 = document.getElementById('edit-input-2').value.trim();
@@ -2070,7 +2251,6 @@ function deleteCurrentBlock() {
     }
 }
 
-// Header Modal Logic
 const headerModalOverlay = document.getElementById('headerModalOverlay');
 const headerModalSheet = document.getElementById('headerModalSheet');
 
@@ -2116,8 +2296,6 @@ function switchHeaderTab(tab) {
     
     if (tab === 'cover' || tab === 'banner') updateCoverFromUrl(document.getElementById('input-cover-url').value);
 }
-
-// --- PHOTO UPLOAD LOGIC ---
 
 function handleFileUpload(event, updateCallback) {
     const file = event.target.files[0];
@@ -2231,7 +2409,6 @@ function handleMaxProfilePhoto() {
 
 function finalizeCard() { saveUserData(); hasUserCards = true; goToDashboard(); }
 
-// Card Actions
 function editCurrentCard() { closeCardMenu(); openCreator(true); }
 function shareCurrentCard() {
     closeCardMenu();

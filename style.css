@@ -2115,3 +2115,206 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     height: 18px;
     fill: #FF0000; 
 }
+
+.share-upload-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    margin-top: 12px;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-secondary);
+}
+.share-upload-area:hover {
+    border-color: var(--btn-primary);
+    color: var(--btn-primary);
+}
+.share-uploaded-preview {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 12px;
+    display: none; 
+}
+
+.share-hint-text, .share-info-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-top: 8px;
+}
+
+.share-caption-counter {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: right;
+    margin-top: 4px;
+}
+
+.share-layout-selector {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+.share-layout-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 8px;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+.share-layout-option:hover {
+    border-color: rgba(255,255,255,0.2);
+}
+.share-layout-option.active {
+    border-color: var(--btn-primary);
+    background: rgba(165, 180, 252, 0.1);
+    color: var(--btn-primary);
+}
+.share-layout-option svg {
+    width: 24px;
+    height: 24px;
+}
+
+.share-preview-section {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+.share-preview-container {
+    margin-top: 12px;
+    padding: 16px;
+    background: var(--input-bg);
+    border-radius: 16px;
+    border: 1px dashed var(--border-color);
+}
+
+.share-block-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.share-preview-image {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    max-height: 200px;
+}
+.share-preview-caption {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.share-btn:active {
+    transform: scale(0.98);
+}
+.share-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.share-layout-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.share-layout-compact .share-btn-copy {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+.share-layout-compact .share-btn-stories {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    border: 1px solid rgba(165, 180, 252, 0.3);
+}
+.share-layout-compact .share-btn-share {
+    background: var(--btn-primary);
+    color: var(--btn-primary-text);
+}
+
+.share-layout-stories {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.share-layout-stories .share-btn-stories {
+    order: -1; 
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    border: 1px solid rgba(165, 180, 252, 0.3);
+    padding: 16px; 
+}
+.share-layout-stories .share-btn-copy,
+.share-layout-stories .share-btn-share {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.share-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.share-layout-grid .share-btn {
+    padding: 12px;
+    font-size: 14px;
+}
+.share-layout-grid .share-btn-share {
+    grid-column: span 2; 
+    background: var(--btn-primary);
+    color: var(--btn-primary-text);
+}
+.share-layout-grid .share-btn-copy,
+.share-layout-grid .share-btn-stories {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.share-layout-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.share-layout-list .share-btn {
+    justify-content: flex-start; 
+    padding: 12px 16px;
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+.share-layout-list .share-btn svg {
+    margin-right: 4px;
+}
