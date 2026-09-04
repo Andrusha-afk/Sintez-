@@ -2037,7 +2037,7 @@ function shareToStories(imageUrl, caption) {
 
 function shareViaBot(imageUrl, caption) {
     const text = encodeURIComponent(caption);
-    const url = encodeURIComponent(window.location.href);
+    const url = encodeURIComponent(window.location.origin + window.location.pathname + '?view=1');
     window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
 }
 
