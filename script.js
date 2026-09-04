@@ -248,6 +248,10 @@ let selectedBlocks = {};
 let currentHeaderFormat = 'avatar'; 
 let currentEditingBlockId = null;
 
+// Определяем режим работы приложения
+const urlParams = new URLSearchParams(window.location.search);
+const isViewMode = urlParams.get('view') === '1';
+
 function saveUserData() {
     const userData = { lang: currentLang, hasCards: hasUserCards, cardData: userCardData, blocks: selectedBlocks, headerFormat: currentHeaderFormat };
     localStorage.setItem('synthes_user_data', JSON.stringify(userData));
@@ -446,12 +450,14 @@ function handleMyCardsClick() { closeMenu(); if (hasUserCards) goToDashboard(); 
 
 function renderPreview() {
     const container = document.getElementById('preview-list-container');
+    if(!container) return; // Защита для режима просмотра
+    
     container.innerHTML = '';
     const t = translations[currentLang];
 
     const headerCard = document.createElement('div');
     headerCard.className = 'preview-header-card';
-    headerCard.onclick = openHeaderModal;
+    if (!isViewMode) headerCard.onclick = openHeaderModal;
     
     let coverStyle = '', avatarStyle = '', avatarDisplay = 'flex', avatarClass = 'header-preview-avatar', infoClass = 'header-preview-info', coverClass = 'header-preview-cover';
 
@@ -462,7 +468,7 @@ function renderPreview() {
         if (userCardData?.avatarUrl) avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
         avatarDisplay = 'flex'; avatarClass += ' overlay-mode'; coverClass += ' banner-mode'; infoClass += ' banner-info';
     } else if (currentHeaderFormat === 'carousel' && userCardData?.carouselImages?.length > 0) {
-        headerCard.innerHTML = `<div class="carousel-container" style="pointer-events: none;">${userCardData.carouselImages.map(img => `<div class="carousel-item" style="background-image: url(${img})"></div>`).join('')}</div><div class="header-preview-info" style="margin-top: 10px;"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div><div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>`;
+        headerCard.innerHTML = `<div class="carousel-container" style="pointer-events: none;">${userCardData.carouselImages.map(img => `<div class="carousel-item" style="background-image: url(${img})"></div>`).join('')}</div><div class="header-preview-info" style="margin-top: 10px;"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>${!isViewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}`;
         container.appendChild(headerCard);
     } else if (userCardData?.avatarUrl) {
         avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
@@ -473,7 +479,7 @@ function renderPreview() {
             <div class="${coverClass}" style="${coverStyle}"></div>
             <div class="${avatarClass}" style="display: ${avatarDisplay}; ${avatarStyle}">${!userCardData?.avatarUrl ? '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' : ''}</div>
             <div class="${infoClass}"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>
-            <div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>
+            ${!isViewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}
         `;
     }
     container.appendChild(headerCard);
@@ -484,19 +490,30 @@ function renderPreview() {
     
     const createBlockSection = (key, blockData, title, contentHtml) => {
         const section = document.createElement('div');
-        section.className = `preview-block-section ${blockData.visible ? '' : 'hidden-block'}`;
-        section.innerHTML = `
-            <div class="block-section-header">
-                <div class="block-section-title">${title.toUpperCase()}</div>
-                <div class="block-actions">
-                    <button class="action-btn ${blockData.visible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                    </button>
-                    <button class="action-btn" onclick="openEditBlock('${key}')">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                    </button>
+        // В режиме просмотра всегда показываем блоки, игнорируя hidden-block
+        section.className = `preview-block-section ${(!isViewMode && !blockData.visible) ? 'hidden-block' : ''}`;
+        
+        let headerHtml = '';
+        if (!isViewMode) {
+            headerHtml = `
+                <div class="block-section-header">
+                    <div class="block-section-title">${title.toUpperCase()}</div>
+                    <div class="block-actions">
+                        <button class="action-btn ${blockData.visible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                        <button class="action-btn" onclick="openEditBlock('${key}')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </button>
+                    </div>
                 </div>
-            </div>
+            `;
+        } else {
+            headerHtml = `<div class="block-section-title" style="margin-bottom: 12px;">${title.toUpperCase()}</div>`;
+        }
+
+        section.innerHTML = `
+            ${headerHtml}
             <div class="preview-card-body">
                 ${contentHtml}
             </div>
@@ -506,7 +523,7 @@ function renderPreview() {
 
     aboutKeys.forEach(key => {
         const blockData = selectedBlocks[key];
-        if (blockData && blockData.visible) {
+        if (blockData && (isViewMode || blockData.visible)) {
             const title = blockData.title || 'О БИЗНЕСЕ';
             const bodyContent = blockData.text ? `<p>${blockData.text}</p>` : '<p style="opacity:0.5">Нет текста</p>';
             container.appendChild(createBlockSection(key, blockData, title, bodyContent));
@@ -515,7 +532,7 @@ function renderPreview() {
 
     otherKeys.forEach(key => {
         const blockData = selectedBlocks[key];
-        if (blockData && blockData.visible) {
+        if (blockData && (isViewMode || blockData.visible)) {
             let title = blockData.title;
             if (!title) title = t[`blk_${key}`] || key;
             
@@ -929,7 +946,26 @@ function renderPreview() {
         }
     });
 
-    if (!document.getElementById('telegram-fab')) {
+    // Добавляем нативную кнопку шеринга только в режиме просмотра
+    if (isViewMode && !document.getElementById('native-share-fab')) {
+        const fab = document.createElement('button');
+        fab.id = 'native-share-fab';
+        fab.className = 'telegram-fab'; // Используем те же стили
+        fab.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`;
+        fab.onclick = () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: userCardData?.name || 'Моя визитка',
+                    text: userCardData?.desc || '',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                copyToClipboard(window.location.href);
+            }
+        };
+        document.getElementById('screen-preview').appendChild(fab);
+    } else if (!isViewMode && !document.getElementById('telegram-fab')) {
+        // Старая кнопка для режима редактора (если нужна)
         const fab = document.createElement('button');
         fab.id = 'telegram-fab';
         fab.className = 'telegram-fab';
@@ -1213,7 +1249,7 @@ function openEditBlock(key) {
             
             <div class="form-group" style="margin-bottom: 24px;">
                 <label class="form-label">Куда ведёт кнопка</label>
-                <input type="text" class="form-input" id="edit-cta-link" value="${ctaLink}" placeholder="Номер в МАХ или https://...">
+                <input type="text" class="form-input" id="edit-cta-link" value="${ctaLink}" placeholder="@username в Telegram или https://...">
             </div>
 
             <label class="form-label" style="margin-bottom: 10px; display:block;">Оформление</label>
@@ -1551,7 +1587,7 @@ function openEditBlock(key) {
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
                 </div>
                 <div class="video-info-text">
-                    <h4>Видео прямо из МАХ</h4>
+                    <h4>Видео прямо из Telegram</h4>
                     <p>После создания бота сможешь присылать видео и кружочки прямо в чат — они появятся здесь. Обычные до 20 МБ; что больше — ссылкой с видеохостинга.</p>
                 </div>
             </div>
@@ -2451,4 +2487,19 @@ function showToast(message) {
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-window.onload = function() { loadUserData(); nextScreen(1); applyTranslations(); };
+// Инициализация приложения
+window.onload = function() { 
+    loadUserData(); 
+    
+    if (isViewMode) {
+        // Режим просмотра: сразу рендерим визитку
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('screen-preview').classList.add('active');
+        updateHeader('preview');
+        renderPreview();
+    } else {
+        // Режим редактора: стандартный поток
+        nextScreen(1); 
+        applyTranslations();
+    }
+};
