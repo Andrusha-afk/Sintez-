@@ -915,7 +915,10 @@ function renderPreview() {
                 const imageUrl = blockData.imageUrl;
                 const caption = blockData.caption || userCardData?.desc || '';
                 
-                const copyBtn = `<button class="share-btn share-btn-copy" onclick="copyToClipboard('${window.location.href}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> ${t.share_btn_copy}</button>`;
+                // Формируем правильную ссылку для просмотра
+                const viewUrl = window.location.origin + window.location.pathname + '?view=1';
+                
+                const copyBtn = `<button class="share-btn share-btn-copy" onclick="copyToClipboard('${viewUrl}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> ${t.share_btn_copy}</button>`;
                 const storiesBtn = `<button class="share-btn share-btn-stories" onclick="shareToStories('${imageUrl || ''}', '${caption.replace(/'/g, "\\'")}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> ${t.share_btn_stories}</button>`;
                 const shareBtn = `<button class="share-btn share-btn-share" onclick="shareViaBot('${imageUrl || ''}', '${caption.replace(/'/g, "\\'")}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> ${t.share_btn_share}</button>`;
 
@@ -947,32 +950,36 @@ function renderPreview() {
     });
 
     // Добавляем нативную кнопку шеринга только в режиме просмотра
-    if (isViewMode && !document.getElementById('native-share-fab')) {
-        const fab = document.createElement('button');
-        fab.id = 'native-share-fab';
-        fab.className = 'telegram-fab'; // Используем те же стили
-        fab.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`;
-        fab.onclick = () => {
-            if (navigator.share) {
-                navigator.share({
-                    title: userCardData?.name || 'Моя визитка',
-                    text: userCardData?.desc || '',
-                    url: window.location.href
-                }).catch(console.error);
-            } else {
-                copyToClipboard(window.location.href);
-            }
-        };
-        document.getElementById('screen-preview').appendChild(fab);
-    } else if (!isViewMode && !document.getElementById('telegram-fab')) {
-        // Старая кнопка для режима редактора (если нужна)
-        const fab = document.createElement('button');
-        fab.id = 'telegram-fab';
-        fab.className = 'telegram-fab';
-        fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
-        document.getElementById('screen-preview').appendChild(fab);
-    }
-
+        // Добавляем нативную кнопку шеринга только в режиме просмотра
+        if (isViewMode && !document.getElementById('native-share-fab')) {
+            const fab = document.createElement('button');
+            fab.id = 'native-share-fab';
+            fab.className = 'telegram-fab'; 
+            fab.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`;
+            
+            // Принудительно формируем ссылку на просмотр
+            const shareUrl = window.location.origin + window.location.pathname + '?view=1';
+            
+            fab.onclick = () => {
+                if (navigator.share) {
+                    navigator.share({
+                        title: userCardData?.name || 'Моя визитка',
+                        text: userCardData?.desc || '',
+                        url: shareUrl // Используем правильную ссылку
+                    }).catch(console.error);
+                } else {
+                    copyToClipboard(shareUrl);
+                }
+            };
+            document.getElementById('screen-preview').appendChild(fab);
+        } else if (!isViewMode && !document.getElementById('telegram-fab')) {
+            // Старая кнопка для режима редактора (если нужна)
+            const fab = document.createElement('button');
+            fab.id = 'telegram-fab';
+            fab.className = 'telegram-fab';
+            fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
+            document.getElementById('screen-preview').appendChild(fab);
+        }
     if (container.children.length <= 1) { 
         const emptyMsg = document.createElement('div');
         emptyMsg.style.textAlign = 'center'; emptyMsg.style.color = 'var(--text-secondary)'; emptyMsg.style.padding = '40px 0';
