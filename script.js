@@ -343,17 +343,6 @@ function applyTranslations() {
     // Обновляем заголовок аналитики
     const pageTitleEl = document.getElementById('pageTitle');
     if(pageTitleEl) pageTitleEl.innerText = t.page_analytics;
-
-    // Если открыто модальное окно редактирования, обновляем его заголовок и лейблы
-    if (currentEditingBlockId && editModalSheet.classList.contains('open')) {
-        const titleEl = document.getElementById('edit-modal-title');
-        if (titleEl) {
-             // Простая логика обновления заголовка модалки при смене языка
-             if (currentEditingBlockId.startsWith('about')) titleEl.innerText = t.blk_contacts ? 'О бизнесе' : 'About'; // Упрощено для примера, лучше использовать маппинг
-             // В реальном проекте здесь стоит вызвать openEditBlock(currentEditingBlockId) для полной перерисовки, 
-             // но это может сбросить введенные данные. Поэтому мы полагаемся на data-i18n атрибуты внутри модалки.
-        }
-    }
 }
 
 function nextScreen(screenNum) {
@@ -537,6 +526,9 @@ function toggleUserPreviewMode() {
         btn.classList.remove('active');
         showToast('Режим редактора');
     }
+    
+    // Перерисовываем превью, чтобы применить/убрать скрытие пустых блоков
+    renderPreview();
 }
 
 function renderPreview() {
@@ -581,7 +573,7 @@ function renderPreview() {
     
     const createBlockSection = (key, blockData, title, contentHtml) => {
         const section = document.createElement('div');
-        // В режиме просмотра пользователем всегда показываем блоки, игнорируя hidden-block
+        // В режиме просмотра всегда показываем блоки, игнорируя hidden-block
         section.className = `preview-block-section ${(!isViewMode && !isUserPreviewMode && !blockData.visible) ? 'hidden-block' : ''}`;
         
         let headerHtml = '';
@@ -628,6 +620,7 @@ function renderPreview() {
             if (!title) title = t[`blk_${key}`] || key;
             
             let contentHtml = '';
+            let isEmpty = false; // Флаг для проверки пустоты блока
             
             if (key === 'links' || key.startsWith('links_copy')) {
                 const links = blockData.items || [];
@@ -652,6 +645,7 @@ function renderPreview() {
                     });
                     contentHtml += `</div>`;
                 } else {
+                    isEmpty = true;
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет добавленных ссылок</div>`;
                 }
             } 
@@ -671,6 +665,7 @@ function renderPreview() {
                     });
                     contentHtml += `</div>`;
                 } else {
+                    isEmpty = true;
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет активных соцсетей</div>`;
                 }
             }
@@ -778,6 +773,7 @@ function renderPreview() {
                 }
                 
                 if (!phone && !email) {
+                    isEmpty = true;
                     buttonsHtml += `<div style="grid-column: 1/-1; text-align:center; color: var(--text-secondary); padding: 10px;">Нет добавленных контактов</div>`;
                 }
                 
@@ -837,6 +833,7 @@ function renderPreview() {
                     });
                     contentHtml += `</div>`;
                 } else {
+                    isEmpty = true;
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных позиций</div>`;
                 }
             }
@@ -866,6 +863,7 @@ function renderPreview() {
                     });
                     contentHtml += `</div>`;
                 } else {
+                    isEmpty = true;
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных акций</div>`;
                 }
             }
@@ -900,6 +898,7 @@ function renderPreview() {
                     });
                     contentHtml += `</div>`;
                 } else {
+                    isEmpty = true;
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных отзывов</div>`;
                 }
             }
@@ -928,6 +927,7 @@ function renderPreview() {
                     });
                     contentHtml += `</div>`;
                 } else {
+                    isEmpty = true;
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных вопросов</div>`;
                 }
             }
@@ -946,6 +946,7 @@ function renderPreview() {
                     });
                     contentHtml += `</div>`;
                 } else {
+                    isEmpty = true;
                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных фактов</div>`;
                 }
             }
@@ -992,12 +993,14 @@ function renderPreview() {
                             </div>
                         `;
                     } else {
+                         isEmpty = true;
                          contentHtml = `<a href="${url}" target="_blank" class="video-fallback-btn" style="position:static; transform:none; width:100%; justify-content:center;">
                                             <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                                             Открыть видео
                                         </a>`;
                     }
                 } else {
+                    isEmpty = true;
                     contentHtml = `<div style="padding: 20px; text-align:center; color: var(--text-secondary); border: 1px dashed var(--border-color); border-radius: 16px;">Нет ссылки на видео</div>`;
                 }
             }
@@ -1005,7 +1008,6 @@ function renderPreview() {
                 const layout = blockData.layout || 'compact';
                 const imageUrl = blockData.imageUrl;
                 const caption = blockData.caption || userCardData?.desc || '';
-                
                 // Формируем правильную ссылку для просмотра
                 const viewUrl = window.location.origin + window.location.pathname + '?view=1';
                 
@@ -1077,6 +1079,7 @@ function renderPreview() {
                         contentHtml += `</div>`;
                     }
                 } else {
+                    isEmpty = true;
                     contentHtml = `<div style="padding: 20px; text-align:center; color: var(--text-secondary); border: 1px dashed var(--border-color); border-radius: 16px;">Нет добавленных фото</div>`;
                 }
             }
@@ -1084,40 +1087,21 @@ function renderPreview() {
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
             }
 
-            container.appendChild(createBlockSection(key, blockData, title, contentHtml));
+            // Если включен режим просмотра пользователем и блок пуст, не добавляем его в DOM
+            if (isUserPreviewMode && isEmpty) {
+                // Просто пропускаем этот блок
+            } else {
+                container.appendChild(createBlockSection(key, blockData, title, contentHtml));
+            }
         }
     });
 
-    // --- ИЗМЕНЕНИЕ: Удаляем старую кнопку Telegram и добавляем статичную YouTube ---
-    
-    // Удаляем старую кнопку, если она вдруг есть
-    const oldFab = document.getElementById('telegram-fab');
-    if (oldFab) oldFab.remove();
-
-    // Создаем новую кнопку YouTube на заднем плане
-    if (!document.getElementById('youtube-bg-btn')) {
-        const ytBtn = document.createElement('button');
-        ytBtn.id = 'youtube-bg-btn';
-        ytBtn.className = 'youtube-bg-btn';
-        // Иконка YouTube
-        ytBtn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
-        
-        // Действие при клике (например, переход на канал)
-        ytBtn.onclick = () => {
-            window.open('https://www.youtube.com/', '_blank');
-        };
-        
-        document.body.appendChild(ytBtn);
-    }
-
-    // Добавляем нативную кнопку шеринга только в режиме просмотра (поверх всего, но YouTube останется сзади)
+    // Добавляем нативную кнопку шеринга только в режиме просмотра
     if (isViewMode && !document.getElementById('native-share-fab')) {
         const fab = document.createElement('button');
         fab.id = 'native-share-fab';
-        fab.className = 'telegram-fab'; // Используем те же стили позиционирования, но z-index у youtube-bg-btn ниже
-        fab.style.zIndex = '50'; // Явно указываем высокий z-index
+        fab.className = 'telegram-fab'; 
         fab.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`;
-        
         // Принудительно формируем ссылку на просмотр
         const shareUrl = window.location.origin + window.location.pathname + '?view=1';
         
@@ -1132,6 +1116,13 @@ function renderPreview() {
                 copyToClipboard(shareUrl);
             }
         };
+        document.getElementById('screen-preview').appendChild(fab);
+    } else if (!isViewMode && !document.getElementById('telegram-fab')) {
+        // Старая кнопка для режима редактора (если нужна)
+        const fab = document.createElement('button');
+        fab.id = 'telegram-fab';
+        fab.className = 'telegram-fab';
+        fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
         document.getElementById('screen-preview').appendChild(fab);
     }
 
@@ -2778,18 +2769,15 @@ function showToast(message) {
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-// Инициализация приложения
 window.onload = function() { 
     loadUserData(); 
     
     if (isViewMode) {
-        // Режим просмотра: сразу рендерим визитку
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById('screen-preview').classList.add('active');
         updateHeader('preview');
         renderPreview();
     } else {
-        // Режим редактора: стандартный поток
         nextScreen(1); 
         applyTranslations();
     }

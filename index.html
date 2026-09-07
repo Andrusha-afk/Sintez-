@@ -296,6 +296,7 @@
         </div>
     </div>
 
+    <!-- Preview Screen (Step 3) -->
     <div id="screen-preview" class="screen">
         <div class="preview-header-section">
             <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 8px;"><span data-i18n="pv_title">Твоя визитка</span></h2>
@@ -303,6 +304,7 @@
         </div>
         
         <div class="preview-list" id="preview-list-container">
+            <!-- Content rendered by JS -->
         </div>
 
         <div class="creator-footer" style="display: flex; gap: 12px;">
@@ -311,6 +313,7 @@
         </div>
     </div>
 
+    <!-- Analytics Screen -->
     <div id="screen-analytics" class="screen">
         <div class="analytics-container">
             <div class="analytics-card">
@@ -322,6 +325,7 @@
         </div>
     </div>
 
+    <!-- Main Menu Modal -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeMenu()"></div>
     <div class="modal-sheet" id="modalSheet">
         <div class="modal-handle"></div>
@@ -343,6 +347,7 @@
         <div class="modal-footer-text" data-i18n="menu_footer">Приветствие показано при первом входе.</div>
     </div>
 
+    <!-- Card Actions Modal -->
     <div class="modal-overlay" id="cardModalOverlay" onclick="closeCardMenu()"></div>
     <div class="modal-sheet" id="cardModalSheet">
         <div class="modal-handle"></div>
@@ -367,6 +372,7 @@
         </div>
     </div>
 
+    <!-- Header Edit Modal -->
     <div class="modal-overlay" id="headerModalOverlay" onclick="closeHeaderModal()"></div>
     <div class="modal-sheet header-modal-sheet" id="headerModalSheet">
         <div class="modal-handle"></div>
@@ -383,6 +389,7 @@
             <div class="header-tab" onclick="switchHeaderTab('carousel')" data-i18n="tab_carousel">Карусель</div>
         </div>
 
+        <!-- Avatar Tab -->
         <div id="tab-content-avatar" class="header-tab-content">
             <div class="tab-desc" data-i18n="desc_avatar">Круглый аватар.</div>
             <div class="modal-avatar-preview">
@@ -449,6 +456,7 @@
             <input type="text" id="input-avatar-url-banner" class="form-input" placeholder="https://..." onchange="updateAvatarFromUrl(this.value)">
         </div>
 
+        <!-- Carousel Tab -->
         <div id="tab-content-carousel" class="header-tab-content hidden">
             <div class="tab-desc" data-i18n="desc_carousel">Листаются свайпом.</div>
             <div class="modal-carousel-preview" id="modal-carousel-list">
@@ -476,6 +484,7 @@
         </div>
     </div>
 
+    <!-- Block Edit Modal -->
     <div class="modal-overlay" id="editModalOverlay" onclick="closeEditModal()"></div>
     <div class="modal-sheet" id="editModalSheet" style="max-height: 90vh; overflow-y: auto;">
         <div class="modal-handle"></div>
@@ -485,6 +494,7 @@
         </div>
         
         <div id="edit-modal-fields">
+            <!-- Dynamic fields injected by JS -->
         </div>
 
         <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px;">
@@ -495,6 +505,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Toast Notification -->
     <div id="toast" class="toast" data-i18n="toast_copy">Ссылка скопирована!</div>
 
     <script src="script.js"></script>
