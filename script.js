@@ -135,7 +135,18 @@ const translations = {
         share_preview_label: "Предпросмотр",
         share_btn_copy: "Скопировать",
         share_btn_stories: "В сторис",
-        share_btn_share: "Поделиться"
+        share_btn_share: "Поделиться",
+        gallery_title: "Заголовок",
+        gallery_display_format: "Формат отображения",
+        gallery_grid: "Сетка",
+        gallery_carousel: "Карусель",
+        gallery_mosaic: "Мозаика",
+        gallery_photos: "Фото работ",
+        gallery_upload_photo: "Загрузить фото",
+        gallery_demo_tile: "Демо-плитка",
+        gallery_upload_hint: "Загрузи свои фото (можно сразу несколько) — они появятся в сетке.",
+        gallery_demo_hint: "«Демо-плитка» — пустой квадрат для примера, как будет выглядеть сетка. Замени своим фото.",
+        gallery_limit: "бесплатно — до 8 элементов, в PRO больше"
     },
     en: {
         s1_title: "Your card ", s1_title_grad: "inside MAX", s1_desc: "Opens via link instantly.",
@@ -186,7 +197,18 @@ const translations = {
         share_preview_label: "Preview",
         share_btn_copy: "Copy",
         share_btn_stories: "To Stories",
-        share_btn_share: "Share"
+        share_btn_share: "Share",
+        gallery_title: "Title",
+        gallery_display_format: "Display format",
+        gallery_grid: "Grid",
+        gallery_carousel: "Carousel",
+        gallery_mosaic: "Mosaic",
+        gallery_photos: "Work photos",
+        gallery_upload_photo: "Upload photo",
+        gallery_demo_tile: "Demo tile",
+        gallery_upload_hint: "Upload your photos (you can upload several at once) — they will appear in the grid.",
+        gallery_demo_hint: "\"Demo tile\" is an empty square as an example of how the grid will look. Replace it with your photo.",
+        gallery_limit: "free — up to 8 elements, more in PRO"
     },
     de: {
         s1_title: "Deine Karte ", s1_title_grad: "in MAX", s1_desc: "Öffnet per Link sofort.",
@@ -237,7 +259,18 @@ const translations = {
         share_preview_label: "Vorschau",
         share_btn_copy: "Kopieren",
         share_btn_stories: "In Stories",
-        share_btn_share: "Teilen"
+        share_btn_share: "Teilen",
+        gallery_title: "Titel",
+        gallery_display_format: "Anzeigeformat",
+        gallery_grid: "Raster",
+        gallery_carousel: "Karussell",
+        gallery_mosaic: "Mosaik",
+        gallery_photos: "Arbeitsfotos",
+        gallery_upload_photo: "Foto hochladen",
+        gallery_demo_tile: "Demo-Kachel",
+        gallery_upload_hint: "Lade deine Fotos hoch (du kannst mehrere auf einmal hochladen) — sie erscheinen im Raster.",
+        gallery_demo_hint: "\"Demo-Kachel\" ist ein leeres Quadrat als Beispiel, wie das Raster aussehen wird. Ersetze es durch dein Foto.",
+        gallery_limit: "kostenlos — bis zu 8 Elemente, mehr in PRO"
     }
 };
 
@@ -366,6 +399,13 @@ function finishBlocksSelection() {
                     imageUrl: '',
                     caption: '',
                     layout: 'compact'
+                };
+            } else if (key === 'gallery') {
+                selectedBlocks[key] = {
+                    visible: cb.checked,
+                    title: 'Галерея',
+                    items: [],
+                    displayFormat: 'grid' // grid, carousel, mosaic
                 };
             } else {
                 selectedBlocks[key] = { visible: cb.checked, title: null };
@@ -941,6 +981,54 @@ function renderPreview() {
                     </div>
                 `;
             }
+            else if (key === 'gallery' || key.startsWith('gallery_copy')) {
+                const items = blockData.items || [];
+                const format = blockData.displayFormat || 'grid';
+                
+                if (items.length > 0) {
+                    if (format === 'grid') {
+                        contentHtml = `<div class="gallery-grid">`;
+                        items.forEach(item => {
+                            if (item.type === 'image') {
+                                contentHtml += `<div class="gallery-item" style="background-image: url('${item.src}');"></div>`;
+                            } else if (item.type === 'demo') {
+                                contentHtml += `<div class="gallery-item demo-tile" style="background-color: ${item.color};"></div>`;
+                            }
+                        });
+                        contentHtml += `</div>`;
+                    } else if (format === 'carousel') {
+                        contentHtml = `<div class="gallery-carousel">`;
+                        items.forEach(item => {
+                            if (item.type === 'image') {
+                                contentHtml += `<div class="gallery-carousel-item" style="background-image: url('${item.src}');"></div>`;
+                            } else if (item.type === 'demo') {
+                                contentHtml += `<div class="gallery-carousel-item demo-tile" style="background-color: ${item.color};"></div>`;
+                            }
+                        });
+                        contentHtml += `</div>`;
+                    } else if (format === 'mosaic') {
+                        contentHtml = `<div class="gallery-mosaic">`;
+                        items.forEach((item, index) => {
+                            let spanClass = '';
+                            // Простая логика шахматного порядка: четные элементы широкие, нечетные высокие
+                            if (index % 2 === 0) {
+                                spanClass = 'mosaic-wide';
+                            } else {
+                                spanClass = 'mosaic-tall';
+                            }
+                            
+                            if (item.type === 'image') {
+                                contentHtml += `<div class="gallery-mosaic-item ${spanClass}" style="background-image: url('${item.src}');"></div>`;
+                            } else if (item.type === 'demo') {
+                                contentHtml += `<div class="gallery-mosaic-item demo-tile ${spanClass}" style="background-color: ${item.color};"></div>`;
+                            }
+                        });
+                        contentHtml += `</div>`;
+                    }
+                } else {
+                    contentHtml = `<div style="padding: 20px; text-align:center; color: var(--text-secondary); border: 1px dashed var(--border-color); border-radius: 16px;">Нет добавленных фото</div>`;
+                }
+            }
             else {
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
             }
@@ -950,36 +1038,36 @@ function renderPreview() {
     });
 
     // Добавляем нативную кнопку шеринга только в режиме просмотра
-        // Добавляем нативную кнопку шеринга только в режиме просмотра
-        if (isViewMode && !document.getElementById('native-share-fab')) {
-            const fab = document.createElement('button');
-            fab.id = 'native-share-fab';
-            fab.className = 'telegram-fab'; 
-            fab.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`;
-            
-            // Принудительно формируем ссылку на просмотр
-            const shareUrl = window.location.origin + window.location.pathname + '?view=1';
-            
-            fab.onclick = () => {
-                if (navigator.share) {
-                    navigator.share({
-                        title: userCardData?.name || 'Моя визитка',
-                        text: userCardData?.desc || '',
-                        url: shareUrl // Используем правильную ссылку
-                    }).catch(console.error);
-                } else {
-                    copyToClipboard(shareUrl);
-                }
-            };
-            document.getElementById('screen-preview').appendChild(fab);
-        } else if (!isViewMode && !document.getElementById('telegram-fab')) {
-            // Старая кнопка для режима редактора (если нужна)
-            const fab = document.createElement('button');
-            fab.id = 'telegram-fab';
-            fab.className = 'telegram-fab';
-            fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
-            document.getElementById('screen-preview').appendChild(fab);
-        }
+    if (isViewMode && !document.getElementById('native-share-fab')) {
+        const fab = document.createElement('button');
+        fab.id = 'native-share-fab';
+        fab.className = 'telegram-fab'; 
+        fab.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`;
+        
+        // Принудительно формируем ссылку на просмотр
+        const shareUrl = window.location.origin + window.location.pathname + '?view=1';
+        
+        fab.onclick = () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: userCardData?.name || 'Моя визитка',
+                    text: userCardData?.desc || '',
+                    url: shareUrl // Используем правильную ссылку
+                }).catch(console.error);
+            } else {
+                copyToClipboard(shareUrl);
+            }
+        };
+        document.getElementById('screen-preview').appendChild(fab);
+    } else if (!isViewMode && !document.getElementById('telegram-fab')) {
+        // Старая кнопка для режима редактора (если нужна)
+        const fab = document.createElement('button');
+        fab.id = 'telegram-fab';
+        fab.className = 'telegram-fab';
+        fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
+        document.getElementById('screen-preview').appendChild(fab);
+    }
+
     if (container.children.length <= 1) { 
         const emptyMsg = document.createElement('div');
         emptyMsg.style.textAlign = 'center'; emptyMsg.style.color = 'var(--text-secondary)'; emptyMsg.style.padding = '40px 0';
@@ -1661,6 +1749,66 @@ function openEditBlock(key) {
         `;
         
         setTimeout(() => updateSharePreview(layout, imageUrl, caption), 0);
+    } else if (key === 'gallery' || key.startsWith('gallery_copy')) {
+        titleEl.innerText = t.blk_gallery || 'Галерея';
+        
+        const items = blockData.items || [];
+        const displayFormat = blockData.displayFormat || 'grid';
+        const limit = 8;
+
+        // Генерируем HTML для превью загруженных фото/демо-плиток
+        let photosPreviewHtml = '<div class="gallery-photos-preview">';
+        items.forEach((item, index) => {
+            if (item.type === 'image') {
+                photosPreviewHtml += `<div class="gallery-photo-thumb" style="background-image: url('${item.src}');" onclick="removeGalleryItem(${index})"><button class="remove-photo-btn">×</button></div>`;
+            } else if (item.type === 'demo') {
+                photosPreviewHtml += `<div class="gallery-photo-thumb demo-tile" style="background-color: ${item.color};" onclick="removeGalleryItem(${index})"><button class="remove-photo-btn">×</button></div>`;
+            }
+        });
+        // Добавляем кнопку "+" для загрузки
+        photosPreviewHtml += `<div class="gallery-photo-thumb add-photo-btn" onclick="document.getElementById('gallery-upload-input').click()">+</div>`;
+        photosPreviewHtml += '</div>';
+        // Скрытый инпут для загрузки файлов
+        photosPreviewHtml += `<input type="file" id="gallery-upload-input" accept="image/*" multiple style="display:none" onchange="handleGalleryUpload(this)">`;
+
+        fieldsContainer.innerHTML = `
+            <div class="form-group">
+                <label class="form-label">${t.gallery_title}</label>
+                <input type="text" class="form-input" id="edit-gallery-title" value="${blockData.title || 'Галерея'}">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">${t.gallery_display_format}</label>
+                <div class="gallery-format-selector">
+                    <div class="gallery-format-option ${displayFormat === 'grid' ? 'active' : ''}" data-format="grid" onclick="selectGalleryFormat(this)">${t.gallery_grid}</div>
+                    <div class="gallery-format-option ${displayFormat === 'carousel' ? 'active' : ''}" data-format="carousel" onclick="selectGalleryFormat(this)">${t.gallery_carousel}</div>
+                    <div class="gallery-format-option ${displayFormat === 'mosaic' ? 'active' : ''}" data-format="mosaic" onclick="selectGalleryFormat(this)">${t.gallery_mosaic}</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">${t.gallery_photos}</label>
+                ${photosPreviewHtml}
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                <button class="btn-secondary" style="flex:1; padding: 12px;" onclick="document.getElementById('gallery-upload-input').click()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 5px; vertical-align: middle;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                    ${t.gallery_upload_photo}
+                </button>
+                <button class="btn-secondary" style="flex:1; padding: 12px;" onclick="addDemoTile()">
+                    ${t.gallery_demo_tile}
+                </button>
+            </div>
+
+            <p class="share-hint-text">${t.gallery_upload_hint}</p>
+            <p class="share-hint-text" style="margin-top: 5px;">${t.gallery_demo_hint}</p>
+
+            <div class="price-limit-hint" style="margin-top: 15px;">
+                <span class="limit-badge" id="gallery-counter">${items.length}/${limit}</span>
+                ${t.gallery_limit}
+            </div>
+        `;
     } else {
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
@@ -2026,6 +2174,70 @@ function updateSharePreview(layout, imageUrl, caption) {
     `;
 }
 
+// --- Функции для блока Галерея ---
+
+function selectGalleryFormat(optionEl) {
+    document.querySelectorAll('.gallery-format-option').forEach(el => el.classList.remove('active'));
+    optionEl.classList.add('active');
+}
+
+function addDemoTile() {
+    const blockData = selectedBlocks[currentEditingBlockId];
+    if (!blockData.items) blockData.items = [];
+    
+    // Проверка лимита
+    if (blockData.items.length >= 8) {
+        alert('Достигнут лимит в 8 элементов.');
+        return;
+    }
+
+    // Генерация рандомного пастельного цвета
+    const hue = Math.floor(Math.random() * 360);
+    const color = `hsl(${hue}, 70%, 80%)`;
+    
+    blockData.items.push({ type: 'demo', color: color });
+    
+    // Перерисовываем превью фото в модалке
+    openEditBlock(currentEditingBlockId);
+}
+
+function handleGalleryUpload(input) {
+    const files = Array.from(input.files);
+    const blockData = selectedBlocks[currentEditingBlockId];
+    if (!blockData.items) blockData.items = [];
+    
+    let processedCount = 0;
+    
+    files.forEach(file => {
+        if (blockData.items.length >= 8) return; // Проверка лимита внутри цикла
+        
+        if (['image/jpeg', 'image/png', 'image/jpg', 'image/webp'].includes(file.type)) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                blockData.items.push({ type: 'image', src: e.target.result });
+                processedCount++;
+                
+                // Когда все файлы обработаны, перерисовываем модалку
+                if (processedCount === files.length || blockData.items.length >= 8) {
+                    openEditBlock(currentEditingBlockId);
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    
+    input.value = ''; // Сброс инпута
+}
+
+function removeGalleryItem(index) {
+    const blockData = selectedBlocks[currentEditingBlockId];
+    if (blockData.items && blockData.items[index]) {
+        blockData.items.splice(index, 1);
+        // Перерисовываем превью фото в модалке
+        openEditBlock(currentEditingBlockId);
+    }
+}
+
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => showToast(translations[currentLang].toast_copy));
 }
@@ -2037,6 +2249,7 @@ function shareToStories(imageUrl, caption) {
 
 function shareViaBot(imageUrl, caption) {
     const text = encodeURIComponent(caption);
+    // Принудительно формируем ссылку на просмотр
     const url = encodeURIComponent(window.location.origin + window.location.pathname + '?view=1');
     window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
 }
@@ -2255,6 +2468,10 @@ function saveBlockEdit() {
         selectedBlocks[currentEditingBlockId].imageUrl = document.getElementById('edit-share-image-url').value.trim();
         selectedBlocks[currentEditingBlockId].caption = document.getElementById('edit-share-caption').value.trim();
         selectedBlocks[currentEditingBlockId].layout = document.querySelector('.share-layout-option.active')?.dataset.layout || 'compact';
+    } else if (currentEditingBlockId === 'gallery' || currentEditingBlockId.startsWith('gallery_copy')) {
+        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-gallery-title').value.trim() || 'Галерея';
+        selectedBlocks[currentEditingBlockId].displayFormat = document.querySelector('.gallery-format-option.active')?.dataset.format || 'grid';
+        // items уже обновляются напрямую в функциях addDemoTile, handleGalleryUpload, removeGalleryItem
     } else {
         const val1 = document.getElementById('edit-input-1').value.trim();
         const val2 = document.getElementById('edit-input-2').value.trim();
@@ -2494,18 +2711,15 @@ function showToast(message) {
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-// Инициализация приложения
 window.onload = function() { 
     loadUserData(); 
     
     if (isViewMode) {
-        // Режим просмотра: сразу рендерим визитку
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById('screen-preview').classList.add('active');
         updateHeader('preview');
         renderPreview();
     } else {
-        // Режим редактора: стандартный поток
         nextScreen(1); 
         applyTranslations();
     }
