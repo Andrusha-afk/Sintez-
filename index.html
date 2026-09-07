@@ -7,146 +7,363 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
+
+    <!-- Header -->
+    <header class="header">
         <div class="header-left">
-            <button class="back-btn" id="globalBackBtn" onclick="goBack()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <button id="globalBackBtn" class="back-btn" onclick="goBack()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"></path></svg>
             </button>
             <div class="logo" id="mainLogo">
-                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 Синтез
             </div>
             <div class="page-title" id="pageTitle">Аналитика</div>
         </div>
-        <div style="display: flex; gap: 10px; align-items: center;">
+        
+        <div class="header-right" style="display: flex; align-items: center; gap: 8px;">
             <div class="lang-switch-header">
-                <button class="lang-btn-header" data-lang="de">De</button>
-                <button class="lang-btn-header" data-lang="en">En</button>
                 <button class="lang-btn-header active" data-lang="ru">Ru</button>
+                <button class="lang-btn-header" data-lang="en">En</button>
+                <button class="lang-btn-header" data-lang="de">De</button>
             </div>
-            <button class="menu-btn" id="globalMenuBtn" onclick="openMenu()">
+            
+            <!-- Кнопка предпросмотра (глазик) -->
+            <button id="preview-toggle-btn" class="preview-toggle-btn" onclick="toggleUserPreviewMode()" style="display:none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </button>
+
+            <button id="globalMenuBtn" class="menu-btn" onclick="openMenu()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
-    </div>
+    </header>
 
+    <!-- Screen 1: Onboarding Step 1 -->
     <div id="screen-1" class="screen active">
         <div class="onboarding-content">
-            <div class="hero-icon"><svg viewBox="0 0 24 24" stroke="var(--color-blue)"><rect x="3" y="3" width="18" height="18" rx="4"></rect><circle cx="12" cy="10" r="3"></circle><path d="M7 20v-2a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"></path></svg></div>
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
             <h1 data-i18n="s1_title">Твоя визитка <span class="gradient-text" data-i18n="s1_title_grad">внутри MAX</span></h1>
             <p class="description" data-i18n="s1_desc">Открывается по ссылке за секунду.</p>
         </div>
         <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="goToDashboard()" data-i18n="btn_skip">Пропустить</button>
+            <button class="btn btn-secondary" onclick="nextScreen(2)" data-i18n="btn_skip">Пропустить</button>
             <button class="btn btn-primary" onclick="nextScreen(2)" data-i18n="btn_next">Далее</button>
         </div>
     </div>
 
+    <!-- Screen 2: Onboarding Step 2 -->
     <div id="screen-2" class="screen">
         <div class="onboarding-content">
             <div class="mockup-container">
-                <div class="mockup-grid"><div class="m-block" style="background: var(--color-green)"></div><div class="m-block" style="background: var(--color-yellow)"></div><div class="m-block" style="background: var(--color-blue)"></div></div>
-                <div class="m-lines"><div class="m-line" style="width: 100%"></div><div class="m-line" style="width: 80%"></div></div>
+                <div class="mockup-grid">
+                    <div class="m-block" style="background: var(--color-blue);"></div>
+                    <div class="m-block" style="background: var(--color-pink);"></div>
+                    <div class="m-block" style="background: var(--color-green);"></div>
+                    <div class="m-block" style="background: var(--color-yellow);"></div>
+                    <div class="m-block" style="background: #8b8b9e;"></div>
+                    <div class="m-block" style="background: var(--color-blue);"></div>
+                </div>
+                <div class="m-lines">
+                    <div class="m-line" style="width: 80%;"></div>
+                    <div class="m-line" style="width: 60%;"></div>
+                </div>
             </div>
             <h1 data-i18n="s2_title">Собирается <span class="gradient-text" data-i18n="s2_title_grad">из блоков</span></h1>
             <p class="description" data-i18n="s2_desc">Прайс, отзывы, фото. Порядок задаёшь ты.</p>
         </div>
         <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="goToDashboard()" data-i18n="btn_skip">Пропустить</button>
+            <button class="btn btn-secondary" onclick="nextScreen(3)" data-i18n="btn_skip">Пропустить</button>
             <button class="btn btn-primary" onclick="nextScreen(3)" data-i18n="btn_next">Далее</button>
         </div>
     </div>
 
+    <!-- Screen 3: Onboarding Step 3 -->
     <div id="screen-3" class="screen">
         <div class="onboarding-content">
-            <div class="hero-icon"><svg viewBox="0 0 24 24" stroke="var(--color-yellow)"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></div>
-            <h1 data-i18n="s3_title">Свой бот и своя<br>ссылка</h1>
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <h1 data-i18n="s3_title">Свой бот и своя<br><span class="gradient-text" data-i18n="s3_title_grad">ссылка</span></h1>
             <p class="description" data-i18n="s3_desc">Ссылку можно отправить в переписке.</p>
         </div>
         <div class="footer-actions">
-            <button class="btn btn-primary" onclick="startCreationFlow()" data-i18n="btn_start">Начать</button>
+            <button class="btn btn-primary" onclick="goToDashboard()" data-i18n="btn_start">Начать</button>
         </div>
     </div>
 
+    <!-- Dashboard Screen -->
     <div id="screen-dashboard" class="screen">
-        <div class="dashboard-container" style="padding-top: 20px;">
+        <div class="dashboard-container">
             <div class="dash-header-text">
                 <h2 class="dash-title" data-i18n="dash_title">Твои визитки</h2>
                 <p class="dash-subtitle" data-i18n="dash_subtitle">Открой, чтобы изменить.</p>
             </div>
+            
             <div class="card">
                 <div class="card-label" data-i18n="label_my_cards">МОИ ВИЗИТКИ</div>
-                <div id="cards-list-container"></div>
+                <div id="cards-list-container">
+                    <!-- Cards will be rendered here by JS -->
+                    <div class="empty-state-viz">
+                        <div class="mini-card">
+                            <div class="mc-header"></div>
+                            <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div>
+                            <div class="mc-footer"></div>
+                        </div>
+                    </div>
+                    <div class="empty-text-block">
+                        <h3 data-i18n="empty_h3">Здесь появятся твои визитки</h3>
+                        <p data-i18n="empty_p">Первая собирается за несколько минут.</p>
+                    </div>
+                    <button class="btn-create" onclick="openCreator()" data-i18n="btn_create">Создать свою визитку</button>
+                </div>
             </div>
+
             <div class="info-box" data-i18n="info_box">Пример. Цифры появятся после создания.</div>
-            <div class="card" style="padding: 10px 24px;">
-                <div class="menu-item" onclick="showAnalytics()">
-                    <div class="menu-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div>
-                    <div class="menu-text"><h4 data-i18n="menu_stats">Статистика</h4><p data-i18n="menu_stats_sub">Просмотры и заявки</p></div>
+
+            <div class="menu-item" onclick="showAnalytics()">
+                <div class="menu-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                </div>
+                <div class="menu-text">
+                    <h4 data-i18n="menu_stats">Статистика</h4>
+                    <p data-i18n="menu_stats_sub">Просмотры и заявки</p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Creator Screen (Step 1) -->
     <div id="screen-creator" class="screen">
         <div class="creator-container">
             <div class="creator-header">
-                <h1 class="creator-title" data-i18n="cr_title_step1">О бизнесе</h1>
+                <h2 class="creator-title" data-i18n="cr_title_step1">О бизнесе</h2>
                 <p class="creator-subtitle" data-i18n="cr_subtitle_step1">Расскажи о себе.</p>
             </div>
-            <div class="form-group"><label class="form-label" data-i18n="cr_label_name">Имя или компания</label><input type="text" class="form-input" id="input-name" placeholder="напр. Студия Анны"></div>
-            <div class="form-group"><label class="form-label" data-i18n="cr_label_desc">Подзаголовок</label><input type="text" class="form-input" id="input-desc" placeholder="чем занимаешься"></div>
-            <div class="form-group"><label class="form-label" data-i18n="cr_label_city">Город</label><input type="text" class="form-input" id="input-city" placeholder="напр. Москва"></div>
+            
+            <div class="form-group">
+                <label class="form-label" data-i18n="cr_label_name">Имя или компания</label>
+                <input type="text" id="input-name" class="form-input" placeholder="напр. Студия Анны" data-i18n-ph="cr_ph_name">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" data-i18n="cr_label_desc">Подзаголовок</label>
+                <input type="text" id="input-desc" class="form-input" placeholder="чем занимаешься" data-i18n-ph="cr_ph_desc">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" data-i18n="cr_label_city">Город</label>
+                <input type="text" id="input-city" class="form-input" placeholder="напр. Москва" data-i18n-ph="cr_ph_city">
+            </div>
         </div>
-        <div class="creator-footer"><button class="btn-next-large" onclick="goToBlocksSelection()"><span data-i18n="btn_next_arrow">Далее →</span></button></div>
+        
+        <div class="creator-footer">
+            <button class="btn-next-large" onclick="goToBlocksSelection()">
+                <span data-i18n="btn_next_arrow">Далее →</span>
+            </button>
+        </div>
     </div>
 
+    <!-- Blocks Selection Screen (Step 2) -->
     <div id="screen-blocks" class="screen">
         <div class="blocks-header-section">
-            <h1 data-i18n="bl_title">Что <span class="gradient-text" data-i18n="bl_title_grad">показать</span></h1>
-            <p class="description" data-i18n="bl_desc">Выбери блоки.</p>
+            <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 8px;"><span data-i18n="bl_title">Что </span><span class="gradient-text" data-i18n="bl_title_grad">показать</span></h2>
+            <p style="color: var(--text-secondary);" data-i18n="bl_desc">Выбери блоки.</p>
         </div>
-        <div class="blocks-list"> 
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div><div class="item-title">О бизнесе</div></div><div class="toggle-switch"><input type="checkbox" checked data-block="about"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path></svg></div><div class="item-title" data-i18n="blk_links">Ссылки</div></div><div class="toggle-switch"><input type="checkbox" checked data-block="links"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line></svg></div><div class="item-title" data-i18n="blk_socials">Соцсети</div></div><div class="toggle-switch"><input type="checkbox" checked data-block="socials"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div><div class="item-title" data-i18n="blk_hours">Часы</div></div><div class="toggle-switch"><input type="checkbox" checked data-block="hours"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div><div class="item-title" data-i18n="blk_cta">Призыв</div></div><div class="toggle-switch"><input type="checkbox" checked data-block="cta"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.7.7 2.81.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.7.7 2.81.7 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div><div class="item-title" data-i18n="blk_contacts">Контакты</div></div><div class="toggle-switch"><input type="checkbox" data-block="contacts"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div><div class="item-title" data-i18n="blk_price">Прайс</div></div><div class="toggle-switch"><input type="checkbox" data-block="price"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div><div class="item-title" data-i18n="blk_discounts">Скидки</div></div><div class="toggle-switch"><input type="checkbox" data-block="discounts"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><div class="item-title" data-i18n="blk_reviews">Отзывы</div></div><div class="toggle-switch"><input type="checkbox" data-block="reviews"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div><div class="item-title" data-i18n="blk_faq">FAQ</div></div><div class="toggle-switch"><input type="checkbox" data-block="faq"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg></div><div class="item-title" data-i18n="blk_facts">Факты</div></div><div class="toggle-switch"><input type="checkbox" data-block="facts"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg></div><div class="item-title" data-i18n="blk_video">Видео</div></div><div class="toggle-switch"><input type="checkbox" data-block="video"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line></svg></div><div class="item-title" data-i18n="blk_share">Поделиться</div></div><div class="toggle-switch"><input type="checkbox" data-block="share"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div><div class="item-title" data-i18n="blk_gallery">Галерея</div></div><div class="toggle-switch"><input type="checkbox" data-block="gallery"><span class="slider"></span></div></label>
-            <label class="block-item"><div class="item-left"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="item-title" data-i18n="blk_map">Карта</div></div><div class="toggle-switch"><input type="checkbox" data-block="map"><span class="slider"></span></div></label>
+        
+        <div class="blocks-list">
+            <div class="block-item" data-block="about_1">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+                    <div class="item-title" data-i18n="blk_contacts">О бизнесе</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="about_1" checked><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="links">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></div>
+                    <div class="item-title" data-i18n="blk_links">Ссылки</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="links"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="socials">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></div>
+                    <div class="item-title" data-i18n="blk_socials">Соцсети</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="socials"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="hours">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                    <div class="item-title" data-i18n="blk_hours">Часы работы</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="hours"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="cta">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+                    <div class="item-title" data-i18n="blk_cta">Призыв</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="cta"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="contacts">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+                    <div class="item-title" data-i18n="blk_contacts">Контакты</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="contacts"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="price">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+                    <div class="item-title" data-i18n="blk_price">Прайс</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="price"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="discounts">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                    <div class="item-title" data-i18n="blk_discounts">Скидки</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="discounts"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="reviews">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+                    <div class="item-title" data-i18n="blk_reviews">Отзывы</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="reviews"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="faq">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div>
+                    <div class="item-title" data-i18n="blk_faq">Вопрос-ответ</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="faq"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="facts">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                    <div class="item-title" data-i18n="blk_facts">Цифры / Факты</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="facts"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="video">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg></div>
+                    <div class="item-title" data-i18n="blk_video">Видео</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="video"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="share">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></div>
+                    <div class="item-title" data-i18n="blk_share">Поделиться</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="share"><span class="slider"></span></label>
+            </div>
+
+            <div class="block-item" data-block="gallery">
+                <div class="item-left">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div>
+                    <div class="item-title" data-i18n="blk_gallery">Галерея</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" data-block="gallery"><span class="slider"></span></label>
+            </div>
         </div>
-        <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="goBackFromBlocks()" data-i18n="btn_back">Назад</button>
-            <button class="btn btn-primary" onclick="finishBlocksSelection()" data-i18n="btn_assemble">Далее</button>
+
+        <div class="creator-footer" style="display: flex; gap: 12px;">
+            <button class="btn btn-secondary" style="flex: 1;" onclick="goBackFromBlocks()" data-i18n="btn_back">Назад</button>
+            <button class="btn btn-primary" style="flex: 1;" onclick="finishBlocksSelection()" data-i18n="btn_assemble">Далее</button>
         </div>
     </div>
 
     <div id="screen-preview" class="screen">
         <div class="preview-header-section">
-            <h1 data-i18n="pv_title">Твоя визитка</h1>
-            <p class="description" data-i18n="pv_desc">Нажми на шапку, чтобы изменить формат.</p>
+            <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 8px;"><span data-i18n="pv_title">Твоя визитка</span></h2>
+            <p style="color: var(--text-secondary);" data-i18n="pv_desc">Нажми на шапку, чтобы изменить формат.</p>
         </div>
-        <div class="preview-list" id="preview-list-container"></div>
-        <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="goBackFromPreview()" data-i18n="btn_back">Назад</button>
-            <button class="btn btn-primary" onclick="finalizeCard()" data-i18n="btn_finish">Готово</button>
+        
+        <div class="preview-list" id="preview-list-container">
+        </div>
+
+        <div class="creator-footer" style="display: flex; gap: 12px;">
+            <button class="btn btn-secondary" style="flex: 1;" onclick="goBackFromPreview()" data-i18n="btn_back">Назад</button>
+            <button class="btn btn-primary" style="flex: 1;" onclick="finalizeCard()" data-i18n="btn_finish">Готово</button>
         </div>
     </div>
 
     <div id="screen-analytics" class="screen">
         <div class="analytics-container">
             <div class="analytics-card">
-                <div class="analytics-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
-                <p class="analytics-text" data-i18n="analytics_empty">Пока нет просмотров.</p>
+                <div class="analytics-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                </div>
+                <div class="analytics-text" data-i18n="analytics_empty">Пока нет просмотров.</div>
             </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay" onclick="closeMenu()"></div>
+    <div class="modal-sheet" id="modalSheet">
+        <div class="modal-handle"></div>
+        <div class="modal-header">
+            <div class="modal-title" data-i18n="menu_title">Меню</div>
+            <button class="close-modal" onclick="closeMenu()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        </div>
+        
+        <div class="modal-option" onclick="showWelcome()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span data-i18n="menu_welcome">Приветствие</span>
+        </div>
+        
+        <div class="modal-option" onclick="handleMyCardsClick()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <span data-i18n="menu_mycards">Мои визитки</span>
+        </div>
+
+        <div class="modal-footer-text" data-i18n="menu_footer">Приветствие показано при первом входе.</div>
+    </div>
+
+    <div class="modal-overlay" id="cardModalOverlay" onclick="closeCardMenu()"></div>
+    <div class="modal-sheet" id="cardModalSheet">
+        <div class="modal-handle"></div>
+        <div class="modal-header">
+            <div class="modal-title" data-i18n="action_edit">Действия</div>
+            <button class="close-modal" onclick="closeCardMenu()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        </div>
+        
+        <div class="modal-option" onclick="editCurrentCard()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <span data-i18n="action_edit">Редактировать</span>
+        </div>
+        
+        <div class="modal-option" onclick="shareCurrentCard()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            <span data-i18n="action_share">Поделиться</span>
+        </div>
+
+        <div class="modal-option danger" onclick="deleteCurrentCard()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            <span data-i18n="action_delete">Удалить</span>
         </div>
     </div>
 
@@ -155,116 +372,131 @@
         <div class="modal-handle"></div>
         <div class="modal-header">
             <div class="modal-title" data-i18n="modal_header_title">Шапка</div>
-            <button class="close-modal" onclick="closeHeaderModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            <button class="close-modal" onclick="closeHeaderModal()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
         </div>
 
         <div class="header-format-label" data-i18n="header_format_label">Формат шапки</div>
         <div class="header-tabs">
-            <button class="header-tab active" onclick="switchHeaderTab('avatar')" data-i18n="tab_avatar">Аватар</button>
-            <button class="header-tab" onclick="switchHeaderTab('cover')" data-i18n="tab_cover">Обложка</button>
-            <button class="header-tab" onclick="switchHeaderTab('banner')" data-i18n="tab_banner">Баннер</button>
-            <button class="header-tab" onclick="switchHeaderTab('carousel')" data-i18n="tab_carousel">Карусель</button>
+            <div class="header-tab active" onclick="switchHeaderTab('avatar')" data-i18n="tab_avatar">Аватар</div>
+            <div class="header-tab" onclick="switchHeaderTab('cover')" data-i18n="tab_cover">Обложка</div>
+            <div class="header-tab" onclick="switchHeaderTab('banner')" data-i18n="tab_banner">Баннер</div>
+            <div class="header-tab" onclick="switchHeaderTab('carousel')" data-i18n="tab_carousel">Карусель</div>
         </div>
 
-        <div class="header-tab-content" id="tab-content-avatar">
-            <p class="tab-desc" data-i18n="desc_avatar">Круглый аватар.</p>
-            <div class="modal-avatar-preview"><div class="modal-avatar-circle" id="modal-avatar-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div></div>
-            <button class="btn-upload" onclick="document.getElementById('device-upload-input').click()">📷 Загрузить фото</button>
-            <button class="btn-upload-secondary" onclick="handleMaxProfilePhoto()"> Из MAX</button>
-            <p class="upload-hint">Фото сохранится.</p>
-            <div class="or-divider">...или ссылка</div>
-            <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
-        </div>
-
-        <div class="header-tab-content hidden" id="tab-content-cover">
-            <p class="tab-desc" data-i18n="desc_cover">Широкая обложка.</p>
-            <div class="modal-cover-preview"><div class="preview-cover-bg" id="modal-cover-preview-bg"></div><div class="preview-cover-name">Имя компании</div></div>
-            <div class="section-label">ОБЛОЖКА</div>
-            <button class="btn-upload" onclick="document.getElementById('cover-upload-input').click()">🖼️ Загрузить обложку</button>
-            <div class="section-label-small">Ссылка на фото</div>
-            <input type="text" class="form-input" id="input-cover-url" placeholder="https://..." oninput="updateCoverFromUrl(this.value)">
-        </div>
-
-        <div class="header-tab-content hidden" id="tab-content-banner">
-            <p class="tab-desc" data-i18n="desc_banner">Обложка + аватар поверх.</p>
-            
-            <div class="modal-cover-preview" style="position: relative; height: 120px; margin-bottom: 24px;">
-                <div class="preview-cover-bg" id="modal-cover-preview-bg" style="height: 100%; border-radius: 12px;"></div>
-                <div class="modal-avatar-circle" id="modal-avatar-img" style="position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); width: 80px; height: 80px; border: 4px solid var(--card-bg); z-index: 10;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <div id="tab-content-avatar" class="header-tab-content">
+            <div class="tab-desc" data-i18n="desc_avatar">Круглый аватар.</div>
+            <div class="modal-avatar-preview">
+                <div class="modal-avatar-circle" id="modal-avatar-img">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
-
-            <div class="section-label">ОБЛОЖКА</div>
-            <button class="btn-upload" onclick="document.getElementById('cover-upload-input').click()">🖼️ Загрузить обложку</button>
-            <div class="section-label-small">Ссылка на обложку</div>
-            <input type="text" class="form-input" id="input-cover-url" placeholder="https://..." oninput="updateCoverFromUrl(this.value)">
-
-            <div class="section-label" style="margin-top: 24px;">АВАТАР ПОВЕРХ</div>
-            <button class="btn-upload" onclick="document.getElementById('device-upload-input').click()">📷 Загрузить фото</button>
-            <button class="btn-upload-secondary" onclick="handleMaxProfilePhoto()">👤 Из MAX</button>
-            <p class="upload-hint">Фото сохранится.</p>
-            <div class="or-divider">...или ссылка</div>
-            <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
+            <button class="btn-upload" onclick="document.getElementById('device-upload-input').click()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <span data-i18n="btn_upload_device">Загрузить</span>
+            </button>
+            <input type="file" id="device-upload-input" accept="image/*" style="display:none">
+            
+            <button class="btn-upload-secondary" onclick="handleMaxProfilePhoto()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span data-i18n="btn_upload_tg">Из MAX</span>
+            </button>
+            
+            <div class="upload-hint" data-i18n="upload_hint">Фото сохранится.</div>
+            <div class="or-divider" data-i18n="or_link">...или ссылка</div>
+            <input type="text" id="input-avatar-url" class="form-input" placeholder="https://..." onchange="updateAvatarFromUrl(this.value)">
         </div>
 
-        <div class="header-tab-content hidden" id="tab-content-carousel">
-            <p class="tab-desc" data-i18n="desc_carousel">Листаются свайпом.</p>
-            <div class="section-label-small">Фото карусели</div>
-            <div class="carousel-container" id="modal-carousel-list">
+        <!-- Cover Tab -->
+        <div id="tab-content-cover" class="header-tab-content hidden">
+            <div class="tab-desc" data-i18n="desc_cover">Широкая обложка.</div>
+            <div class="modal-cover-preview">
+                <div class="preview-cover-bg" id="modal-cover-preview-bg"></div>
+                <div class="preview-cover-name" id="modal-cover-name" data-i18n="ph_company_name">Имя компании</div>
+                <div class="preview-cover-hint" data-i18n="hint_example">Пример ниже</div>
+            </div>
+            <div class="section-label-small" data-i18n="lbl_cover">ОБЛОЖКА</div>
+            <button class="btn-upload" onclick="document.getElementById('cover-upload-input').click()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span data-i18n="btn_upload_cover">Загрузить</span>
+            </button>
+            <input type="file" id="cover-upload-input" accept="image/*" style="display:none">
+            <div class="or-divider" data-i18n="lbl_cover_link">Ссылка на фото</div>
+            <input type="text" id="input-cover-url" class="form-input" placeholder="https://..." onchange="updateCoverFromUrl(this.value)">
+        </div>
+
+        <!-- Banner Tab -->
+        <div id="tab-content-banner" class="header-tab-content hidden">
+            <div class="tab-desc" data-i18n="desc_banner">Обложка + аватар поверх.</div>
+            <div class="modal-banner-preview">
+                <div class="banner-placeholder" data-i18n="banner_placeholder">Баннер</div>
+            </div>
+            <button class="btn-upload" onclick="document.getElementById('cover-upload-input').click()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span data-i18n="btn_upload_banner">Загрузить</span>
+            </button>
+            <input type="file" id="banner-upload-input" accept="image/*" style="display:none" onchange="handleFileUpload(event, updateCoverFromUrl)">
+            <div class="section-label-small" style="margin-top: 20px;">АВАТАР ПОВЕРХ</div>
+            <button class="btn-upload-secondary" onclick="document.getElementById('device-upload-input').click()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <span data-i18n="btn_upload_device">Загрузить</span>
+            </button>
+            <button class="btn-upload-secondary" onclick="handleMaxProfilePhoto()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span data-i18n="btn_upload_tg">Из MAX</span>
+            </button>
+            <div class="upload-hint" data-i18n="upload_hint">Фото сохранится.</div>
+            <div class="or-divider" data-i18n="or_link">...или ссылка</div>
+            <input type="text" id="input-avatar-url-banner" class="form-input" placeholder="https://..." onchange="updateAvatarFromUrl(this.value)">
+        </div>
+
+        <div id="tab-content-carousel" class="header-tab-content hidden">
+            <div class="tab-desc" data-i18n="desc_carousel">Листаются свайпом.</div>
+            <div class="modal-carousel-preview" id="modal-carousel-list">
                 <div class="add-slide-btn" onclick="document.getElementById('carousel-upload-input').click()">+</div>
             </div>
-            <button class="btn-upload-secondary" style="margin-top: 10px;" onclick="document.getElementById('carousel-upload-input').click()">+ Добавить плитку</button>
-            <input type="file" id="carousel-upload-input" accept="image/png, image/jpeg" multiple style="display: none;">
+            <input type="file" id="carousel-upload-input" accept="image/*" multiple style="display:none">
+            
+            <div class="header-text-edit-section">
+                <div class="section-label-small">Текст шапки</div>
+                <div class="form-group">
+                    <input type="text" id="modal-input-name" class="form-input" placeholder="Имя / Название" data-i18n-ph="cr_label_name">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="modal-input-desc" class="form-input" placeholder="Описание / Подзаголовок" data-i18n-ph="cr_label_desc">
+                </div>
+            </div>
         </div>
 
-        <div class="header-text-edit-section" style="margin-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;">
-            <div class="section-label-small">Текст шапки</div>
-            <div class="form-group" style="margin-bottom: 12px;"><input type="text" class="form-input" id="modal-input-name" placeholder="Имя или название компании"></div>
-            <div class="form-group" style="margin-bottom: 0;"><input type="text" class="form-input" id="modal-input-desc" placeholder="Подзаголовок / Описание"></div>
+        <div style="margin-top: 24px; display: flex; gap: 12px;">
+            <button class="btn btn-primary" style="flex: 1;" onclick="closeHeaderModal()" data-i18n="btn_save">Сохранить</button>
         </div>
-
-        <input type="file" id="device-upload-input" accept="image/png, image/jpeg" style="display: none;">
-        <input type="file" id="cover-upload-input" accept="image/png, image/jpeg" style="display: none;">
+        <div style="margin-top: 12px; display: flex; gap: 12px;">
+            <button class="btn btn-secondary" style="flex: 1;" onclick="duplicateCurrentBlock()" data-i18n="action_edit">Дублировать</button>
+            <button class="btn btn-secondary" style="flex: 1; color: var(--color-red);" onclick="deleteCurrentBlock()" data-i18n="action_delete">Удалить</button>
+        </div>
     </div>
 
     <div class="modal-overlay" id="editModalOverlay" onclick="closeEditModal()"></div>
     <div class="modal-sheet" id="editModalSheet" style="max-height: 90vh; overflow-y: auto;">
         <div class="modal-handle"></div>
-        <div class="modal-header" style="margin-bottom: 20px;">
-            <div class="modal-title" id="edit-modal-title">Редактировать блок</div>
-            <button class="close-modal" onclick="closeEditModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        <div class="modal-header">
+            <div class="modal-title" id="edit-modal-title" data-i18n="edit_modal_title">Редактировать блок</div>
+            <button class="close-modal" onclick="closeEditModal()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
         </div>
         
-        <div id="edit-modal-fields" style="padding-bottom: 20px;">
+        <div id="edit-modal-fields">
         </div>
 
-        <button class="btn btn-primary" onclick="saveBlockEdit()" style="margin-top: 10px; margin-bottom: 12px;" data-i18n="btn_save">Готово</button>
-        
-        <div style="display: flex; gap: 12px;">
-            <button class="btn btn-secondary" onclick="duplicateCurrentBlock()" style="flex: 1; font-weight: 600;">Дублировать</button>
-            <button class="btn btn-secondary" onclick="deleteCurrentBlock()" style="flex: 1; color: #ef4444; border-color: rgba(239, 68, 68, 0.3); font-weight: 600;">Удалить</button>
+        <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px;">
+            <button class="btn btn-primary" onclick="saveBlockEdit()" data-i18n="btn_save">Готово</button>
+            <div style="display: flex; gap: 12px;">
+                <button class="btn btn-secondary" style="flex: 1;" onclick="duplicateCurrentBlock()" data-i18n="action_edit">Дублировать</button>
+                <button class="btn btn-secondary" style="flex: 1; color: var(--color-red);" onclick="deleteCurrentBlock()" data-i18n="action_delete">Удалить</button>
+            </div>
         </div>
     </div>
-    <div class="modal-overlay" id="modalOverlay" onclick="closeMenu()"></div>
-    <div class="modal-sheet" id="modalSheet">
-        <div class="modal-handle"></div>
-        <div class="modal-header"><div class="modal-title" data-i18n="menu_title">Меню</div><button class="close-modal" onclick="closeMenu()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div>
-        <button class="modal-option" onclick="showWelcome()" data-i18n="menu_welcome">Приветствие</button>
-        <button class="modal-option" onclick="handleMyCardsClick()" data-i18n="menu_mycards">Мои визитки</button>
-        <div class="modal-footer-text" data-i18n="menu_footer">Приветствие показано при первом входе.</div>
-    </div>
+    <div id="toast" class="toast" data-i18n="toast_copy">Ссылка скопирована!</div>
 
-    <div class="modal-overlay" id="cardModalOverlay" onclick="closeCardMenu()"></div>
-    <div class="modal-sheet" id="cardModalSheet">
-        <div class="modal-handle"></div>
-        <div class="modal-header"><div class="modal-title" id="cardModalTitle">Действия</div><button class="close-modal" onclick="closeCardMenu()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div>
-        <button class="modal-option" onclick="editCurrentCard()"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span data-i18n="action_edit">Редактировать</span></button>
-        <button class="modal-option" onclick="shareCurrentCard()"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line></svg><span data-i18n="action_share">Поделиться</span></button>
-        <button class="modal-option danger" onclick="deleteCurrentCard()"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span data-i18n="action_delete">Удалить</span></button>
-    </div>
-
-    <div class="toast" id="toast">Ссылка скопирована!</div>
     <script src="script.js"></script>
 </body>
 </html>

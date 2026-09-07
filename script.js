@@ -82,6 +82,7 @@ const reviewPlatformsConfig = [
     }
 ];
 
+// УДАЛЕН БЛОК "КАРТА" ИЗ ПЕРЕВОДОВ
 const translations = {
     ru: {
         s1_title: "Твоя визитка ", s1_title_grad: "внутри MAX", s1_desc: "Открывается по ссылке за секунду.",
@@ -108,7 +109,7 @@ const translations = {
         blk_links: "Ссылки", blk_socials: "Соцсети", blk_hours: "Часы работы", blk_cta: "Призыв",
         blk_contacts: "Контакты", blk_price: "Прайс", blk_discounts: "Скидки",
         blk_reviews: "Отзывы", blk_faq: "Вопрос-ответ", blk_facts: "Цифры / Факты",
-        blk_video: "Видео", blk_share: "Поделиться", blk_gallery: "Галерея", blk_map: "Карта",
+        blk_video: "Видео", blk_share: "Поделиться", blk_gallery: "Галерея",
         btn_back: "Назад", btn_assemble: "Далее",
         pv_title: "Твоя визитка", pv_desc: "Нажми на шапку, чтобы изменить формат.",
         edit_modal_title: "Блок", btn_save: "Сохранить", preview_placeholder: "Содержимое",
@@ -170,7 +171,7 @@ const translations = {
         blk_links: "Links", blk_socials: "Socials", blk_hours: "Hours", blk_cta: "CTA",
         blk_contacts: "Contacts", blk_price: "Price", blk_discounts: "Discounts",
         blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts",
-        blk_video: "Video", blk_share: "Share", blk_gallery: "Gallery", blk_map: "Map",
+        blk_video: "Video", blk_share: "Share", blk_gallery: "Gallery",
         btn_back: "Back", btn_assemble: "Next",
         pv_title: "Your card", pv_desc: "Tap header to change format.",
         edit_modal_title: "Block", btn_save: "Save", preview_placeholder: "Content",
@@ -232,7 +233,7 @@ const translations = {
         blk_links: "Links", blk_socials: "Soziale", blk_hours: "Zeiten", blk_cta: "Aufruf",
         blk_contacts: "Kontakt", blk_price: "Preise", blk_discounts: "Rabatte",
         blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten",
-        blk_video: "Video", blk_share: "Teilen", blk_gallery: "Galerie", blk_map: "Karte",
+        blk_video: "Video", blk_share: "Teilen", blk_gallery: "Galerie",
         btn_back: "Zurück", btn_assemble: "Weiter",
         pv_title: "Deine Karte", pv_desc: "Tippe Header für Format.",
         edit_modal_title: "Block", btn_save: "Speichern", preview_placeholder: "Inhalt",
@@ -285,6 +286,9 @@ let currentEditingBlockId = null;
 const urlParams = new URLSearchParams(window.location.search);
 const isViewMode = urlParams.get('view') === '1';
 
+// Режим предпросмотра пользователем (без баннеров)
+let isUserPreviewMode = false;
+
 function saveUserData() {
     const userData = { lang: currentLang, hasCards: hasUserCards, cardData: userCardData, blocks: selectedBlocks, headerFormat: currentHeaderFormat };
     localStorage.setItem('synthes_user_data', JSON.stringify(userData));
@@ -305,16 +309,26 @@ function loadUserData() {
                 btn.classList.remove('active');
                 if(btn.getAttribute('data-lang') === currentLang) btn.classList.add('active');
             });
-            updateAllTexts(); // Обновляем все тексты при загрузке
+            applyTranslations();
         } catch (e) { console.error("Error loading data", e); }
     }
 }
 
-// Функция для обновления текста на ВСЕХ элементах (даже скрытых)
-function updateAllTexts() {
+document.querySelectorAll('.lang-btn-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.lang-btn-header').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentLang = btn.getAttribute('data-lang');
+        applyTranslations();
+        saveUserData();
+    });
+});
+
+// Обновленная функция перевода, которая обновляет ВСЕ элементы в DOM, даже скрытые
+function applyTranslations() {
     const t = translations[currentLang];
     
-    // Обновляем элементы с data-i18n
+    // Обновляем тексты
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key]) el.innerHTML = t[key];
@@ -326,28 +340,20 @@ function updateAllTexts() {
         if (t[key]) el.placeholder = t[key];
     });
 
-    // Обновляем заголовок страницы аналитики
+    // Обновляем заголовок аналитики
     const pageTitleEl = document.getElementById('pageTitle');
     if(pageTitleEl) pageTitleEl.innerText = t.page_analytics;
 
-    // Принудительно обновляем тексты в модальных окнах и других динамических элементах, 
-    // если они сейчас открыты или существуют в DOM
-    // (Это гарантирует, что текст изменится даже если модалка открыта)
-}
-
-document.querySelectorAll('.lang-btn-header').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.lang-btn-header').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentLang = btn.getAttribute('data-lang');
-        updateAllTexts(); // Мгновенное обновление всех текстов
-        saveUserData();
-    });
-});
-
-function applyTranslations() {
-    // Эта функция теперь вызывает updateAllTexts для полной синхронизации
-    updateAllTexts();
+    // Если открыто модальное окно редактирования, обновляем его заголовок и лейблы
+    if (currentEditingBlockId && editModalSheet.classList.contains('open')) {
+        const titleEl = document.getElementById('edit-modal-title');
+        if (titleEl) {
+             // Простая логика обновления заголовка модалки при смене языка
+             if (currentEditingBlockId.startsWith('about')) titleEl.innerText = t.blk_contacts ? 'О бизнесе' : 'About'; // Упрощено для примера, лучше использовать маппинг
+             // В реальном проекте здесь стоит вызвать openEditBlock(currentEditingBlockId) для полной перерисовки, 
+             // но это может сбросить введенные данные. Поэтому мы полагаемся на data-i18n атрибуты внутри модалки.
+        }
+    }
 }
 
 function nextScreen(screenNum) {
@@ -479,21 +485,33 @@ function updateHeader(state) {
     const title = document.getElementById('pageTitle');
     const menuBtn = document.getElementById('globalMenuBtn');
     const langSwitch = document.querySelector('.lang-switch-header');
+    const previewBtn = document.getElementById('preview-toggle-btn');
     const showLangSwitch = state !== 'analytics';
     
     if (['onboarding', 'blocks', 'preview', 'creator'].includes(state)) {
         backBtn.style.display = (state !== 'onboarding') ? 'flex' : 'none';
         logo.style.display = 'none'; title.style.display = 'none'; menuBtn.style.display = 'none';
+        
+        // Показываем кнопку предпросмотра только на экране preview
+        if (state === 'preview') {
+            previewBtn.style.display = 'flex';
+        } else {
+            previewBtn.style.display = 'none';
+            if(isUserPreviewMode) toggleUserPreviewMode(); // Сброс режима при уходе
+        }
+
         if (showLangSwitch) {
             langSwitch.style.display = 'flex';
             langSwitch.style.background = (state === 'onboarding') ? 'rgba(255,255,255,0.1)' : 'transparent';
         } else langSwitch.style.display = 'none';
     } else if (state === 'dashboard') {
         backBtn.style.display = 'none'; logo.style.display = 'flex'; title.style.display = 'none'; menuBtn.style.display = 'block';
+        previewBtn.style.display = 'none';
         if (showLangSwitch) { langSwitch.style.display = 'flex'; langSwitch.style.background = 'rgba(255,255,255,0.1)'; } 
         else langSwitch.style.display = 'none';
     } else if (state === 'analytics') {
         backBtn.style.display = 'flex'; logo.style.display = 'none'; title.style.display = 'block'; menuBtn.style.display = 'none'; langSwitch.style.display = 'none';
+        previewBtn.style.display = 'none';
     }
 }
 
@@ -504,16 +522,33 @@ function closeCardMenu() { document.getElementById('cardModalOverlay').classList
 function showWelcome() { closeMenu(); nextScreen(1); }
 function handleMyCardsClick() { closeMenu(); if (hasUserCards) goToDashboard(); else alert(translations[currentLang].no_cards_msg); }
 
+// Функция переключения режима предпросмотра пользователем
+function toggleUserPreviewMode() {
+    isUserPreviewMode = !isUserPreviewMode;
+    const body = document.body;
+    const btn = document.getElementById('preview-toggle-btn');
+    
+    if (isUserPreviewMode) {
+        body.classList.add('user-view-mode');
+        btn.classList.add('active');
+        showToast('Режим просмотра пользователем');
+    } else {
+        body.classList.remove('user-view-mode');
+        btn.classList.remove('active');
+        showToast('Режим редактора');
+    }
+}
+
 function renderPreview() {
     const container = document.getElementById('preview-list-container');
-    if(!container) return; // Защита для режима просмотра
+    if(!container) return; 
     
     container.innerHTML = '';
     const t = translations[currentLang];
 
     const headerCard = document.createElement('div');
     headerCard.className = 'preview-header-card';
-    if (!isViewMode) headerCard.onclick = openHeaderModal;
+    if (!isViewMode && !isUserPreviewMode) headerCard.onclick = openHeaderModal;
     
     let coverStyle = '', avatarStyle = '', avatarDisplay = 'flex', avatarClass = 'header-preview-avatar', infoClass = 'header-preview-info', coverClass = 'header-preview-cover';
 
@@ -524,7 +559,7 @@ function renderPreview() {
         if (userCardData?.avatarUrl) avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
         avatarDisplay = 'flex'; avatarClass += ' overlay-mode'; coverClass += ' banner-mode'; infoClass += ' banner-info';
     } else if (currentHeaderFormat === 'carousel' && userCardData?.carouselImages?.length > 0) {
-        headerCard.innerHTML = `<div class="carousel-container" style="pointer-events: none;">${userCardData.carouselImages.map(img => `<div class="carousel-item" style="background-image: url(${img})"></div>`).join('')}</div><div class="header-preview-info" style="margin-top: 10px;"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>${!isViewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}`;
+        headerCard.innerHTML = `<div class="carousel-container" style="pointer-events: none;">${userCardData.carouselImages.map(img => `<div class="carousel-item" style="background-image: url(${img})"></div>`).join('')}</div><div class="header-preview-info" style="margin-top: 10px;"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>${!isViewMode && !isUserPreviewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}`;
         container.appendChild(headerCard);
     } else if (userCardData?.avatarUrl) {
         avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
@@ -535,7 +570,7 @@ function renderPreview() {
             <div class="${coverClass}" style="${coverStyle}"></div>
             <div class="${avatarClass}" style="display: ${avatarDisplay}; ${avatarStyle}">${!userCardData?.avatarUrl ? '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' : ''}</div>
             <div class="${infoClass}"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>
-            ${!isViewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}
+            ${!isViewMode && !isUserPreviewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}
         `;
     }
     container.appendChild(headerCard);
@@ -546,11 +581,11 @@ function renderPreview() {
     
     const createBlockSection = (key, blockData, title, contentHtml) => {
         const section = document.createElement('div');
-        // В режиме просмотра всегда показываем блоки, игнорируя hidden-block
-        section.className = `preview-block-section ${(!isViewMode && !blockData.visible) ? 'hidden-block' : ''}`;
+        // В режиме просмотра пользователем всегда показываем блоки, игнорируя hidden-block
+        section.className = `preview-block-section ${(!isViewMode && !isUserPreviewMode && !blockData.visible) ? 'hidden-block' : ''}`;
         
         let headerHtml = '';
-        if (!isViewMode) {
+        if (!isViewMode && !isUserPreviewMode) {
             headerHtml = `
                 <div class="block-section-header">
                     <div class="block-section-title">${title.toUpperCase()}</div>
@@ -579,7 +614,7 @@ function renderPreview() {
 
     aboutKeys.forEach(key => {
         const blockData = selectedBlocks[key];
-        if (blockData && (isViewMode || blockData.visible)) {
+        if (blockData && (isViewMode || isUserPreviewMode || blockData.visible)) {
             const title = blockData.title || 'О БИЗНЕСЕ';
             const bodyContent = blockData.text ? `<p>${blockData.text}</p>` : '<p style="opacity:0.5">Нет текста</p>';
             container.appendChild(createBlockSection(key, blockData, title, bodyContent));
@@ -588,7 +623,7 @@ function renderPreview() {
 
     otherKeys.forEach(key => {
         const blockData = selectedBlocks[key];
-        if (blockData && (isViewMode || blockData.visible)) {
+        if (blockData && (isViewMode || isUserPreviewMode || blockData.visible)) {
             let title = blockData.title;
             if (!title) title = t[`blk_${key}`] || key;
             
@@ -2756,6 +2791,6 @@ window.onload = function() {
     } else {
         // Режим редактора: стандартный поток
         nextScreen(1); 
-        updateAllTexts(); // Убеждаемся, что все тексты на месте
+        applyTranslations();
     }
 };
