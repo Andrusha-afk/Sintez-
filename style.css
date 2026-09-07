@@ -2495,3 +2495,41 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
     color: var(--text-main);
     border-color: var(--text-secondary);
 }
+
+/* ... предыдущий код style.css ... */
+
+/* Стили для статичной кнопки YouTube на заднем плане */
+.youtube-bg-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #FF0000; /* Красный цвет YouTube */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    z-index: 0; /* На заднем плане */
+    cursor: pointer;
+    border: none;
+    color: white;
+    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0.8;
+}
+
+.youtube-bg-btn:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.youtube-bg-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+}
+
+.telegram-fab {
+    display: none !important;
+}
