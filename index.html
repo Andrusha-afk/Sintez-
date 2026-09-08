@@ -9,44 +9,40 @@
 <body>
 
     <!-- Header -->
-    <header class="header">
+    <div class="header">
         <div class="header-left">
-            <button id="globalBackBtn" class="back-btn" onclick="goBack()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"></path></svg>
+            <button class="back-btn" id="globalBackBtn" onclick="goBack()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
             <div class="logo" id="mainLogo">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                Синтез
+                <span>Синтез</span>
             </div>
             <div class="page-title" id="pageTitle">Аналитика</div>
         </div>
-        
-        <div class="header-right" style="display: flex; align-items: center; gap: 8px;">
+        <div class="header-right">
             <div class="lang-switch-header">
-                <button class="lang-btn-header active" data-lang="ru">Ru</button>
-                <button class="lang-btn-header" data-lang="en">En</button>
-                <button class="lang-btn-header" data-lang="de">De</button>
+                <button class="lang-btn-header" data-lang="de" onclick="switchLang('de')">De</button>
+                <button class="lang-btn-header" data-lang="en" onclick="switchLang('en')">En</button>
+                <button class="lang-btn-header active" data-lang="ru" onclick="switchLang('ru')">Ru</button>
             </div>
-            
-            <!-- Кнопка предпросмотра (глазик) -->
-            <button id="preview-toggle-btn" class="preview-toggle-btn" onclick="toggleUserPreviewMode()" style="display:none;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-            </button>
-
-            <button id="globalMenuBtn" class="menu-btn" onclick="openMenu()">
+            <button class="menu-btn" id="globalMenuBtn" onclick="openMenu()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
+            <!-- Кнопка предпросмотра (глазик) -->
+            <button class="preview-toggle-btn" id="preview-toggle-btn" onclick="toggleUserPreviewMode()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
         </div>
-    </header>
+    </div>
 
-    <!-- Screen 1: Onboarding Step 1 -->
-    <div id="screen-1" class="screen active">
+    <!-- Screens -->
+    
+    <!-- Screen 1: Onboarding -->
+    <div class="screen active" id="screen-1">
         <div class="onboarding-content">
             <div class="hero-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
             </div>
             <h1 data-i18n="s1_title">Твоя визитка <span class="gradient-text" data-i18n="s1_title_grad">внутри MAX</span></h1>
             <p class="description" data-i18n="s1_desc">Открывается по ссылке за секунду.</p>
@@ -57,21 +53,18 @@
         </div>
     </div>
 
-    <!-- Screen 2: Onboarding Step 2 -->
-    <div id="screen-2" class="screen">
+    <!-- Screen 2: Onboarding -->
+    <div class="screen" id="screen-2">
         <div class="onboarding-content">
             <div class="mockup-container">
                 <div class="mockup-grid">
-                    <div class="m-block" style="background: var(--color-blue);"></div>
-                    <div class="m-block" style="background: var(--color-pink);"></div>
-                    <div class="m-block" style="background: var(--color-green);"></div>
-                    <div class="m-block" style="background: var(--color-yellow);"></div>
-                    <div class="m-block" style="background: #8b8b9e;"></div>
-                    <div class="m-block" style="background: var(--color-blue);"></div>
+                    <div class="m-block" style="background: var(--color-blue)"></div>
+                    <div class="m-block" style="background: var(--color-yellow)"></div>
+                    <div class="m-block" style="background: var(--color-green)"></div>
                 </div>
                 <div class="m-lines">
-                    <div class="m-line" style="width: 80%;"></div>
-                    <div class="m-line" style="width: 60%;"></div>
+                    <div class="m-line" style="width: 60%"></div>
+                    <div class="m-line" style="width: 80%"></div>
                 </div>
             </div>
             <h1 data-i18n="s2_title">Собирается <span class="gradient-text" data-i18n="s2_title_grad">из блоков</span></h1>
@@ -83,116 +76,22 @@
         </div>
     </div>
 
-    <!-- Screen 3: Onboarding Step 3 -->
-    <div idВот полный код `index.html`, в который добавлены:
-1.  **Кнопка предпросмотра (глазик)** в правый верхний угол хедера.
-2.  **Блок предпросмотра баннера** внутри модального окна редактирования шапки (вкладка "Баннер"), который показывает, как аватар будет накладываться на обложку.
-3.  Исправленная структура для корректного отображения имени поверх баннера.
-
-Замените содержимое вашего файла `index.html` на этот код:
-
-```html
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Synthes - Твоя визитка</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="header-left">
-            <button id="globalBackBtn" class="back-btn" onclick="goBack()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"></path></svg>
-            </button>
-            <div class="logo" id="mainLogo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                Синтез
-            </div>
-            <div class="page-title" id="pageTitle">Аналитика</div>
-        </div>
-        
-        <div class="header-right" style="display: flex; align-items: center; gap: 8px;">
-            <div class="lang-switch-header">
-                <button class="lang-btn-header active" data-lang="ru">Ru</button>
-                <button class="lang-btn-header" data-lang="en">En</button>
-                <button class="lang-btn-header" data-lang="de">De</button>
-            </div>
-            
-            <!-- Кнопка предпросмотра (глазик) -->
-            <button id="preview-toggle-btn" class="preview-toggle-btn" onclick="toggleUserPreviewMode()" style="display:none;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-            </button>
-
-            <button id="globalMenuBtn" class="menu-btn" onclick="openMenu()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
-        </div>
-    </header>
-
-    <!-- Screen 1: Onboarding Step 1 -->
-    <div id="screen-1" class="screen active">
+    <!-- Screen 3: Onboarding -->
+    <div class="screen" id="screen-3">
         <div class="onboarding-content">
-            <div class="hero-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <div class="hero-icon" style="border-radius: 50%; background: rgba(96, 165, 250, 0.1); color: var(--color-blue);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
             </div>
-            <h1 data-i18n="s1_title">Твоя визитка <span class="gradient-text" data-i18n="s1_title_grad">внутри MAX</span></h1>
-            <p class="description" data-i18n="s1_desc">Открывается по ссылке за секунду.</p>
-        </div>
-        <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="nextScreen(2)" data-i18n="btn_skip">Пропустить</button>
-            <button class="btn btn-primary" onclick="nextScreen(2)" data-i18n="btn_next">Далее</button>
-        </div>
-    </div>
-
-    <!-- Screen 2: Onboarding Step 2 -->
-    <div id="screen-2" class="screen">
-        <div class="onboarding-content">
-            <div class="mockup-container">
-                <div class="mockup-grid">
-                    <div class="m-block" style="background: var(--color-blue);"></div>
-                    <div class="m-block" style="background: var(--color-pink);"></div>
-                    <div class="m-block" style="background: var(--color-green);"></div>
-                    <div class="m-block" style="background: var(--color-yellow);"></div>
-                    <div class="m-block" style="background: #8b8b9e;"></div>
-                    <div class="m-block" style="background: var(--color-blue);"></div>
-                </div>
-                <div class="m-lines">
-                    <div class="m-line" style="width: 80%;"></div>
-                    <div class="m-line" style="width: 60%;"></div>
-                </div>
-            </div>
-            <h1 data-i18n="s2_title">Собирается <span class="gradient-text" data-i18n="s2_title_grad">из блоков</span></h1>
-            <p class="description" data-i18n="s2_desc">Прайс, отзывы, фото. Порядок задаёшь ты.</p>
-        </div>
-        <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="nextScreen(3)" data-i18n="btn_skip">Пропустить</button>
-            <button class="btn btn-primary" onclick="nextScreen(3)" data-i18n="btn_next">Далее</button>
-        </div>
-    </div>
-
-    <!-- Screen 3: Onboarding Step 3 -->
-    <div id="screen-3" class="screen">
-        <div class="onboarding-content">
-            <div class="hero-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            </div>
-            <h1 data-i18n="s3_title">Свой бот и своя<br><span class="gradient-text" data-i18n="s3_title_grad">ссылка</span></h1>
+            <h1 data-i18n="s3_title">Свой бот и своя<br><span class="gradient-text">ссылка</span></h1>
             <p class="description" data-i18n="s3_desc">Ссылку можно отправить в переписке.</p>
         </div>
         <div class="footer-actions">
-            <button class="btn btn-primary" onclick="goToDashboard()" data-i18n="btn_start">Начать</button>
+            <button class="btn btn-primary" onclick="startCreationFlow()" data-i18n="btn_start">Начать</button>
         </div>
     </div>
 
-    <!-- Dashboard Screen -->
-    <div id="screen-dashboard" class="screen">
+    <!-- Dashboard -->
+    <div class="screen" id="screen-dashboard">
         <div class="dashboard-container">
             <div class="dash-header-text">
                 <h2 class="dash-title" data-i18n="dash_title">Твои визитки</h2>
@@ -202,38 +101,30 @@
             <div class="card">
                 <div class="card-label" data-i18n="label_my_cards">МОИ ВИЗИТКИ</div>
                 <div id="cards-list-container">
-                    <!-- Cards will be rendered here by JS -->
-                    <div class="empty-state-viz">
-                        <div class="mini-card">
-                            <div class="mc-header"></div>
-                            <div class="mc-body"><div class="mc-block"></div><div class="mc-block"></div></div>
-                            <div class="mc-footer"></div>
-                        </div>
-                    </div>
-                    <div class="empty-text-block">
-                        <h3 data-i18n="empty_h3">Здесь появятся твои визитки</h3>
-                        <p data-i18n="empty_p">Первая собирается за несколько минут.</p>
-                    </div>
-                    <button class="btn-create" onclick="openCreator()" data-i18n="btn_create">Создать свою визитку</button>
+                    <!-- Cards will be injected here -->
                 </div>
             </div>
 
-            <div class="info-box" data-i18n="info_box">Пример. Цифры появятся после создания.</div>
-
-            <div class="menu-item" onclick="showAnalytics()">
-                <div class="menu-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-                </div>
-                <div class="menu-text">
-                    <h4 data-i18n="menu_stats">Статистика</h4>
-                    <p data-i18n="menu_stats_sub">Просмотры и заявки</p>
-                </div>
+            <div class="info-box" data-i18n="info_box">
+                Пример. Цифры появятся после создания.
             </div>
         </div>
     </div>
 
-    <!-- Creator Screen (Step 1) -->
-    <div id="screen-creator" class="screen">
+    <!-- Analytics -->
+    <div class="screen" id="screen-analytics">
+        <div class="analytics-container">
+            <div class="analytics-card">
+                <div class="analytics-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>
+                </div>
+                <h3 data-i18n="analytics_empty">Пока нет просмотров.</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Creator Step 1 -->
+    <div class="screen" id="screen-creator">
         <div class="creator-container">
             <div class="creator-header">
                 <h2 class="creator-title" data-i18n="cr_title_step1">О бизнесе</h2>
@@ -242,20 +133,19 @@
             
             <div class="form-group">
                 <label class="form-label" data-i18n="cr_label_name">Имя или компания</label>
-                <input type="text" id="input-name" class="form-input" placeholder="напр. Студия Анны" data-i18n-ph="cr_ph_name">
+                <input type="text" class="form-input" id="input-name" data-i18n-ph="cr_ph_name" placeholder="напр. Студия Анны">
             </div>
             
             <div class="form-group">
                 <label class="form-label" data-i18n="cr_label_desc">Подзаголовок</label>
-                <input type="text" id="input-desc" class="form-input" placeholder="чем занимаешься" data-i18n-ph="cr_ph_desc">
+                <input type="text" class="form-input" id="input-desc" data-i18n-ph="cr_ph_desc" placeholder="чем занимаешься">
             </div>
-            
+
             <div class="form-group">
                 <label class="form-label" data-i18n="cr_label_city">Город</label>
-                <input type="text" id="input-city" class="form-input" placeholder="напр. Москва" data-i18n-ph="cr_ph_city">
+                <input type="text" class="form-input" id="input-city" data-i18n-ph="cr_ph_city" placeholder="напр. Москва">
             </div>
         </div>
-        
         <div class="creator-footer">
             <button class="btn-next-large" onclick="goToBlocksSelection()">
                 <span data-i18n="btn_next_arrow">Далее →</span>
@@ -263,182 +153,58 @@
         </div>
     </div>
 
-    <!-- Blocks Selection Screen (Step 2) -->
-    <div id="screen-blocks" class="screen">
+    <!-- Blocks Selection -->
+    <div class="screen" id="screen-blocks">
         <div class="blocks-header-section">
-            <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 8px;"><span data-i18n="bl_title">Что </span><span class="gradient-text" data-i18n="bl_title_grad">показать</span></h2>
-            <p style="color: var(--text-secondary);" data-i18n="bl_desc">Выбери блоки.</p>
+            <h2 class="creator-title" style="font-size: 24px;" data-i18n="bl_title">Что <span class="gradient-text" data-i18n="bl_title_grad">показать</span></h2>
+            <p class="creator-subtitle" style="margin-bottom: 0;" data-i18n="bl_desc">Выбери блоки.</p>
         </div>
-        
-        <div class="blocks-list">
-            <div class="block-item" data-block="about_1">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
-                    <div class="item-title" data-i18n="blk_contacts">О бизнесе</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="about_1" checked><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="links">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></div>
-                    <div class="item-title" data-i18n="blk_links">Ссылки</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="links"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="socials">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></div>
-                    <div class="item-title" data-i18n="blk_socials">Соцсети</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="socials"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="hours">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-                    <div class="item-title" data-i18n="blk_hours">Часы работы</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="hours"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="cta">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
-                    <div class="item-title" data-i18n="blk_cta">Призыв</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="cta"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="contacts">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
-                    <div class="item-title" data-i18n="blk_contacts">Контакты</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="contacts"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="price">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
-                    <div class="item-title" data-i18n="blk_price">Прайс</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="price"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="discounts">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
-                    <div class="item-title" data-i18n="blk_discounts">Скидки</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="discounts"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="reviews">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
-                    <div class="item-title" data-i18n="blk_reviews">Отзывы</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="reviews"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="faq">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div>
-                    <div class="item-title" data-i18n="blk_faq">Вопрос-ответ</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="faq"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="facts">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
-                    <div class="item-title" data-i18n="blk_facts">Цифры / Факты</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="facts"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="video">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg></div>
-                    <div class="item-title" data-i18n="blk_video">Видео</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="video"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="share">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></div>
-                    <div class="item-title" data-i18n="blk_share">Поделиться</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="share"><span class="slider"></span></label>
-            </div>
-
-            <div class="block-item" data-block="gallery">
-                <div class="item-left">
-                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div>
-                    <div class="item-title" data-i18n="blk_gallery">Галерея</div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" data-block="gallery"><span class="slider"></span></label>
-            </div>
+        <div class="blocks-list" id="blocks-list-container">
+            <!-- Blocks injected by JS -->
         </div>
-
-        <div class="creator-footer" style="display: flex; gap: 12px;">
-            <button class="btn btn-secondary" style="flex: 1;" onclick="goBackFromBlocks()" data-i18n="btn_back">Назад</button>
-            <button class="btn btn-primary" style="flex: 1;" onclick="finishBlocksSelection()" data-i18n="btn_assemble">Далее</button>
+        <div class="creator-footer" style="position: fixed; bottom: 0; left: 0; right: 0;">
+            <div style="display: flex; gap: 12px;">
+                <button class="btn btn-secondary" onclick="goBackFromBlocks()" style="width: auto; padding: 18px;" data-i18n="btn_back">Назад</button>
+                <button class="btn btn-primary" onclick="finishBlocksSelection()" style="flex: 1;" data-i18n="btn_assemble">Далее</button>
+            </div>
         </div>
     </div>
 
-    <!-- Preview Screen (Step 3) -->
-    <div id="screen-preview" class="screen">
+    <!-- Preview -->
+    <div class="screen" id="screen-preview">
         <div class="preview-header-section">
-            <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 8px;"><span data-i18n="pv_title">Твоя визитка</span></h2>
-            <p style="color: var(--text-secondary);" data-i18n="pv_desc">Нажми на шапку, чтобы изменить формат.</p>
+            <h2 class="creator-title" style="font-size: 24px;" data-i18n="pv_title">Твоя визитка</h2>
+            <p class="creator-subtitle" style="margin-bottom: 0;" data-i18n="pv_desc">Нажми на шапку, чтобы изменить формат.</p>
         </div>
-        
         <div class="preview-list" id="preview-list-container">
-            <!-- Content rendered by JS -->
+            <!-- Preview items injected by JS -->
         </div>
-
-        <div class="creator-footer" style="display: flex; gap: 12px;">
-            <button class="btn btn-secondary" style="flex: 1;" onclick="goBackFromPreview()" data-i18n="btn_back">Назад</button>
-            <button class="btn btn-primary" style="flex: 1;" onclick="finalizeCard()" data-i18n="btn_finish">Готово</button>
-        </div>
-    </div>
-
-    <!-- Analytics Screen -->
-    <div id="screen-analytics" class="screen">
-        <div class="analytics-container">
-            <div class="analytics-card">
-                <div class="analytics-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-                </div>
-                <div class="analytics-text" data-i18n="analytics_empty">Пока нет просмотров.</div>
+        <div class="creator-footer" style="position: fixed; bottom: 0; left: 0; right: 0;">
+            <div style="display: flex; gap: 12px;">
+                <button class="btn btn-secondary" onclick="goBackFromPreview()" style="width: auto; padding: 18px;" data-i18n="btn_back">Назад</button>
+                <button class="btn btn-primary" onclick="finalizeCard()" style="flex: 1;" data-i18n="btn_finish">Готово</button>
             </div>
         </div>
     </div>
 
+    <!-- Modals -->
+    
     <!-- Main Menu Modal -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeMenu()"></div>
     <div class="modal-sheet" id="modalSheet">
         <div class="modal-handle"></div>
         <div class="modal-header">
             <div class="modal-title" data-i18n="menu_title">Меню</div>
-            <button class="close-modal" onclick="closeMenu()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            <button class="close-modal" onclick="closeMenu()">✕</button>
         </div>
-        
-        <div class="modal-option" onclick="showWelcome()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-            <span data-i18n="menu_welcome">Приветствие</span>
+        <div class="menu-item" onclick="showWelcome()">
+            <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+            <div class="menu-text"><h4 data-i18n="menu_welcome">Приветствие</h4><p data-i18n="menu_footer">Приветствие показано при первом входе.</p></div>
         </div>
-        
-        <div class="modal-option" onclick="handleMyCardsClick()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            <span data-i18n="menu_mycards">Мои визитки</span>
+        <div class="menu-item" onclick="handleMyCardsClick()">
+            <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></div>
+            <div class="menu-text"><h4 data-i18n="menu_mycards">Мои визитки</h4></div>
         </div>
-
-        <div class="modal-footer-text" data-i18n="menu_footer">Приветствие показано при первом входе.</div>
     </div>
 
     <!-- Card Actions Modal -->
@@ -447,23 +213,20 @@
         <div class="modal-handle"></div>
         <div class="modal-header">
             <div class="modal-title" data-i18n="action_edit">Действия</div>
-            <button class="close-modal" onclick="closeCardMenu()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            <button class="close-modal" onclick="closeCardMenu()">✕</button>
         </div>
-        
-        <div class="modal-option" onclick="editCurrentCard()">
+        <button class="modal-option" onclick="editCurrentCard()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
             <span data-i18n="action_edit">Редактировать</span>
-        </div>
-        
-        <div class="modal-option" onclick="shareCurrentCard()">
+        </button>
+        <button class="modal-option" onclick="shareCurrentCard()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
             <span data-i18n="action_share">Поделиться</span>
-        </div>
-
-        <div class="modal-option danger" onclick="deleteCurrentCard()">
+        </button>
+        <button class="modal-option danger" onclick="deleteCurrentCard()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
             <span data-i18n="action_delete">Удалить</span>
-        </div>
+        </button>
     </div>
 
     <!-- Header Edit Modal -->
@@ -472,148 +235,134 @@
         <div class="modal-handle"></div>
         <div class="modal-header">
             <div class="modal-title" data-i18n="modal_header_title">Шапка</div>
-            <button class="close-modal" onclick="closeHeaderModal()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            <button class="close-modal" onclick="closeHeaderModal()">✕</button>
         </div>
-
+        
         <div class="header-format-label" data-i18n="header_format_label">Формат шапки</div>
         <div class="header-tabs">
-            <div class="header-tab active" onclick="switchHeaderTab('avatar')" data-i18n="tab_avatar">Аватар</div>
-            <div class="header-tab" onclick="switchHeaderTab('cover')" data-i18n="tab_cover">Обложка</div>
-            <div class="header-tab" onclick="switchHeaderTab('banner')" data-i18n="tab_banner">Баннер</div>
-            <div class="header-tab" onclick="switchHeaderTab('carousel')" data-i18n="tab_carousel">Карусель</div>
+            <button class="header-tab active" onclick="switchHeaderTab('avatar')" data-i18n="tab_avatar">Аватар</button>
+            <button class="header-tab" onclick="switchHeaderTab('cover')" data-i18n="tab_cover">Обложка</button>
+            <button class="header-tab" onclick="switchHeaderTab('banner')" data-i18n="tab_banner">Баннер</button>
+            <button class="header-tab" onclick="switchHeaderTab('carousel')" data-i18n="tab_carousel">Карусель</button>
         </div>
 
-        <!-- Avatar Tab -->
+        <!-- Tab: Avatar -->
         <div id="tab-content-avatar" class="header-tab-content">
-            <div class="tab-desc" data-i18n="desc_avatar">Круглый аватар.</div>
+            <p class="tab-desc" data-i18n="desc_avatar">Круглый аватар.</p>
             <div class="modal-avatar-preview">
                 <div class="modal-avatar-circle" id="modal-avatar-img">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
             <button class="btn-upload" onclick="document.getElementById('device-upload-input').click()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-                <span data-i18n="btn_upload_device">Загрузить</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <span data-i18n="btn_upload_device"> Загрузить</span>
             </button>
-            <input type="file" id="device-upload-input" accept="image/*" style="display:none">
+            <input type="file" id="device-upload-input" accept="image/*" style="display: none;">
             
             <button class="btn-upload-secondary" onclick="handleMaxProfilePhoto()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                <span data-i18n="btn_upload_tg">Из MAX</span>
+                <span data-i18n="btn_upload_tg"> Из MAX</span>
             </button>
             
-            <div class="upload-hint" data-i18n="upload_hint">Фото сохранится.</div>
+            <p class="upload-hint" data-i18n="upload_hint">Фото сохранится.</p>
             <div class="or-divider" data-i18n="or_link">...или ссылка</div>
-            <input type="text" id="input-avatar-url" class="form-input" placeholder="https://..." onchange="updateAvatarFromUrl(this.value)">
+            <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
         </div>
 
-        <!-- Cover Tab -->
+        <!-- Tab: Cover -->
         <div id="tab-content-cover" class="header-tab-content hidden">
-            <div class="tab-desc" data-i18n="desc_cover">Широкая обложка.</div>
+            <p class="tab-desc" data-i18n="desc_cover">Широкая обложка.</p>
             <div class="modal-cover-preview">
                 <div class="preview-cover-bg" id="modal-cover-preview-bg"></div>
-                <div class="preview-cover-name" id="modal-cover-name" data-i18n="ph_company_name">Имя компании</div>
+                <div class="preview-cover-name" id="modal-cover-preview-name" data-i18n="ph_company_name">Имя компании</div>
                 <div class="preview-cover-hint" data-i18n="hint_example">Пример ниже</div>
             </div>
-            <div class="section-label-small" data-i18n="lbl_cover">ОБЛОЖКА</div>
+            <div class="section-label" data-i18n="lbl_cover">ОБЛОЖКА</div>
             <button class="btn-upload" onclick="document.getElementById('cover-upload-input').click()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
                 <span data-i18n="btn_upload_cover">Загрузить</span>
             </button>
-            <input type="file" id="cover-upload-input" accept="image/*" style="display:none">
-            <div class="or-divider" data-i18n="lbl_cover_link">Ссылка на фото</div>
-            <input type="text" id="input-cover-url" class="form-input" placeholder="https://..." onchange="updateCoverFromUrl(this.value)">
+            <input type="file" id="cover-upload-input" accept="image/*" style="display: none;">
+            <div class="section-label-small" data-i18n="lbl_cover_link">Ссылка на фото</div>
+            <input type="text" class="form-input" id="input-cover-url" placeholder="https://..." oninput="updateCoverFromUrl(this.value)">
         </div>
 
-        <!-- Banner Tab (WITH PREVIEW) -->
+        <!-- Tab: Banner -->
         <div id="tab-content-banner" class="header-tab-content hidden">
-            <div class="tab-desc" data-i18n="desc_banner">Обложка + аватар поверх.</div>
+            <p class="tab-desc" data-i18n="desc_banner">Обложка + аватар поверх.</p>
             
-            <!-- Блок предпросмотра баннера -->
+            <!-- Live Preview for Banner -->
             <div class="banner-preview-container">
                 <div class="banner-preview-bg" id="modal-banner-preview-bg"></div>
                 <div class="banner-preview-avatar" id="modal-banner-preview-avatar">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
                 <div class="banner-preview-name" id="modal-banner-preview-name">Имя компании</div>
             </div>
 
-            <div class="section-label-small">ОБЛОЖКА</div>
-            <button class="btn-upload" onclick="document.getElementById('cover-upload-input').click()">
+            <div class="section-label" data-i18n="lbl_cover">ОБЛОЖКА</div>
+            <button class="btn-upload" onclick="document.getElementById('banner-cover-upload-input').click()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                <span data-i18n="btn_upload_cover">Загрузить</span>
+                <span data-i18n="btn_upload_banner">Загрузить</span>
             </button>
-            <input type="file" id="cover-upload-input-banner" accept="image/*" style="display:none">
-            
-            <div class="or-divider" data-i18n="lbl_cover_link">Ссылка на фото</div>
-            <input type="text" id="input-cover-url-banner" class="form-input" placeholder="https://..." onchange="updateCoverFromUrl(this.value)">
+            <input type="file" id="banner-cover-upload-input" accept="image/*" style="display: none;">
+            <input type="text" class="form-input" id="banner-cover-url" placeholder="Ссылка на обложку" style="margin-bottom: 16px;" oninput="updateBannerPreview(this.value, userCardData?.avatarUrl)">
 
-            <div class="section-label-small" style="margin-top: 20px;">АВАТАР ПОВЕРХ</div>
-            <button class="btn-upload-secondary" onclick="document.getElementById('device-upload-input').click()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <div class="section-label" data-i18n="tab_avatar">АВАТАР ПОВЕРХ</div>
+            <button class="btn-upload" onclick="document.getElementById('banner-avatar-upload-input').click()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                 <span data-i18n="btn_upload_device">Загрузить</span>
             </button>
+            <input type="file" id="banner-avatar-upload-input" accept="image/*" style="display: none;">
             <button class="btn-upload-secondary" onclick="handleMaxProfilePhoto()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 <span data-i18n="btn_upload_tg">Из MAX</span>
             </button>
-            <div class="upload-hint" data-i18n="upload_hint">Фото сохранится.</div>
+            <p class="upload-hint" data-i18n="upload_hint">Фото сохранится.</p>
             <div class="or-divider" data-i18n="or_link">...или ссылка</div>
-            <input type="text" id="input-avatar-url-banner" class="form-input" placeholder="https://..." onchange="updateAvatarFromUrl(this.value)">
+            <input type="text" class="form-input" id="banner-avatar-url" placeholder="Ссылка на аватар" oninput="updateBannerPreview(userCardData?.coverUrl, this.value)">
         </div>
 
-        <!-- Carousel Tab -->
+        <!-- Tab: Carousel -->
         <div id="tab-content-carousel" class="header-tab-content hidden">
-            <div class="tab-desc" data-i18n="desc_carousel">Листаются свайпом.</div>
+            <p class="tab-desc" data-i18n="desc_carousel">Листаются свайпом.</p>
             <div class="modal-carousel-preview" id="modal-carousel-list">
                 <div class="add-slide-btn" onclick="document.getElementById('carousel-upload-input').click()">+</div>
             </div>
-            <input type="file" id="carousel-upload-input" accept="image/*" multiple style="display:none">
-            
-            <div class="header-text-edit-section">
-                <div class="section-label-small">Текст шапки</div>
-                <div class="form-group">
-                    <input type="text" id="modal-input-name" class="form-input" placeholder="Имя / Название" data-i18n-ph="cr_label_name">
-                </div>
-                <div class="form-group">
-                    <input type="text" id="modal-input-desc" class="form-input" placeholder="Описание / Подзаголовок" data-i18n-ph="cr_label_desc">
-                </div>
-            </div>
+            <input type="file" id="carousel-upload-input" accept="image/*" multiple style="display: none;">
         </div>
 
-        <div style="margin-top: 24px; display: flex; gap: 12px;">
-            <button class="btn btn-primary" style="flex: 1;" onclick="closeHeaderModal()" data-i18n="btn_save">Сохранить</button>
-        </div>
-        <div style="margin-top: 12px; display: flex; gap: 12px;">
-            <button class="btn btn-secondary" style="flex: 1;" onclick="duplicateCurrentBlock()" data-i18n="action_edit">Дублировать</button>
-            <button class="btn btn-secondary" style="flex: 1; color: var(--color-red);" onclick="deleteCurrentBlock()" data-i18n="action_delete">Удалить</button>
+        <div class="header-text-edit-section">
+            <div class="form-group">
+                <label class="form-label">Текст шапки</label>
+                <input type="text" class="form-input" id="modal-input-name" placeholder="Имя / Название">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-input" id="modal-input-desc" placeholder="Описание / Подзаголовок">
+            </div>
         </div>
     </div>
 
     <!-- Block Edit Modal -->
     <div class="modal-overlay" id="editModalOverlay" onclick="closeEditModal()"></div>
-    <div class="modal-sheet" id="editModalSheet" style="max-height: 90vh; overflow-y: auto;">
+    <div class="modal-sheet" id="editModalSheet">
         <div class="modal-handle"></div>
         <div class="modal-header">
-            <div class="modal-title" id="edit-modal-title" data-i18n="edit_modal_title">Редактировать блок</div>
-            <button class="close-modal" onclick="closeEditModal()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            <div class="modal-title" id="edit-modal-title" data-i18n="edit_modal_title">Блок</div>
+            <button class="close-modal" onclick="closeEditModal()">✕</button>
         </div>
-        
         <div id="edit-modal-fields">
-            <!-- Dynamic fields injected by JS -->
+            <!-- Dynamic fields -->
         </div>
-
-        <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px;">
-            <button class="btn btn-primary" onclick="saveBlockEdit()" data-i18n="btn_save">Готово</button>
-            <div style="display: flex; gap: 12px;">
-                <button class="btn btn-secondary" style="flex: 1;" onclick="duplicateCurrentBlock()" data-i18n="action_edit">Дублировать</button>
-                <button class="btn btn-secondary" style="flex: 1; color: var(--color-red);" onclick="deleteCurrentBlock()" data-i18n="action_delete">Удалить</button>
-            </div>
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button class="btn btn-secondary" onclick="duplicateCurrentBlock()" style="flex: 1;">Дублировать</button>
+            <button class="btn btn-secondary" onclick="deleteCurrentBlock()" style="flex: 1; color: var(--color-red); border-color: rgba(239, 68, 68, 0.3);">Удалить</button>
         </div>
+        <button class="btn btn-primary" onclick="saveBlockEdit()" style="margin-top: 10px;" data-i18n="btn_save">Сохранить</button>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="toast" data-i18n="toast_copy">Ссылка скопирована!</div>
+    <div class="toast" id="toast">Ссылка скопирована!</div>
 
     <script src="script.js"></script>
 </body>
