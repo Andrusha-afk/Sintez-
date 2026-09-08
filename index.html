@@ -8,361 +8,328 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- HEADER -->
     <div class="header">
         <div class="header-left">
-            <button class="back-btn" id="globalBackBtn" onclick="goBack()">
+            <button id="globalBackBtn" class="back-btn" onclick="goBack()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
-            <div class="logo" id="mainLogo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                <span>Синтез</span>
+            <div id="mainLogo" class="logo">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Synthes
             </div>
-            <div class="page-title" id="pageTitle">Аналитика</div>
+            <div id="pageTitle" class="page-title">Аналитика</div>
         </div>
-        <div class="header-right">
+        
+        <div style="display: flex; align-items: center; gap: 12px;">
             <div class="lang-switch-header">
                 <button class="lang-btn-header" data-lang="de" onclick="switchLang('de')">De</button>
                 <button class="lang-btn-header" data-lang="en" onclick="switchLang('en')">En</button>
                 <button class="lang-btn-header active" data-lang="ru" onclick="switchLang('ru')">Ru</button>
             </div>
-            <button class="menu-btn" id="globalMenuBtn" onclick="openMenu()">
+            
+            <button id="globalMenuBtn" class="menu-btn" onclick="openMenu()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
-            <!-- Кнопка предпросмотра (глазик) -->
-            <button class="preview-toggle-btn" id="preview-toggle-btn" onclick="toggleUserPreviewMode()">
+
+            <!-- Кнопка предпросмотра (глазик) справа -->
+            <button id="preview-toggle-btn" class="preview-toggle-btn" onclick="toggleUserPreviewMode()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
             </button>
         </div>
     </div>
 
-    <!-- Screens -->
+    <!-- SCREENS -->
     
-    <!-- Screen 1: Onboarding -->
-    <div class="screen active" id="screen-1">
+    <!-- ONBOARDING 1 -->
+    <div id="screen-1" class="screen active">
         <div class="onboarding-content">
             <div class="hero-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </div>
-            <h1 data-i18n="s1_title">Твоя визитка <span class="gradient-text" data-i18n="s1_title_grad">внутри MAX</span></h1>
-            <p class="description" data-i18n="s1_desc">Открывается по ссылке за секунду.</p>
+            <h1><span data-i18n="s1_title"></span><span class="gradient-text" data-i18n="s1_title_grad"></span></h1>
+            <p class="description" data-i18n="s1_desc"></p>
         </div>
-        <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="nextScreen(2)" data-i18n="btn_skip">Пропустить</button>
-            <button class="btn btn-primary" onclick="nextScreen(2)" data-i18n="btn_next">Далее</button>
+        <div class="footer-actions vertical">
+            <button class="btn btn-secondary" onclick="nextScreen(2)" data-i18n="btn_skip"></button>
+            <button class="btn btn-primary" onclick="nextScreen(2)" data-i18n="btn_next"></button>
         </div>
     </div>
 
-    <!-- Screen 2: Onboarding -->
-    <div class="screen" id="screen-2">
+    <!-- ONBOARDING 2 -->
+    <div id="screen-2" class="screen">
         <div class="onboarding-content">
             <div class="mockup-container">
                 <div class="mockup-grid">
-                    <div class="m-block" style="background: var(--color-blue)"></div>
-                    <div class="m-block" style="background: var(--color-yellow)"></div>
-                    <div class="m-block" style="background: var(--color-green)"></div>
+                    <div class="m-block" style="background:var(--color-blue)"></div>
+                    <div class="m-block" style="background:var(--color-pink)"></div>
+                    <div class="m-block" style="background:var(--color-yellow)"></div>
                 </div>
                 <div class="m-lines">
-                    <div class="m-line" style="width: 60%"></div>
                     <div class="m-line" style="width: 80%"></div>
+                    <div class="m-line" style="width: 60%"></div>
                 </div>
             </div>
-            <h1 data-i18n="s2_title">Собирается <span class="gradient-text" data-i18n="s2_title_grad">из блоков</span></h1>
-            <p class="description" data-i18n="s2_desc">Прайс, отзывы, фото. Порядок задаёшь ты.</p>
+            <h1><span data-i18n="s2_title"></span><span class="gradient-text" data-i18n="s2_title_grad"></span></h1>
+            <p class="description" data-i18n="s2_desc"></p>
         </div>
-        <div class="footer-actions">
-            <button class="btn btn-secondary" onclick="nextScreen(3)" data-i18n="btn_skip">Пропустить</button>
-            <button class="btn btn-primary" onclick="nextScreen(3)" data-i18n="btn_next">Далее</button>
+        <div class="footer-actions vertical">
+            <button class="btn btn-secondary" onclick="nextScreen(3)" data-i18n="btn_skip"></button>
+            <button class="btn btn-primary" onclick="nextScreen(3)" data-i18n="btn_next"></button>
         </div>
     </div>
 
-    <!-- Screen 3: Onboarding -->
-    <div class="screen" id="screen-3">
+    <!-- ONBOARDING 3 -->
+    <div id="screen-3" class="screen">
         <div class="onboarding-content">
-            <div class="hero-icon" style="border-radius: 50%; background: rgba(96, 165, 250, 0.1); color: var(--color-blue);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
             </div>
-            <h1 data-i18n="s3_title">Свой бот и своя<br><span class="gradient-text">ссылка</span></h1>
-            <p class="description" data-i18n="s3_desc">Ссылку можно отправить в переписке.</p>
+            <h1 data-i18n="s3_title"></h1>
+            <p class="description" data-i18n="s3_desc"></p>
         </div>
-        <div class="footer-actions">
-            <button class="btn btn-primary" onclick="startCreationFlow()" data-i18n="btn_start">Начать</button>
+        <div class="footer-actions vertical">
+            <button class="btn btn-secondary" onclick="goToDashboard()" data-i18n="btn_skip"></button>
+            <button class="btn btn-primary" onclick="goToDashboard()" data-i18n="btn_start"></button>
         </div>
     </div>
 
-    <!-- Dashboard -->
-    <div class="screen" id="screen-dashboard">
+    <!-- DASHBOARD -->
+    <div id="screen-dashboard" class="screen">
         <div class="dashboard-container">
             <div class="dash-header-text">
-                <h2 class="dash-title" data-i18n="dash_title">Твои визитки</h2>
-                <p class="dash-subtitle" data-i18n="dash_subtitle">Открой, чтобы изменить.</p>
+                <h2 class="dash-title" data-i18n="dash_title"></h2>
+                <p class="dash-subtitle" data-i18n="dash_subtitle"></p>
             </div>
-            
             <div class="card">
-                <div class="card-label" data-i18n="label_my_cards">МОИ ВИЗИТКИ</div>
-                <div id="cards-list-container">
-                    <!-- Cards will be injected here -->
-                </div>
+                <div class="card-label" data-i18n="label_my_cards"></div>
+                <div id="cards-list-container"></div>
             </div>
-
-            <div class="info-box" data-i18n="info_box">
-                Пример. Цифры появятся после создания.
-            </div>
+            <div class="info-box" data-i18n="info_box"></div>
         </div>
     </div>
 
-    <!-- Analytics -->
-    <div class="screen" id="screen-analytics">
+    <!-- ANALYTICS -->
+    <div id="screen-analytics" class="screen">
         <div class="analytics-container">
             <div class="analytics-card">
                 <div class="analytics-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>
+                    <svg viewBox="0 0 24 24"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>
                 </div>
-                <h3 data-i18n="analytics_empty">Пока нет просмотров.</h3>
+                <div class="analytics-text" data-i18n="analytics_empty"></div>
             </div>
         </div>
     </div>
 
-    <!-- Creator Step 1 -->
-    <div class="screen" id="screen-creator">
+    <!-- CREATOR STEP 1 -->
+    <div id="screen-creator" class="screen">
         <div class="creator-container">
             <div class="creator-header">
-                <h2 class="creator-title" data-i18n="cr_title_step1">О бизнесе</h2>
-                <p class="creator-subtitle" data-i18n="cr_subtitle_step1">Расскажи о себе.</p>
+                <h2 class="creator-title" data-i18n="cr_title_step1"></h2>
+                <p class="creator-subtitle" data-i18n="cr_subtitle_step1"></p>
             </div>
-            
             <div class="form-group">
-                <label class="form-label" data-i18n="cr_label_name">Имя или компания</label>
-                <input type="text" class="form-input" id="input-name" data-i18n-ph="cr_ph_name" placeholder="напр. Студия Анны">
+                <label class="form-label" data-i18n="cr_label_name"></label>
+                <input type="text" id="input-name" class="form-input" data-i18n-ph="cr_ph_name">
             </div>
-            
             <div class="form-group">
-                <label class="form-label" data-i18n="cr_label_desc">Подзаголовок</label>
-                <input type="text" class="form-input" id="input-desc" data-i18n-ph="cr_ph_desc" placeholder="чем занимаешься">
+                <label class="form-label" data-i18n="cr_label_desc"></label>
+                <input type="text" id="input-desc" class="form-input" data-i18n-ph="cr_ph_desc">
             </div>
-
             <div class="form-group">
-                <label class="form-label" data-i18n="cr_label_city">Город</label>
-                <input type="text" class="form-input" id="input-city" data-i18n-ph="cr_ph_city" placeholder="напр. Москва">
+                <label class="form-label" data-i18n="cr_label_city"></label>
+                <input type="text" id="input-city" class="form-input" data-i18n-ph="cr_ph_city">
             </div>
         </div>
         <div class="creator-footer">
             <button class="btn-next-large" onclick="goToBlocksSelection()">
-                <span data-i18n="btn_next_arrow">Далее →</span>
+                <span data-i18n="btn_next_arrow"></span>
             </button>
         </div>
     </div>
 
-    <!-- Blocks Selection -->
-    <div class="screen" id="screen-blocks">
+    <!-- BLOCKS SELECTION -->
+    <div id="screen-blocks" class="screen">
         <div class="blocks-header-section">
-            <h2 class="creator-title" style="font-size: 24px;" data-i18n="bl_title">Что <span class="gradient-text" data-i18n="bl_title_grad">показать</span></h2>
-            <p class="creator-subtitle" style="margin-bottom: 0;" data-i18n="bl_desc">Выбери блоки.</p>
+            <h2 class="creator-title" style="font-size: 28px; margin-bottom: 4px;"><span data-i18n="bl_title"></span><span class="gradient-text" data-i18n="bl_title_grad"></span></h2>
+            <p class="creator-subtitle" data-i18n="bl_desc"></p>
         </div>
-        <div class="blocks-list" id="blocks-list-container">
-            <!-- Blocks injected by JS -->
-        </div>
-        <div class="creator-footer" style="position: fixed; bottom: 0; left: 0; right: 0;">
-            <div style="display: flex; gap: 12px;">
-                <button class="btn btn-secondary" onclick="goBackFromBlocks()" style="width: auto; padding: 18px;" data-i18n="btn_back">Назад</button>
-                <button class="btn btn-primary" onclick="finishBlocksSelection()" style="flex: 1;" data-i18n="btn_assemble">Далее</button>
-            </div>
+        <div id="blocks-list-container" class="blocks-list"></div>
+        <div class="footer-actions">
+            <button class="btn btn-secondary" onclick="goBackFromBlocks()" data-i18n="btn_back"></button>
+            <button class="btn btn-primary" onclick="finishBlocksSelection()" data-i18n="btn_assemble"></button>
         </div>
     </div>
 
-    <!-- Preview -->
-    <div class="screen" id="screen-preview">
+    <!-- PREVIEW -->
+    <div id="screen-preview" class="screen">
         <div class="preview-header-section">
-            <h2 class="creator-title" style="font-size: 24px;" data-i18n="pv_title">Твоя визитка</h2>
-            <p class="creator-subtitle" style="margin-bottom: 0;" data-i18n="pv_desc">Нажми на шапку, чтобы изменить формат.</p>
+            <h2 class="creator-title" style="font-size: 24px;" data-i18n="pv_title"></h2>
+            <p class="creator-subtitle" data-i18n="pv_desc"></p>
         </div>
-        <div class="preview-list" id="preview-list-container">
-            <!-- Preview items injected by JS -->
-        </div>
-        <div class="creator-footer" style="position: fixed; bottom: 0; left: 0; right: 0;">
-            <div style="display: flex; gap: 12px;">
-                <button class="btn btn-secondary" onclick="goBackFromPreview()" style="width: auto; padding: 18px;" data-i18n="btn_back">Назад</button>
-                <button class="btn btn-primary" onclick="finalizeCard()" style="flex: 1;" data-i18n="btn_finish">Готово</button>
-            </div>
+        <div id="preview-list-container" class="preview-list"></div>
+        <div class="footer-actions">
+            <button class="btn btn-secondary" onclick="goBackFromPreview()" data-i18n="btn_back"></button>
+            <button class="btn btn-primary" onclick="finalizeCard()" data-i18n="btn_finish"></button>
         </div>
     </div>
 
-    <!-- Modals -->
+    <!-- MODALS -->
     
     <!-- Main Menu Modal -->
-    <div class="modal-overlay" id="modalOverlay" onclick="closeMenu()"></div>
-    <div class="modal-sheet" id="modalSheet">
+    <div id="modalOverlay" class="modal-overlay" onclick="closeMenu()"></div>
+    <div id="modalSheet" class="modal-sheet">
         <div class="modal-handle"></div>
         <div class="modal-header">
-            <div class="modal-title" data-i18n="menu_title">Меню</div>
+            <div class="modal-title" data-i18n="menu_title"></div>
             <button class="close-modal" onclick="closeMenu()">✕</button>
         </div>
         <div class="menu-item" onclick="showWelcome()">
-            <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
-            <div class="menu-text"><h4 data-i18n="menu_welcome">Приветствие</h4><p data-i18n="menu_footer">Приветствие показано при первом входе.</p></div>
+            <div class="menu-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6 6 6 0 0 0 6-6 6 6 0 0 0-6-6z"/></svg></div>
+            <div class="menu-text"><h4 data-i18n="menu_welcome"></h4><p data-i18n="menu_footer"></p></div>
         </div>
         <div class="menu-item" onclick="handleMyCardsClick()">
-            <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></div>
-            <div class="menu-text"><h4 data-i18n="menu_mycards">Мои визитки</h4></div>
+            <div class="menu-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line></svg></div>
+            <div class="menu-text"><h4 data-i18n="menu_mycards"></h4></div>
+        </div>
+        <div class="menu-item" onclick="showAnalytics()">
+            <div class="menu-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg></div>
+            <div class="menu-text"><h4 data-i18n="menu_stats"></h4><p data-i18n="menu_stats_sub"></p></div>
         </div>
     </div>
 
     <!-- Card Actions Modal -->
-    <div class="modal-overlay" id="cardModalOverlay" onclick="closeCardMenu()"></div>
-    <div class="modal-sheet" id="cardModalSheet">
+    <div id="cardModalOverlay" class="modal-overlay" onclick="closeCardMenu()"></div>
+    <div id="cardModalSheet" class="modal-sheet">
         <div class="modal-handle"></div>
         <div class="modal-header">
-            <div class="modal-title" data-i18n="action_edit">Действия</div>
+            <div class="modal-title" data-i18n="action_edit"></div>
             <button class="close-modal" onclick="closeCardMenu()">✕</button>
         </div>
         <button class="modal-option" onclick="editCurrentCard()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-            <span data-i18n="action_edit">Редактировать</span>
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <span data-i18n="action_edit"></span>
         </button>
         <button class="modal-option" onclick="shareCurrentCard()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-            <span data-i18n="action_share">Поделиться</span>
+            <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            <span data-i18n="action_share"></span>
         </button>
         <button class="modal-option danger" onclick="deleteCurrentCard()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-            <span data-i18n="action_delete">Удалить</span>
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            <span data-i18n="action_delete"></span>
         </button>
     </div>
 
-    <!-- Header Edit Modal -->
-    <div class="modal-overlay" id="headerModalOverlay" onclick="closeHeaderModal()"></div>
-    <div class="modal-sheet header-modal-sheet" id="headerModalSheet">
+    <!-- Edit Block Modal -->
+    <div id="editModalOverlay" class="modal-overlay" onclick="closeEditModal()"></div>
+    <div id="editModalSheet" class="modal-sheet">
         <div class="modal-handle"></div>
         <div class="modal-header">
-            <div class="modal-title" data-i18n="modal_header_title">Шапка</div>
+            <div id="edit-modal-title" class="modal-title">Блок</div>
+            <button class="close-modal" onclick="closeEditModal()"></button>
+        </div>
+        <div id="edit-modal-fields"></div>
+        <div style="margin-top: 24px; display: flex; gap: 12px;">
+            <button class="btn btn-secondary" onclick="duplicateCurrentBlock()" style="flex:1;">Дублировать</button>
+            <button class="btn btn-secondary" onclick="deleteCurrentBlock()" style="flex:1; color: var(--color-red);">Удалить</button>
+        </div>
+        <button class="btn btn-primary" onclick="saveBlockEdit()" style="margin-top: 12px;" data-i18n="btn_save"></button>
+    </div>
+
+    <!-- Header Format Modal -->
+    <div id="headerModalOverlay" class="modal-overlay" onclick="closeHeaderModal()"></div>
+    <div id="headerModalSheet" class="modal-sheet header-modal-sheet">
+        <div class="modal-handle"></div>
+        <div class="modal-header">
+            <div class="modal-title" data-i18n="modal_header_title"></div>
             <button class="close-modal" onclick="closeHeaderModal()">✕</button>
         </div>
         
-        <div class="header-format-label" data-i18n="header_format_label">Формат шапки</div>
+        <div class="header-format-label" data-i18n="header_format_label"></div>
         <div class="header-tabs">
-            <button class="header-tab active" onclick="switchHeaderTab('avatar')" data-i18n="tab_avatar">Аватар</button>
-            <button class="header-tab" onclick="switchHeaderTab('cover')" data-i18n="tab_cover">Обложка</button>
-            <button class="header-tab" onclick="switchHeaderTab('banner')" data-i18n="tab_banner">Баннер</button>
-            <button class="header-tab" onclick="switchHeaderTab('carousel')" data-i18n="tab_carousel">Карусель</button>
+            <button class="header-tab" onclick="switchHeaderTab('avatar')" data-i18n="tab_avatar"></button>
+            <button class="header-tab" onclick="switchHeaderTab('cover')" data-i18n="tab_cover"></button>
+            <button class="header-tab" onclick="switchHeaderTab('banner')" data-i18n="tab_banner"></button>
+            <button class="header-tab" onclick="switchHeaderTab('carousel')" data-i18n="tab_carousel"></button>
         </div>
 
-        <!-- Tab: Avatar -->
-        <div id="tab-content-avatar" class="header-tab-content">
-            <p class="tab-desc" data-i18n="desc_avatar">Круглый аватар.</p>
+        <!-- Avatar Tab -->
+        <div id="tab-content-avatar" class="header-tab-content hidden">
+            <p class="tab-desc" data-i18n="desc_avatar"></p>
             <div class="modal-avatar-preview">
-                <div class="modal-avatar-circle" id="modal-avatar-img">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
+                <div id="modal-avatar-img" class="modal-avatar-circle"></div>
             </div>
             <button class="btn-upload" onclick="document.getElementById('device-upload-input').click()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                <span data-i18n="btn_upload_device"> Загрузить</span>
+                <span data-i18n="btn_upload_device"></span>
             </button>
-            <input type="file" id="device-upload-input" accept="image/*" style="display: none;">
-            
+            <input type="file" id="device-upload-input" accept="image/*" style="display:none">
             <button class="btn-upload-secondary" onclick="handleMaxProfilePhoto()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                <span data-i18n="btn_upload_tg"> Из MAX</span>
+                <span data-i18n="btn_upload_tg"></span>
             </button>
-            
-            <p class="upload-hint" data-i18n="upload_hint">Фото сохранится.</p>
-            <div class="or-divider" data-i18n="or_link">...или ссылка</div>
-            <input type="text" class="form-input" id="input-avatar-url" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
+            <p class="upload-hint" data-i18n="upload_hint"></p>
+            <div class="or-divider" data-i18n="or_link"></div>
+            <input type="text" id="input-avatar-url" class="form-input" placeholder="https://..." oninput="updateAvatarFromUrl(this.value)">
         </div>
 
-        <!-- Tab: Cover -->
+        <!-- Cover Tab -->
         <div id="tab-content-cover" class="header-tab-content hidden">
-            <p class="tab-desc" data-i18n="desc_cover">Широкая обложка.</p>
+            <p class="tab-desc" data-i18n="desc_cover"></p>
             <div class="modal-cover-preview">
-                <div class="preview-cover-bg" id="modal-cover-preview-bg"></div>
-                <div class="preview-cover-name" id="modal-cover-preview-name" data-i18n="ph_company_name">Имя компании</div>
-                <div class="preview-cover-hint" data-i18n="hint_example">Пример ниже</div>
+                <div id="modal-cover-preview-bg" class="preview-cover-bg"></div>
+                <div class="preview-cover-name" data-i18n="ph_company_name"></div>
+                <div class="preview-cover-hint" data-i18n="hint_example"></div>
             </div>
-            <div class="section-label" data-i18n="lbl_cover">ОБЛОЖКА</div>
+            <div class="section-label" data-i18n="lbl_cover"></div>
             <button class="btn-upload" onclick="document.getElementById('cover-upload-input').click()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                <span data-i18n="btn_upload_cover">Загрузить</span>
-            </button>
-            <input type="file" id="cover-upload-input" accept="image/*" style="display: none;">
-            <div class="section-label-small" data-i18n="lbl_cover_link">Ссылка на фото</div>
-            <input type="text" class="form-input" id="input-cover-url" placeholder="https://..." oninput="updateCoverFromUrl(this.value)">
-        </div>
-
-        <!-- Tab: Banner -->
-        <div id="tab-content-banner" class="header-tab-content hidden">
-            <p class="tab-desc" data-i18n="desc_banner">Обложка + аватар поверх.</p>
-            
-            <!-- Live Preview for Banner -->
-            <div class="banner-preview-container">
-                <div class="banner-preview-bg" id="modal-banner-preview-bg"></div>
-                <div class="banner-preview-avatar" id="modal-banner-preview-avatar">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
-                <div class="banner-preview-name" id="modal-banner-preview-name">Имя компании</div>
-            </div>
-
-            <div class="section-label" data-i18n="lbl_cover">ОБЛОЖКА</div>
-            <button class="btn-upload" onclick="document.getElementById('banner-cover-upload-input').click()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                <span data-i18n="btn_upload_banner">Загрузить</span>
-            </button>
-            <input type="file" id="banner-cover-upload-input" accept="image/*" style="display: none;">
-            <input type="text" class="form-input" id="banner-cover-url" placeholder="Ссылка на обложку" style="margin-bottom: 16px;" oninput="updateBannerPreview(this.value, userCardData?.avatarUrl)">
-
-            <div class="section-label" data-i18n="tab_avatar">АВАТАР ПОВЕРХ</div>
-            <button class="btn-upload" onclick="document.getElementById('banner-avatar-upload-input').click()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                <span data-i18n="btn_upload_device">Загрузить</span>
+                <span data-i18n="btn_upload_cover"></span>
             </button>
-            <input type="file" id="banner-avatar-upload-input" accept="image/*" style="display: none;">
-            <button class="btn-upload-secondary" onclick="handleMaxProfilePhoto()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                <span data-i18n="btn_upload_tg">Из MAX</span>
-            </button>
-            <p class="upload-hint" data-i18n="upload_hint">Фото сохранится.</p>
-            <div class="or-divider" data-i18n="or_link">...или ссылка</div>
-            <input type="text" class="form-input" id="banner-avatar-url" placeholder="Ссылка на аватар" oninput="updateBannerPreview(userCardData?.coverUrl, this.value)">
+            <input type="file" id="cover-upload-input" accept="image/*" style="display:none">
+            <div class="section-label-small" data-i18n="lbl_cover_link"></div>
+            <input type="text" id="input-cover-url" class="form-input" placeholder="https://..." oninput="updateCoverFromUrl(this.value)">
         </div>
 
-        <!-- Tab: Carousel -->
+        <!-- Banner Tab -->
+        <div id="tab-content-banner" class="header-tab-content hidden">
+            <p class="tab-desc" data-i18n="desc_banner"></p>
+            <div class="banner-preview-container">
+                <div id="modal-banner-preview-bg" class="banner-preview-bg"></div>
+                <div id="modal-banner-preview-avatar" class="banner-preview-avatar"></div>
+                <div id="modal-banner-preview-name" class="banner-preview-name">Имя компании</div>
+            </div>
+            <div class="section-label" data-i18n="lbl_cover"></div>
+            <button class="btn-upload" onclick="document.getElementById('cover-upload-input').click()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <span data-i18n="btn_upload_banner"></span>
+            </button>
+            <input type="file" id="cover-upload-input" accept="image/*" style="display:none">
+            <div class="section-label-small" data-i18n="lbl_cover_link"></div>
+            <input type="text" id="input-cover-url" class="form-input" placeholder="https://..." oninput="updateCoverFromUrl(this.value)">
+        </div>
+
+        <!-- Carousel Tab -->
         <div id="tab-content-carousel" class="header-tab-content hidden">
-            <p class="tab-desc" data-i18n="desc_carousel">Листаются свайпом.</p>
-            <div class="modal-carousel-preview" id="modal-carousel-list">
+            <p class="tab-desc" data-i18n="desc_carousel"></p>
+            <div id="modal-carousel-list" class="modal-carousel-preview">
                 <div class="add-slide-btn" onclick="document.getElementById('carousel-upload-input').click()">+</div>
             </div>
-            <input type="file" id="carousel-upload-input" accept="image/*" multiple style="display: none;">
+            <input type="file" id="carousel-upload-input" accept="image/*" multiple style="display:none">
         </div>
 
         <div class="header-text-edit-section">
+            <div class="section-label-small" data-i18n="share_title"></div>
             <div class="form-group">
-                <label class="form-label">Текст шапки</label>
-                <input type="text" class="form-input" id="modal-input-name" placeholder="Имя / Название">
+                <input type="text" id="modal-input-name" class="form-input" data-i18n-ph="cr_ph_name">
             </div>
             <div class="form-group">
-                <input type="text" class="form-input" id="modal-input-desc" placeholder="Описание / Подзаголовок">
+                <input type="text" id="modal-input-desc" class="form-input" data-i18n-ph="cr_ph_desc">
             </div>
         </div>
     </div>
 
-    <!-- Block Edit Modal -->
-    <div class="modal-overlay" id="editModalOverlay" onclick="closeEditModal()"></div>
-    <div class="modal-sheet" id="editModalSheet">
-        <div class="modal-handle"></div>
-        <div class="modal-header">
-            <div class="modal-title" id="edit-modal-title" data-i18n="edit_modal_title">Блок</div>
-            <button class="close-modal" onclick="closeEditModal()">✕</button>
-        </div>
-        <div id="edit-modal-fields">
-            <!-- Dynamic fields -->
-        </div>
-        <div style="display: flex; gap: 10px; margin-top: 20px;">
-            <button class="btn btn-secondary" onclick="duplicateCurrentBlock()" style="flex: 1;">Дублировать</button>
-            <button class="btn btn-secondary" onclick="deleteCurrentBlock()" style="flex: 1; color: var(--color-red); border-color: rgba(239, 68, 68, 0.3);">Удалить</button>
-        </div>
-        <button class="btn btn-primary" onclick="saveBlockEdit()" style="margin-top: 10px;" data-i18n="btn_save">Сохранить</button>
-    </div>
-
-    <div class="toast" id="toast">Ссылка скопирована!</div>
+    <div id="toast" class="toast"></div>
 
     <script src="script.js"></script>
 </body>

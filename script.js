@@ -1,276 +1,211 @@
 const socialNetworksConfig = [
-    { 
-        id: 'max', 
-        name: 'MAX', 
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>', 
-        placeholder: '+7 (999) 000-00-00' 
-    },
-    { 
-        id: 'instagram', 
-        name: 'Instagram', 
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>', 
-        placeholder: 'https://instagram.com/username' 
-    },
-    { 
-        id: 'whatsapp', 
-        name: 'WhatsApp', 
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>', 
-        placeholder: 'https://wa.me/number' 
-    },
-    { 
-        id: 'youtube', 
-        name: 'YouTube', 
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>', 
-        placeholder: 'https://youtube.com/channel' 
-    },
-    { 
-        id: 'facebook', 
-        name: 'Facebook', 
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>', 
-        placeholder: 'https://facebook.com/username' 
-    },
-    { 
-        id: 'threads', 
-        name: 'Threads', 
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6 6 6 0 0 0 6-6 6 6 0 0 0-6-6z"/></svg>', 
-        placeholder: 'https://threads.net/@username' 
-    },
-    { 
-        id: 'linkedin', 
-        name: 'LinkedIn', 
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>', 
-        placeholder: 'https://linkedin.com/in/username' 
-    },
-    { 
-        id: 'website', 
-        name: 'Сайт', 
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>', 
-        placeholder: 'https://твой-сайт.com' 
-    }
+    { id: 'max', name: 'MAX', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>', placeholder: '+7 (999) 000-00-00' },
+    { id: 'instagram', name: 'Instagram', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>', placeholder: 'https://instagram.com/username' },
+    { id: 'whatsapp', name: 'WhatsApp', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>', placeholder: 'https://wa.me/number' },
+    { id: 'youtube', name: 'YouTube', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>', placeholder: 'https://youtube.com/channel' },
+    { id: 'facebook', name: 'Facebook', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>', placeholder: 'https://facebook.com/username' },
+    { id: 'threads', name: 'Threads', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6 6 6 0 0 0 6-6 6 6 0 0 0-6-6z"/></svg>', placeholder: 'https://threads.net/@username' },
+    { id: 'linkedin', name: 'LinkedIn', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>', placeholder: 'https://linkedin.com/in/username' },
+    { id: 'website', name: 'Сайт', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>', placeholder: 'https://твой-сайт.com' }
 ];
 
 const reviewPlatformsConfig = [
-    { 
-        id: 'google', 
-        name: 'Google Карты', 
-        icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',
-        color: '#FF0000'
-    },
-    { 
-        id: 'yandex', 
-        name: 'Яндекс Карты', 
-        icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',
-        color: '#FF0000'
-    },
-    { 
-        id: 'maps', 
-        name: '2ГИС / Карты', 
-        icon: '<svg viewBox="0 0 24 24" fill="#2ECC71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',
-        color: '#2ECC71'
-    },
-    { 
-        id: 'flamp', 
-        name: 'Flamp', 
-        icon: '<svg viewBox="0 0 24 24" fill="#3498DB"><path d="M18.9 13.2c-.4-.4-1-.4-1.4 0l-1.4 1.4-1.4-1.4c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l1.4 1.4-1.4 1.4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l1.4-1.4 1.4 1.4c.4.4 1 .4 1.4 0s.4-1 0-1.4l-1.4-1.4 1.4-1.4 c.4-.4.4-1 0-1.4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>',
-        color: '#3498DB'
-    },
-    { 
-        id: 'custom', 
-        name: 'Свой отзыв', 
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>',
-        color: 'var(--color-blue)'
-    }
+    { id: 'google', name: 'Google Карты', icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>', color: '#FF0000' },
+    { id: 'yandex', name: 'Яндекс Карты', icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>', color: '#FF0000' },
+    { id: 'maps', name: '2ГИС / Карты', icon: '<svg viewBox="0 0 24 24" fill="#2ECC71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>', color: '#2ECC71' },
+    { id: 'flamp', name: 'Flamp', icon: '<svg viewBox="0 0 24 24" fill="#3498DB"><path d="M18.9 13.2c-.4-.4-1-.4-1.4 0l-1.4 1.4-1.4-1.4c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l1.4 1.4-1.4 1.4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l1.4-1.4 1.4 1.4c.4.4 1 .4 1.4 0s.4-1 0-1.4l-1.4-1.4 1.4-1.4c.4-.4.4-1 0-1.4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>', color: '#3498DB' },
+    { id: 'custom', name: 'Свой отзыв', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>', color: 'var(--color-blue)' }
 ];
 
 const translations = {
     ru: {
-        s1_title: "Твоя визитка ", s1_title_grad: "внутри MAX", s1_desc: "Открывается по ссылке за секунду.",
-        s2_title: "Собирается ", s2_title_grad: "из блоков", s2_desc: "Прайс, отзывы, фото. Порядок задаёшь ты.",
-        s3_title: "Свой бот и своя<br>ссылка", s3_desc: "Ссылку можно отправить в переписке.",
-        btn_skip: "Пропустить", btn_next: "Далее", btn_start: "Начать",
-        dash_title: "Твои визитки", dash_subtitle: "Открой, чтобы изменить.",
-        label_my_cards: "МОИ ВИЗИТКИ", empty_h3: "Здесь появятся твои визитки", 
-        empty_p: "Первая собирается за несколько минут.", btn_create: "Создать свою визитку",
-        info_box: "Пример. Цифры появятся после создания.",
-        menu_stats: "Статистика", menu_stats_sub: "Просмотры и заявки",
-        analytics_empty: "Пока нет просмотров.",
-        menu_title: "Меню", menu_welcome: "Приветствие", menu_mycards: "Мои визитки",
-        menu_footer: "Приветствие показано при первом входе.",
-        no_cards_msg: "Нет визиток", page_analytics: "Аналитика",
-        cr_title_step1: "О бизнесе", cr_subtitle_step1: "Расскажи о себе.",
-        cr_label_name: "Имя или компания", cr_ph_name: "напр. Студия Анны",
-        cr_label_desc: "Подзаголовок", cr_ph_desc: "чем занимаешься",
-        cr_label_city: "Город", cr_ph_city: "напр. Москва",
-        btn_next_arrow: "Далее →", btn_finish: "Готово",
-        action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить",
-        toast_copy: "Ссылка скопирована!", toast_deleted: "Удалено",
-        bl_title: "Что ", bl_title_grad: "показать", bl_desc: "Выбери блоки.",
-        blk_links: "Ссылки", blk_socials: "Соцсети", blk_hours: "Часы работы", blk_cta: "Призыв",
-        blk_contacts: "Контакты", blk_price: "Прайс", blk_discounts: "Скидки",
-        blk_reviews: "Отзывы", blk_faq: "Вопрос-ответ", blk_facts: "Цифры / Факты",
-        blk_video: "Видео", blk_share: "Поделиться", blk_gallery: "Галерея",
-        btn_back: "Назад", btn_assemble: "Далее",
-        pv_title: "Твоя визитка", pv_desc: "Нажми на шапку, чтобы изменить формат.",
-        edit_modal_title: "Блок", btn_save: "Сохранить", preview_placeholder: "Содержимое",
-        modal_header_title: "Шапка", header_format_label: "Формат",
-        tab_avatar: "Аватар", tab_cover: "Обложка", tab_banner: "Баннер", tab_carousel: "Карусель",
-        desc_avatar: "Круглый аватар.", btn_upload_device: " Загрузить", btn_upload_tg: " Из MAX",
-        upload_hint: "Фото сохранится.", or_link: "...или ссылка",
-        desc_cover: "Широкая обложка.", ph_company_name: "Имя компании", hint_example: "Пример ниже",
-        lbl_cover: "ОБЛОЖКА", btn_upload_cover: "Загрузить", lbl_cover_link: "Ссылка на фото",
-        desc_banner: "Обложка + аватар поверх.", banner_placeholder: "Баннер", btn_upload_banner: "Загрузить",
-        desc_carousel: "Листаются свайпом.",
-        share_title: "Заголовок",
-        share_image_label: "Картинка для сторис и карточки",
-        share_upload_btn: "Загрузить фото с устройства",
-        share_desc_hint: "Кнопки шеринга твоей визитки — клиенты делятся ею в один тап.",
-        share_caption_label: "Подпись открытки",
-        share_caption_placeholder: "Чем занимаешься — одной строкой",
-        share_caption_info: "Появится в открытке после публикации, рядом с именем. Ссылки, @упоминания и телефоны из неё убираются: если оставить только ссылку, подпись станет пустой и в открытке будет подзаголовок.",
-        share_layout_label: "Расположение",
-        share_layout_compact: "Компакт",
-        share_layout_stories: "Сторис",
-        share_layout_grid: "Сетка",
-        share_layout_list: "Список",
-        share_preview_label: "Предпросмотр",
-        share_btn_copy: "Скопировать",
-        share_btn_stories: "В сторис",
-        share_btn_share: "Поделиться",
-        gallery_title: "Заголовок",
-        gallery_display_format: "Формат отображения",
-        gallery_grid: "Сетка",
-        gallery_carousel: "Карусель",
-        gallery_mosaic: "Мозаика",
-        gallery_photos: "Фото работ",
-        gallery_upload_photo: "Загрузить фото",
-        gallery_demo_tile: "Демо-плитка",
-        gallery_upload_hint: "Загрузи свои фото (можно сразу несколько) — они появятся в сетке.",
-        gallery_demo_hint: "«Демо-плитка» — пустой квадрат для примера, как будет выглядеть сетка. Замени своим фото.",
-        gallery_limit: "бесплатно — до 8 элементов, в PRO больше"
+        s1_title: "Твоя визитка ", s1_title_grad: "внутри MAX ", s1_desc: "Открывается по ссылке за секунду. ",
+        s2_title: "Собирается ", s2_title_grad: "из блоков ", s2_desc: "Прайс, отзывы, фото. Порядок задаёшь ты. ",
+        s3_title: "Свой бот и своя <br>ссылка ", s3_desc: "Ссылку можно отправить в переписке. ",
+        btn_skip: "Пропустить ", btn_next: "Далее ", btn_start: "Начать ",
+        dash_title: "Твои визитки ", dash_subtitle: "Открой, чтобы изменить. ",
+        label_my_cards: "МОИ ВИЗИТКИ ", empty_h3: "Здесь появятся твои визитки ",
+        empty_p: "Первая собирается за несколько минут. ", btn_create: "Создать свою визитку ",
+        info_box: "Пример. Цифры появятся после создания. ",
+        menu_stats: "Статистика ", menu_stats_sub: "Просмотры и заявки ",
+        analytics_empty: "Пока нет просмотров. ",
+        menu_title: "Меню ", menu_welcome: "Приветствие ", menu_mycards: "Мои визитки ",
+        menu_footer: "Приветствие показано при первом входе. ",
+        no_cards_msg: "Нет визиток ", page_analytics: "Аналитика ",
+        cr_title_step1: "О бизнесе ", cr_subtitle_step1: "Расскажи о себе. ",
+        cr_label_name: "Имя или компания ", cr_ph_name: "напр. Студия Анны ",
+        cr_label_desc: "Подзаголовок ", cr_ph_desc: "чем занимаешься ",
+        cr_label_city: "Город ", cr_ph_city: "напр. Москва ",
+        btn_next_arrow: "Далее → ", btn_finish: "Готово ",
+        action_edit: "Редактировать ", action_share: "Поделиться ", action_delete: "Удалить ",
+        toast_copy: "Ссылка скопирована! ", toast_deleted: "Удалено ",
+        bl_title: "Что ", bl_title_grad: "показать ", bl_desc: "Выбери блоки. ",
+        blk_links: "Ссылки ", blk_socials: "Соцсети ", blk_hours: "Часы работы ", blk_cta: "Призыв ",
+        blk_contacts: "Контакты ", blk_price: "Прайс ", blk_discounts: "Скидки ",
+        blk_reviews: "Отзывы ", blk_faq: "Вопрос-ответ ", blk_facts: "Цифры / Факты ",
+        blk_video: "Видео ", blk_share: "Поделиться ", blk_gallery: "Галерея ",
+        btn_back: "Назад ", btn_assemble: "Далее ",
+        pv_title: "Твоя визитка ", pv_desc: "Нажми на шапку, чтобы изменить формат. ",
+        edit_modal_title: "Блок ", btn_save: "Сохранить ", preview_placeholder: "Содержимое ",
+        modal_header_title: "Шапка ", header_format_label: "Формат ",
+        tab_avatar: "Аватар ", tab_cover: "Обложка ", tab_banner: "Баннер ", tab_carousel: "Карусель ",
+        desc_avatar: "Круглый аватар. ", btn_upload_device: " Загрузить ", btn_upload_tg: " Из MAX ",
+        upload_hint: "Фото сохранится. ", or_link: "...или ссылка ",
+        desc_cover: "Широкая обложка. ", ph_company_name: "Имя компании ", hint_example: "Пример ниже ",
+        lbl_cover: "ОБЛОЖКА ", btn_upload_cover: "Загрузить ", lbl_cover_link: "Ссылка на фото ",
+        desc_banner: "Обложка + аватар поверх. ", banner_placeholder: "Баннер ", btn_upload_banner: "Загрузить ",
+        desc_carousel: "Листаются свайпом. ",
+        share_title: "Заголовок ",
+        share_image_label: "Картинка для сторис и карточки ",
+        share_upload_btn: "Загрузить фото с устройства ",
+        share_desc_hint: "Кнопки шеринга твоей визитки — клиенты делятся ею в один тап. ",
+        share_caption_label: "Подпись открытки ",
+        share_caption_placeholder: "Чем занимаешься — одной строкой ",
+        share_caption_info: "Появится в открытке после публикации, рядом с именем. Ссылки, @упоминания и телефоны из неё убираются: если оставить только ссылку, подпись станет пустой и в открытке будет подзаголовок. ",
+        share_layout_label: "Расположение ",
+        share_layout_compact: "Компакт ",
+        share_layout_stories: "Сторис ",
+        share_layout_grid: "Сетка ",
+        share_layout_list: "Список ",
+        share_preview_label: "Предпросмотр ",
+        share_btn_copy: "Скопировать ",
+        share_btn_stories: "В сторис ",
+        share_btn_share: "Поделиться ",
+        gallery_title: "Заголовок ",
+        gallery_display_format: "Формат отображения ",
+        gallery_grid: "Сетка ",
+        gallery_carousel: "Карусель ",
+        gallery_mosaic: "Мозаика ",
+        gallery_photos: "Фото работ ",
+        gallery_upload_photo: "Загрузить фото ",
+        gallery_demo_tile: "Демо-плитка ",
+        gallery_upload_hint: "Загрузи свои фото (можно сразу несколько) — они появятся в сетке. ",
+        gallery_demo_hint: "«Демо-плитка» — пустой квадрат для примера, как будет выглядеть сетка. Замени своим фото. ",
+        gallery_limit: "бесплатно — до 8 элементов, в PRO больше "
     },
     en: {
-        s1_title: "Your card ", s1_title_grad: "inside MAX", s1_desc: "Opens via link instantly.",
-        s2_title: "Built from ", s2_title_grad: "blocks", s2_desc: "Price, reviews, photos. Drag to reorder.",
-        s3_title: "Own bot & link", s3_desc: "Share link anywhere.",
-        btn_skip: "Skip", btn_next: "Next", btn_start: "Start",
-        dash_title: "Your cards", dash_subtitle: "Open to edit.",
-        label_my_cards: "MY CARDS", empty_h3: "Cards appear here", empty_p: "First one takes minutes.",
-        btn_create: "Create card", info_box: "Example view.",
-        menu_stats: "Stats", menu_stats_sub: "Views & clicks",
-        analytics_empty: "No views yet.", menu_title: "Menu", menu_welcome: "Welcome", menu_mycards: "My cards",
-        menu_footer: "Welcome shown once.", no_cards_msg: "No cards", page_analytics: "Analytics",
-        cr_title_step1: "About", cr_subtitle_step1: "Tell about yourself.",
-        cr_label_name: "Name/Company", cr_ph_name: "e.g. Anna's Studio",
-        cr_label_desc: "Subtitle", cr_ph_desc: "what you do",
-        cr_label_city: "City", cr_ph_city: "e.g. Moscow",
-        btn_next_arrow: "Next →", btn_finish: "Finish",
-        action_edit: "Edit", action_share: "Share", action_delete: "Delete",
-        toast_copy: "Copied!", toast_deleted: "Deleted",
-        bl_title: "What to ", bl_title_grad: "show", bl_desc: "Select blocks.",
-        blk_links: "Links", blk_socials: "Socials", blk_hours: "Hours", blk_cta: "CTA",
-        blk_contacts: "Contacts", blk_price: "Price", blk_discounts: "Discounts",
-        blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts",
-        blk_video: "Video", blk_share: "Share", blk_gallery: "Gallery",
-        btn_back: "Back", btn_assemble: "Next",
-        pv_title: "Your card", pv_desc: "Tap header to change format.",
-        edit_modal_title: "Block", btn_save: "Save", preview_placeholder: "Content",
-        modal_header_title: "Header", header_format_label: "Format",
-        tab_avatar: "Avatar", tab_cover: "Cover", tab_banner: "Banner", tab_carousel: "Carousel",
-        desc_avatar: "Round avatar.", btn_upload_device: " Upload", btn_upload_tg: " From MAX",
-        upload_hint: "Photo saved.", or_link: "...or link",
-        desc_cover: "Wide cover.", ph_company_name: "Company name", hint_example: "Example below",
-        lbl_cover: "COVER", btn_upload_cover: "Upload", lbl_cover_link: "Photo link",
-        desc_banner: "Cover + Avatar overlay.", banner_placeholder: "Banner", btn_upload_banner: "Upload",
-        desc_carousel: "Swipeable photos.",
-        share_title: "Title",
-        share_image_label: "Image for stories and card",
-        share_upload_btn: "Upload photo from device",
-        share_desc_hint: "Sharing buttons for your card — clients share it in one tap.",
-        share_caption_label: "Postcard caption",
-        share_caption_placeholder: "What you do — in one line",
-        share_caption_info: "Will appear on the postcard after publishing, next to the name. Links, @mentions and phones are removed from it: if you leave only a link, the caption will become empty and the subtitle will be on the postcard.",
-        share_layout_label: "Layout",
-        share_layout_compact: "Compact",
-        share_layout_stories: "Stories",
-        share_layout_grid: "Grid",
-        share_layout_list: "List",
-        share_preview_label: "Preview",
-        share_btn_copy: "Copy",
-        share_btn_stories: "To Stories",
-        share_btn_share: "Share",
-        gallery_title: "Title",
-        gallery_display_format: "Display format",
-        gallery_grid: "Grid",
-        gallery_carousel: "Carousel",
-        gallery_mosaic: "Mosaic",
-        gallery_photos: "Work photos",
-        gallery_upload_photo: "Upload photo",
-        gallery_demo_tile: "Demo tile",
-        gallery_upload_hint: "Upload your photos (you can upload several at once) — they will appear in the grid.",
-        gallery_demo_hint: " \"Demo tile\" is an empty square as an example of how the grid will look. Replace it with your photo.",
-        gallery_limit: "free — up to 8 elements, more in PRO"
+        s1_title: "Your card ", s1_title_grad: "inside MAX ", s1_desc: "Opens via link instantly. ",
+        s2_title: "Built from ", s2_title_grad: "blocks ", s2_desc: "Price, reviews, photos. Drag to reorder. ",
+        s3_title: "Own bot & link ", s3_desc: "Share link anywhere. ",
+        btn_skip: "Skip ", btn_next: "Next ", btn_start: "Start ",
+        dash_title: "Your cards ", dash_subtitle: "Open to edit. ",
+        label_my_cards: "MY CARDS ", empty_h3: "Cards appear here ", empty_p: "First one takes minutes. ",
+        btn_create: "Create card ", info_box: "Example view. ",
+        menu_stats: "Stats ", menu_stats_sub: "Views & clicks ",
+        analytics_empty: "No views yet. ", menu_title: "Menu ", menu_welcome: "Welcome ", menu_mycards: "My cards ",
+        menu_footer: "Welcome shown once. ", no_cards_msg: "No cards ", page_analytics: "Analytics ",
+        cr_title_step1: "About ", cr_subtitle_step1: "Tell about yourself. ",
+        cr_label_name: "Name/Company ", cr_ph_name: "e.g. Anna's Studio ",
+        cr_label_desc: "Subtitle ", cr_ph_desc: "what you do ",
+        cr_label_city: "City ", cr_ph_city: "e.g. Moscow ",
+        btn_next_arrow: "Next → ", btn_finish: "Finish ",
+        action_edit: "Edit ", action_share: "Share ", action_delete: "Delete ",
+        toast_copy: "Copied! ", toast_deleted: "Deleted ",
+        bl_title: "What to ", bl_title_grad: "show ", bl_desc: "Select blocks. ",
+        blk_links: "Links ", blk_socials: "Socials ", blk_hours: "Hours ", blk_cta: "CTA ",
+        blk_contacts: "Contacts ", blk_price: "Price ", blk_discounts: "Discounts ",
+        blk_reviews: "Reviews ", blk_faq: "Q&A ", blk_facts: "Facts ",
+        blk_video: "Video ", blk_share: "Share ", blk_gallery: "Gallery ",
+        btn_back: "Back ", btn_assemble: "Next ",
+        pv_title: "Your card ", pv_desc: "Tap header to change format. ",
+        edit_modal_title: "Block ", btn_save: "Save ", preview_placeholder: "Content ",
+        modal_header_title: "Header ", header_format_label: "Format ",
+        tab_avatar: "Avatar ", tab_cover: "Cover ", tab_banner: "Banner ", tab_carousel: "Carousel ",
+        desc_avatar: "Round avatar. ", btn_upload_device: " Upload ", btn_upload_tg: " From MAX ",
+        upload_hint: "Photo saved. ", or_link: "...or link ",
+        desc_cover: "Wide cover. ", ph_company_name: "Company name ", hint_example: "Example below ",
+        lbl_cover: "COVER ", btn_upload_cover: "Upload ", lbl_cover_link: "Photo link ",
+        desc_banner: "Cover + Avatar overlay. ", banner_placeholder: "Banner ", btn_upload_banner: "Upload ",
+        desc_carousel: "Swipeable photos. ",
+        share_title: "Title ",
+        share_image_label: "Image for stories and card ",
+        share_upload_btn: "Upload photo from device ",
+        share_desc_hint: "Sharing buttons for your card — clients share it in one tap. ",
+        share_caption_label: "Postcard caption ",
+        share_caption_placeholder: "What you do — in one line ",
+        share_caption_info: "Will appear on the postcard after publishing, next to the name. Links, @mentions and phones are removed from it: if you leave only a link, the caption will become empty and the subtitle will be on the postcard. ",
+        share_layout_label: "Layout ",
+        share_layout_compact: "Compact ",
+        share_layout_stories: "Stories ",
+        share_layout_grid: "Grid ",
+        share_layout_list: "List ",
+        share_preview_label: "Preview ",
+        share_btn_copy: "Copy ",
+        share_btn_stories: "To Stories ",
+        share_btn_share: "Share ",
+        gallery_title: "Title ",
+        gallery_display_format: "Display format ",
+        gallery_grid: "Grid ",
+        gallery_carousel: "Carousel ",
+        gallery_mosaic: "Mosaic ",
+        gallery_photos: "Work photos ",
+        gallery_upload_photo: "Upload photo ",
+        gallery_demo_tile: "Demo tile ",
+        gallery_upload_hint: "Upload your photos (you can upload several at once) — they will appear in the grid. ",
+        gallery_demo_hint: " \"Demo tile\" is an empty square as an example of how the grid will look. Replace it with your photo. ",
+        gallery_limit: "free — up to 8 elements, more in PRO "
     },
     de: {
-        s1_title: "Deine Karte ", s1_title_grad: "in MAX", s1_desc: "Öffnet per Link sofort.",
-        s2_title: "Aus ", s2_title_grad: "Blöcken", s2_desc: "Preise, Bewertungen. Sortieren per Drag.",
-        s3_title: "Eigener Bot & Link", s3_desc: "Link überall teilen.",
-        btn_skip: "Überspringen", btn_next: "Weiter", btn_start: "Start",
-        dash_title: "Deine Karten", dash_subtitle: "Zum Bearbeiten öffnen.",
-        label_my_cards: "MEINE KARTEN", empty_h3: "Karten erscheinen hier", empty_p: "Erste in Minuten fertig.",
-        btn_create: "Karte erstellen", info_box: "Beispielansicht.",
-        menu_stats: "Statistik", menu_stats_sub: "Aufrufe",
-        analytics_empty: "Keine Aufrufe.", menu_title: "Menü", menu_welcome: "Begrüßung", menu_mycards: "Meine Karten",
-        menu_footer: "Begrüßung beim Start.", no_cards_msg: "Keine Karten", page_analytics: "Analytik",
-        cr_title_step1: "Über dich", cr_subtitle_step1: "Erzähl etwas.",
-        cr_label_name: "Name/Firma", cr_ph_name: "z.B. Annas Studio",
-        cr_label_desc: "Untertitel", cr_ph_desc: "was du machst",
-        cr_label_city: "Stadt", cr_ph_city: "z.B. Moskau",
-        btn_next_arrow: "Weiter →", btn_finish: "Fertig",
-        action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Löschen",
-        toast_copy: "Kopiert!", toast_deleted: "Gelöscht",
-        bl_title: "Was ", bl_title_grad: "zeigen?", bl_desc: "Blöcke wählen.",
-        blk_links: "Links", blk_socials: "Soziale", blk_hours: "Zeiten", blk_cta: "Aufruf",
-        blk_contacts: "Kontakt", blk_price: "Preise", blk_discounts: "Rabatte",
-        blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten",
-        blk_video: "Video", blk_share: "Teilen", blk_gallery: "Galerie",
-        btn_back: "Zurück", btn_assemble: "Weiter",
-        pv_title: "Deine Karte", pv_desc: "Tippe Header für Format.",
-        edit_modal_title: "Block", btn_save: "Speichern", preview_placeholder: "Inhalt",
-        modal_header_title: "Header", header_format_label: "Format",
-        tab_avatar: "Avatar", tab_cover: "Titelbild", tab_banner: "Banner", tab_carousel: "Karussell",
-        desc_avatar: "Runder Avatar.", btn_upload_device: " Laden", btn_upload_tg: "👤 Aus MAX",
-        upload_hint: "Foto gespeichert.", or_link: "...oder Link",
-        desc_cover: "Breites Bild.", ph_company_name: "Firmenname", hint_example: "Beispiel unten",
-        lbl_cover: "TITELBILD", btn_upload_cover: "Laden", lbl_cover_link: "Foto-Link",
-        desc_banner: "Bild + Avatar darüber.", banner_placeholder: "Banner", btn_upload_banner: "Laden",
-        desc_carousel: "Fotos zum Wischen.",
-        share_title: "Titel",
-        share_image_label: "Bild für Stories und Karte",
-        share_upload_btn: "Foto vom Gerät hochladen",
-        share_desc_hint: "Sharing-Buttons für deine Karte — Kunden teilen sie mit einem Tipp.",
-        share_caption_label: "Postkarten-Unterschrift",
-        share_caption_placeholder: "Was du machst — in einer Zeile",
-        share_caption_info: "Erscheint auf der Postkarte nach der Veröffentlichung neben dem Namen. Links, @Erwähnungen und Telefone werden daraus entfernt: Wenn du nur einen Link lässt, wird die Unterschrift leer und der Untertitel erscheint auf der Postkarte.",
-        share_layout_label: "Anordnung",
-        share_layout_compact: "Kompakt",
-        share_layout_stories: "Stories",
-        share_layout_grid: "Raster",
-        share_layout_list: "Liste",
-        share_preview_label: "Vorschau",
-        share_btn_copy: "Kopieren",
-        share_btn_stories: "In Stories",
-        share_btn_share: "Teilen",
-        gallery_title: "Titel",
-        gallery_display_format: "Anzeigeformat",
-        gallery_grid: "Raster",
-        gallery_carousel: "Karussell",
-        gallery_mosaic: "Mosaik",
-        gallery_photos: "Arbeitsfotos",
-        gallery_upload_photo: "Foto hochladen",
-        gallery_demo_tile: "Demo-Kachel",
-        gallery_upload_hint: "Lade deine Fotos hoch (du kannst mehrere auf einmal hochladen) — sie erscheinen im Raster.",
-        gallery_demo_hint: " \"Demo-Kachel\" ist ein leeres Quadrat als Beispiel, wie das Raster aussehen wird. Ersetze es durch dein Foto.",
-        gallery_limit: "kostenlos — bis zu 8 Elemente, mehr in PRO"
+        s1_title: "Deine Karte ", s1_title_grad: "in MAX ", s1_desc: "Öffnet per Link sofort. ",
+        s2_title: "Aus ", s2_title_grad: "Blöcken ", s2_desc: "Preise, Bewertungen. Sortieren per Drag. ",
+        s3_title: "Eigener Bot & Link ", s3_desc: "Link überall teilen. ",
+        btn_skip: "Überspringen ", btn_next: "Weiter ", btn_start: "Start ",
+        dash_title: "Deine Karten ", dash_subtitle: "Zum Bearbeiten öffnen. ",
+        label_my_cards: "MEINE KARTEN ", empty_h3: "Karten erscheinen hier ", empty_p: "Erste in Minuten fertig. ",
+        btn_create: "Karte erstellen ", info_box: "Beispielansicht. ",
+        menu_stats: "Statistik ", menu_stats_sub: "Aufrufe ",
+        analytics_empty: "Keine Aufrufe. ", menu_title: "Menü ", menu_welcome: "Begrüßung ", menu_mycards: "Meine Karten ",
+        menu_footer: "Begrüßung beim Start. ", no_cards_msg: "Keine Karten ", page_analytics: "Analytik ",
+        cr_title_step1: "Über dich ", cr_subtitle_step1: "Erzähl etwas. ",
+        cr_label_name: "Name/Firma ", cr_ph_name: "z.B. Annas Studio ",
+        cr_label_desc: "Untertitel ", cr_ph_desc: "was du machst ",
+        cr_label_city: "Stadt ", cr_ph_city: "z.B. Moskau ",
+        btn_next_arrow: "Weiter → ", btn_finish: "Fertig ",
+        action_edit: "Bearbeiten ", action_share: "Teilen ", action_delete: "Löschen ",
+        toast_copy: "Kopiert! ", toast_deleted: "Gelöscht ",
+        bl_title: "Was ", bl_title_grad: "zeigen? ", bl_desc: "Blöcke wählen. ",
+        blk_links: "Links ", blk_socials: "Soziale ", blk_hours: "Zeiten ", blk_cta: "Aufruf ",
+        blk_contacts: "Kontakt ", blk_price: "Preise ", blk_discounts: "Rabatte ",
+        blk_reviews: "Bewertungen ", blk_faq: "FAQ ", blk_facts: "Fakten ",
+        blk_video: "Video ", blk_share: "Teilen ", blk_gallery: "Galerie ",
+        btn_back: "Zurück ", btn_assemble: "Weiter ",
+        pv_title: "Deine Karte ", pv_desc: "Tippe Header für Format. ",
+        edit_modal_title: "Block ", btn_save: "Speichern ", preview_placeholder: "Inhalt ",
+        modal_header_title: "Header ", header_format_label: "Format ",
+        tab_avatar: "Avatar ", tab_cover: "Titelbild ", tab_banner: "Banner ", tab_carousel: "Karussell ",
+        desc_avatar: "Runder Avatar. ", btn_upload_device: " Laden ", btn_upload_tg: "👤 Aus MAX ",
+        upload_hint: "Foto gespeichert. ", or_link: "...oder Link ",
+        desc_cover: "Breites Bild. ", ph_company_name: "Firmenname ", hint_example: "Beispiel unten ",
+        lbl_cover: "TITELBILD ", btn_upload_cover: "Laden ", lbl_cover_link: "Foto-Link ",
+        desc_banner: "Bild + Avatar darüber. ", banner_placeholder: "Banner ", btn_upload_banner: "Laden ",
+        desc_carousel: "Fotos zum Wischen. ",
+        share_title: "Titel ",
+        share_image_label: "Bild für Stories und Karte ",
+        share_upload_btn: "Foto vom Gerät hochladen ",
+        share_desc_hint: "Sharing-Buttons für deine Karte — Kunden teilen sie mit einem Tipp. ",
+        share_caption_label: "Postkarten-Unterschrift ",
+        share_caption_placeholder: "Was du machst — in einer Zeile ",
+        share_caption_info: "Erscheint auf der Postkarte nach der Veröffentlichung neben dem Namen. Links, @Erwähnungen und Telefone werden daraus entfernt: Wenn du nur einen Link lässt, wird die Unterschrift leer und der Untertitel erscheint auf der Postkarte. ",
+        share_layout_label: "Anordnung ",
+        share_layout_compact: "Kompakt ",
+        share_layout_stories: "Stories ",
+        share_layout_grid: "Raster ",
+        share_layout_list: "Liste ",
+        share_preview_label: "Vorschau ",
+        share_btn_copy: "Kopieren ",
+        share_btn_stories: "In Stories ",
+        share_btn_share: "Teilen ",
+        gallery_title: "Titel ",
+        gallery_display_format: "Anzeigeformat ",
+        gallery_grid: "Raster ",
+        gallery_carousel: "Karussell ",
+        gallery_mosaic: "Mosaik ",
+        gallery_photos: "Arbeitsfotos ",
+        gallery_upload_photo: "Foto hochladen ",
+        gallery_demo_tile: "Demo-Kachel ",
+        gallery_upload_hint: "Lade deine Fotos hoch (du kannst mehrere auf einmal hochladen) — sie erscheinen im Raster. ",
+        gallery_demo_hint: " \"Demo-Kachel\" ist ein leeres Quadrat als Beispiel, wie das Raster aussehen wird. Ersetze es durch dein Foto. ",
+        gallery_limit: "kostenlos — bis zu 8 Elemente, mehr in PRO "
     }
 };
 
@@ -280,6 +215,7 @@ let userCardData = null;
 let selectedBlocks = {};
 let currentHeaderFormat = 'avatar';
 let currentEditingBlockId = null;
+
 // Определяем режим работы приложения
 const urlParams = new URLSearchParams(window.location.search);
 const isViewMode = urlParams.get('view') === '1';
@@ -309,7 +245,6 @@ function loadUserData() {
                     btn.classList.add('active');
                 }
             });
-            
             applyTranslations();
         } catch (e) { console.error("Error loading data", e); }
     }
@@ -384,6 +319,7 @@ function goToBlocksSelection() {
     const desc = document.getElementById('input-desc').value.trim();
     const city = document.getElementById('input-city').value.trim();
     if (!name) { alert(currentLang === 'ru' ? 'Введите название' : 'Enter name'); return; }
+    
     if (!userCardData) userCardData = {};
     userCardData.name = name;
     userCardData.desc = desc;
@@ -396,6 +332,8 @@ function goToBlocksSelection() {
     // Render blocks list
     const container = document.getElementById('blocks-list-container');
     container.innerHTML = '';
+    
+    // УДАЛЕН БЛОК MAP ИЗ СПИСКА
     const blockTypes = [
         {id: 'about', name: 'О бизнесе'}, {id: 'links', name: 'Ссылки'}, {id: 'socials', name: 'Соцсети'},
         {id: 'hours', name: 'Часы'}, {id: 'cta', name: 'Призыв'}, {id: 'contacts', name: 'Контакты'},
@@ -406,7 +344,6 @@ function goToBlocksSelection() {
     
     blockTypes.forEach(block => {
         if (!selectedBlocks[block.id]) selectedBlocks[block.id] = { visible: true, title: null };
-        
         const div = document.createElement('div');
         div.className = 'block-item';
         div.innerHTML = `
@@ -437,6 +374,7 @@ function finishBlocksSelection() {
         }
         selectedBlocks[key].visible = cb.checked;
     });
+    
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-preview').classList.add('active');
     updateHeader('preview');
@@ -478,6 +416,8 @@ function goBack() {
     else if (document.getElementById('screen-preview').classList.contains('active')) goBackFromPreview();
     else if (document.getElementById('screen-blocks').classList.contains('active')) goBackFromBlocks();
     else if (document.getElementById('screen-creator').classList.contains('active')) goToDashboard();
+    else if (document.getElementById('screen-2').classList.contains('active')) nextScreen(1);
+    else if (document.getElementById('screen-3').classList.contains('active')) nextScreen(2);
 }
 
 function updateHeader(state) {
@@ -489,7 +429,7 @@ function updateHeader(state) {
     const previewBtn = document.getElementById('preview-toggle-btn');
     
     const showLangSwitch = state !== 'analytics';
-    
+
     if (['onboarding', 'blocks', 'preview', 'creator'].includes(state)) {
         backBtn.style.display = (state !== 'onboarding') ? 'flex' : 'none';
         logo.style.display = 'none'; title.style.display = 'none'; menuBtn.style.display = 'none';
@@ -506,11 +446,13 @@ function updateHeader(state) {
             langSwitch.style.display = 'flex';
             langSwitch.style.background = (state === 'onboarding') ? 'rgba(255,255,255,0.1)' : 'transparent';
         } else langSwitch.style.display = 'none';
+        
     } else if (state === 'dashboard') {
         backBtn.style.display = 'none'; logo.style.display = 'flex'; title.style.display = 'none'; menuBtn.style.display = 'block';
         previewBtn.style.display = 'none';
         if (showLangSwitch) { langSwitch.style.display = 'flex'; langSwitch.style.background = 'rgba(255,255,255,0.1)'; } 
         else langSwitch.style.display = 'none';
+        
     } else if (state === 'analytics') {
         backBtn.style.display = 'flex'; logo.style.display = 'none'; title.style.display = 'block'; menuBtn.style.display = 'none'; langSwitch.style.display = 'none';
         previewBtn.style.display = 'none';
@@ -547,8 +489,8 @@ function renderPreview() {
     const container = document.getElementById('preview-list-container');
     if(!container) return;
     container.innerHTML = '';
-    
     const t = translations[currentLang];
+
     const headerCard = document.createElement('div');
     headerCard.className = 'preview-header-card';
     if (!isViewMode) headerCard.onclick = openHeaderModal;
@@ -567,7 +509,7 @@ function renderPreview() {
     } else if (userCardData?.avatarUrl) {
         avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
     }
-    
+
     if (currentHeaderFormat !== 'carousel') {
         headerCard.innerHTML = `
             <div class="${coverClass}" style="${coverStyle}"></div>
@@ -581,7 +523,7 @@ function renderPreview() {
     const allKeys = Object.keys(selectedBlocks);
     const aboutKeys = allKeys.filter(k => k.startsWith('about'));
     const otherKeys = allKeys.filter(k => !k.startsWith('about'));
-    
+
     const createBlockSection = (key, blockData, title, contentHtml) => {
         const section = document.createElement('div');
         // В режиме просмотра всегда показываем блоки, игнорируя hidden-block
@@ -702,7 +644,7 @@ function renderPreview() {
                     todayOpen = dayData.open;
                     todayClose = dayData.close;
                 }
-
+                
                 const statusClass = isOpen ? 'status-open' : 'status-closed';
                 const statusText = isOpen ? 'Открыто сейчас' : 'Закрыто сейчас';
                 const currentTimeDisplay = todayOpen ? `${todayOpen}–${todayClose}` : '—';
@@ -738,7 +680,6 @@ function renderPreview() {
                 const ctaText = blockData.text || 'Кнопка';
                 const ctaLink = blockData.link || '#';
                 const ctaStyle = blockData.style || 'normal';
-                
                 let animClass = '';
                 if (ctaStyle === 'shimmer') animClass = 'cta-style-shimmer';
                 if (ctaStyle === 'flash') animClass = 'cta-style-flash';
@@ -773,12 +714,10 @@ function renderPreview() {
                         </a>
                     `;
                 }
-                
                 if (!phone && !email) {
                     isEmpty = true;
                     buttonsHtml += `<div style="grid-column: 1/-1; text-align:center; color: var(--text-secondary); padding: 10px;">Нет добавленных контактов</div>`;
                 }
-                
                 buttonsHtml += '</div>'; 
                 
                 if (showVcard && (phone || email)) {
@@ -805,7 +744,6 @@ function renderPreview() {
                         document.body.removeChild(a);
                         URL.revokeObjectURL(url);
                     };
-                    
                     buttonsHtml += `
                         <button onclick="${vcardFuncName}()" class="contact-btn full-width" style="margin-top: 10px;">
                             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -844,7 +782,6 @@ function renderPreview() {
                         const oldP = item.oldPrice ? item.oldPrice : '';
                         const newP = item.newPrice ? item.newPrice : '';
                         const perc = item.percent ? `-${item.percent}%` : '';
-                        
                         contentHtml += `
                             <div class="discount-card-item">
                                 ${perc ? `<div class="discount-badge">${perc}</div>` : ''}
@@ -947,7 +884,6 @@ function renderPreview() {
                 if (url) {
                     let embedCode = '';
                     let isYoutube = false;
-                    
                     if (url.includes('youtube.com') || url.includes('youtu.be')) {
                         isYoutube = true;
                         let videoId = '';
@@ -998,7 +934,6 @@ function renderPreview() {
                 const layout = blockData.layout || 'compact';
                 const imageUrl = blockData.imageUrl;
                 const caption = blockData.caption || userCardData?.desc || '';
-                
                 // Формируем правильную ссылку для просмотра
                 const viewUrl = window.location.origin + window.location.pathname + '?view=1';
                 
@@ -1028,7 +963,6 @@ function renderPreview() {
             else if (key === 'gallery' || key.startsWith('gallery_copy')) {
                 const items = blockData.items || [];
                 const format = blockData.displayFormat || 'grid';
-                
                 if (items.length > 0) {
                     if (format === 'grid') {
                         contentHtml = `<div class="gallery-grid">`;
@@ -1086,16 +1020,18 @@ function renderPreview() {
         }
     });
 
+    // Удаляем старую кнопку телеграма если она есть
+    const oldFab = document.getElementById('telegram-fab');
+    if(oldFab) oldFab.remove();
+
     // Добавляем нативную кнопку шеринга только в режиме просмотра
     if (isViewMode && !document.getElementById('native-share-fab')) {
         const fab = document.createElement('button');
         fab.id = 'native-share-fab';
         fab.className = 'telegram-fab'; 
         fab.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`;
-        
         // Принудительно формируем ссылку на просмотр
         const shareUrl = window.location.origin + window.location.pathname + '?view=1';
-        
         fab.onclick = () => {
             if (navigator.share) {
                 navigator.share({
@@ -1108,15 +1044,8 @@ function renderPreview() {
             }
         };
         document.getElementById('screen-preview').appendChild(fab);
-    } else if (!isViewMode && !document.getElementById('telegram-fab')) {
-        // Старая кнопка для режима редактора (если нужна)
-        const fab = document.createElement('button');
-        fab.id = 'telegram-fab';
-        fab.className = 'telegram-fab';
-        fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
-        document.getElementById('screen-preview').appendChild(fab);
     }
-
+    
     if (container.children.length <= 1) { 
         const emptyMsg = document.createElement('div');
         emptyMsg.style.textAlign = 'center'; emptyMsg.style.color = 'var(--text-secondary)'; emptyMsg.style.padding = '40px 0';
@@ -1131,7 +1060,6 @@ function toggleBlockVisibility(key) {
     
     const sections = document.querySelectorAll('.preview-block-section');
     let targetSection = null;
-    
     sections.forEach(sec => {
         const btn = sec.querySelector(`button[onclick="toggleBlockVisibility('${key}')"]`);
         if (btn) targetSection = sec;
@@ -1157,7 +1085,6 @@ function openEditBlock(key) {
     currentEditingBlockId = key;
     const blockData = selectedBlocks[key] || {};
     const t = translations[currentLang];
-    
     const titleEl = document.getElementById('edit-modal-title');
     const fieldsContainer = document.getElementById('edit-modal-fields');
     fieldsContainer.innerHTML = ''; 
@@ -1177,7 +1104,6 @@ function openEditBlock(key) {
             individual: {} 
         };
         if (!blockData.schedule) blockData.schedule = JSON.parse(JSON.stringify(defaultSchedule));
-        
         for (let i = 1; i <= 7; i++) {
             if (!blockData.schedule.individual[i]) {
                 blockData.schedule.individual[i] = { 
@@ -1187,13 +1113,12 @@ function openEditBlock(key) {
                 };
             }
         }
-        
         const sched = blockData.schedule;
         const isIndividual = sched.mode === 'individual';
         const activeDays = sched.simple.days || [];
         const openTime = sched.simple.open || '10:00';
         const closeTime = sched.simple.close || '22:00';
-        
+
         const templatesDiv = document.createElement('div');
         templatesDiv.className = 'hours-templates';
         templatesDiv.style.marginBottom = '20px';
@@ -1231,7 +1156,6 @@ function openEditBlock(key) {
 
         const settingsDiv = document.createElement('div');
         settingsDiv.id = 'hours-settings-container';
-        
         if (isIndividual) {
             const dayNames = ['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
             let listHtml = '<div class="individual-days-list">';
@@ -1240,7 +1164,6 @@ function openEditBlock(key) {
                 const isActive = dayData.active;
                 const disabledClass = isActive ? '' : 'is-disabled';
                 const checkedAttr = isActive ? 'checked' : '';
-                
                 listHtml += `
                     <div class="day-row-item ${disabledClass}" data-day="${i}">
                         <div class="day-row-left">
@@ -1260,7 +1183,6 @@ function openEditBlock(key) {
             }
             listHtml += '</div>';
             settingsDiv.innerHTML = listHtml;
-            
             setTimeout(() => {
                 settingsDiv.querySelectorAll('.day-active-toggle').forEach(toggle => {
                     toggle.addEventListener('change', (e) => {
@@ -1276,7 +1198,6 @@ function openEditBlock(key) {
                     });
                 });
             }, 0);
-            
         } else {
             let html = `
                 <label class="hours-editor-label">Рабочие дни</label>
@@ -1303,7 +1224,6 @@ function openEditBlock(key) {
                 <div class="hours-hint-text">Статус «открыто / закрыто» считается автоматически по времени.</div>
             `;
             settingsDiv.innerHTML = html;
-            
             setTimeout(() => {
                 const grid = document.getElementById('hours-days-grid');
                 if(grid) {
@@ -1315,7 +1235,6 @@ function openEditBlock(key) {
                 }
             }, 0);
         }
-        
         fieldsContainer.appendChild(settingsDiv);
         
         setTimeout(() => {
@@ -1334,11 +1253,9 @@ function openEditBlock(key) {
     } else if (key === 'socials' || key.startsWith('socials_copy')) {
         titleEl.innerText = 'Соцсети';
         const savedSocials = blockData.items || {};
-        
         socialNetworksConfig.forEach(net => {
             const isEnabled = savedSocials[net.id]?.enabled ?? true;
             const url = savedSocials[net.id]?.url || '';
-            
             const itemDiv = document.createElement('div');
             itemDiv.className = 'social-item';
             itemDiv.innerHTML = `
@@ -1350,7 +1267,6 @@ function openEditBlock(key) {
             `;
             fieldsContainer.appendChild(itemDiv);
         });
-        
         fieldsContainer.querySelectorAll('.social-toggle').forEach(toggle => {
             toggle.addEventListener('change', (e) => {
                 const input = fieldsContainer.querySelector(`.social-input[data-id="${e.target.dataset.id}"]`);
@@ -1358,7 +1274,6 @@ function openEditBlock(key) {
                 else { input.setAttribute('disabled', 'true'); }
             });
         });
-
     } else if (key === 'links' || key.startsWith('links_copy')) {
         titleEl.innerText = 'Ссылки-кнопки';
         const sectionTitleDiv = document.createElement('div');
@@ -1368,10 +1283,8 @@ function openEditBlock(key) {
         
         const linksListDiv = document.createElement('div');
         linksListDiv.id = 'links-editor-list'; linksListDiv.className = 'links-editor-list';
-        
         const links = blockData.items || [{name: 'Наш сайт', url: ''}];
         links.forEach((link, index) => linksListDiv.appendChild(createLinkItemElement(link.name, link.url, index)));
-        
         fieldsContainer.appendChild(linksListDiv);
         
         const addBtn = document.createElement('button');
@@ -1379,13 +1292,11 @@ function openEditBlock(key) {
         addBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Добавить ссылку`;
         addBtn.onclick = () => linksListDiv.appendChild(createLinkItemElement('', '', linksListDiv.children.length));
         fieldsContainer.appendChild(addBtn);
-
     } else if (key === 'cta' || key.startsWith('cta_copy')) {
         titleEl.innerText = 'Кнопка-призыв';
         const ctaText = blockData.text || 'Написать мне';
         const ctaLink = blockData.link || '';
         const ctaStyle = blockData.style || 'normal';
-        
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;">
                 <label class="form-label">Текст кнопки</label>
@@ -1416,13 +1327,11 @@ function openEditBlock(key) {
             </div>
             <input type="hidden" id="edit-cta-style" value="${ctaStyle}">
         `;
-
     } else if (key === 'contacts' || key.startsWith('contacts_copy')) {
         titleEl.innerText = 'Контакты';
         const phone = blockData.phone || '';
         const email = blockData.email || '';
         const showVcard = blockData.showVcard !== false;
-        
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;">
                 <label class="form-label">Заголовок</label>
@@ -1455,12 +1364,10 @@ function openEditBlock(key) {
                 «Позвонить» сразу набирает номер. «Сохранить в контакты» скачивает vCard-файл — имя берётся из шапки, телефон и email из этого блока.
             </div>
         `;
-
     } else if (key === 'price' || key.startsWith('price_copy')) {
         titleEl.innerText = 'Прайс / меню';
         const items = blockData.items || [{name: '', cost: ''}];
         const limit = 5; 
-        
         let itemsHtml = '<div class="price-items-list">';
         items.forEach((item, index) => {
             itemsHtml += `
@@ -1474,7 +1381,6 @@ function openEditBlock(key) {
             `;
         });
         itemsHtml += '</div>';
-        
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;">
                 <label class="form-label">Заголовок</label>
@@ -1491,12 +1397,10 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, дальше расширение блока
             </div>
         `;
-
     } else if (key === 'discounts' || key.startsWith('discounts_copy')) {
         titleEl.innerText = 'Скидки / Акции';
         const items = blockData.items || [{name: '', oldPrice: '', newPrice: '', percent: ''}];
         const limit = 3;
-        
         let itemsHtml = '';
         items.forEach((item, index) => {
             itemsHtml += `
@@ -1515,7 +1419,6 @@ function openEditBlock(key) {
                 </div>
             `;
         });
-        
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;">
                 <label class="form-label">Заголовок</label>
@@ -1537,12 +1440,10 @@ function openEditBlock(key) {
                 Оставь «%» пустым — посчитаю сам из цен «до» и «после». Или укажи процент вручную.
             </div>
         `;
-
     } else if (key === 'reviews' || key.startsWith('reviews_copy')) {
         titleEl.innerText = 'Отзывы';
         const items = blockData.items || [{type: 'link', platform: 'yandex', name: 'Яндекс Карты', url: ''}];
         const limit = 4;
-        
         let itemsHtml = '';
         items.forEach((item, index) => {
             if (item.type === 'link') {
@@ -1590,7 +1491,6 @@ function openEditBlock(key) {
                 `;
             }
         });
-        
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;">
                 <label class="form-label">Заголовок</label>
@@ -1608,12 +1508,10 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, в PRO больше
             </div>
         `;
-
     } else if (key === 'faq' || key.startsWith('faq_copy')) {
         titleEl.innerText = 'Вопрос-ответ';
         const items = blockData.items || [{question: '', answer: ''}];
         const limit = 4;
-        
         let itemsHtml = '';
         items.forEach((item, index) => {
             itemsHtml += `
@@ -1628,7 +1526,6 @@ function openEditBlock(key) {
                 </div>
             `;
         });
-        
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;">
                 <label class="form-label">Заголовок</label>
@@ -1646,12 +1543,10 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, в PRO больше
             </div>
         `;
-
     } else if (key === 'facts' || key.startsWith('facts_copy')) {
         titleEl.innerText = 'Цифры / факты';
         const items = blockData.items || [{number: '', label: ''}];
         const limit = 3;
-        
         let itemsHtml = '';
         items.forEach((item, index) => {
             itemsHtml += `
@@ -1666,7 +1561,6 @@ function openEditBlock(key) {
                 </div>
             `;
         });
-        
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;">
                 <label class="form-label">Заголовок</label>
@@ -1685,11 +1579,9 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, в PRO больше
             </div>
         `;
-
     } else if (key === 'video' || key.startsWith('video_copy')) {
         titleEl.innerText = 'Видео';
         const videoUrl = blockData.url || '';
-        
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;">
                 <label class="form-label">Заголовок</label>
@@ -1712,13 +1604,11 @@ function openEditBlock(key) {
                 </div>
             </div>
         `;
-
     } else if (key === 'share' || key.startsWith('share_copy')) {
         titleEl.innerText = t.blk_share;
         const imageUrl = blockData.imageUrl || '';
         const caption = blockData.caption || '';
         const layout = blockData.layout || 'compact';
-        
         fieldsContainer.innerHTML = `
             <div class="form-group">
                 <label class="form-label">${t.share_title}</label>
@@ -1768,7 +1658,6 @@ function openEditBlock(key) {
             </div>
         `;
         setTimeout(() => updateSharePreview(layout, imageUrl, caption), 0);
-
     } else if (key === 'gallery' || key.startsWith('gallery_copy')) {
         titleEl.innerText = t.blk_gallery || 'Галерея';
         const items = blockData.items || [];
@@ -1787,7 +1676,6 @@ function openEditBlock(key) {
         // Добавляем кнопку "+" для загрузки
         photosPreviewHtml += `<div class="gallery-photo-thumb add-photo-btn" onclick="document.getElementById('gallery-upload-input').click()">+</div>`;
         photosPreviewHtml += '</div>';
-        
         // Скрытый инпут для загрузки файлов
         photosPreviewHtml += `<input type="file" id="gallery-upload-input" accept="image/*" multiple style="display:none" onchange="handleGalleryUpload(this)">`;
         
@@ -1824,7 +1712,6 @@ function openEditBlock(key) {
                 ${t.gallery_limit}
             </div>
         `;
-
     } else {
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
@@ -1832,7 +1719,6 @@ function openEditBlock(key) {
             <div class="form-group"><label class="form-label">Описание</label><input type="text" class="form-input" id="edit-input-2" value="${blockData.desc || ''}"></div>
         `;
     }
-    
     editModalOverlay.classList.add('open'); 
     editModalSheet.classList.add('open');
 }
@@ -1850,11 +1736,9 @@ function applyHoursTemplate(type) {
         toggleIndividual.dispatchEvent(new Event('change'));
         return;
     }
-    
     const openInput = document.getElementById('hours-open-global');
     const closeInput = document.getElementById('hours-close-global');
     const grid = document.getElementById('hours-days-grid');
-    
     if (!grid || !openInput || !closeInput) return;
     
     grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.remove('active'));
@@ -1886,23 +1770,15 @@ function addPriceItem() {
     const index = list.children.length;
     const row = document.createElement('div');
     row.className = 'price-item-row';
-    row.innerHTML = `
-        <input type="text" class="price-input-name" placeholder="Название" data-index="${index}">
-        <input type="text" class="price-input-cost" placeholder="Цена" data-index="${index}">
-        <button class="btn-remove-price" onclick="removePriceItem(this)">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-    `;
+    row.innerHTML = `<input type="text" class="price-input-name" placeholder="Название" data-index="${index}"> <input type="text" class="price-input-cost" placeholder="Цена" data-index="${index}"> <button class="btn-remove-price" onclick="removePriceItem(this)"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </button>`;
     list.appendChild(row);
     updatePriceCounter();
 }
-
 function removePriceItem(btn) {
     const row = btn.closest('.price-item-row');
     row.remove();
     updatePriceCounter();
 }
-
 function updatePriceCounter() {
     const count = document.querySelectorAll('.price-item-row').length;
     const badge = document.querySelector('.limit-badge');
@@ -1914,44 +1790,27 @@ function addDiscountItem() {
     const index = container.children.length;
     const row = document.createElement('div');
     row.className = 'discount-item-row';
-    row.innerHTML = `
-        <div class="discount-top-row">
-            <input type="text" class="discount-input-name" placeholder="Название акции" data-index="${index}">
-            <button class="btn-remove-discount" onclick="removeDiscountItem(this)">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-        </div>
-        <div class="discount-prices-row">
-            <input type="number" class="discount-input-price discount-old" placeholder="Цена до" data-index="${index}" oninput="calculateDiscountPercent(this)">
-            <input type="number" class="discount-input-price discount-new" placeholder="Цена после" data-index="${index}" oninput="calculateDiscountPercent(this)">
-            <input type="text" class="discount-input-percent" placeholder="% скидк" data-index="${index}">
-        </div>
-    `;
+    row.innerHTML = `<div class="discount-top-row"> <input type="text" class="discount-input-name" placeholder="Название акции" data-index="${index}"> <button class="btn-remove-discount" onclick="removeDiscountItem(this)"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </button> </div> <div class="discount-prices-row"> <input type="number" class="discount-input-price discount-old" placeholder="Цена до" data-index="${index}" oninput="calculateDiscountPercent(this)"> <input type="number" class="discount-input-price discount-new" placeholder="Цена после" data-index="${index}" oninput="calculateDiscountPercent(this)"> <input type="text" class="discount-input-percent" placeholder="% скидк" data-index="${index}"> </div>`;
     container.appendChild(row);
     updateDiscountCounter();
 }
-
 function removeDiscountItem(btn) {
     const row = btn.closest('.discount-item-row');
     row.remove();
     updateDiscountCounter();
 }
-
 function calculateDiscountPercent(input) {
     const row = input.closest('.discount-item-row');
     const oldPriceInput = row.querySelector('.discount-old');
     const newPriceInput = row.querySelector('.discount-new');
     const percentInput = row.querySelector('.discount-input-percent');
-    
     const oldP = parseFloat(oldPriceInput.value);
     const newP = parseFloat(newPriceInput.value);
-    
     if (!isNaN(oldP) && !isNaN(newP) && oldP > 0 && newP < oldP) {
         const percent = Math.round(((oldP - newP) / oldP) * 100);
         percentInput.value = percent;
     }
 }
-
 function updateDiscountCounter() {
     const count = document.querySelectorAll('.discount-item-row').length;
     const badge = document.getElementById('discounts-counter');
@@ -1964,34 +1823,21 @@ function addReviewItem() {
     const row = document.createElement('div');
     row.className = 'review-edit-item';
     row.setAttribute('data-index', index);
-    row.innerHTML = `
-        <label class="form-label" style="margin-bottom: 8px;">Ссылки на отзывы</label>
-        <div class="platform-selector">
-            ${reviewPlatformsConfig.map(p => `
-                <div class="platform-icon-btn ${p.id === 'yandex' ? 'active' : ''}" 
-                     data-platform="${p.id}" 
-                     onclick="selectReviewPlatform(this)"
-                     style="border-color: ${p.id === 'yandex' ? p.color : 'rgba(255,255,255,0.1)'}">
-                    ${p.icon}
-                </div>
-            `).join('')}
-        </div>
-        <input type="text" class="form-input review-link-input" placeholder="https://..." data-index="${index}" style="margin-top: 10px;">
-        <input type="hidden" class="review-type-input" value="link">
-        <button class="btn-remove-review" onclick="removeReviewItem(this)">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-    `;
+    row.innerHTML =  `<label class="form-label" style="margin-bottom: 8px;">Ссылки на отзывы</label> <div class="platform-selector"> ${reviewPlatformsConfig.map(p =>` <div class= "platform-icon-btn ${p.id === 'yandex' ? 'active' : ''} " 
+data-platform= "${p.id} " 
+onclick= "selectReviewPlatform(this) "
+style= "border-color: ${p.id === 'yandex' ? p.color : 'rgba(255,255,255,0.1)'} " >
+${p.icon}
+ </div >
+ `).join('')} </div> <input type="text" class="form-input review-link-input" placeholder="https://..." data-index="${index}" style="margin-top: 10px;"> <input type="hidden" class="review-type-input" value="link"> <button class="btn-remove-review" onclick="removeReviewItem(this)"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </button>` ;
     container.appendChild(row);
     updateReviewCounter();
 }
-
 function removeReviewItem(btn) {
     const row = btn.closest('.review-edit-item');
     row.remove();
     updateReviewCounter();
 }
-
 function selectReviewPlatform(btn) {
     const parent = btn.closest('.review-edit-item');
     parent.querySelectorAll('.platform-icon-btn').forEach(b => {
@@ -2005,19 +1851,16 @@ function selectReviewPlatform(btn) {
     const pConfig = reviewPlatformsConfig.find(p => p.id === pid);
     btn.style.borderColor = pConfig.color;
 }
-
 function selectReviewRating(btn) {
     const parent = btn.closest('.review-edit-item');
     const starVal = parseInt(btn.dataset.star);
     const hiddenInput = parent.querySelector('.review-rating-hidden');
     if(hiddenInput) hiddenInput.value = starVal;
-    
     parent.querySelectorAll('.star-btn').forEach(s => {
         if(parseInt(s.dataset.star) <= starVal) s.classList.add('active');
         else s.classList.remove('active');
     });
 }
-
 function updateReviewCounter() {
     const count = document.querySelectorAll('.review-edit-item').length;
     const badge = document.getElementById('reviews-counter');
@@ -2030,25 +1873,15 @@ function addFaqItem() {
     const row = document.createElement('div');
     row.className = 'faq-edit-item';
     row.setAttribute('data-index', index);
-    row.innerHTML = `
-        <div style="display:flex; gap:8px; margin-bottom:8px;">
-            <input type="text" class="form-input faq-question-input" placeholder="Вопрос" style="flex:1;">
-            <button class="btn-remove-review" onclick="removeFaqItem(this)">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-        </div>
-        <textarea class="form-input faq-answer-input" placeholder="Ответ" rows="2" style="resize:none;"></textarea>
-    `;
+    row.innerHTML = `<div style="display:flex; gap:8px; margin-bottom:8px;"> <input type="text" class="form-input faq-question-input" placeholder="Вопрос" style="flex:1;"> <button class="btn-remove-review" onclick="removeFaqItem(this)"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </button> </div> <textarea class="form-input faq-answer-input" placeholder="Ответ" rows="2" style="resize:none;"></textarea>`;
     container.appendChild(row);
     updateFaqCounter();
 }
-
 function removeFaqItem(btn) {
     const row = btn.closest('.faq-edit-item');
     row.remove();
     updateFaqCounter();
 }
-
 function updateFaqCounter() {
     const count = document.querySelectorAll('.faq-edit-item').length;
     const badge = document.getElementById('faq-counter');
@@ -2058,7 +1891,6 @@ function updateFaqCounter() {
 function toggleFaq(qId, aId, questionEl) {
     const answerEl = document.getElementById(aId);
     const chevron = questionEl.querySelector('.faq-chevron');
-    
     if (answerEl.classList.contains('open')) {
         answerEl.classList.remove('open');
         answerEl.style.maxHeight = null;
@@ -2076,25 +1908,15 @@ function addFactItem() {
     const row = document.createElement('div');
     row.className = 'fact-edit-item';
     row.setAttribute('data-index', index);
-    row.innerHTML = `
-        <div style="display:flex; gap:8px; align-items: center;">
-            <input type="text" class="form-input fact-number-input" placeholder="500+" style="flex:1;">
-            <input type="text" class="form-input fact-label-input" placeholder="клиентов" style="flex:2;">
-            <button class="btn-remove-review" onclick="removeFactItem(this)" style="flex-shrink: 0;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-        </div>
-    `;
+    row.innerHTML = `<div style="display:flex; gap:8px; align-items: center;"> <input type="text" class="form-input fact-number-input" placeholder="500+" style="flex:1;"> <input type="text" class="form-input fact-label-input" placeholder="клиентов" style="flex:2;"> <button class="btn-remove-review" onclick="removeFactItem(this)" style="flex-shrink: 0;"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </button> </div>`;
     container.appendChild(row);
     updateFactsCounter();
 }
-
 function removeFactItem(btn) {
     const row = btn.closest('.fact-edit-item');
     row.remove();
     updateFactsCounter();
 }
-
 function updateFactsCounter() {
     const count = document.querySelectorAll('.fact-edit-item').length;
     const badge = document.getElementById('facts-counter');
@@ -2108,30 +1930,27 @@ function handleShareImageUpload(input) {
         reader.onload = function(e) {
             const url = e.target.result;
             document.getElementById('edit-share-image-url').value = url;
-            
             const previewImg = document.querySelector('.share-uploaded-preview');
-            if (previewImg) {
-                previewImg.src = url;
-                previewImg.style.display = 'block';
-            } else {
-                const img = document.createElement('img');
-                img.src = url;
-                img.className = 'share-uploaded-preview';
-                img.style.display = 'block';
-                input.parentElement.appendChild(img);
-            }
-            
-            const currentLayout = document.querySelector('.share-layout-option.active')?.dataset.layout || 'compact';
-            updateSharePreview(currentLayout, url, document.getElementById('edit-share-caption').value);
-        };
-        reader.readAsDataURL(file);
-    }
+             if (previewImg) {
+                 previewImg.src = url;
+                 previewImg.style.display = 'block';
+             } else {
+                 const img = document.createElement('img');
+                 img.src = url;
+                 img.className = 'share-uploaded-preview';
+                 img.style.display = 'block';
+                 input.parentElement.appendChild(img);
+             }
+             const currentLayout = document.querySelector('.share-layout-option.active')?.dataset.layout || 'compact';
+             updateSharePreview(currentLayout, url, document.getElementById('edit-share-caption').value);
+         };
+         reader.readAsDataURL(file);
+     }
 }
 
 function updateCaptionCounter(textarea) {
     const counter = document.getElementById('share-caption-counter');
     counter.textContent = `${textarea.value.length}/200`;
-    
     const currentLayout = document.querySelector('.share-layout-option.active')?.dataset.layout || 'compact';
     const imageUrl = document.getElementById('edit-share-image-url').value;
     updateSharePreview(currentLayout, imageUrl, textarea.value);
@@ -2140,7 +1959,6 @@ function updateCaptionCounter(textarea) {
 function selectShareLayout(optionEl) {
     document.querySelectorAll('.share-layout-option').forEach(el => el.classList.remove('active'));
     optionEl.classList.add('active');
-    
     const layout = optionEl.dataset.layout;
     const imageUrl = document.getElementById('edit-share-image-url').value;
     const caption = document.getElementById('edit-share-caption').value;
@@ -2150,10 +1968,8 @@ function selectShareLayout(optionEl) {
 function updateSharePreview(layout, imageUrl, caption) {
     const container = document.getElementById('share-preview-container');
     if (!container) return;
-    
     const t = translations[currentLang];
     let buttonsHtml = '';
-    
     const copyBtn = `<button class="share-btn share-btn-copy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> ${t.share_btn_copy}</button>`;
     const storiesBtn = `<button class="share-btn share-btn-stories"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> ${t.share_btn_stories}</button>`;
     const shareBtn = `<button class="share-btn share-btn-share"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> ${t.share_btn_share}</button>`;
@@ -2186,19 +2002,15 @@ function selectGalleryFormat(optionEl) {
 function addDemoTile() {
     const blockData = selectedBlocks[currentEditingBlockId];
     if (!blockData.items) blockData.items = [];
-    
     // Проверка лимита
     if (blockData.items.length >= 8) {
         alert('Достигнут лимит в 8 элементов.');
         return;
     }
-    
     // Генерация рандомного пастельного цвета
     const hue = Math.floor(Math.random() * 360);
     const color = `hsl(${hue}, 70%, 80%)`;
-    
     blockData.items.push({ type: 'demo', color: color });
-    
     // Перерисовываем превью фото в модалке
     openEditBlock(currentEditingBlockId);
 }
@@ -2207,18 +2019,14 @@ function handleGalleryUpload(input) {
     const files = Array.from(input.files);
     const blockData = selectedBlocks[currentEditingBlockId];
     if (!blockData.items) blockData.items = [];
-    
     let processedCount = 0;
-    
     files.forEach(file => {
         if (blockData.items.length >= 8) return; // Проверка лимита внутри цикла
-        
         if (['image/jpeg', 'image/png', 'image/jpg', 'image/webp'].includes(file.type)) {
             const reader = new FileReader();
             reader.onload = function(e) {
                 blockData.items.push({ type: 'image', src: e.target.result });
                 processedCount++;
-                
                 // Когда все файлы обработаны, перерисовываем модалку
                 if (processedCount === files.length || blockData.items.length >= 8) {
                     openEditBlock(currentEditingBlockId);
@@ -2227,7 +2035,6 @@ function handleGalleryUpload(input) {
             reader.readAsDataURL(file);
         }
     });
-    
     input.value = ''; // Сброс инпута
 }
 
@@ -2267,238 +2074,198 @@ function saveBlockEdit() {
     if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
     
     if (currentEditingBlockId.startsWith('about')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-input-1').value.trim() || 'О бизнесе';
-        selectedBlocks[currentEditingBlockId].text = document.getElementById('edit-input-2').value.trim();
-    } else if (currentEditingBlockId === 'hours' || currentEditingBlockId.startsWith('hours_copy')) {
-        const isIndividual = document.getElementById('hours-individual-toggle')?.checked;
-        const schedule = {
-            mode: isIndividual ? 'individual' : 'simple',
-            individual: {},
-            simple: { days: [], open: '10:00', close: '22:00' } 
-        };
-        
-        if (isIndividual) {
-            const rows = document.querySelectorAll('.day-row-item');
-            rows.forEach(row => {
-                const dayIndex = parseInt(row.dataset.day);
-                const isActive = row.querySelector('.day-active-toggle').checked;
-                const open = row.querySelector('.day-open').value;
-                const close = row.querySelector('.day-close').value;
-                
-                schedule.individual[dayIndex] = { active: isActive, open: open, close: close };
-                
-                if (isActive && schedule.simple.days.length === 0) {
-                    schedule.simple.days.push(dayIndex);
-                    schedule.simple.open = open;
-                    schedule.simple.close = close;
-                } else if (isActive) {
-                    schedule.simple.days.push(dayIndex);
-                }
-            });
-        } else {
-            const openVal = document.getElementById('hours-open-global')?.value || '10:00';
-            const closeVal = document.getElementById('hours-close-global')?.value || '22:00';
-            
-            const newActiveDays = [];
-            document.querySelectorAll('#hours-days-grid .day-toggle-btn.active').forEach(btn => {
-                newActiveDays.push(parseInt(btn.dataset.day));
-            });
-            
-            schedule.simple = { days: newActiveDays.sort(), open: openVal, close: closeVal };
-            
-            for(let i=1; i<=7; i++) {
-                schedule.individual[i] = { active: newActiveDays.includes(i), open: openVal, close: closeVal };
-            }
-        }
-        selectedBlocks[currentEditingBlockId].schedule = schedule;
-        
-    } else if (currentEditingBlockId === 'socials' || currentEditingBlockId.startsWith('socials_copy')) {
-        const items = {};
-        socialNetworksConfig.forEach(net => {
-            const toggle = document.querySelector(`.social-toggle[data-id="${net.id}"]`);
-            const input = document.querySelector(`.social-input[data-id="${net.id}"]`);
-            if (toggle && input) items[net.id] = { enabled: toggle.checked, url: input.value.trim() };
-        });
-        selectedBlocks[currentEditingBlockId].items = items;
-        
-    } else if (currentEditingBlockId === 'links' || currentEditingBlockId.startsWith('links_copy')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-section-title').value.trim() || 'Ссылки';
-        const listContainer = document.getElementById('links-editor-list');
-        const linksItems = [];
-        if (listContainer) {
-            listContainer.querySelectorAll('.link-edit-item').forEach(el => {
-                const name = el.querySelector('.link-name-input').value.trim();
-                const url = el.querySelector('.link-url-input').value.trim();
-                if (name || url) linksItems.push({ name: name || 'Ссылка', url: url });
-            });
-        }
-        if (linksItems.length === 0) linksItems.push({ name: 'Наш сайт', url: '' });
-        selectedBlocks[currentEditingBlockId].items = linksItems;
-        
-    } else if (currentEditingBlockId === 'cta' || currentEditingBlockId.startsWith('cta_copy')) {
-        const text = document.getElementById('edit-cta-text').value.trim();
-        const link = document.getElementById('edit-cta-link').value.trim();
-        const style = document.getElementById('edit-cta-style').value;
-        
-        selectedBlocks[currentEditingBlockId].text = text || 'Кнопка';
-        selectedBlocks[currentEditingBlockId].link = link;
-        selectedBlocks[currentEditingBlockId].style = style;
-        
-    } else if (currentEditingBlockId === 'contacts' || currentEditingBlockId.startsWith('contacts_copy')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-contacts-title').value.trim() || 'Контакты';
-        selectedBlocks[currentEditingBlockId].phone = document.getElementById('edit-contacts-phone').value.trim();
-        selectedBlocks[currentEditingBlockId].email = document.getElementById('edit-contacts-email').value.trim();
-        selectedBlocks[currentEditingBlockId].showVcard = document.getElementById('edit-contacts-vcard-toggle').checked;
-        
-    } else if (currentEditingBlockId === 'price' || currentEditingBlockId.startsWith('price_copy')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-price-title').value.trim() || 'Прайс';
-        
-        const items = [];
-        document.querySelectorAll('.price-item-row').forEach(row => {
-            const name = row.querySelector('.price-input-name').value.trim();
-            const cost = row.querySelector('.price-input-cost').value.trim();
-            if (name || cost) {
-                items.push({ name: name || 'Услуга', cost: cost });
-            }
-        });
-        
-        if (items.length === 0) items.push({ name: '', cost: '' });
-        
-        selectedBlocks[currentEditingBlockId].items = items;
-        
-    } else if (currentEditingBlockId === 'discounts' || currentEditingBlockId.startsWith('discounts_copy')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-discounts-title').value.trim() || 'Акции';
-        
-        const items = [];
-        document.querySelectorAll('.discount-item-row').forEach(row => {
-            const name = row.querySelector('.discount-input-name').value.trim();
-            const oldPrice = row.querySelector('.discount-old').value.trim();
-            const newPrice = row.querySelector('.discount-new').value.trim();
-            const percent = row.querySelector('.discount-input-percent').value.trim();
-            
-            if (name || oldPrice || newPrice) {
-                items.push({ 
-                    name: name || 'Акция', 
-                    oldPrice: oldPrice, 
-                    newPrice: newPrice, 
-                    percent: percent 
-                });
-            }
-        });
-        
-        if (items.length === 0) items.push({ name: '', oldPrice: '', newPrice: '', percent: '' });
-        
-        selectedBlocks[currentEditingBlockId].items = items;
-        
-    } else if (currentEditingBlockId === 'reviews' || currentEditingBlockId.startsWith('reviews_copy')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-reviews-title').value.trim() || 'Отзывы';
-        
-        const items = [];
-        document.querySelectorAll('.review-edit-item').forEach(row => {
-            const type = row.querySelector('.review-type-input').value;
-            
-            if (type === 'link') {
-                const activeIcon = row.querySelector('.platform-icon-btn.active');
-                const platformId = activeIcon ? activeIcon.dataset.platform : 'yandex';
-                const platformName = reviewPlatformsConfig.find(p => p.id === platformId)?.name || 'Отзывы';
-                const url = row.querySelector('.review-link-input').value.trim();
-                
-                if (url || platformId) {
-                    items.push({ 
-                        type: 'link', 
-                        platform: platformId, 
-                        name: platformName, 
-                        url: url 
-                    });
-                }
-            } else {
-                const author = row.querySelector('.review-author-input').value.trim();
-                const text = row.querySelector('.review-text-input').value.trim();
-                const rating = row.querySelector('.review-rating-hidden').value || 5;
-                
-                if (author || text) {
-                    items.push({ 
-                        type: 'text', 
-                        author: author || 'Аноним', 
-                        text: text, 
-                        rating: parseInt(rating) 
-                    });
-                }
-            }
-        });
-        
-        if (items.length === 0) items.push({ type: 'link', platform: 'yandex', name: 'Яндекс Карты', url: '' });
-        
-        selectedBlocks[currentEditingBlockId].items = items;
-        
-    } else if (currentEditingBlockId === 'faq' || currentEditingBlockId.startsWith('faq_copy')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-faq-title').value.trim() || 'Частые вопросы';
-        
-        const items = [];
-        document.querySelectorAll('.faq-edit-item').forEach(row => {
-            const question = row.querySelector('.faq-question-input').value.trim();
-            const answer = row.querySelector('.faq-answer-input').value.trim();
-            
-            if (question || answer) {
-                items.push({ 
-                    question: question || 'Вопрос', 
-                    answer: answer || 'Ответ' 
-                });
-            }
-        });
-        
-        if (items.length === 0) items.push({ question: '', answer: '' });
-        
-        selectedBlocks[currentEditingBlockId].items = items;
-        
-    } else if (currentEditingBlockId === 'facts' || currentEditingBlockId.startsWith('facts_copy')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-facts-title').value.trim() || 'Цифры';
-        
-        const items = [];
-        document.querySelectorAll('.fact-edit-item').forEach(row => {
-            const number = row.querySelector('.fact-number-input').value.trim();
-            const label = row.querySelector('.fact-label-input').value.trim();
-            
-            if (number || label) {
-                items.push({ 
-                    number: number || '0', 
-                    label: label || ''
-                });
-            }
-        });
-        
-        if (items.length === 0) items.push({ number: '', label: '' });
-        
-        selectedBlocks[currentEditingBlockId].items = items;
-        
-    } else if (currentEditingBlockId === 'video' || currentEditingBlockId.startsWith('video_copy')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-video-title').value.trim() || 'Видео';
-        selectedBlocks[currentEditingBlockId].url = document.getElementById('edit-video-url').value.trim();
-        
-    } else if (currentEditingBlockId === 'share' || currentEditingBlockId.startsWith('share_copy')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-share-title').value.trim() || 'Поделиться';
-        selectedBlocks[currentEditingBlockId].imageUrl = document.getElementById('edit-share-image-url').value.trim();
-        selectedBlocks[currentEditingBlockId].caption = document.getElementById('edit-share-caption').value.trim();
-        selectedBlocks[currentEditingBlockId].layout = document.querySelector('.share-layout-option.active')?.dataset.layout || 'compact';
-        
-    } else if (currentEditingBlockId === 'gallery' || currentEditingBlockId.startsWith('gallery_copy')) {
-        selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-gallery-title').value.trim() || 'Галерея';
-        selectedBlocks[currentEditingBlockId].displayFormat = document.querySelector('.gallery-format-option.active')?.dataset.format || 'grid';
-        // items уже обновляются напрямую в функциях addDemoTile, handleGalleryUpload, removeGalleryItem
-        
-    } else {
-        const val1 = document.getElementById('edit-input-1').value.trim();
-        const val2 = document.getElementById('edit-input-2').value.trim();
-        const t = translations[currentLang];
-        const defaultTitle = t[`blk_${currentEditingBlockId}`] || currentEditingBlockId;
-        if (val1 && val1 !== defaultTitle) selectedBlocks[currentEditingBlockId].title = val1;
-        else delete selectedBlocks[currentEditingBlockId].title;
-        selectedBlocks[currentEditingBlockId].desc = val2;
-    }
-    
-    saveUserData();
-    renderPreview();
-    closeEditModal();
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-input-1').value.trim() || 'О бизнесе';
+         selectedBlocks[currentEditingBlockId].text = document.getElementById('edit-input-2').value.trim();
+     } else if (currentEditingBlockId === 'hours' || currentEditingBlockId.startsWith('hours_copy')) {
+         const isIndividual = document.getElementById('hours-individual-toggle')?.checked;
+         const schedule = {
+             mode: isIndividual ? 'individual' : 'simple',
+             individual: {},
+             simple: { days: [], open: '10:00', close: '22:00' } 
+         };
+         
+         if (isIndividual) {
+             const rows = document.querySelectorAll('.day-row-item');
+             rows.forEach(row => {
+                 const dayIndex = parseInt(row.dataset.day);
+                 const isActive = row.querySelector('.day-active-toggle').checked;
+                 const open = row.querySelector('.day-open').value;
+                 const close = row.querySelector('.day-close').value;
+                 schedule.individual[dayIndex] = { active: isActive, open: open, close: close };
+                 if (isActive && schedule.simple.days.length === 0) {
+                     schedule.simple.days.push(dayIndex);
+                     schedule.simple.open = open;
+                     schedule.simple.close = close;
+                 } else if (isActive) {
+                     schedule.simple.days.push(dayIndex);
+                 }
+             });
+         } else {
+             const openVal = document.getElementById('hours-open-global')?.value || '10:00';
+             const closeVal = document.getElementById('hours-close-global')?.value || '22:00';
+             const newActiveDays = [];
+             document.querySelectorAll('#hours-days-grid .day-toggle-btn.active').forEach(btn => {
+                 newActiveDays.push(parseInt(btn.dataset.day));
+             });
+             schedule.simple = { days: newActiveDays.sort(), open: openVal, close: closeVal };
+             for(let i=1; i<=7; i++) {
+                 schedule.individual[i] = { active: newActiveDays.includes(i), open: openVal, close: closeVal };
+             }
+         }
+         selectedBlocks[currentEditingBlockId].schedule = schedule;
+     } else if (currentEditingBlockId === 'socials' || currentEditingBlockId.startsWith('socials_copy')) {
+         const items = {};
+         socialNetworksConfig.forEach(net => {
+             const toggle = document.querySelector(`.social-toggle[data-id="${net.id}"]`);
+             const input = document.querySelector(`.social-input[data-id="${net.id}"]`);
+             if (toggle && input) items[net.id] = { enabled: toggle.checked, url: input.value.trim() };
+         });
+         selectedBlocks[currentEditingBlockId].items = items;
+     } else if (currentEditingBlockId === 'links' || currentEditingBlockId.startsWith('links_copy')) {
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-section-title').value.trim() || 'Ссылки';
+         const listContainer = document.getElementById('links-editor-list');
+         const linksItems = [];
+         if (listContainer) {
+             listContainer.querySelectorAll('.link-edit-item').forEach(el => {
+                 const name = el.querySelector('.link-name-input').value.trim();
+                 const url = el.querySelector('.link-url-input').value.trim();
+                 if (name || url) linksItems.push({ name: name || 'Ссылка', url: url });
+             });
+         }
+         if (linksItems.length === 0) linksItems.push({ name: 'Наш сайт', url: '' });
+         selectedBlocks[currentEditingBlockId].items = linksItems;
+     } else if (currentEditingBlockId === 'cta' || currentEditingBlockId.startsWith('cta_copy')) {
+         const text = document.getElementById('edit-cta-text').value.trim();
+         const link = document.getElementById('edit-cta-link').value.trim();
+         const style = document.getElementById('edit-cta-style').value;
+         selectedBlocks[currentEditingBlockId].text = text || 'Кнопка';
+         selectedBlocks[currentEditingBlockId].link = link;
+         selectedBlocks[currentEditingBlockId].style = style;
+     } else if (currentEditingBlockId === 'contacts' || currentEditingBlockId.startsWith('contacts_copy')) {
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-contacts-title').value.trim() || 'Контакты';
+         selectedBlocks[currentEditingBlockId].phone = document.getElementById('edit-contacts-phone').value.trim();
+         selectedBlocks[currentEditingBlockId].email = document.getElementById('edit-contacts-email').value.trim();
+         selectedBlocks[currentEditingBlockId].showVcard = document.getElementById('edit-contacts-vcard-toggle').checked;
+     } else if (currentEditingBlockId === 'price' || currentEditingBlockId.startsWith('price_copy')) {
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-price-title').value.trim() || 'Прайс';
+         const items = [];
+         document.querySelectorAll('.price-item-row').forEach(row => {
+             const name = row.querySelector('.price-input-name').value.trim();
+             const cost = row.querySelector('.price-input-cost').value.trim();
+             if (name || cost) {
+                 items.push({ name: name || 'Услуга', cost: cost });
+             }
+         });
+         if (items.length === 0) items.push({ name: '', cost: '' });
+         selectedBlocks[currentEditingBlockId].items = items;
+     } else if (currentEditingBlockId === 'discounts' || currentEditingBlockId.startsWith('discounts_copy')) {
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-discounts-title').value.trim() || 'Акции';
+         const items = [];
+         document.querySelectorAll('.discount-item-row').forEach(row => {
+             const name = row.querySelector('.discount-input-name').value.trim();
+             const oldPrice = row.querySelector('.discount-old').value.trim();
+             const newPrice = row.querySelector('.discount-new').value.trim();
+             const percent = row.querySelector('.discount-input-percent').value.trim();
+             if (name || oldPrice || newPrice) {
+                 items.push({ 
+                     name: name || 'Акция', 
+                     oldPrice: oldPrice, 
+                     newPrice: newPrice, 
+                     percent: percent 
+                 });
+             }
+         });
+         if (items.length === 0) items.push({ name: '', oldPrice: '', newPrice: '', percent: '' });
+         selectedBlocks[currentEditingBlockId].items = items;
+     } else if (currentEditingBlockId === 'reviews' || currentEditingBlockId.startsWith('reviews_copy')) {
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-reviews-title').value.trim() || 'Отзывы';
+         const items = [];
+         document.querySelectorAll('.review-edit-item').forEach(row => {
+             const type = row.querySelector('.review-type-input').value;
+             if (type === 'link') {
+                 const activeIcon = row.querySelector('.platform-icon-btn.active');
+                 const platformId = activeIcon ? activeIcon.dataset.platform : 'yandex';
+                 const platformName = reviewPlatformsConfig.find(p => p.id === platformId)?.name || 'Отзывы';
+                 const url = row.querySelector('.review-link-input').value.trim();
+                 if (url || platformId) {
+                     items.push({ 
+                         type: 'link', 
+                         platform: platformId, 
+                         name: platformName, 
+                         url: url 
+                     });
+                 }
+             } else {
+                 const author = row.querySelector('.review-author-input').value.trim();
+                 const text = row.querySelector('.review-text-input').value.trim();
+                 const rating = row.querySelector('.review-rating-hidden').value || 5;
+                 if (author || text) {
+                     items.push({ 
+                         type: 'text', 
+                         author: author || 'Аноним', 
+                         text: text, 
+                         rating: parseInt(rating) 
+                     });
+                 }
+             }
+         });
+         if (items.length === 0) items.push({ type: 'link', platform: 'yandex', name: 'Яндекс Карты', url: '' });
+         selectedBlocks[currentEditingBlockId].items = items;
+     } else if (currentEditingBlockId === 'faq' || currentEditingBlockId.startsWith('faq_copy')) {
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-faq-title').value.trim() || 'Частые вопросы';
+         const items = [];
+         document.querySelectorAll('.faq-edit-item').forEach(row => {
+             const question = row.querySelector('.faq-question-input').value.trim();
+             const answer = row.querySelector('.faq-answer-input').value.trim();
+             if (question || answer) {
+                 items.push({ 
+                     question: question || 'Вопрос', 
+                     answer: answer || 'Ответ' 
+                 });
+             }
+         });
+         if (items.length === 0) items.push({ question: '', answer: '' });
+         selectedBlocks[currentEditingBlockId].items = items;
+     } else if (currentEditingBlockId === 'facts' || currentEditingBlockId.startsWith('facts_copy')) {
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-facts-title').value.trim() || 'Цифры';
+         const items = [];
+         document.querySelectorAll('.fact-edit-item').forEach(row => {
+             const number = row.querySelector('.fact-number-input').value.trim();
+             const label = row.querySelector('.fact-label-input').value.trim();
+             if (number || label) {
+                 items.push({ 
+                     number: number || '0', 
+                     label: label || ''
+                 });
+             }
+         });
+         if (items.length === 0) items.push({ number: '', label: '' });
+         selectedBlocks[currentEditingBlockId].items = items;
+     } else if (currentEditingBlockId === 'video' || currentEditingBlockId.startsWith('video_copy')) {
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-video-title').value.trim() || 'Видео';
+         selectedBlocks[currentEditingBlockId].url = document.getElementById('edit-video-url').value.trim();
+     } else if (currentEditingBlockId === 'share' || currentEditingBlockId.startsWith('share_copy')) {
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-share-title').value.trim() || 'Поделиться';
+         selectedBlocks[currentEditingBlockId].imageUrl = document.getElementById('edit-share-image-url').value.trim();
+         selectedBlocks[currentEditingBlockId].caption = document.getElementById('edit-share-caption').value.trim();
+         selectedBlocks[currentEditingBlockId].layout = document.querySelector('.share-layout-option.active')?.dataset.layout || 'compact';
+     } else if (currentEditingBlockId === 'gallery' || currentEditingBlockId.startsWith('gallery_copy')) {
+         selectedBlocks[currentEditingBlockId].title = document.getElementById('edit-gallery-title').value.trim() || 'Галерея';
+         selectedBlocks[currentEditingBlockId].displayFormat = document.querySelector('.gallery-format-option.active')?.dataset.format || 'grid';
+         // items уже обновляются напрямую в функциях addDemoTile, handleGalleryUpload, removeGalleryItem
+     } else {
+         const val1 = document.getElementById('edit-input-1').value.trim();
+         const val2 = document.getElementById('edit-input-2').value.trim();
+         const t = translations[currentLang];
+         const defaultTitle = t[`blk_${currentEditingBlockId}`] || currentEditingBlockId;
+         if (val1 && val1 !== defaultTitle) selectedBlocks[currentEditingBlockId].title = val1;
+         else delete selectedBlocks[currentEditingBlockId].title;
+         selectedBlocks[currentEditingBlockId].desc = val2;
+     }
+     
+     saveUserData();
+     renderPreview();
+     closeEditModal();
 }
 
 function duplicateCurrentBlock() {
@@ -2529,20 +2296,18 @@ const headerModalOverlay = document.getElementById('headerModalOverlay');
 const headerModalSheet = document.getElementById('headerModalSheet');
 
 function openHeaderModal() {
-    headerModalOverlay.classList.add('open'); 
+    headerModalOverlay.classList.add('open');
     headerModalSheet.classList.add('open');
     switchHeaderTab(currentHeaderFormat);
     
     const nameInput = document.getElementById('modal-input-name');
     const descInput = document.getElementById('modal-input-desc');
-    
     if (userCardData) {
         nameInput.value = userCardData.name || '';
         descInput.value = userCardData.desc || '';
         updateAvatarFromUrl(userCardData.avatarUrl || '');
         updateCoverFromUrl(userCardData.coverUrl || '');
         renderCarouselPreview();
-        
         // Обновляем превью баннера при открытии модалки
         updateBannerPreview();
     } else { 
@@ -2556,11 +2321,9 @@ function openHeaderModal() {
 function closeHeaderModal() {
     const nameVal = document.getElementById('modal-input-name').value.trim();
     const descVal = document.getElementById('modal-input-desc').value.trim();
-
     if (!userCardData) userCardData = {};
     if (nameVal) userCardData.name = nameVal;
     if (descVal) userCardData.desc = descVal;
-    
     saveUserData(); 
     headerModalOverlay.classList.remove('open'); 
     headerModalSheet.classList.remove('open');
@@ -2662,8 +2425,10 @@ if (carouselInput) {
 function updateAvatarFromUrl(url) {
     if (!userCardData) userCardData = {};
     userCardData.avatarUrl = url;
+    
     const avatarInputs = document.querySelectorAll('#input-avatar-url');
     avatarInputs.forEach(input => input.value = url);
+    
     const avatars = document.querySelectorAll('#modal-avatar-img');
     avatars.forEach(stdAvatar => {
         if (url) {
@@ -2686,8 +2451,10 @@ function updateAvatarFromUrl(url) {
 function updateCoverFromUrl(url) {
     if (!userCardData) userCardData = {};
     userCardData.coverUrl = url;
+    
     const coverInputs = document.querySelectorAll('#input-cover-url');
     coverInputs.forEach(input => input.value = url);
+    
     const coverBgs = document.querySelectorAll('#modal-cover-preview-bg');
     coverBgs.forEach(coverBg => {
         if (url) {
@@ -2698,7 +2465,7 @@ function updateCoverFromUrl(url) {
             coverBg.style.backgroundImage = 'none';
         }
     });
-
+    
     // Дополнительно обновляем превью баннера
     if (currentHeaderFormat === 'banner') {
         updateBannerPreview();
@@ -2710,6 +2477,7 @@ function renderCarouselPreview() {
     if (!list) return;
     const addBtn = list.querySelector('.add-slide-btn');
     list.innerHTML = '';
+    
     if (userCardData && userCardData.carouselImages) {
         userCardData.carouselImages.forEach((img, index) => {
             const slide = document.createElement('div');
@@ -2730,12 +2498,11 @@ function renderCarouselPreview() {
 
 function handleMaxProfilePhoto() {
     const mockAvatars = ['https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop'];
-    updateAvatarFromUrl(mockAvatars[0]); 
+    updateAvatarFromUrl(mockAvatars[0]);
     showToast('Аватар из MAX');
 }
 
 function finalizeCard() { saveUserData(); hasUserCards = true; goToDashboard(); }
-
 function editCurrentCard() { closeCardMenu(); openCreator(true); }
 function shareCurrentCard() {
     closeCardMenu();
@@ -2755,20 +2522,9 @@ function renderCardsList() {
     const t = translations[currentLang];
     if (hasUserCards && userCardData) {
         const initial = userCardData.name.charAt(0).toUpperCase();
-        container.innerHTML = `
-            <div class="user-card-preview">
-                <div class="uc-avatar">${initial}</div>
-                <div class="uc-info"><h4>${userCardData.name}</h4><p>${userCardData.desc} ${userCardData.city ? '• ' + userCardData.city : ''}</p></div>
-                <div class="uc-actions"><button class="uc-btn" onclick="openCardMenu()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button></div>
-            </div>
-            <button class="btn-create" onclick="openCreator()" style="margin-top: 10px; background: rgba(255,255,255,0.1); color: white; box-shadow: none;">+ Создать еще одну</button>
-        `;
+        container.innerHTML = `<div class="user-card-preview"> <div class="uc-avatar">${initial}</div> <div class="uc-info"><h4>${userCardData.name}</h4><p>${userCardData.desc} ${userCardData.city ? '• ' + userCardData.city : ''}</p></div> <div class="uc-actions"><button class="uc-btn" onclick="openCardMenu()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button></div> </div> <button class="btn-create" onclick="openCreator()" style="margin-top: 10px; background: rgba(255,255,255,0.1); color: white; box-shadow: none;">+ Создать еще одну</button>`;
     } else {
-        container.innerHTML = `
-            <div class="empty-state-viz"><div class="mini-card"><div class="mc-header"></div><div class="mc-body"><div class="mc-block"></div></div></div></div>
-            <div class="empty-text-block"><h3>${t.empty_h3}</h3><p>${t.empty_p}</p></div>
-            <button class="btn-create" onclick="openCreator()">${t.btn_create}</button>
-        `;
+        container.innerHTML = `<div class="empty-state-viz"><div class="mini-card"><div class="mc-header"></div><div class="mc-body"><div class="mc-block"></div></div></div></div> <div class="empty-text-block"><h3>${t.empty_h3}</h3><p>${t.empty_p}</p></div> <button class="btn-create" onclick="openCreator()">${t.btn_create}</button>`;
     }
 }
 
@@ -2778,9 +2534,8 @@ function showToast(message) {
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-window.onload = function() { 
-    loadUserData(); 
-    
+window.onload = function() {
+    loadUserData();
     if (isViewMode) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById('screen-preview').classList.add('active');
