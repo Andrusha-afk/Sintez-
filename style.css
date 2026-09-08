@@ -790,3 +790,78 @@ input:checked + .slider-toggle:before { transform: translateX(20px); }
 .remove-photo-btn { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; background: var(--color-red); color: white; border: none; border-radius: 50%; font-size: 14px; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 .gallery-photo-thumb.add-photo-btn { display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--text-secondary); background: transparent; }
 .gallery-photo-thumb.add-photo-btn:hover { color: var(--text-main); border-color: var(--text-secondary); }
+/* Стили для предпросмотра баннера в модалке */
+.banner-preview-container {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    background: #2a2a35;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    overflow: visible; /* Важно, чтобы аватар торчал */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner-preview-bg {
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px 16px 0 0;
+}
+
+.banner-preview-avatar {
+    width: 60px;
+    height: 60px;
+    background: #1c1c22;
+    border: 3px solid var(--bg-color); /* Цвет фона модалки для эффекта выреза */
+    border-radius: 50%;
+    position: absolute;
+    top: 50px; /* Смещение вниз от верха баннера */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
+}
+
+.banner-preview-name {
+    margin-top: 35px; /* Отступ под аватаром */
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-main);
+    text-align: center;
+    padding: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%;
+}
+
+/* Исправление видимости имени на основном превью визитки */
+.header-preview-info.banner-info {
+    margin-top: 50px;
+    z-index: 4;
+    background: rgba(15, 15, 19, 0.85); /* Полупрозрачный темный фон */
+    backdrop-filter: blur(4px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    max-width: 90%;
+}
+
+.header-preview-info.banner-info h3 {
+    font-size: 16px;
+    margin-bottom: 2px;
+    color: #fff;
+}
+
+.header-preview-info.banner-info p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+}

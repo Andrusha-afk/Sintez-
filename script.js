@@ -82,7 +82,6 @@ const reviewPlatformsConfig = [
     }
 ];
 
-// УДАЛЕН БЛОК "КАРТА" ИЗ ПЕРЕВОДОВ
 const translations = {
     ru: {
         s1_title: "Твоя визитка ", s1_title_grad: "внутри MAX", s1_desc: "Открывается по ссылке за секунду.",
@@ -324,7 +323,6 @@ document.querySelectorAll('.lang-btn-header').forEach(btn => {
     });
 });
 
-// Обновленная функция перевода, которая обновляет ВСЕ элементы в DOM, даже скрытые
 function applyTranslations() {
     const t = translations[currentLang];
     
@@ -340,7 +338,6 @@ function applyTranslations() {
         if (t[key]) el.placeholder = t[key];
     });
 
-    // Обновляем заголовок аналитики
     const pageTitleEl = document.getElementById('pageTitle');
     if(pageTitleEl) pageTitleEl.innerText = t.page_analytics;
 }
@@ -416,7 +413,7 @@ function finishBlocksSelection() {
                     visible: cb.checked,
                     title: 'Галерея',
                     items: [],
-                    displayFormat: 'grid' // grid, carousel, mosaic
+                    displayFormat: 'grid'
                 };
             } else {
                 selectedBlocks[key] = { visible: cb.checked, title: null };
@@ -540,7 +537,7 @@ function renderPreview() {
 
     const headerCard = document.createElement('div');
     headerCard.className = 'preview-header-card';
-    if (!isViewMode && !isUserPreviewMode) headerCard.onclick = openHeaderModal;
+    if (!isViewMode) headerCard.onclick = openHeaderModal;
     
     let coverStyle = '', avatarStyle = '', avatarDisplay = 'flex', avatarClass = 'header-preview-avatar', infoClass = 'header-preview-info', coverClass = 'header-preview-cover';
 
@@ -551,7 +548,7 @@ function renderPreview() {
         if (userCardData?.avatarUrl) avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
         avatarDisplay = 'flex'; avatarClass += ' overlay-mode'; coverClass += ' banner-mode'; infoClass += ' banner-info';
     } else if (currentHeaderFormat === 'carousel' && userCardData?.carouselImages?.length > 0) {
-        headerCard.innerHTML = `<div class="carousel-container" style="pointer-events: none;">${userCardData.carouselImages.map(img => `<div class="carousel-item" style="background-image: url(${img})"></div>`).join('')}</div><div class="header-preview-info" style="margin-top: 10px;"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>${!isViewMode && !isUserPreviewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}`;
+        headerCard.innerHTML = `<div class="carousel-container" style="pointer-events: none;">${userCardData.carouselImages.map(img => `<div class="carousel-item" style="background-image: url(${img})"></div>`).join('')}</div><div class="header-preview-info" style="margin-top: 10px;"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>${!isViewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}`;
         container.appendChild(headerCard);
     } else if (userCardData?.avatarUrl) {
         avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
@@ -562,7 +559,7 @@ function renderPreview() {
             <div class="${coverClass}" style="${coverStyle}"></div>
             <div class="${avatarClass}" style="display: ${avatarDisplay}; ${avatarStyle}">${!userCardData?.avatarUrl ? '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' : ''}</div>
             <div class="${infoClass}"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>
-            ${!isViewMode && !isUserPreviewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}
+            ${!isViewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}
         `;
     }
     container.appendChild(headerCard);
@@ -574,10 +571,10 @@ function renderPreview() {
     const createBlockSection = (key, blockData, title, contentHtml) => {
         const section = document.createElement('div');
         // В режиме просмотра всегда показываем блоки, игнорируя hidden-block
-        section.className = `preview-block-section ${(!isViewMode && !isUserPreviewMode && !blockData.visible) ? 'hidden-block' : ''}`;
+        section.className = `preview-block-section ${(!isViewMode && !blockData.visible) ? 'hidden-block' : ''}`;
         
         let headerHtml = '';
-        if (!isViewMode && !isUserPreviewMode) {
+        if (!isViewMode) {
             headerHtml = `
                 <div class="block-section-header">
                     <div class="block-section-title">${title.toUpperCase()}</div>
@@ -606,7 +603,7 @@ function renderPreview() {
 
     aboutKeys.forEach(key => {
         const blockData = selectedBlocks[key];
-        if (blockData && (isViewMode || isUserPreviewMode || blockData.visible)) {
+        if (blockData && (isViewMode || blockData.visible)) {
             const title = blockData.title || 'О БИЗНЕСЕ';
             const bodyContent = blockData.text ? `<p>${blockData.text}</p>` : '<p style="opacity:0.5">Нет текста</p>';
             container.appendChild(createBlockSection(key, blockData, title, bodyContent));
@@ -615,7 +612,7 @@ function renderPreview() {
 
     otherKeys.forEach(key => {
         const blockData = selectedBlocks[key];
-        if (blockData && (isViewMode || isUserPreviewMode || blockData.visible)) {
+        if (blockData && (isViewMode || blockData.visible)) {
             let title = blockData.title;
             if (!title) title = t[`blk_${key}`] || key;
             
@@ -1014,7 +1011,7 @@ function renderPreview() {
                 const copyBtn = `<button class="share-btn share-btn-copy" onclick="copyToClipboard('${viewUrl}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> ${t.share_btn_copy}</button>`;
                 const storiesBtn = `<button class="share-btn share-btn-stories" onclick="shareToStories('${imageUrl || ''}', '${caption.replace(/'/g, "\\'")}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> ${t.share_btn_stories}</button>`;
                 const shareBtn = `<button class="share-btn share-btn-share" onclick="shareViaBot('${imageUrl || ''}', '${caption.replace(/'/g, "\\'")}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> ${t.share_btn_share}</button>`;
-
+                
                 let buttonsHtml = '';
                 if (layout === 'compact') {
                     buttonsHtml = `<div class="share-layout-compact">${copyBtn}${storiesBtn}${shareBtn}</div>`;
@@ -2586,7 +2583,15 @@ function openHeaderModal() {
         updateAvatarFromUrl(userCardData.avatarUrl || '');
         updateCoverFromUrl(userCardData.coverUrl || '');
         renderCarouselPreview();
-    } else { nameInput.value = ''; descInput.value = ''; }
+        
+        // Обновляем превью баннера при открытии модалки
+        updateBannerPreview();
+    } else { 
+        nameInput.value = ''; 
+        descInput.value = ''; 
+        // Сброс превью если данных нет
+        updateBannerPreview('', '');
+    }
 }
 
 function closeHeaderModal() {
@@ -2613,6 +2618,41 @@ function switchHeaderTab(tab) {
     document.getElementById(`tab-content-${tab}`).classList.remove('hidden');
     
     if (tab === 'cover' || tab === 'banner') updateCoverFromUrl(document.getElementById('input-cover-url').value);
+}
+
+// Новая функция для обновления превью баннера в реальном времени
+function updateBannerPreview(coverUrl, avatarUrl) {
+    const bgEl = document.getElementById('modal-banner-preview-bg');
+    const avEl = document.getElementById('modal-banner-preview-avatar');
+    const nameEl = document.getElementById('modal-banner-preview-name');
+    
+    // Если параметры не переданы, берем из текущих данных
+    if (coverUrl === undefined) coverUrl = userCardData?.coverUrl || '';
+    if (avatarUrl === undefined) avatarUrl = userCardData?.avatarUrl || '';
+    
+    // Обновляем фон
+    if (coverUrl) {
+        bgEl.style.backgroundImage = `url(${coverUrl})`;
+        bgEl.style.backgroundSize = 'cover';
+        bgEl.style.backgroundPosition = 'center';
+    } else {
+        bgEl.style.backgroundImage = '';
+    }
+    
+    // Обновляем аватар
+    if (avatarUrl) {
+        avEl.style.backgroundImage = `url(${avatarUrl})`;
+        avEl.style.backgroundSize = 'cover';
+        avEl.style.backgroundPosition = 'center';
+        avEl.innerHTML = '';
+    } else {
+        avEl.style.backgroundImage = '';
+        avEl.innerHTML = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
+    }
+    
+    // Обновляем имя
+    const currentName = document.getElementById('modal-input-name')?.value || userCardData?.name || 'Имя компании';
+    nameEl.innerText = currentName;
 }
 
 function handleFileUpload(event, updateCallback) {
@@ -2677,6 +2717,11 @@ function updateAvatarFromUrl(url) {
             stdAvatar.innerHTML = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
         }
     });
+    
+    // Дополнительно обновляем превью баннера, если мы находимся на вкладке баннера
+    if (currentHeaderFormat === 'banner') {
+        updateBannerPreview();
+    }
 }
 
 function updateCoverFromUrl(url) {
@@ -2694,6 +2739,11 @@ function updateCoverFromUrl(url) {
             coverBg.style.backgroundImage = 'none';
         }
     });
+
+    // Дополнительно обновляем превью баннера
+    if (currentHeaderFormat === 'banner') {
+        updateBannerPreview();
+    }
 }
 
 function renderCarouselPreview() {
