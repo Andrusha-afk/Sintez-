@@ -1007,7 +1007,9 @@ function renderPreview() {
             else if (key === 'share' || key.startsWith('share_copy')) {
                 const layout = blockData.layout || 'compact';
                 const imageUrl = blockData.imageUrl;
-                const caption = blockData.caption || userCardData?.desc || '';
+                // ИСПРАВЛЕНИЕ: Убрано дублирование подзаголовка (userCardData?.desc)
+                const caption = blockData.caption || ''; 
+                
                 // Формируем правильную ссылку для просмотра
                 const viewUrl = window.location.origin + window.location.pathname + '?view=1';
                 
