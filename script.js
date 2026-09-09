@@ -1,211 +1,276 @@
 const socialNetworksConfig = [
-    { id: 'max', name: 'MAX', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>', placeholder: '+7 (999) 000-00-00' },
-    { id: 'instagram', name: 'Instagram', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>', placeholder: 'https://instagram.com/username' },
-    { id: 'whatsapp', name: 'WhatsApp', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>', placeholder: 'https://wa.me/number' },
-    { id: 'youtube', name: 'YouTube', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>', placeholder: 'https://youtube.com/channel' },
-    { id: 'facebook', name: 'Facebook', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>', placeholder: 'https://facebook.com/username' },
-    { id: 'threads', name: 'Threads', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6 6 6 0 0 0 6-6 6 6 0 0 0-6-6z"/></svg>', placeholder: 'https://threads.net/@username' },
-    { id: 'linkedin', name: 'LinkedIn', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>', placeholder: 'https://linkedin.com/in/username' },
-    { id: 'website', name: 'Сайт', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>', placeholder: 'https://твой-сайт.com' }
+    {
+        id: 'max',
+        name: 'MAX',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
+        placeholder: '+7 (999) 000-00-00'
+    },
+    {
+        id: 'instagram',
+        name: 'Instagram',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>',
+        placeholder: 'https://instagram.com/username'
+    },
+    {
+        id: 'whatsapp',
+        name: 'WhatsApp',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>',
+        placeholder: 'https://wa.me/number'
+    },
+    {
+        id: 'youtube',
+        name: 'YouTube',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>',
+        placeholder: 'https://youtube.com/channel'
+    },
+    {
+        id: 'facebook',
+        name: 'Facebook',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>',
+        placeholder: 'https://facebook.com/username'
+    },
+    {
+        id: 'threads',
+        name: 'Threads',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6 6 6 0 0 0 6-6 6 6 0 0 0-6-6z"/></svg>',
+        placeholder: 'https://threads.net/@username'
+    },
+    {
+        id: 'linkedin',
+        name: 'LinkedIn',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>',
+        placeholder: 'https://linkedin.com/in/username'
+    },
+    {
+        id: 'website',
+        name: 'Сайт',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>',
+        placeholder: 'https://твой-сайт.com'
+    }
 ];
 
 const reviewPlatformsConfig = [
-    { id: 'google', name: 'Google Карты', icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>', color: '#FF0000' },
-    { id: 'yandex', name: 'Яндекс Карты', icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>', color: '#FF0000' },
-    { id: 'maps', name: '2ГИС / Карты', icon: '<svg viewBox="0 0 24 24" fill="#2ECC71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>', color: '#2ECC71' },
-    { id: 'flamp', name: 'Flamp', icon: '<svg viewBox="0 0 24 24" fill="#3498DB"><path d="M18.9 13.2c-.4-.4-1-.4-1.4 0l-1.4 1.4-1.4-1.4c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l1.4 1.4-1.4 1.4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l1.4-1.4 1.4 1.4c.4.4 1 .4 1.4 0s.4-1 0-1.4l-1.4-1.4 1.4-1.4c.4-.4.4-1 0-1.4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>', color: '#3498DB' },
-    { id: 'custom', name: 'Свой отзыв', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>', color: 'var(--color-blue)' }
+    {
+        id: 'google',
+        name: 'Google Карты',
+        icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',
+        color: '#FF0000'
+    },
+    {
+        id: 'yandex',
+        name: 'Яндекс Карты',
+        icon: '<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',
+        color: '#FF0000'
+    },
+    {
+        id: 'maps',
+        name: '2ГИС / Карты',
+        icon: '<svg viewBox="0 0 24 24" fill="#2ECC71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',
+        color: '#2ECC71'
+    },
+    {
+        id: 'flamp',
+        name: 'Flamp',
+        icon: '<svg viewBox="0 0 24 24" fill="#3498DB"><path d="M18.9 13.2c-.4-.4-1-.4-1.4 0l-1.4 1.4-1.4-1.4c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l1.4 1.4-1.4 1.4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l1.4-1.4 1.4 1.4c.4.4 1 .4 1.4 0s.4-1 0-1.4l-1.4-1.4 1.4-1.4c.4-.4.4-1 0-1.4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>',
+        color: '#3498DB'
+    },
+    {
+        id: 'custom',
+        name: 'Свой отзыв',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>',
+        color: 'var(--color-blue)'
+    }
 ];
 
 const translations = {
     ru: {
-        s1_title: "Твоя визитка ", s1_title_grad: "внутри MAX ", s1_desc: "Открывается по ссылке за секунду. ",
-        s2_title: "Собирается ", s2_title_grad: "из блоков ", s2_desc: "Прайс, отзывы, фото. Порядок задаёшь ты. ",
-        s3_title: "Свой бот и своя <br>ссылка ", s3_desc: "Ссылку можно отправить в переписке. ",
-        btn_skip: "Пропустить ", btn_next: "Далее ", btn_start: "Начать ",
-        dash_title: "Твои визитки ", dash_subtitle: "Открой, чтобы изменить. ",
-        label_my_cards: "МОИ ВИЗИТКИ ", empty_h3: "Здесь появятся твои визитки ",
-        empty_p: "Первая собирается за несколько минут. ", btn_create: "Создать свою визитку ",
-        info_box: "Пример. Цифры появятся после создания. ",
-        menu_stats: "Статистика ", menu_stats_sub: "Просмотры и заявки ",
-        analytics_empty: "Пока нет просмотров. ",
-        menu_title: "Меню ", menu_welcome: "Приветствие ", menu_mycards: "Мои визитки ",
-        menu_footer: "Приветствие показано при первом входе. ",
-        no_cards_msg: "Нет визиток ", page_analytics: "Аналитика ",
-        cr_title_step1: "О бизнесе ", cr_subtitle_step1: "Расскажи о себе. ",
-        cr_label_name: "Имя или компания ", cr_ph_name: "напр. Студия Анны ",
-        cr_label_desc: "Подзаголовок ", cr_ph_desc: "чем занимаешься ",
-        cr_label_city: "Город ", cr_ph_city: "напр. Москва ",
-        btn_next_arrow: "Далее → ", btn_finish: "Готово ",
-        action_edit: "Редактировать ", action_share: "Поделиться ", action_delete: "Удалить ",
-        toast_copy: "Ссылка скопирована! ", toast_deleted: "Удалено ",
-        bl_title: "Что ", bl_title_grad: "показать ", bl_desc: "Выбери блоки. ",
-        blk_links: "Ссылки ", blk_socials: "Соцсети ", blk_hours: "Часы работы ", blk_cta: "Призыв ",
-        blk_contacts: "Контакты ", blk_price: "Прайс ", blk_discounts: "Скидки ",
-        blk_reviews: "Отзывы ", blk_faq: "Вопрос-ответ ", blk_facts: "Цифры / Факты ",
-        blk_video: "Видео ", blk_share: "Поделиться ", blk_gallery: "Галерея ",
-        btn_back: "Назад ", btn_assemble: "Далее ",
-        pv_title: "Твоя визитка ", pv_desc: "Нажми на шапку, чтобы изменить формат. ",
-        edit_modal_title: "Блок ", btn_save: "Сохранить ", preview_placeholder: "Содержимое ",
-        modal_header_title: "Шапка ", header_format_label: "Формат ",
-        tab_avatar: "Аватар ", tab_cover: "Обложка ", tab_banner: "Баннер ", tab_carousel: "Карусель ",
-        desc_avatar: "Круглый аватар. ", btn_upload_device: " Загрузить ", btn_upload_tg: " Из MAX ",
-        upload_hint: "Фото сохранится. ", or_link: "...или ссылка ",
-        desc_cover: "Широкая обложка. ", ph_company_name: "Имя компании ", hint_example: "Пример ниже ",
-        lbl_cover: "ОБЛОЖКА ", btn_upload_cover: "Загрузить ", lbl_cover_link: "Ссылка на фото ",
-        desc_banner: "Обложка + аватар поверх. ", banner_placeholder: "Баннер ", btn_upload_banner: "Загрузить ",
-        desc_carousel: "Листаются свайпом. ",
-        share_title: "Заголовок ",
-        share_image_label: "Картинка для сторис и карточки ",
-        share_upload_btn: "Загрузить фото с устройства ",
-        share_desc_hint: "Кнопки шеринга твоей визитки — клиенты делятся ею в один тап. ",
-        share_caption_label: "Подпись открытки ",
-        share_caption_placeholder: "Чем занимаешься — одной строкой ",
-        share_caption_info: "Появится в открытке после публикации, рядом с именем. Ссылки, @упоминания и телефоны из неё убираются: если оставить только ссылку, подпись станет пустой и в открытке будет подзаголовок. ",
-        share_layout_label: "Расположение ",
-        share_layout_compact: "Компакт ",
-        share_layout_stories: "Сторис ",
-        share_layout_grid: "Сетка ",
-        share_layout_list: "Список ",
-        share_preview_label: "Предпросмотр ",
-        share_btn_copy: "Скопировать ",
-        share_btn_stories: "В сторис ",
-        share_btn_share: "Поделиться ",
-        gallery_title: "Заголовок ",
-        gallery_display_format: "Формат отображения ",
-        gallery_grid: "Сетка ",
-        gallery_carousel: "Карусель ",
-        gallery_mosaic: "Мозаика ",
-        gallery_photos: "Фото работ ",
-        gallery_upload_photo: "Загрузить фото ",
-        gallery_demo_tile: "Демо-плитка ",
-        gallery_upload_hint: "Загрузи свои фото (можно сразу несколько) — они появятся в сетке. ",
-        gallery_demo_hint: "«Демо-плитка» — пустой квадрат для примера, как будет выглядеть сетка. Замени своим фото. ",
-        gallery_limit: "бесплатно — до 8 элементов, в PRO больше "
+        s1_title: "Твоя визитка ", s1_title_grad: "внутри MAX", s1_desc: "Открывается по ссылке за секунду.",
+        s2_title: "Собирается ", s2_title_grad: "из блоков", s2_desc: "Прайс, отзывы, фото. Порядок задаёшь ты.",
+        s3_title: "Свой бот и своя <br>ссылка", s3_desc: "Ссылку можно отправить в переписке.",
+        btn_skip: "Пропустить", btn_next: "Далее", btn_start: "Начать",
+        dash_title: "Твои визитки", dash_subtitle: "Открой, чтобы изменить.",
+        label_my_cards: "МОИ ВИЗИТКИ", empty_h3: "Здесь появятся твои визитки",
+        empty_p: "Первая собирается за несколько минут.", btn_create: "Создать свою визитку",
+        info_box: "Пример. Цифры появятся после создания.",
+        menu_stats: "Статистика", menu_stats_sub: "Просмотры и заявки",
+        analytics_empty: "Пока нет просмотров.",
+        menu_title: "Меню", menu_welcome: "Приветствие", menu_mycards: "Мои визитки",
+        menu_footer: "Приветствие показано при первом входе.",
+        no_cards_msg: "Нет визиток", page_analytics: "Аналитика",
+        cr_title_step1: "О бизнесе", cr_subtitle_step1: "Расскажи о себе.",
+        cr_label_name: "Имя или компания", cr_ph_name: "напр. Студия Анны",
+        cr_label_desc: "Подзаголовок", cr_ph_desc: "чем занимаешься",
+        cr_label_city: "Город", cr_ph_city: "напр. Москва",
+        btn_next_arrow: "Далее →", btn_finish: "Готово",
+        action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить",
+        toast_copy: "Ссылка скопирована!", toast_deleted: "Удалено",
+        bl_title: "Что ", bl_title_grad: "показать", bl_desc: "Выбери блоки.",
+        blk_links: "Ссылки", blk_socials: "Соцсети", blk_hours: "Часы работы", blk_cta: "Призыв",
+        blk_contacts: "Контакты", blk_price: "Прайс", blk_discounts: "Скидки",
+        blk_reviews: "Отзывы", blk_faq: "Вопрос-ответ", blk_facts: "Цифры / Факты",
+        blk_video: "Видео", blk_share: "Поделиться", blk_gallery: "Галерея",
+        btn_back: "Назад", btn_assemble: "Далее",
+        pv_title: "Твоя визитка", pv_desc: "Нажми на шапку, чтобы изменить формат.",
+        edit_modal_title: "Блок", btn_save: "Сохранить", preview_placeholder: "Содержимое",
+        modal_header_title: "Шапка", header_format_label: "Формат",
+        tab_avatar: "Аватар", tab_cover: "Обложка", tab_banner: "Баннер", tab_carousel: "Карусель",
+        desc_avatar: "Круглый аватар.", btn_upload_device: "Загрузить", btn_upload_tg: "Из MAX",
+        upload_hint: "Фото сохранится.", or_link: "...или ссылка",
+        desc_cover: "Широкая обложка.", ph_company_name: "Имя компании", hint_example: "Пример ниже",
+        lbl_cover: "ОБЛОЖКА", btn_upload_cover: "Загрузить", lbl_cover_link: "Ссылка на фото",
+        desc_banner: "Обложка + аватар поверх.", banner_placeholder: "Баннер", btn_upload_banner: "Загрузить",
+        desc_carousel: "Листаются свайпом.",
+        share_title: "Заголовок",
+        share_image_label: "Картинка для сторис и карточки",
+        share_upload_btn: "Загрузить фото с устройства",
+        share_desc_hint: "Кнопки шеринга твоей визитки — клиенты делятся ею в один тап.",
+        share_caption_label: "Подпись открытки",
+        share_caption_placeholder: "Чем занимаешься — одной строкой",
+        share_caption_info: "Появится в открытке после публикации, рядом с именем. Ссылки, @упоминания и телефоны из неё убираются: если оставить только ссылку, подпись станет пустой и в открытке будет подзаголовок.",
+        share_layout_label: "Расположение",
+        share_layout_compact: "Компакт",
+        share_layout_stories: "Сторис",
+        share_layout_grid: "Сетка",
+        share_layout_list: "Список",
+        share_preview_label: "Предпросмотр",
+        share_btn_copy: "Скопировать",
+        share_btn_stories: "В сторис",
+        share_btn_share: "Поделиться",
+        gallery_title: "Заголовок",
+        gallery_display_format: "Формат отображения",
+        gallery_grid: "Сетка",
+        gallery_carousel: "Карусель",
+        gallery_mosaic: "Мозаика",
+        gallery_photos: "Фото работ",
+        gallery_upload_photo: "Загрузить фото",
+        gallery_demo_tile: "Демо-плитка",
+        gallery_upload_hint: "Загрузи свои фото (можно сразу несколько) — они появятся в сетке.",
+        gallery_demo_hint: "«Демо-плитка» — пустой квадрат для примера, как будет выглядеть сетка. Замени своим фото.",
+        gallery_limit: "бесплатно — до 8 элементов, в PRO больше"
     },
     en: {
-        s1_title: "Your card ", s1_title_grad: "inside MAX ", s1_desc: "Opens via link instantly. ",
-        s2_title: "Built from ", s2_title_grad: "blocks ", s2_desc: "Price, reviews, photos. Drag to reorder. ",
-        s3_title: "Own bot & link ", s3_desc: "Share link anywhere. ",
-        btn_skip: "Skip ", btn_next: "Next ", btn_start: "Start ",
-        dash_title: "Your cards ", dash_subtitle: "Open to edit. ",
-        label_my_cards: "MY CARDS ", empty_h3: "Cards appear here ", empty_p: "First one takes minutes. ",
-        btn_create: "Create card ", info_box: "Example view. ",
-        menu_stats: "Stats ", menu_stats_sub: "Views & clicks ",
-        analytics_empty: "No views yet. ", menu_title: "Menu ", menu_welcome: "Welcome ", menu_mycards: "My cards ",
-        menu_footer: "Welcome shown once. ", no_cards_msg: "No cards ", page_analytics: "Analytics ",
-        cr_title_step1: "About ", cr_subtitle_step1: "Tell about yourself. ",
-        cr_label_name: "Name/Company ", cr_ph_name: "e.g. Anna's Studio ",
-        cr_label_desc: "Subtitle ", cr_ph_desc: "what you do ",
-        cr_label_city: "City ", cr_ph_city: "e.g. Moscow ",
-        btn_next_arrow: "Next → ", btn_finish: "Finish ",
-        action_edit: "Edit ", action_share: "Share ", action_delete: "Delete ",
-        toast_copy: "Copied! ", toast_deleted: "Deleted ",
-        bl_title: "What to ", bl_title_grad: "show ", bl_desc: "Select blocks. ",
-        blk_links: "Links ", blk_socials: "Socials ", blk_hours: "Hours ", blk_cta: "CTA ",
-        blk_contacts: "Contacts ", blk_price: "Price ", blk_discounts: "Discounts ",
-        blk_reviews: "Reviews ", blk_faq: "Q&A ", blk_facts: "Facts ",
-        blk_video: "Video ", blk_share: "Share ", blk_gallery: "Gallery ",
-        btn_back: "Back ", btn_assemble: "Next ",
-        pv_title: "Your card ", pv_desc: "Tap header to change format. ",
-        edit_modal_title: "Block ", btn_save: "Save ", preview_placeholder: "Content ",
-        modal_header_title: "Header ", header_format_label: "Format ",
-        tab_avatar: "Avatar ", tab_cover: "Cover ", tab_banner: "Banner ", tab_carousel: "Carousel ",
-        desc_avatar: "Round avatar. ", btn_upload_device: " Upload ", btn_upload_tg: " From MAX ",
-        upload_hint: "Photo saved. ", or_link: "...or link ",
-        desc_cover: "Wide cover. ", ph_company_name: "Company name ", hint_example: "Example below ",
-        lbl_cover: "COVER ", btn_upload_cover: "Upload ", lbl_cover_link: "Photo link ",
-        desc_banner: "Cover + Avatar overlay. ", banner_placeholder: "Banner ", btn_upload_banner: "Upload ",
-        desc_carousel: "Swipeable photos. ",
-        share_title: "Title ",
-        share_image_label: "Image for stories and card ",
-        share_upload_btn: "Upload photo from device ",
-        share_desc_hint: "Sharing buttons for your card — clients share it in one tap. ",
-        share_caption_label: "Postcard caption ",
-        share_caption_placeholder: "What you do — in one line ",
-        share_caption_info: "Will appear on the postcard after publishing, next to the name. Links, @mentions and phones are removed from it: if you leave only a link, the caption will become empty and the subtitle will be on the postcard. ",
-        share_layout_label: "Layout ",
-        share_layout_compact: "Compact ",
-        share_layout_stories: "Stories ",
-        share_layout_grid: "Grid ",
-        share_layout_list: "List ",
-        share_preview_label: "Preview ",
-        share_btn_copy: "Copy ",
-        share_btn_stories: "To Stories ",
-        share_btn_share: "Share ",
-        gallery_title: "Title ",
-        gallery_display_format: "Display format ",
-        gallery_grid: "Grid ",
-        gallery_carousel: "Carousel ",
-        gallery_mosaic: "Mosaic ",
-        gallery_photos: "Work photos ",
-        gallery_upload_photo: "Upload photo ",
-        gallery_demo_tile: "Demo tile ",
-        gallery_upload_hint: "Upload your photos (you can upload several at once) — they will appear in the grid. ",
-        gallery_demo_hint: " \"Demo tile\" is an empty square as an example of how the grid will look. Replace it with your photo. ",
-        gallery_limit: "free — up to 8 elements, more in PRO "
+        s1_title: "Your card ", s1_title_grad: "inside MAX", s1_desc: "Opens via link instantly.",
+        s2_title: "Built from ", s2_title_grad: "blocks", s2_desc: "Price, reviews, photos. Drag to reorder.",
+        s3_title: "Own bot & link", s3_desc: "Share link anywhere.",
+        btn_skip: "Skip", btn_next: "Next", btn_start: "Start",
+        dash_title: "Your cards", dash_subtitle: "Open to edit.",
+        label_my_cards: "MY CARDS", empty_h3: "Cards appear here", empty_p: "First one takes minutes.",
+        btn_create: "Create card", info_box: "Example view.",
+        menu_stats: "Stats", menu_stats_sub: "Views & clicks",
+        analytics_empty: "No views yet.", menu_title: "Menu", menu_welcome: "Welcome", menu_mycards: "My cards",
+        menu_footer: "Welcome shown once.", no_cards_msg: "No cards", page_analytics: "Analytics",
+        cr_title_step1: "About", cr_subtitle_step1: "Tell about yourself.",
+        cr_label_name: "Name/Company", cr_ph_name: "e.g. Anna's Studio",
+        cr_label_desc: "Subtitle", cr_ph_desc: "what you do",
+        cr_label_city: "City", cr_ph_city: "e.g. Moscow",
+        btn_next_arrow: "Next →", btn_finish: "Finish",
+        action_edit: "Edit", action_share: "Share", action_delete: "Delete",
+        toast_copy: "Copied!", toast_deleted: "Deleted",
+        bl_title: "What to ", bl_title_grad: "show", bl_desc: "Select blocks.",
+        blk_links: "Links", blk_socials: "Socials", blk_hours: "Hours", blk_cta: "CTA",
+        blk_contacts: "Contacts", blk_price: "Price", blk_discounts: "Discounts",
+        blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts",
+        blk_video: "Video", blk_share: "Share", blk_gallery: "Gallery",
+        btn_back: "Back", btn_assemble: "Next",
+        pv_title: "Your card", pv_desc: "Tap header to change format.",
+        edit_modal_title: "Block", btn_save: "Save", preview_placeholder: "Content",
+        modal_header_title: "Header", header_format_label: "Format",
+        tab_avatar: "Avatar", tab_cover: "Cover", tab_banner: "Banner", tab_carousel: "Carousel",
+        desc_avatar: "Round avatar.", btn_upload_device: "Upload", btn_upload_tg: "From MAX",
+        upload_hint: "Photo saved.", or_link: "...or link",
+        desc_cover: "Wide cover.", ph_company_name: "Company name", hint_example: "Example below",
+        lbl_cover: "COVER", btn_upload_cover: "Upload", lbl_cover_link: "Photo link",
+        desc_banner: "Cover + Avatar overlay.", banner_placeholder: "Banner", btn_upload_banner: "Upload",
+        desc_carousel: "Swipeable photos.",
+        share_title: "Title",
+        share_image_label: "Image for stories and card",
+        share_upload_btn: "Upload photo from device",
+        share_desc_hint: "Sharing buttons for your card — clients share it in one tap.",
+        share_caption_label: "Postcard caption",
+        share_caption_placeholder: "What you do — in one line",
+        share_caption_info: "Will appear on the postcard after publishing, next to the name. Links, @mentions and phones are removed from it: if you leave only a link, the caption will become empty and the subtitle will be on the postcard.",
+        share_layout_label: "Layout",
+        share_layout_compact: "Compact",
+        share_layout_stories: "Stories",
+        share_layout_grid: "Grid",
+        share_layout_list: "List",
+        share_preview_label: "Preview",
+        share_btn_copy: "Copy",
+        share_btn_stories: "To Stories",
+        share_btn_share: "Share",
+        gallery_title: "Title",
+        gallery_display_format: "Display format",
+        gallery_grid: "Grid",
+        gallery_carousel: "Carousel",
+        gallery_mosaic: "Mosaic",
+        gallery_photos: "Work photos",
+        gallery_upload_photo: "Upload photo",
+        gallery_demo_tile: "Demo tile",
+        gallery_upload_hint: "Upload your photos (you can upload several at once) — they will appear in the grid.",
+        gallery_demo_hint: "\"Demo tile\" is an empty square as an example of how the grid will look. Replace it with your photo.",
+        gallery_limit: "free — up to 8 elements, more in PRO"
     },
     de: {
-        s1_title: "Deine Karte ", s1_title_grad: "in MAX ", s1_desc: "Öffnet per Link sofort. ",
-        s2_title: "Aus ", s2_title_grad: "Blöcken ", s2_desc: "Preise, Bewertungen. Sortieren per Drag. ",
-        s3_title: "Eigener Bot & Link ", s3_desc: "Link überall teilen. ",
-        btn_skip: "Überspringen ", btn_next: "Weiter ", btn_start: "Start ",
-        dash_title: "Deine Karten ", dash_subtitle: "Zum Bearbeiten öffnen. ",
-        label_my_cards: "MEINE KARTEN ", empty_h3: "Karten erscheinen hier ", empty_p: "Erste in Minuten fertig. ",
-        btn_create: "Karte erstellen ", info_box: "Beispielansicht. ",
-        menu_stats: "Statistik ", menu_stats_sub: "Aufrufe ",
-        analytics_empty: "Keine Aufrufe. ", menu_title: "Menü ", menu_welcome: "Begrüßung ", menu_mycards: "Meine Karten ",
-        menu_footer: "Begrüßung beim Start. ", no_cards_msg: "Keine Karten ", page_analytics: "Analytik ",
-        cr_title_step1: "Über dich ", cr_subtitle_step1: "Erzähl etwas. ",
-        cr_label_name: "Name/Firma ", cr_ph_name: "z.B. Annas Studio ",
-        cr_label_desc: "Untertitel ", cr_ph_desc: "was du machst ",
-        cr_label_city: "Stadt ", cr_ph_city: "z.B. Moskau ",
-        btn_next_arrow: "Weiter → ", btn_finish: "Fertig ",
-        action_edit: "Bearbeiten ", action_share: "Teilen ", action_delete: "Löschen ",
-        toast_copy: "Kopiert! ", toast_deleted: "Gelöscht ",
-        bl_title: "Was ", bl_title_grad: "zeigen? ", bl_desc: "Blöcke wählen. ",
-        blk_links: "Links ", blk_socials: "Soziale ", blk_hours: "Zeiten ", blk_cta: "Aufruf ",
-        blk_contacts: "Kontakt ", blk_price: "Preise ", blk_discounts: "Rabatte ",
-        blk_reviews: "Bewertungen ", blk_faq: "FAQ ", blk_facts: "Fakten ",
-        blk_video: "Video ", blk_share: "Teilen ", blk_gallery: "Galerie ",
-        btn_back: "Zurück ", btn_assemble: "Weiter ",
-        pv_title: "Deine Karte ", pv_desc: "Tippe Header für Format. ",
-        edit_modal_title: "Block ", btn_save: "Speichern ", preview_placeholder: "Inhalt ",
-        modal_header_title: "Header ", header_format_label: "Format ",
-        tab_avatar: "Avatar ", tab_cover: "Titelbild ", tab_banner: "Banner ", tab_carousel: "Karussell ",
-        desc_avatar: "Runder Avatar. ", btn_upload_device: " Laden ", btn_upload_tg: "👤 Aus MAX ",
-        upload_hint: "Foto gespeichert. ", or_link: "...oder Link ",
-        desc_cover: "Breites Bild. ", ph_company_name: "Firmenname ", hint_example: "Beispiel unten ",
-        lbl_cover: "TITELBILD ", btn_upload_cover: "Laden ", lbl_cover_link: "Foto-Link ",
-        desc_banner: "Bild + Avatar darüber. ", banner_placeholder: "Banner ", btn_upload_banner: "Laden ",
-        desc_carousel: "Fotos zum Wischen. ",
-        share_title: "Titel ",
-        share_image_label: "Bild für Stories und Karte ",
-        share_upload_btn: "Foto vom Gerät hochladen ",
-        share_desc_hint: "Sharing-Buttons für deine Karte — Kunden teilen sie mit einem Tipp. ",
-        share_caption_label: "Postkarten-Unterschrift ",
-        share_caption_placeholder: "Was du machst — in einer Zeile ",
-        share_caption_info: "Erscheint auf der Postkarte nach der Veröffentlichung neben dem Namen. Links, @Erwähnungen und Telefone werden daraus entfernt: Wenn du nur einen Link lässt, wird die Unterschrift leer und der Untertitel erscheint auf der Postkarte. ",
-        share_layout_label: "Anordnung ",
-        share_layout_compact: "Kompakt ",
-        share_layout_stories: "Stories ",
-        share_layout_grid: "Raster ",
-        share_layout_list: "Liste ",
-        share_preview_label: "Vorschau ",
-        share_btn_copy: "Kopieren ",
-        share_btn_stories: "In Stories ",
-        share_btn_share: "Teilen ",
-        gallery_title: "Titel ",
-        gallery_display_format: "Anzeigeformat ",
-        gallery_grid: "Raster ",
-        gallery_carousel: "Karussell ",
-        gallery_mosaic: "Mosaik ",
-        gallery_photos: "Arbeitsfotos ",
-        gallery_upload_photo: "Foto hochladen ",
-        gallery_demo_tile: "Demo-Kachel ",
-        gallery_upload_hint: "Lade deine Fotos hoch (du kannst mehrere auf einmal hochladen) — sie erscheinen im Raster. ",
-        gallery_demo_hint: " \"Demo-Kachel\" ist ein leeres Quadrat als Beispiel, wie das Raster aussehen wird. Ersetze es durch dein Foto. ",
-        gallery_limit: "kostenlos — bis zu 8 Elemente, mehr in PRO "
+        s1_title: "Deine Karte ", s1_title_grad: "in MAX", s1_desc: "Öffnet per Link sofort.",
+        s2_title: "Aus ", s2_title_grad: "Blöcken", s2_desc: "Preise, Bewertungen. Sortieren per Drag.",
+        s3_title: "Eigener Bot & Link", s3_desc: "Link überall teilen.",
+        btn_skip: "Überspringen", btn_next: "Weiter", btn_start: "Start",
+        dash_title: "Deine Karten", dash_subtitle: "Zum Bearbeiten öffnen.",
+        label_my_cards: "MEINE KARTEN", empty_h3: "Karten erscheinen hier", empty_p: "Erste in Minuten fertig.",
+        btn_create: "Karte erstellen", info_box: "Beispielansicht.",
+        menu_stats: "Statistik", menu_stats_sub: "Aufrufe",
+        analytics_empty: "Keine Aufrufe.", menu_title: "Menü", menu_welcome: "Begrüßung", menu_mycards: "Meine Karten",
+        menu_footer: "Begrüßung beim Start.", no_cards_msg: "Keine Karten", page_analytics: "Analytik",
+        cr_title_step1: "Über dich", cr_subtitle_step1: "Erzähl etwas.",
+        cr_label_name: "Name/Firma", cr_ph_name: "z.B. Annas Studio",
+        cr_label_desc: "Untertitel", cr_ph_desc: "was du machst",
+        cr_label_city: "Stadt", cr_ph_city: "z.B. Moskau",
+        btn_next_arrow: "Weiter →", btn_finish: "Fertig",
+        action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Löschen",
+        toast_copy: "Kopiert!", toast_deleted: "Gelöscht",
+        bl_title: "Was ", bl_title_grad: "zeigen?", bl_desc: "Blöcke wählen.",
+        blk_links: "Links", blk_socials: "Soziale", blk_hours: "Zeiten", blk_cta: "Aufruf",
+        blk_contacts: "Kontakt", blk_price: "Preise", blk_discounts: "Rabatte",
+        blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten",
+        blk_video: "Video", blk_share: "Teilen", blk_gallery: "Galerie",
+        btn_back: "Zurück", btn_assemble: "Weiter",
+        pv_title: "Deine Karte", pv_desc: "Tippe Header für Format.",
+        edit_modal_title: "Block", btn_save: "Speichern", preview_placeholder: "Inhalt",
+        modal_header_title: "Header", header_format_label: "Format",
+        tab_avatar: "Avatar", tab_cover: "Titelbild", tab_banner: "Banner", tab_carousel: "Karussell",
+        desc_avatar: "Runder Avatar.", btn_upload_device: "Laden", btn_upload_tg: "👤 Aus MAX",
+        upload_hint: "Foto gespeichert.", or_link: "...oder Link",
+        desc_cover: "Breites Bild.", ph_company_name: "Firmenname", hint_example: "Beispiel unten",
+        lbl_cover: "TITELBILD", btn_upload_cover: "Laden", lbl_cover_link: "Foto-Link",
+        desc_banner: "Bild + Avatar darüber.", banner_placeholder: "Banner", btn_upload_banner: "Laden",
+        desc_carousel: "Fotos zum Wischen.",
+        share_title: "Titel",
+        share_image_label: "Bild für Stories und Karte",
+        share_upload_btn: "Foto vom Gerät hochladen",
+        share_desc_hint: "Sharing-Buttons für deine Karte — Kunden teilen sie mit einem Tipp.",
+        share_caption_label: "Postkarten-Unterschrift",
+        share_caption_placeholder: "Was du machst — in einer Zeile",
+        share_caption_info: "Erscheint auf der Postkarte nach der Veröffentlichung neben dem Namen. Links, @Erwähnungen und Telefone werden daraus entfernt: Wenn du nur einen Link lässt, wird die Unterschrift leer und der Untertitel erscheint auf der Postkarte.",
+        share_layout_label: "Anordnung",
+        share_layout_compact: "Kompakt",
+        share_layout_stories: "Stories",
+        share_layout_grid: "Raster",
+        share_layout_list: "Liste",
+        share_preview_label: "Vorschau",
+        share_btn_copy: "Kopieren",
+        share_btn_stories: "In Stories",
+        share_btn_share: "Teilen",
+        gallery_title: "Titel",
+        gallery_display_format: "Anzeigeformat",
+        gallery_grid: "Raster",
+        gallery_carousel: "Karussell",
+        gallery_mosaic: "Mosaik",
+        gallery_photos: "Arbeitsfotos",
+        gallery_upload_photo: "Foto hochladen",
+        gallery_demo_tile: "Demo-Kachel",
+        gallery_upload_hint: "Lade deine Fotos hoch (du kannst mehrere auf einmal hochladen) — sie erscheinen im Raster.",
+        gallery_demo_hint: "\"Demo-Kachel\" ist ein leeres Quadrat als Beispiel, wie das Raster aussehen wird. Ersetze es durch dein Foto.",
+        gallery_limit: "kostenlos — bis zu 8 Elemente, mehr in PRO"
     }
 };
 
@@ -314,6 +379,11 @@ function startCreationFlow() {
     }
 }
 
+// НОВАЯ ФУНКЦИЯ: Пропускает весь онбординг и идет сразу к созданию
+function skipOnboarding() {
+    startCreationFlow();
+}
+
 function goToBlocksSelection() {
     const name = document.getElementById('input-name').value.trim();
     const desc = document.getElementById('input-desc').value.trim();
@@ -332,8 +402,6 @@ function goToBlocksSelection() {
     // Render blocks list
     const container = document.getElementById('blocks-list-container');
     container.innerHTML = '';
-    
-    // УДАЛЕН БЛОК MAP ИЗ СПИСКА
     const blockTypes = [
         {id: 'about', name: 'О бизнесе'}, {id: 'links', name: 'Ссылки'}, {id: 'socials', name: 'Соцсети'},
         {id: 'hours', name: 'Часы'}, {id: 'cta', name: 'Призыв'}, {id: 'contacts', name: 'Контакты'},
@@ -401,7 +469,9 @@ function openCreator(isEdit = false) {
         document.getElementById('input-name').value = userCardData.name || '';
         document.getElementById('input-desc').value = userCardData.desc || '';
         document.getElementById('input-city').value = userCardData.city || '';
-    } else { startCreationFlow(); }
+    } else { 
+        startCreationFlow(); 
+    }
 }
 
 function showAnalytics() {
@@ -416,8 +486,6 @@ function goBack() {
     else if (document.getElementById('screen-preview').classList.contains('active')) goBackFromPreview();
     else if (document.getElementById('screen-blocks').classList.contains('active')) goBackFromBlocks();
     else if (document.getElementById('screen-creator').classList.contains('active')) goToDashboard();
-    else if (document.getElementById('screen-2').classList.contains('active')) nextScreen(1);
-    else if (document.getElementById('screen-3').classList.contains('active')) nextScreen(2);
 }
 
 function updateHeader(state) {
@@ -427,9 +495,8 @@ function updateHeader(state) {
     const menuBtn = document.getElementById('globalMenuBtn');
     const langSwitch = document.querySelector('.lang-switch-header');
     const previewBtn = document.getElementById('preview-toggle-btn');
-    
     const showLangSwitch = state !== 'analytics';
-
+    
     if (['onboarding', 'blocks', 'preview', 'creator'].includes(state)) {
         backBtn.style.display = (state !== 'onboarding') ? 'flex' : 'none';
         logo.style.display = 'none'; title.style.display = 'none'; menuBtn.style.display = 'none';
@@ -477,9 +544,16 @@ function toggleUserPreviewMode() {
         btn.classList.add('active');
         showToast('Режим просмотра пользователем');
     } else {
+        // ВОЗВРАЩЕНИЕ В РЕЖИМ РЕДАКТИРОВАНИЯ
         body.classList.remove('user-view-mode');
         btn.classList.remove('active');
-        showToast('Режим редактора');
+        
+        // Восстанавливаем видимость всех блоков
+        Object.keys(selectedBlocks).forEach(key => {
+            selectedBlocks[key].visible = true;
+        });
+        
+        showToast('Режим редактора восстановлен');
     }
     // Перерисовываем превью, чтобы применить/убрать скрытие пустых блоков
     renderPreview();
@@ -490,7 +564,7 @@ function renderPreview() {
     if(!container) return;
     container.innerHTML = '';
     const t = translations[currentLang];
-
+    
     const headerCard = document.createElement('div');
     headerCard.className = 'preview-header-card';
     if (!isViewMode) headerCard.onclick = openHeaderModal;
@@ -509,7 +583,7 @@ function renderPreview() {
     } else if (userCardData?.avatarUrl) {
         avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
     }
-
+    
     if (currentHeaderFormat !== 'carousel') {
         headerCard.innerHTML = `
             <div class="${coverClass}" style="${coverStyle}"></div>
@@ -519,11 +593,11 @@ function renderPreview() {
         `;
     }
     container.appendChild(headerCard);
-
+    
     const allKeys = Object.keys(selectedBlocks);
     const aboutKeys = allKeys.filter(k => k.startsWith('about'));
     const otherKeys = allKeys.filter(k => !k.startsWith('about'));
-
+    
     const createBlockSection = (key, blockData, title, contentHtml) => {
         const section = document.createElement('div');
         // В режиме просмотра всегда показываем блоки, игнорируя hidden-block
@@ -556,7 +630,7 @@ function renderPreview() {
         `;
         return section;
     };
-
+    
     aboutKeys.forEach(key => {
         const blockData = selectedBlocks[key];
         if (blockData && (isViewMode || blockData.visible)) {
@@ -565,7 +639,7 @@ function renderPreview() {
             container.appendChild(createBlockSection(key, blockData, title, bodyContent));
         }
     });
-
+    
     otherKeys.forEach(key => {
         const blockData = selectedBlocks[key];
         if (blockData && (isViewMode || blockData.visible)) {
@@ -573,7 +647,7 @@ function renderPreview() {
             if (!title) title = t[`blk_${key}`] || key;
             let contentHtml = '';
             let isEmpty = false; // Флаг для проверки пустоты блока
-
+            
             if (key === 'links' || key.startsWith('links_copy')) {
                 const links = blockData.items || [];
                 if (links.length > 0) {
@@ -1010,7 +1084,7 @@ function renderPreview() {
             else {
                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
             }
-
+            
             // Если включен режим просмотра пользователем и блок пуст, не добавляем его в DOM
             if (isUserPreviewMode && isEmpty) {
                 // Просто пропускаем этот блок
@@ -1019,11 +1093,7 @@ function renderPreview() {
             }
         }
     });
-
-    // Удаляем старую кнопку телеграма если она есть
-    const oldFab = document.getElementById('telegram-fab');
-    if(oldFab) oldFab.remove();
-
+    
     // Добавляем нативную кнопку шеринга только в режиме просмотра
     if (isViewMode && !document.getElementById('native-share-fab')) {
         const fab = document.createElement('button');
@@ -1043,6 +1113,13 @@ function renderPreview() {
                 copyToClipboard(shareUrl);
             }
         };
+        document.getElementById('screen-preview').appendChild(fab);
+    } else if (!isViewMode && !document.getElementById('telegram-fab')) {
+        // Старая кнопка для режима редактора (если нужна)
+        const fab = document.createElement('button');
+        fab.id = 'telegram-fab';
+        fab.className = 'telegram-fab';
+        fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
         document.getElementById('screen-preview').appendChild(fab);
     }
     
@@ -1118,7 +1195,7 @@ function openEditBlock(key) {
         const activeDays = sched.simple.days || [];
         const openTime = sched.simple.open || '10:00';
         const closeTime = sched.simple.close || '22:00';
-
+        
         const templatesDiv = document.createElement('div');
         templatesDiv.className = 'hours-templates';
         templatesDiv.style.marginBottom = '20px';
@@ -1141,7 +1218,7 @@ function openEditBlock(key) {
             </button>
         `;
         fieldsContainer.appendChild(templatesDiv);
-
+        
         const modesDiv = document.createElement('div');
         modesDiv.innerHTML = `
             <div class="hours-mode-item mode-highlight" style="margin-bottom: 20px;">
@@ -1153,7 +1230,7 @@ function openEditBlock(key) {
             </div>
         `;
         fieldsContainer.appendChild(modesDiv);
-
+        
         const settingsDiv = document.createElement('div');
         settingsDiv.id = 'hours-settings-container';
         if (isIndividual) {
@@ -1249,7 +1326,7 @@ function openEditBlock(key) {
                 });
             }
         }, 0);
-
+        
     } else if (key === 'socials' || key.startsWith('socials_copy')) {
         titleEl.innerText = 'Соцсети';
         const savedSocials = blockData.items || {};
@@ -1274,6 +1351,7 @@ function openEditBlock(key) {
                 else { input.setAttribute('disabled', 'true'); }
             });
         });
+        
     } else if (key === 'links' || key.startsWith('links_copy')) {
         titleEl.innerText = 'Ссылки-кнопки';
         const sectionTitleDiv = document.createElement('div');
@@ -1292,6 +1370,7 @@ function openEditBlock(key) {
         addBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Добавить ссылку`;
         addBtn.onclick = () => linksListDiv.appendChild(createLinkItemElement('', '', linksListDiv.children.length));
         fieldsContainer.appendChild(addBtn);
+        
     } else if (key === 'cta' || key.startsWith('cta_copy')) {
         titleEl.innerText = 'Кнопка-призыв';
         const ctaText = blockData.text || 'Написать мне';
@@ -1327,6 +1406,7 @@ function openEditBlock(key) {
             </div>
             <input type="hidden" id="edit-cta-style" value="${ctaStyle}">
         `;
+        
     } else if (key === 'contacts' || key.startsWith('contacts_copy')) {
         titleEl.innerText = 'Контакты';
         const phone = blockData.phone || '';
@@ -1364,6 +1444,7 @@ function openEditBlock(key) {
                 «Позвонить» сразу набирает номер. «Сохранить в контакты» скачивает vCard-файл — имя берётся из шапки, телефон и email из этого блока.
             </div>
         `;
+        
     } else if (key === 'price' || key.startsWith('price_copy')) {
         titleEl.innerText = 'Прайс / меню';
         const items = blockData.items || [{name: '', cost: ''}];
@@ -1397,6 +1478,7 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, дальше расширение блока
             </div>
         `;
+        
     } else if (key === 'discounts' || key.startsWith('discounts_copy')) {
         titleEl.innerText = 'Скидки / Акции';
         const items = blockData.items || [{name: '', oldPrice: '', newPrice: '', percent: ''}];
@@ -1440,6 +1522,7 @@ function openEditBlock(key) {
                 Оставь «%» пустым — посчитаю сам из цен «до» и «после». Или укажи процент вручную.
             </div>
         `;
+        
     } else if (key === 'reviews' || key.startsWith('reviews_copy')) {
         titleEl.innerText = 'Отзывы';
         const items = blockData.items || [{type: 'link', platform: 'yandex', name: 'Яндекс Карты', url: ''}];
@@ -1508,6 +1591,7 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, в PRO больше
             </div>
         `;
+        
     } else if (key === 'faq' || key.startsWith('faq_copy')) {
         titleEl.innerText = 'Вопрос-ответ';
         const items = blockData.items || [{question: '', answer: ''}];
@@ -1543,6 +1627,7 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, в PRO больше
             </div>
         `;
+        
     } else if (key === 'facts' || key.startsWith('facts_copy')) {
         titleEl.innerText = 'Цифры / факты';
         const items = blockData.items || [{number: '', label: ''}];
@@ -1579,6 +1664,7 @@ function openEditBlock(key) {
                 бесплатно — до ${limit} элементов, в PRO больше
             </div>
         `;
+        
     } else if (key === 'video' || key.startsWith('video_copy')) {
         titleEl.innerText = 'Видео';
         const videoUrl = blockData.url || '';
@@ -1604,6 +1690,7 @@ function openEditBlock(key) {
                 </div>
             </div>
         `;
+        
     } else if (key === 'share' || key.startsWith('share_copy')) {
         titleEl.innerText = t.blk_share;
         const imageUrl = blockData.imageUrl || '';
@@ -1658,6 +1745,7 @@ function openEditBlock(key) {
             </div>
         `;
         setTimeout(() => updateSharePreview(layout, imageUrl, caption), 0);
+        
     } else if (key === 'gallery' || key.startsWith('gallery_copy')) {
         titleEl.innerText = t.blk_gallery || 'Галерея';
         const items = blockData.items || [];
@@ -1712,6 +1800,7 @@ function openEditBlock(key) {
                 ${t.gallery_limit}
             </div>
         `;
+        
     } else {
         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
         fieldsContainer.innerHTML = `
@@ -1719,6 +1808,7 @@ function openEditBlock(key) {
             <div class="form-group"><label class="form-label">Описание</label><input type="text" class="form-input" id="edit-input-2" value="${blockData.desc || ''}"></div>
         `;
     }
+    
     editModalOverlay.classList.add('open'); 
     editModalSheet.classList.add('open');
 }
@@ -1742,7 +1832,6 @@ function applyHoursTemplate(type) {
     if (!grid || !openInput || !closeInput) return;
     
     grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.remove('active'));
-    
     if (type === 'work') {
         openInput.value = '09:00'; closeInput.value = '18:00';
         for(let i=0; i<5; i++) grid.children[i].classList.add('active');
@@ -1824,12 +1913,12 @@ function addReviewItem() {
     row.className = 'review-edit-item';
     row.setAttribute('data-index', index);
     row.innerHTML =  `<label class="form-label" style="margin-bottom: 8px;">Ссылки на отзывы</label> <div class="platform-selector"> ${reviewPlatformsConfig.map(p =>` <div class= "platform-icon-btn ${p.id === 'yandex' ? 'active' : ''} " 
-data-platform= "${p.id} " 
-onclick= "selectReviewPlatform(this) "
-style= "border-color: ${p.id === 'yandex' ? p.color : 'rgba(255,255,255,0.1)'} " >
-${p.icon}
- </div >
- `).join('')} </div> <input type="text" class="form-input review-link-input" placeholder="https://..." data-index="${index}" style="margin-top: 10px;"> <input type="hidden" class="review-type-input" value="link"> <button class="btn-remove-review" onclick="removeReviewItem(this)"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </button>` ;
+    data-platform= "${p.id} " 
+    onclick= "selectReviewPlatform(this) "
+    style= "border-color: ${p.id === 'yandex' ? p.color : 'rgba(255,255,255,0.1)'} " >
+    ${p.icon}
+     </div >
+     `).join('')} </div> <input type="text" class="form-input review-link-input" placeholder="https://..." data-index="${index}" style="margin-top: 10px;"> <input type="hidden" class="review-type-input" value="link"> <button class="btn-remove-review" onclick="removeReviewItem(this)"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </button>` ;
     container.appendChild(row);
     updateReviewCounter();
 }
@@ -2083,7 +2172,6 @@ function saveBlockEdit() {
              individual: {},
              simple: { days: [], open: '10:00', close: '22:00' } 
          };
-         
          if (isIndividual) {
              const rows = document.querySelectorAll('.day-row-item');
              rows.forEach(row => {
