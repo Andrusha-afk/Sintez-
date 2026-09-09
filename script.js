@@ -105,6 +105,7 @@ const translations = {
         action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить",
         toast_copy: "Ссылка скопирована!", toast_deleted: "Удалено",
         bl_title: "Что ", bl_title_grad: "показать", bl_desc: "Выбери блоки.",
+        blk_about: "О бизнесе", // Добавлено
         blk_links: "Ссылки", blk_socials: "Соцсети", blk_hours: "Часы работы", blk_cta: "Призыв",
         blk_contacts: "Контакты", blk_price: "Прайс", blk_discounts: "Скидки",
         blk_reviews: "Отзывы", blk_faq: "Вопрос-ответ", blk_facts: "Цифры / Факты",
@@ -167,6 +168,7 @@ const translations = {
         action_edit: "Edit", action_share: "Share", action_delete: "Delete",
         toast_copy: "Copied!", toast_deleted: "Deleted",
         bl_title: "What to ", bl_title_grad: "show", bl_desc: "Select blocks.",
+        blk_about: "About", // Added
         blk_links: "Links", blk_socials: "Socials", blk_hours: "Hours", blk_cta: "CTA",
         blk_contacts: "Contacts", blk_price: "Price", blk_discounts: "Discounts",
         blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts",
@@ -229,6 +231,7 @@ const translations = {
         action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Löschen",
         toast_copy: "Kopiert!", toast_deleted: "Gelöscht",
         bl_title: "Was ", bl_title_grad: "zeigen?", bl_desc: "Blöcke wählen.",
+        blk_about: "Über uns", // Hinzugefügt
         blk_links: "Links", blk_socials: "Soziale", blk_hours: "Zeiten", blk_cta: "Aufruf",
         blk_contacts: "Kontakt", blk_price: "Preise", blk_discounts: "Rabatte",
         blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten",
@@ -238,7 +241,7 @@ const translations = {
         edit_modal_title: "Block", btn_save: "Speichern", preview_placeholder: "Inhalt",
         modal_header_title: "Header", header_format_label: "Format",
         tab_avatar: "Avatar", tab_cover: "Titelbild", tab_banner: "Banner", tab_carousel: "Karussell",
-        desc_avatar: "Runder Avatar.", btn_upload_device: "Laden", btn_upload_tg: "👤 Aus MAX",
+        desc_avatar: "Runder Avatar.", btn_upload_device: "Laden", btn_upload_tg: " Aus MAX",
         upload_hint: "Foto gespeichert.", or_link: "...oder Link",
         desc_cover: "Breites Bild.", ph_company_name: "Firmenname", hint_example: "Beispiel unten",
         lbl_cover: "TITELBILD", btn_upload_cover: "Laden", lbl_cover_link: "Foto-Link",
@@ -402,6 +405,7 @@ function goToBlocksSelection() {
     // Render blocks list
     const container = document.getElementById('blocks-list-container');
     container.innerHTML = '';
+    // MAP BLOCK REMOVED FROM LIST
     const blockTypes = [
         {id: 'about', name: 'О бизнесе'}, {id: 'links', name: 'Ссылки'}, {id: 'socials', name: 'Соцсети'},
         {id: 'hours', name: 'Часы'}, {id: 'cta', name: 'Призыв'}, {id: 'contacts', name: 'Контакты'},
@@ -631,12 +635,18 @@ function renderPreview() {
         return section;
     };
     
+    // FIX: Prevent duplicate "About Business" block
+    let aboutRendered = false;
     aboutKeys.forEach(key => {
         const blockData = selectedBlocks[key];
         if (blockData && (isViewMode || blockData.visible)) {
-            const title = blockData.title || 'О БИЗНЕСЕ';
-            const bodyContent = blockData.text ? `<p>${blockData.text}</p>` : '<p style="opacity:0.5">Нет текста</p>';
-            container.appendChild(createBlockSection(key, blockData, title, bodyContent));
+            if (!aboutRendered) {
+                // Use translation for title
+                const title = blockData.title || t.blk_about || 'О бизнесе';
+                const bodyContent = blockData.text ? `<p>${blockData.text}</p>` : '<p style="opacity:0.5">Нет текста</p>';
+                container.appendChild(createBlockSection(key, blockData, title, bodyContent));
+                aboutRendered = true;
+            }
         }
     });
     
@@ -1007,9 +1017,7 @@ function renderPreview() {
             else if (key === 'share' || key.startsWith('share_copy')) {
                 const layout = blockData.layout || 'compact';
                 const imageUrl = blockData.imageUrl;
-                // ИСПРАВЛЕНИЕ: Убрано дублирование подзаголовка (userCardData?.desc)
-                const caption = blockData.caption || ''; 
-                
+                const caption = blockData.caption || userCardData?.desc || '';
                 // Формируем правильную ссылку для просмотра
                 const viewUrl = window.location.origin + window.location.pathname + '?view=1';
                 
@@ -1169,7 +1177,7 @@ function openEditBlock(key) {
     fieldsContainer.innerHTML = ''; 
     
     if (key.startsWith('about')) {
-        titleEl.innerText = 'О бизнесе';
+        titleEl.innerText = t.blk_about || 'О бизнесе';
         fieldsContainer.innerHTML = `
             <div class="form-group" style="margin-bottom: 16px;"><label class="form-label">Заголовок</label><input type="text" class="form-input" id="edit-input-1" value="${blockData.title || 'О бизнесе'}"></div>
             <div class="form-group"><label class="form-label">Текст</label><textarea class="form-input" id="edit-input-2" rows="4" style="resize: none;">${blockData.text || ''}</textarea></div>
