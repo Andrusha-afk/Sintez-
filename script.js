@@ -71,7 +71,7 @@ const reviewPlatformsConfig = [
     {
         id: 'flamp',
         name: 'Flamp',
-        icon: '<svg viewBox="0 0 24 24" fill="#3498DB"><path d="M18.9 13.2c-.4-.4-1-.4-1.4 0l-1.4 1.4-1.4-1.4c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l1.4 1.4-1.4 1.4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l1.4-1.4 1.4 1.4c.4.4 1 .4 1.4 0s.4-1 0-1.4l-1.4-1.4 1.4-1.4c.4-.4.4-1 0-1.4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>',
+        icon: '<svg viewBox="0 0 24 24" fill="#3498DB"><path d="M18.9 13.2c-.4-.4-1-.4-1.4 0l-1.4 1.4-1.4-1.4c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l1.4 1.4-1.4 1.4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l1.4-1.4 1.4 1.4c.4.4 1 .4 1.4 0s.4-1 0-1.4l-1.4-1.4 1.4-1.4 c.4-.4.4-1 0-1.4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>',
         color: '#3498DB'
     },
     {
@@ -105,7 +105,6 @@ const translations = {
         action_edit: "Редактировать", action_share: "Поделиться", action_delete: "Удалить",
         toast_copy: "Ссылка скопирована!", toast_deleted: "Удалено",
         bl_title: "Что ", bl_title_grad: "показать", bl_desc: "Выбери блоки.",
-        blk_about: "О бизнесе", // Добавлено
         blk_links: "Ссылки", blk_socials: "Соцсети", blk_hours: "Часы работы", blk_cta: "Призыв",
         blk_contacts: "Контакты", blk_price: "Прайс", blk_discounts: "Скидки",
         blk_reviews: "Отзывы", blk_faq: "Вопрос-ответ", blk_facts: "Цифры / Факты",
@@ -115,7 +114,7 @@ const translations = {
         edit_modal_title: "Блок", btn_save: "Сохранить", preview_placeholder: "Содержимое",
         modal_header_title: "Шапка", header_format_label: "Формат",
         tab_avatar: "Аватар", tab_cover: "Обложка", tab_banner: "Баннер", tab_carousel: "Карусель",
-        desc_avatar: "Круглый аватар.", btn_upload_device: "Загрузить", btn_upload_tg: "Из MAX",
+        desc_avatar: "Круглый аватар.", btn_upload_device: " Загрузить", btn_upload_tg: " Из MAX",
         upload_hint: "Фото сохранится.", or_link: "...или ссылка",
         desc_cover: "Широкая обложка.", ph_company_name: "Имя компании", hint_example: "Пример ниже",
         lbl_cover: "ОБЛОЖКА", btn_upload_cover: "Загрузить", lbl_cover_link: "Ссылка на фото",
@@ -168,7 +167,6 @@ const translations = {
         action_edit: "Edit", action_share: "Share", action_delete: "Delete",
         toast_copy: "Copied!", toast_deleted: "Deleted",
         bl_title: "What to ", bl_title_grad: "show", bl_desc: "Select blocks.",
-        blk_about: "About", // Added
         blk_links: "Links", blk_socials: "Socials", blk_hours: "Hours", blk_cta: "CTA",
         blk_contacts: "Contacts", blk_price: "Price", blk_discounts: "Discounts",
         blk_reviews: "Reviews", blk_faq: "Q&A", blk_facts: "Facts",
@@ -178,7 +176,7 @@ const translations = {
         edit_modal_title: "Block", btn_save: "Save", preview_placeholder: "Content",
         modal_header_title: "Header", header_format_label: "Format",
         tab_avatar: "Avatar", tab_cover: "Cover", tab_banner: "Banner", tab_carousel: "Carousel",
-        desc_avatar: "Round avatar.", btn_upload_device: "Upload", btn_upload_tg: "From MAX",
+        desc_avatar: "Round avatar.", btn_upload_device: " Upload", btn_upload_tg: " From MAX",
         upload_hint: "Photo saved.", or_link: "...or link",
         desc_cover: "Wide cover.", ph_company_name: "Company name", hint_example: "Example below",
         lbl_cover: "COVER", btn_upload_cover: "Upload", lbl_cover_link: "Photo link",
@@ -231,7 +229,6 @@ const translations = {
         action_edit: "Bearbeiten", action_share: "Teilen", action_delete: "Löschen",
         toast_copy: "Kopiert!", toast_deleted: "Gelöscht",
         bl_title: "Was ", bl_title_grad: "zeigen?", bl_desc: "Blöcke wählen.",
-        blk_about: "Über uns", // Hinzugefügt
         blk_links: "Links", blk_socials: "Soziale", blk_hours: "Zeiten", blk_cta: "Aufruf",
         blk_contacts: "Kontakt", blk_price: "Preise", blk_discounts: "Rabatte",
         blk_reviews: "Bewertungen", blk_faq: "FAQ", blk_facts: "Fakten",
@@ -241,7 +238,7 @@ const translations = {
         edit_modal_title: "Block", btn_save: "Speichern", preview_placeholder: "Inhalt",
         modal_header_title: "Header", header_format_label: "Format",
         tab_avatar: "Avatar", tab_cover: "Titelbild", tab_banner: "Banner", tab_carousel: "Karussell",
-        desc_avatar: "Runder Avatar.", btn_upload_device: "Laden", btn_upload_tg: " Aus MAX",
+        desc_avatar: "Runder Avatar.", btn_upload_device: " Laden", btn_upload_tg: "👤 Aus MAX",
         upload_hint: "Foto gespeichert.", or_link: "...oder Link",
         desc_cover: "Breites Bild.", ph_company_name: "Firmenname", hint_example: "Beispiel unten",
         lbl_cover: "TITELBILD", btn_upload_cover: "Laden", lbl_cover_link: "Foto-Link",
@@ -382,11 +379,6 @@ function startCreationFlow() {
     }
 }
 
-// НОВАЯ ФУНКЦИЯ: Пропускает весь онбординг и идет сразу к созданию
-function skipOnboarding() {
-    startCreationFlow();
-}
-
 function goToBlocksSelection() {
     const name = document.getElementById('input-name').value.trim();
     const desc = document.getElementById('input-desc').value.trim();
@@ -399,37 +391,38 @@ function goToBlocksSelection() {
     userCardData.city = city;
     
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('screen-blocks').classList.add('active');
-    updateHeader('blocks');
-    
-    // Render blocks list
-    const container = document.getElementById('blocks-list-container');
-    container.innerHTML = '';
-    // MAP BLOCK REMOVED FROM LIST
-    const blockTypes = [
-        {id: 'about', name: 'О бизнесе'}, {id: 'links', name: 'Ссылки'}, {id: 'socials', name: 'Соцсети'},
-        {id: 'hours', name: 'Часы'}, {id: 'cta', name: 'Призыв'}, {id: 'contacts', name: 'Контакты'},
-        {id: 'price', name: 'Прайс'}, {id: 'discounts', name: 'Скидки'}, {id: 'reviews', name: 'Отзывы'},
-        {id: 'faq', name: 'FAQ'}, {id: 'facts', name: 'Факты'}, {id: 'video', name: 'Видео'},
-        {id: 'share', name: 'Поделиться'}, {id: 'gallery', name: 'Галерея'}
-    ];
-    
-    blockTypes.forEach(block => {
-        if (!selectedBlocks[block.id]) selectedBlocks[block.id] = { visible: true, title: null };
-        const div = document.createElement('div');
-        div.className = 'block-item';
-        div.innerHTML = `
-            <div class="item-left">
-                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg></div>
-                <div class="item-title">${block.name}</div>
-            </div>
-            <label class="toggle-switch">
-                <input type="checkbox" data-block="${block.id}" ${selectedBlocks[block.id].visible ? 'checked' : ''}>
-                <span class="slider"></span>
-            </label>
-        `;
-        container.appendChild(div);
-    });
+     document.getElementById('screen-blocks').classList.add('active');
+     updateHeader('blocks');
+     
+     // Render blocks list
+     const container = document.getElementById('blocks-list-container');
+     container.innerHTML = '';
+     
+     // MAP BLOCK REMOVED FROM LIST
+     const blockTypes = [
+         {id: 'about', name: 'О бизнесе'}, {id: 'links', name: 'Ссылки'}, {id: 'socials', name: 'Соцсети'},
+         {id: 'hours', name: 'Часы'}, {id: 'cta', name: 'Призыв'}, {id: 'contacts', name: 'Контакты'},
+         {id: 'price', name: 'Прайс'}, {id: 'discounts', name: 'Скидки'}, {id: 'reviews', name: 'Отзывы'},
+         {id: 'faq', name: 'FAQ'}, {id: 'facts', name: 'Факты'}, {id: 'video', name: 'Видео'},
+         {id: 'share', name: 'Поделиться'}, {id: 'gallery', name: 'Галерея'}
+     ];
+     
+     blockTypes.forEach(block => {
+         if (!selectedBlocks[block.id]) selectedBlocks[block.id] = { visible: true, title: null };
+         const div = document.createElement('div');
+         div.className = 'block-item';
+         div.innerHTML = `
+             <div class="item-left">
+                 <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg></div>
+                 <div class="item-title">${block.name}</div>
+             </div>
+             <label class="toggle-switch">
+                 <input type="checkbox" data-block="${block.id}" ${selectedBlocks[block.id].visible ? 'checked' : ''}>
+                 <span class="slider"></span>
+             </label>
+         `;
+         container.appendChild(div);
+     });
 }
 
 function finishBlocksSelection() {
@@ -473,9 +466,7 @@ function openCreator(isEdit = false) {
         document.getElementById('input-name').value = userCardData.name || '';
         document.getElementById('input-desc').value = userCardData.desc || '';
         document.getElementById('input-city').value = userCardData.city || '';
-    } else { 
-        startCreationFlow(); 
-    }
+    } else { startCreationFlow(); }
 }
 
 function showAnalytics() {
@@ -501,33 +492,33 @@ function updateHeader(state) {
     const previewBtn = document.getElementById('preview-toggle-btn');
     const showLangSwitch = state !== 'analytics';
     
-    if (['onboarding', 'blocks', 'preview', 'creator'].includes(state)) {
-        backBtn.style.display = (state !== 'onboarding') ? 'flex' : 'none';
-        logo.style.display = 'none'; title.style.display = 'none'; menuBtn.style.display = 'none';
-        
-        // Показываем кнопку предпросмотра только на экране preview
-        if (state === 'preview') {
-            previewBtn.style.display = 'flex';
-        } else {
-            previewBtn.style.display = 'none';
-            if(isUserPreviewMode) toggleUserPreviewMode(); // Сброс режима при уходе
-        }
-        
-        if (showLangSwitch) {
-            langSwitch.style.display = 'flex';
-            langSwitch.style.background = (state === 'onboarding') ? 'rgba(255,255,255,0.1)' : 'transparent';
-        } else langSwitch.style.display = 'none';
-        
-    } else if (state === 'dashboard') {
-        backBtn.style.display = 'none'; logo.style.display = 'flex'; title.style.display = 'none'; menuBtn.style.display = 'block';
-        previewBtn.style.display = 'none';
-        if (showLangSwitch) { langSwitch.style.display = 'flex'; langSwitch.style.background = 'rgba(255,255,255,0.1)'; } 
-        else langSwitch.style.display = 'none';
-        
-    } else if (state === 'analytics') {
-        backBtn.style.display = 'flex'; logo.style.display = 'none'; title.style.display = 'block'; menuBtn.style.display = 'none'; langSwitch.style.display = 'none';
-        previewBtn.style.display = 'none';
-    }
+     if (['onboarding', 'blocks', 'preview', 'creator'].includes(state)) {
+         backBtn.style.display = (state !== 'onboarding') ? 'flex' : 'none';
+         logo.style.display = 'none'; title.style.display = 'none'; menuBtn.style.display = 'none';
+         
+         // Показываем кнопку предпросмотра только на экране preview
+         if (state === 'preview') {
+             previewBtn.style.display = 'flex';
+         } else {
+             previewBtn.style.display = 'none';
+             if(isUserPreviewMode) toggleUserPreviewMode(); // Сброс режима при уходе
+         }
+         
+         if (showLangSwitch) {
+             langSwitch.style.display = 'flex';
+             langSwitch.style.background = (state === 'onboarding') ? 'rgba(255,255,255,0.1)' : 'transparent';
+         } else langSwitch.style.display = 'none';
+         
+     } else if (state === 'dashboard') {
+         backBtn.style.display = 'none'; logo.style.display = 'flex'; title.style.display = 'none'; menuBtn.style.display = 'block';
+         previewBtn.style.display = 'none';
+         if (showLangSwitch) { langSwitch.style.display = 'flex'; langSwitch.style.background = 'rgba(255,255,255,0.1)'; } 
+         else langSwitch.style.display = 'none';
+         
+     } else if (state === 'analytics') {
+         backBtn.style.display = 'flex'; logo.style.display = 'none'; title.style.display = 'block'; menuBtn.style.display = 'none'; langSwitch.style.display = 'none';
+         previewBtn.style.display = 'none';
+     }
 }
 
 function openMenu() { document.getElementById('modalOverlay').classList.add('open'); document.getElementById('modalSheet').classList.add('open'); }
@@ -569,576 +560,570 @@ function renderPreview() {
     container.innerHTML = '';
     const t = translations[currentLang];
     
-    const headerCard = document.createElement('div');
-    headerCard.className = 'preview-header-card';
-    if (!isViewMode) headerCard.onclick = openHeaderModal;
-    
-    let coverStyle = '', avatarStyle = '', avatarDisplay = 'flex', avatarClass = 'header-preview-avatar', infoClass = 'header-preview-info', coverClass = 'header-preview-cover';
-    
-    if (currentHeaderFormat === 'cover' && userCardData?.coverUrl) {
-        coverStyle = `background-image: url(${userCardData.coverUrl});`; avatarDisplay = 'none'; 
-    } else if (currentHeaderFormat === 'banner') {
-        if (userCardData?.coverUrl) coverStyle = `background-image: url(${userCardData.coverUrl});`;
-        if (userCardData?.avatarUrl) avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
-        avatarDisplay = 'flex'; avatarClass += ' overlay-mode'; coverClass += ' banner-mode'; infoClass += ' banner-info';
-    } else if (currentHeaderFormat === 'carousel' && userCardData?.carouselImages?.length > 0) {
-        headerCard.innerHTML = `<div class="carousel-container" style="pointer-events: none;">${userCardData.carouselImages.map(img => `<div class="carousel-item" style="background-image: url(${img})"></div>`).join('')}</div><div class="header-preview-info" style="margin-top: 10px;"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>${!isViewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}`;
-        container.appendChild(headerCard);
-    } else if (userCardData?.avatarUrl) {
-        avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
-    }
-    
-    if (currentHeaderFormat !== 'carousel') {
-        headerCard.innerHTML = `
-            <div class="${coverClass}" style="${coverStyle}"></div>
-            <div class="${avatarClass}" style="display: ${avatarDisplay}; ${avatarStyle}">${!userCardData?.avatarUrl ? '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' : ''}</div>
-            <div class="${infoClass}"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>
-            ${!isViewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}
-        `;
-    }
-    container.appendChild(headerCard);
-    
-    const allKeys = Object.keys(selectedBlocks);
-    const aboutKeys = allKeys.filter(k => k.startsWith('about'));
-    const otherKeys = allKeys.filter(k => !k.startsWith('about'));
-    
-    const createBlockSection = (key, blockData, title, contentHtml) => {
-        const section = document.createElement('div');
-        // В режиме просмотра всегда показываем блоки, игнорируя hidden-block
-        section.className = `preview-block-section ${(!isViewMode && !blockData.visible) ? 'hidden-block' : ''}`;
-        
-        let headerHtml = '';
-        if (!isViewMode) {
-            headerHtml = `
-                <div class="block-section-header">
-                    <div class="block-section-title">${title.toUpperCase()}</div>
-                    <div class="block-actions">
-                        <button class="action-btn ${blockData.visible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                        </button>
-                        <button class="action-btn" onclick="openEditBlock('${key}')">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                        </button>
-                    </div>
-                </div>
-            `;
-        } else {
-            headerHtml = `<div class="block-section-title" style="margin-bottom: 12px;">${title.toUpperCase()}</div>`;
-        }
-        
-        section.innerHTML = `
-            ${headerHtml}
-            <div class="preview-card-body">
-                ${contentHtml}
-            </div>
-        `;
-        return section;
-    };
-    
-    // FIX: Prevent duplicate "About Business" block
-    let aboutRendered = false;
-    aboutKeys.forEach(key => {
-        const blockData = selectedBlocks[key];
-        if (blockData && (isViewMode || blockData.visible)) {
-            if (!aboutRendered) {
-                // Use translation for title
-                const title = blockData.title || t.blk_about || 'О бизнесе';
-                const bodyContent = blockData.text ? `<p>${blockData.text}</p>` : '<p style="opacity:0.5">Нет текста</p>';
-                container.appendChild(createBlockSection(key, blockData, title, bodyContent));
-                aboutRendered = true;
-            }
-        }
-    });
-    
-    otherKeys.forEach(key => {
-        const blockData = selectedBlocks[key];
-        if (blockData && (isViewMode || blockData.visible)) {
-            let title = blockData.title;
-            if (!title) title = t[`blk_${key}`] || key;
-            let contentHtml = '';
-            let isEmpty = false; // Флаг для проверки пустоты блока
-            
-            if (key === 'links' || key.startsWith('links_copy')) {
-                const links = blockData.items || [];
-                if (links.length > 0) {
-                    contentHtml = `<div style="display: flex; flex-direction: column; gap: 10px;">`;
-                    links.forEach(link => {
-                        const href = link.url ? link.url : '#';
-                        const target = link.url ? '_blank' : '_self';
-                        contentHtml += `
-                            <a href="${href}" target="${target}" class="link-item" style="text-decoration: none;">
-                                <div class="link-left">
-                                    <div class="link-icon-box">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                                    </div>
-                                    <div class="link-title">${link.name}</div>
-                                </div>
-                                <div class="link-arrow">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                                </div>
-                            </a>
-                        `;
-                    });
-                    contentHtml += `</div>`;
-                } else {
-                    isEmpty = true;
-                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет добавленных ссылок</div>`;
-                }
-            } 
-            else if (key === 'socials' || key.startsWith('socials_copy')) {
-                const socialsData = blockData.items || {};
-                const activeSocials = socialNetworksConfig.filter(net => socialsData[net.id]?.enabled && socialsData[net.id]?.url);
-                if (activeSocials.length > 0) {
-                    contentHtml = `<div class="socials-grid-preview">`;
-                    activeSocials.forEach(net => {
-                        const url = socialsData[net.id].url;
-                        contentHtml += `
-                            <a href="${url}" target="_blank" class="social-icon-btn" title="${net.name}">
-                                ${net.icon}
-                            </a>
-                        `;
-                    });
-                    contentHtml += `</div>`;
-                } else {
-                    isEmpty = true;
-                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет активных соцсетей</div>`;
-                }
-            }
-            else if (key === 'hours' || key.startsWith('hours_copy')) {
-                const sched = blockData.schedule || { mode: 'simple', individual: {}, simple: {days: [], open: '10:00', close: '22:00'} };
-                const now = new Date();
-                const currentDay = now.getDay() === 0 ? 7 : now.getDay();
-                const currentMinutes = now.getHours() * 60 + now.getMinutes();
-                
-                let isOpen = false;
-                let todayOpen = '', todayClose = '';
-                
-                const dayData = sched.individual[currentDay];
-                if (dayData && dayData.active) {
-                    const [oh, om] = dayData.open.split(':').map(Number);
-                    const [ch, cm] = dayData.close.split(':').map(Number);
-                    const startMin = oh * 60 + om;
-                    const endMin = ch * 60 + cm;
-                    
-                    if (endMin < startMin) {
-                        isOpen = currentMinutes >= startMin || currentMinutes < endMin;
-                    } else {
-                        isOpen = currentMinutes >= startMin && currentMinutes < endMin;
-                    }
-                    todayOpen = dayData.open;
-                    todayClose = dayData.close;
-                }
-                
-                const statusClass = isOpen ? 'status-open' : 'status-closed';
-                const statusText = isOpen ? 'Открыто сейчас' : 'Закрыто сейчас';
-                const currentTimeDisplay = todayOpen ? `${todayOpen}–${todayClose}` : '—';
-                
-                const dayNames = ['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
-                let daysHtml = '';
-                for (let i = 1; i <= 7; i++) {
-                    const d = sched.individual[i];
-                    const isWeekend = !d || !d.active;
-                    const timeStr = isWeekend ? 'Выходной' : `${d.open}–${d.close}`;
-                    const weekendClass = isWeekend ? 'is-weekend' : '';
-                    daysHtml += `
-                        <div class="hours-day-item ${weekendClass}">
-                            <span class="day-name">${dayNames[i]}</span>
-                            <span class="day-time">${timeStr}</span>
-                        </div>
-                    `;
-                }
-                
-                contentHtml = `
-                    <div class="hours-preview-status ${statusClass}">
-                        <div class="status-text-group">
-                            <div class="status-dot"></div> ${statusText}
-                        </div>
-                        <span class="current-hours-time">${currentTimeDisplay}</span>
-                    </div>
-                    <div class="hours-days-list">
-                        ${daysHtml}
-                    </div>
-                `;
-            }
-            else if (key === 'cta' || key.startsWith('cta_copy')) {
-                const ctaText = blockData.text || 'Кнопка';
-                const ctaLink = blockData.link || '#';
-                const ctaStyle = blockData.style || 'normal';
-                let animClass = '';
-                if (ctaStyle === 'shimmer') animClass = 'cta-style-shimmer';
-                if (ctaStyle === 'flash') animClass = 'cta-style-flash';
-                if (ctaStyle === 'pulse') animClass = 'cta-style-pulse';
-                
-                contentHtml = `
-                    <a href="${ctaLink}" target="_blank" class="cta-button-preview ${animClass}">
-                        ${ctaText}
-                    </a>
-                `;
-            }
-            else if (key === 'contacts' || key.startsWith('contacts_copy')) {
-                const phone = blockData.phone || '';
-                const email = blockData.email || '';
-                const showVcard = blockData.showVcard !== false;
-                
-                let buttonsHtml = '<div class="contacts-actions-grid">';
-                if (phone) {
-                    const cleanPhone = phone.replace(/[^\d+]/g, '');
-                    buttonsHtml += `
-                        <a href="tel:${cleanPhone}" class="contact-btn">
-                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                            Позвонить
-                        </a>
-                    `;
-                }
-                if (email) {
-                    buttonsHtml += `
-                        <a href="mailto:${email}" class="contact-btn">
-                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                            Email
-                        </a>
-                    `;
-                }
-                if (!phone && !email) {
-                    isEmpty = true;
-                    buttonsHtml += `<div style="grid-column: 1/-1; text-align:center; color: var(--text-secondary); padding: 10px;">Нет добавленных контактов</div>`;
-                }
-                buttonsHtml += '</div>'; 
-                
-                if (showVcard && (phone || email)) {
-                    const safeKey = key.replace(/[^a-zA-Z0-9]/g, '');
-                    const vcardFuncName = `downloadVcard_${safeKey}`;
-                    window[vcardFuncName] = function() {
-                        const name = userCardData?.name || 'Контакт';
-                        const vcardData = [
-                            'BEGIN:VCARD',
-                            'VERSION:3.0',
-                            `FN:${name}`,
-                            phone ? `TEL;TYPE=CELL:${phone.replace(/[^\d+]/g, '')}` : '',
-                            email ? `EMAIL:${email}` : '',
-                            'END:VCARD'
-                        ].filter(line => line).join('\n');
-                        
-                        const blob = new Blob([vcardData], { type: 'text/vcard' });
-                        const url = URL.createObjectURL(blob);
-                        const a = document.createElement('a');
-                        a.href = url;
-                        a.download = `${name.replace(/\s+/g, '_')}.vcf`;
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
-                        URL.revokeObjectURL(url);
-                    };
-                    buttonsHtml += `
-                        <button onclick="${vcardFuncName}()" class="contact-btn full-width" style="margin-top: 10px;">
-                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                            Сохранить в контакты
-                        </button>
-                    `;
-                }
-                contentHtml = buttonsHtml;
-            }
-            else if (key === 'price' || key.startsWith('price_copy')) {
-                const items = blockData.items || [];
-                if (items.length > 0 && (items[0].name || items[0].cost)) {
-                    contentHtml = `<div class="price-list-container">`;
-                    items.forEach(item => {
-                        const displayName = item.name || 'Позиция';
-                        const displayCost = item.cost ? item.cost : '';
-                        contentHtml += `
-                            <div class="price-row-item">
-                                <span class="price-item-name">${displayName}</span>
-                                ${displayCost ? `<span class="price-item-cost">${displayCost}</span>` : ''}
-                            </div>
-                        `;
-                    });
-                    contentHtml += `</div>`;
-                } else {
-                    isEmpty = true;
-                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных позиций</div>`;
-                }
-            }
-            else if (key === 'discounts' || key.startsWith('discounts_copy')) {
-                const items = blockData.items || [];
-                if (items.length > 0 && (items[0].name || items[0].newPrice)) {
-                    contentHtml = `<div class="discounts-list-container">`;
-                    items.forEach(item => {
-                        const displayName = item.name || 'Акция';
-                        const oldP = item.oldPrice ? item.oldPrice : '';
-                        const newP = item.newPrice ? item.newPrice : '';
-                        const perc = item.percent ? `-${item.percent}%` : '';
-                        contentHtml += `
-                            <div class="discount-card-item">
-                                ${perc ? `<div class="discount-badge">${perc}</div>` : ''}
-                                <div class="discount-info">
-                                    <div class="discount-title">${displayName}</div>
-                                    <div class="discount-prices-display">
-                                        ${oldP ? `<span class="old-price">${oldP}</span>` : ''}
-                                        ${newP ? `<span class="new-price">${newP}</span>` : ''}
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    });
-                    contentHtml += `</div>`;
-                } else {
-                    isEmpty = true;
-                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных акций</div>`;
-                }
-            }
-            else if (key === 'reviews' || key.startsWith('reviews_copy')) {
-                const items = blockData.items || [];
-                if (items.length > 0) {
-                    contentHtml = `<div class="reviews-list-container">`;
-                    items.forEach(item => {
-                        const platform = reviewPlatformsConfig.find(p => p.id === item.platform) || reviewPlatformsConfig[4];
-                        if (item.type === 'link') {
-                            contentHtml += `
-                                <a href="${item.url || '#'}" target="_blank" class="review-link-item">
-                                    <div class="review-platform-icon" style="color: ${platform.color}">
-                                        ${platform.icon}
-                                    </div>
-                                    <div class="review-platform-name">${item.name || platform.name}</div>
-                                    <div class="review-action">Читать отзывы ›</div>
-                                </a>
-                            `;
-                        } else {
-                            const stars = '★'.repeat(parseInt(item.rating) || 5);
-                            contentHtml += `
-                                <div class="review-text-item">
-                                    <div class="review-stars" style="color: #F1C40F;">${stars}</div>
-                                    <div class="review-text-content">${item.text || ''}</div>
-                                    <div class="review-author">— ${item.author || 'Аноним'}</div>
-                                </div>
-                            `;
-                        }
-                    });
-                    contentHtml += `</div>`;
-                } else {
-                    isEmpty = true;
-                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных отзывов</div>`;
-                }
-            }
-            else if (key === 'faq' || key.startsWith('faq_copy')) {
-                const items = blockData.items || [];
-                if (items.length > 0) {
-                    contentHtml = `<div class="faq-list-container">`;
-                    items.forEach((item, index) => {
-                        const qId = `faq-q-${key}-${index}`;
-                        const aId = `faq-a-${key}-${index}`;
-                        contentHtml += `
-                            <div class="faq-item">
-                                <div class="faq-question" onclick="toggleFaq('${qId}', '${aId}', this)">
-                                    <span>${item.question || 'Вопрос'}</span>
-                                    <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                                </div>
-                                <div class="faq-answer" id="${aId}">
-                                    <div class="faq-answer-inner">
-                                        ${item.answer || 'Ответ'}
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    });
-                    contentHtml += `</div>`;
-                } else {
-                    isEmpty = true;
-                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных вопросов</div>`;
-                }
-            }
-            else if (key === 'facts' || key.startsWith('facts_copy')) {
-                const items = blockData.items || [];
-                if (items.length > 0) {
-                    contentHtml = `<div class="facts-grid">`;
-                    items.forEach(item => {
-                        contentHtml += `
-                            <div class="fact-card">
-                                <div class="fact-number">${item.number || '0'}</div>
-                                <div class="fact-label">${item.label || ''}</div>
-                            </div>
-                        `;
-                    });
-                    contentHtml += `</div>`;
-                } else {
-                    isEmpty = true;
-                    contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных фактов</div>`;
-                }
-            }
-            else if (key === 'video' || key.startsWith('video_copy')) {
-                const url = blockData.url || '';
-                if (url) {
-                    let embedCode = '';
-                    let isYoutube = false;
-                    if (url.includes('youtube.com') || url.includes('youtu.be')) {
-                        isYoutube = true;
-                        let videoId = '';
-                        if (url.includes('youtu.be')) {
-                            videoId = url.split('/').pop().split('?')[0];
-                        } else if (url.includes('v=')) {
-                            videoId = url.split('v=')[1].split('&')[0];
-                        } else if (url.includes('shorts/')) {
-                            videoId = url.split('shorts/')[1].split('?')[0];
-                        }
-                        if (videoId) {
-                            embedCode = `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen></iframe>`;
-                        }
-                    } 
-                    else if (url.includes('tiktok.com')) {
-                        embedCode = `<iframe src="${url}" style="width:100%; height:100%;" frameborder="0" allowfullscreen></iframe>`;
-                    }
-                    else if (url.includes('vimeo.com')) {
-                        const vimeoId = url.split('/').pop();
-                        embedCode = `<iframe src="https://player.vimeo.com/video/${vimeoId}" allowfullscreen></iframe>`;
-                    }
-                    else if (url.endsWith('.mp4')) {
-                        embedCode = `<video controls playsinline><source src="${url}" type="video/mp4">Ваш браузер не поддерживает видео.</video>`;
-                    }
-                    
-                    if (embedCode) {
-                        contentHtml = `
-                            <div class="video-wrapper">
-                                ${embedCode}
-                                ${isYoutube ? `<a href="${url}" target="_blank" class="video-fallback-btn">
-                                    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                                </a>` : ''}
-                            </div>
-                        `;
-                    } else {
-                         isEmpty = true;
-                         contentHtml = `<a href="${url}" target="_blank" class="video-fallback-btn" style="position:static; transform:none; width:100%; justify-content:center;">
-                                            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                                            Открыть видео
-                                        </a>`;
-                    }
-                } else {
-                    isEmpty = true;
-                    contentHtml = `<div style="padding: 20px; text-align:center; color: var(--text-secondary); border: 1px dashed var(--border-color); border-radius: 16px;">Нет ссылки на видео</div>`;
-                }
-            }
-            else if (key === 'share' || key.startsWith('share_copy')) {
-                const layout = blockData.layout || 'compact';
-                const imageUrl = blockData.imageUrl;
-                const caption = blockData.caption || userCardData?.desc || '';
-                // Формируем правильную ссылку для просмотра
-                const viewUrl = window.location.origin + window.location.pathname + '?view=1';
-                
-                const copyBtn = `<button class="share-btn share-btn-copy" onclick="copyToClipboard('${viewUrl}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> ${t.share_btn_copy}</button>`;
-                const storiesBtn = `<button class="share-btn share-btn-stories" onclick="shareToStories('${imageUrl || ''}', '${caption.replace(/'/g, "\\'")}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> ${t.share_btn_stories}</button>`;
-                const shareBtn = `<button class="share-btn share-btn-share" onclick="shareViaBot('${imageUrl || ''}', '${caption.replace(/'/g, "\\'")}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> ${t.share_btn_share}</button>`;
-                
-                let buttonsHtml = '';
-                if (layout === 'compact') {
-                    buttonsHtml = `<div class="share-layout-compact">${copyBtn}${storiesBtn}${shareBtn}</div>`;
-                } else if (layout === 'stories') {
-                    buttonsHtml = `<div class="share-layout-stories">${storiesBtn}${copyBtn}${shareBtn}</div>`;
-                } else if (layout === 'grid') {
-                    buttonsHtml = `<div class="share-layout-grid">${copyBtn}${storiesBtn}${shareBtn}</div>`;
-                } else if (layout === 'list') {
-                    buttonsHtml = `<div class="share-layout-list">${copyBtn}${storiesBtn}${shareBtn}</div>`;
-                }
-                
-                contentHtml = `
-                    <div class="share-block-preview">
-                        ${imageUrl ? `<img src="${imageUrl}" alt="Share image" class="share-preview-image">` : ''}
-                        ${caption ? `<p class="share-preview-caption">${caption}</p>` : ''}
-                        ${buttonsHtml}
-                    </div>
-                `;
-            }
-            else if (key === 'gallery' || key.startsWith('gallery_copy')) {
-                const items = blockData.items || [];
-                const format = blockData.displayFormat || 'grid';
-                if (items.length > 0) {
-                    if (format === 'grid') {
-                        contentHtml = `<div class="gallery-grid">`;
-                        items.forEach(item => {
-                            if (item.type === 'image') {
-                                contentHtml += `<div class="gallery-item" style="background-image: url('${item.src}');"></div>`;
-                            } else if (item.type === 'demo') {
-                                contentHtml += `<div class="gallery-item demo-tile" style="background-color: ${item.color};"></div>`;
-                            }
-                        });
-                        contentHtml += `</div>`;
-                    } else if (format === 'carousel') {
-                        contentHtml = `<div class="gallery-carousel">`;
-                        items.forEach(item => {
-                            if (item.type === 'image') {
-                                contentHtml += `<div class="gallery-carousel-item" style="background-image: url('${item.src}');"></div>`;
-                            } else if (item.type === 'demo') {
-                                contentHtml += `<div class="gallery-carousel-item demo-tile" style="background-color: ${item.color};"></div>`;
-                            }
-                        });
-                        contentHtml += `</div>`;
-                    } else if (format === 'mosaic') {
-                        contentHtml = `<div class="gallery-mosaic">`;
-                        items.forEach((item, index) => {
-                            let spanClass = '';
-                            // Простая логика шахматного порядка: четные элементы широкие, нечетные высокие
-                            if (index % 2 === 0) {
-                                spanClass = 'mosaic-wide';
-                            } else {
-                                spanClass = 'mosaic-tall';
-                            }
-                            if (item.type === 'image') {
-                                contentHtml += `<div class="gallery-mosaic-item ${spanClass}" style="background-image: url('${item.src}');"></div>`;
-                            } else if (item.type === 'demo') {
-                                contentHtml += `<div class="gallery-mosaic-item demo-tile ${spanClass}" style="background-color: ${item.color};"></div>`;
-                            }
-                        });
-                        contentHtml += `</div>`;
-                    }
-                } else {
-                    isEmpty = true;
-                    contentHtml = `<div style="padding: 20px; text-align:center; color: var(--text-secondary); border: 1px dashed var(--border-color); border-radius: 16px;">Нет добавленных фото</div>`;
-                }
-            }
-            else {
-                contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
-            }
-            
-            // Если включен режим просмотра пользователем и блок пуст, не добавляем его в DOM
-            if (isUserPreviewMode && isEmpty) {
-                // Просто пропускаем этот блок
-            } else {
-                container.appendChild(createBlockSection(key, blockData, title, contentHtml));
-            }
-        }
-    });
-    
-    // Добавляем нативную кнопку шеринга только в режиме просмотра
-    if (isViewMode && !document.getElementById('native-share-fab')) {
-        const fab = document.createElement('button');
-        fab.id = 'native-share-fab';
-        fab.className = 'telegram-fab'; 
-        fab.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`;
-        // Принудительно формируем ссылку на просмотр
-        const shareUrl = window.location.origin + window.location.pathname + '?view=1';
-        fab.onclick = () => {
-            if (navigator.share) {
-                navigator.share({
-                    title: userCardData?.name || 'Моя визитка',
-                    text: userCardData?.desc || '',
-                    url: shareUrl // Используем правильную ссылку
-                }).catch(console.error);
-            } else {
-                copyToClipboard(shareUrl);
-            }
-        };
-        document.getElementById('screen-preview').appendChild(fab);
-    } else if (!isViewMode && !document.getElementById('telegram-fab')) {
-        // Старая кнопка для режима редактора (если нужна)
-        const fab = document.createElement('button');
-        fab.id = 'telegram-fab';
-        fab.className = 'telegram-fab';
-        fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
-        document.getElementById('screen-preview').appendChild(fab);
-    }
-    
-    if (container.children.length <= 1) { 
-        const emptyMsg = document.createElement('div');
-        emptyMsg.style.textAlign = 'center'; emptyMsg.style.color = 'var(--text-secondary)'; emptyMsg.style.padding = '40px 0';
-        emptyMsg.innerText = t.empty_h3;
-        container.appendChild(emptyMsg);
-    }
+     const headerCard = document.createElement('div');
+     headerCard.className = 'preview-header-card';
+     if (!isViewMode) headerCard.onclick = openHeaderModal;
+     
+     let coverStyle = '', avatarStyle = '', avatarDisplay = 'flex', avatarClass = 'header-preview-avatar', infoClass = 'header-preview-info', coverClass = 'header-preview-cover';
+     
+     if (currentHeaderFormat === 'cover' && userCardData?.coverUrl) {
+         coverStyle = `background-image: url(${userCardData.coverUrl});`; avatarDisplay = 'none'; 
+     } else if (currentHeaderFormat === 'banner') {
+         if (userCardData?.coverUrl) coverStyle = `background-image: url(${userCardData.coverUrl});`;
+         if (userCardData?.avatarUrl) avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
+         avatarDisplay = 'flex'; avatarClass += ' overlay-mode'; coverClass += ' banner-mode'; infoClass += ' banner-info';
+     } else if (currentHeaderFormat === 'carousel' && userCardData?.carouselImages?.length > 0) {
+         headerCard.innerHTML = `<div class="carousel-container" style="pointer-events: none;">${userCardData.carouselImages.map(img => `<div class="carousel-item" style="background-image: url(${img})"></div>`).join('')}</div><div class="header-preview-info" style="margin-top: 10px;"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>${!isViewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}`;
+         container.appendChild(headerCard);
+     } else if (userCardData?.avatarUrl) {
+         avatarStyle = `background-image: url(${userCardData.avatarUrl});`;
+     }
+     
+     if (currentHeaderFormat !== 'carousel') {
+         headerCard.innerHTML = `
+             <div class="${coverClass}" style="${coverStyle}"></div>
+             <div class="${avatarClass}" style="display: ${avatarDisplay}; ${avatarStyle}">${!userCardData?.avatarUrl ? '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' : ''}</div>
+             <div class="${infoClass}"><h3>${userCardData?.name || t.cr_ph_name}</h3><p>${userCardData?.desc || t.cr_ph_desc}</p></div>
+             ${!isViewMode ? `<div class="edit-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>${t.modal_header_title}</span></div>` : ''}
+         `;
+     }
+     container.appendChild(headerCard);
+     
+     const allKeys = Object.keys(selectedBlocks);
+     const aboutKeys = allKeys.filter(k => k.startsWith('about'));
+     const otherKeys = allKeys.filter(k => !k.startsWith('about'));
+     
+     const createBlockSection = (key, blockData, title, contentHtml) => {
+         const section = document.createElement('div');
+         // В режиме просмотра всегда показываем блоки, игнорируя hidden-block
+         section.className = `preview-block-section ${(!isViewMode && !blockData.visible) ? 'hidden-block' : ''}`;
+         
+         let headerHtml = '';
+         if (!isViewMode) {
+             headerHtml = `
+                 <div class="block-section-header">
+                     <div class="block-section-title">${title.toUpperCase()}</div>
+                     <div class="block-actions">
+                         <button class="action-btn ${blockData.visible ? 'active-eye' : ''}" onclick="toggleBlockVisibility('${key}')">
+                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                         </button>
+                         <button class="action-btn" onclick="openEditBlock('${key}')">
+                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                         </button>
+                     </div>
+                 </div>
+             `;
+         } else {
+             headerHtml = `<div class="block-section-title" style="margin-bottom: 12px;">${title.toUpperCase()}</div>`;
+         }
+         
+         section.innerHTML = `
+             ${headerHtml}
+             <div class="preview-card-body">
+                 ${contentHtml}
+             </div>
+         `;
+         return section;
+     };
+     
+     aboutKeys.forEach(key => {
+         const blockData = selectedBlocks[key];
+         if (blockData && (isViewMode || blockData.visible)) {
+             const title = blockData.title || 'О БИЗНЕСЕ';
+             const bodyContent = blockData.text ? `<p>${blockData.text}</p>` : '<p style="opacity:0.5">Нет текста</p>';
+             container.appendChild(createBlockSection(key, blockData, title, bodyContent));
+         }
+     });
+     
+     otherKeys.forEach(key => {
+         const blockData = selectedBlocks[key];
+         if (blockData && (isViewMode || blockData.visible)) {
+             let title = blockData.title;
+             if (!title) title = t[`blk_${key}`] || key;
+             let contentHtml = '';
+             let isEmpty = false; // Флаг для проверки пустоты блока
+             
+             if (key === 'links' || key.startsWith('links_copy')) {
+                 const links = blockData.items || [];
+                 if (links.length > 0) {
+                     contentHtml = `<div style="display: flex; flex-direction: column; gap: 10px;">`;
+                     links.forEach(link => {
+                         const href = link.url ? link.url : '#';
+                         const target = link.url ? '_blank' : '_self';
+                         contentHtml += `
+                             <a href="${href}" target="${target}" class="link-item" style="text-decoration: none;">
+                                 <div class="link-left">
+                                     <div class="link-icon-box">
+                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                     </div>
+                                     <div class="link-title">${link.name}</div>
+                                 </div>
+                                 <div class="link-arrow">
+                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                 </div>
+                             </a>
+                         `;
+                     });
+                     contentHtml += `</div>`;
+                 } else {
+                     isEmpty = true;
+                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет добавленных ссылок</div>`;
+                 }
+             } 
+             else if (key === 'socials' || key.startsWith('socials_copy')) {
+                 const socialsData = blockData.items || {};
+                 const activeSocials = socialNetworksConfig.filter(net => socialsData[net.id]?.enabled && socialsData[net.id]?.url);
+                 if (activeSocials.length > 0) {
+                     contentHtml = `<div class="socials-grid-preview">`;
+                     activeSocials.forEach(net => {
+                         const url = socialsData[net.id].url;
+                         contentHtml += `
+                             <a href="${url}" target="_blank" class="social-icon-btn" title="${net.name}">
+                                 ${net.icon}
+                             </a>
+                         `;
+                     });
+                     contentHtml += `</div>`;
+                 } else {
+                     isEmpty = true;
+                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary);">Нет активных соцсетей</div>`;
+                 }
+             }
+             else if (key === 'hours' || key.startsWith('hours_copy')) {
+                 const sched = blockData.schedule || { mode: 'simple', individual: {}, simple: {days: [], open: '10:00', close: '22:00'} };
+                 const now = new Date();
+                 const currentDay = now.getDay() === 0 ? 7 : now.getDay();
+                 const currentMinutes = now.getHours() * 60 + now.getMinutes();
+                 
+                 let isOpen = false;
+                 let todayOpen = '', todayClose = '';
+                 
+                 const dayData = sched.individual[currentDay];
+                 if (dayData && dayData.active) {
+                     const [oh, om] = dayData.open.split(':').map(Number);
+                     const [ch, cm] = dayData.close.split(':').map(Number);
+                     const startMin = oh * 60 + om;
+                     const endMin = ch * 60 + cm;
+                     
+                     if (endMin < startMin) {
+                         isOpen = currentMinutes >= startMin || currentMinutes < endMin;
+                     } else {
+                         isOpen = currentMinutes >= startMin && currentMinutes < endMin;
+                     }
+                     todayOpen = dayData.open;
+                     todayClose = dayData.close;
+                 }
+                 
+                 const statusClass = isOpen ? 'status-open' : 'status-closed';
+                 const statusText = isOpen ? 'Открыто сейчас' : 'Закрыто сейчас';
+                 const currentTimeDisplay = todayOpen ? `${todayOpen}–${todayClose}` : '—';
+                 
+                 const dayNames = ['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+                 let daysHtml = '';
+                 for (let i = 1; i <= 7; i++) {
+                     const d = sched.individual[i];
+                     const isWeekend = !d || !d.active;
+                     const timeStr = isWeekend ? 'Выходной' : `${d.open}–${d.close}`;
+                     const weekendClass = isWeekend ? 'is-weekend' : '';
+                     daysHtml += `
+                         <div class="hours-day-item ${weekendClass}">
+                             <span class="day-name">${dayNames[i]}</span>
+                             <span class="day-time">${timeStr}</span>
+                         </div>
+                     `;
+                 }
+                 
+                 contentHtml = `
+                     <div class="hours-preview-status ${statusClass}">
+                         <div class="status-text-group">
+                             <div class="status-dot"></div> ${statusText}
+                         </div>
+                         <span class="current-hours-time">${currentTimeDisplay}</span>
+                     </div>
+                     <div class="hours-days-list">
+                         ${daysHtml}
+                     </div>
+                 `;
+             }
+             else if (key === 'cta' || key.startsWith('cta_copy')) {
+                 const ctaText = blockData.text || 'Кнопка';
+                 const ctaLink = blockData.link || '#';
+                 const ctaStyle = blockData.style || 'normal';
+                 let animClass = '';
+                 if (ctaStyle === 'shimmer') animClass = 'cta-style-shimmer';
+                 if (ctaStyle === 'flash') animClass = 'cta-style-flash';
+                 if (ctaStyle === 'pulse') animClass = 'cta-style-pulse';
+                 
+                 contentHtml = `
+                     <a href="${ctaLink}" target="_blank" class="cta-button-preview ${animClass}">
+                         ${ctaText}
+                     </a>
+                 `;
+             }
+             else if (key === 'contacts' || key.startsWith('contacts_copy')) {
+                 const phone = blockData.phone || '';
+                 const email = blockData.email || '';
+                 const showVcard = blockData.showVcard !== false;
+                 
+                 let buttonsHtml = '<div class="contacts-actions-grid">';
+                 if (phone) {
+                     const cleanPhone = phone.replace(/[^\d+]/g, '');
+                     buttonsHtml += `
+                         <a href="tel:${cleanPhone}" class="contact-btn">
+                             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                             Позвонить
+                         </a>
+                     `;
+                 }
+                 if (email) {
+                     buttonsHtml += `
+                         <a href="mailto:${email}" class="contact-btn">
+                             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                             Email
+                         </a>
+                     `;
+                 }
+                 if (!phone && !email) {
+                     isEmpty = true;
+                     buttonsHtml += `<div style="grid-column: 1/-1; text-align:center; color: var(--text-secondary); padding: 10px;">Нет добавленных контактов</div>`;
+                 }
+                 buttonsHtml += '</div>'; 
+                 
+                 if (showVcard && (phone || email)) {
+                     const safeKey = key.replace(/[^a-zA-Z0-9]/g, '');
+                     const vcardFuncName = `downloadVcard_${safeKey}`;
+                     window[vcardFuncName] = function() {
+                         const name = userCardData?.name || 'Контакт';
+                         const vcardData = [
+                             'BEGIN:VCARD',
+                             'VERSION:3.0',
+                             `FN:${name}`,
+                             phone ? `TEL;TYPE=CELL:${phone.replace(/[^\d+]/g, '')}` : '',
+                             email ? `EMAIL:${email}` : '',
+                             'END:VCARD'
+                         ].filter(line => line).join('\n');
+                         
+                         const blob = new Blob([vcardData], { type: 'text/vcard' });
+                         const url = URL.createObjectURL(blob);
+                         const a = document.createElement('a');
+                         a.href = url;
+                         a.download = `${name.replace(/\s+/g, '_')}.vcf`;
+                         document.body.appendChild(a);
+                         a.click();
+                         document.body.removeChild(a);
+                         URL.revokeObjectURL(url);
+                     };
+                     buttonsHtml += `
+                         <button onclick="${vcardFuncName}()" class="contact-btn full-width" style="margin-top: 10px;">
+                             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                             Сохранить в контакты
+                         </button>
+                     `;
+                 }
+                 contentHtml = buttonsHtml;
+             }
+             else if (key === 'price' || key.startsWith('price_copy')) {
+                 const items = blockData.items || [];
+                 if (items.length > 0 && (items[0].name || items[0].cost)) {
+                     contentHtml = `<div class="price-list-container">`;
+                     items.forEach(item => {
+                         const displayName = item.name || 'Позиция';
+                         const displayCost = item.cost ? item.cost : '';
+                         contentHtml += `
+                             <div class="price-row-item">
+                                 <span class="price-item-name">${displayName}</span>
+                                 ${displayCost ? `<span class="price-item-cost">${displayCost}</span>` : ''}
+                             </div>
+                         `;
+                     });
+                     contentHtml += `</div>`;
+                 } else {
+                     isEmpty = true;
+                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных позиций</div>`;
+                 }
+             }
+             else if (key === 'discounts' || key.startsWith('discounts_copy')) {
+                 const items = blockData.items || [];
+                 if (items.length > 0 && (items[0].name || items[0].newPrice)) {
+                     contentHtml = `<div class="discounts-list-container">`;
+                     items.forEach(item => {
+                         const displayName = item.name || 'Акция';
+                         const oldP = item.oldPrice ? item.oldPrice : '';
+                         const newP = item.newPrice ? item.newPrice : '';
+                         const perc = item.percent ? `-${item.percent}%` : '';
+                         contentHtml += `
+                             <div class="discount-card-item">
+                                 ${perc ? `<div class="discount-badge">${perc}</div>` : ''}
+                                 <div class="discount-info">
+                                     <div class="discount-title">${displayName}</div>
+                                     <div class="discount-prices-display">
+                                         ${oldP ? `<span class="old-price">${oldP}</span>` : ''}
+                                         ${newP ? `<span class="new-price">${newP}</span>` : ''}
+                                     </div>
+                                 </div>
+                             </div>
+                         `;
+                     });
+                     contentHtml += `</div>`;
+                 } else {
+                     isEmpty = true;
+                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных акций</div>`;
+                 }
+             }
+             else if (key === 'reviews' || key.startsWith('reviews_copy')) {
+                 const items = blockData.items || [];
+                 if (items.length > 0) {
+                     contentHtml = `<div class="reviews-list-container">`;
+                     items.forEach(item => {
+                         const platform = reviewPlatformsConfig.find(p => p.id === item.platform) || reviewPlatformsConfig[4];
+                         if (item.type === 'link') {
+                             contentHtml += `
+                                 <a href="${item.url || '#'}" target="_blank" class="review-link-item">
+                                     <div class="review-platform-icon" style="color: ${platform.color}">
+                                         ${platform.icon}
+                                     </div>
+                                     <div class="review-platform-name">${item.name || platform.name}</div>
+                                     <div class="review-action">Читать отзывы ›</div>
+                                 </a>
+                             `;
+                         } else {
+                             const stars = '★'.repeat(parseInt(item.rating) || 5);
+                             contentHtml += `
+                                 <div class="review-text-item">
+                                     <div class="review-stars" style="color: #F1C40F;">${stars}</div>
+                                     <div class="review-text-content">${item.text || ''}</div>
+                                     <div class="review-author">— ${item.author || 'Аноним'}</div>
+                                 </div>
+                             `;
+                         }
+                     });
+                     contentHtml += `</div>`;
+                 } else {
+                     isEmpty = true;
+                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных отзывов</div>`;
+                 }
+             }
+             else if (key === 'faq' || key.startsWith('faq_copy')) {
+                 const items = blockData.items || [];
+                 if (items.length > 0) {
+                     contentHtml = `<div class="faq-list-container">`;
+                     items.forEach((item, index) => {
+                         const qId = `faq-q-${key}-${index}`;
+                         const aId = `faq-a-${key}-${index}`;
+                         contentHtml += `
+                             <div class="faq-item">
+                                 <div class="faq-question" onclick="toggleFaq('${qId}', '${aId}', this)">
+                                     <span>${item.question || 'Вопрос'}</span>
+                                     <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                 </div>
+                                 <div class="faq-answer" id="${aId}">
+                                     <div class="faq-answer-inner">
+                                         ${item.answer || 'Ответ'}
+                                     </div>
+                                 </div>
+                             </div>
+                         `;
+                     });
+                     contentHtml += `</div>`;
+                 } else {
+                     isEmpty = true;
+                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных вопросов</div>`;
+                 }
+             }
+             else if (key === 'facts' || key.startsWith('facts_copy')) {
+                 const items = blockData.items || [];
+                 if (items.length > 0) {
+                     contentHtml = `<div class="facts-grid">`;
+                     items.forEach(item => {
+                         contentHtml += `
+                             <div class="fact-card">
+                                 <div class="fact-number">${item.number || '0'}</div>
+                                 <div class="fact-label">${item.label || ''}</div>
+                             </div>
+                         `;
+                     });
+                     contentHtml += `</div>`;
+                 } else {
+                     isEmpty = true;
+                     contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); text-align:center;">Нет добавленных фактов</div>`;
+                 }
+             }
+             else if (key === 'video' || key.startsWith('video_copy')) {
+                 const url = blockData.url || '';
+                 if (url) {
+                     let embedCode = '';
+                     let isYoutube = false;
+                     if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                         isYoutube = true;
+                         let videoId = '';
+                         if (url.includes('youtu.be')) {
+                             videoId = url.split('/').pop().split('?')[0];
+                         } else if (url.includes('v=')) {
+                             videoId = url.split('v=')[1].split('&')[0];
+                         } else if (url.includes('shorts/')) {
+                             videoId = url.split('shorts/')[1].split('?')[0];
+                         }
+                         if (videoId) {
+                             embedCode = `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen></iframe>`;
+                         }
+                     } 
+                     else if (url.includes('tiktok.com')) {
+                         embedCode = `<iframe src="${url}" style="width:100%; height:100%;" frameborder="0" allowfullscreen></iframe>`;
+                     }
+                     else if (url.includes('vimeo.com')) {
+                         const vimeoId = url.split('/').pop();
+                         embedCode = `<iframe src="https://player.vimeo.com/video/${vimeoId}" allowfullscreen></iframe>`;
+                     }
+                     else if (url.endsWith('.mp4')) {
+                         embedCode = `<video controls playsinline><source src="${url}" type="video/mp4">Ваш браузер не поддерживает видео.</video>`;
+                     }
+                     
+                     if (embedCode) {
+                         contentHtml = `
+                             <div class="video-wrapper">
+                                 ${embedCode}
+                                 ${isYoutube ? `<a href="${url}" target="_blank" class="video-fallback-btn">
+                                     <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                 </a>` : ''}
+                             </div>
+                         `;
+                     } else {
+                          isEmpty = true;
+                          contentHtml = `<a href="${url}" target="_blank" class="video-fallback-btn" style="position:static; transform:none; width:100%; justify-content:center;">
+                                             <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                             Открыть видео
+                                         </a>`;
+                     }
+                 } else {
+                     isEmpty = true;
+                     contentHtml = `<div style="padding: 20px; text-align:center; color: var(--text-secondary); border: 1px dashed var(--border-color); border-radius: 16px;">Нет ссылки на видео</div>`;
+                 }
+             }
+             else if (key === 'share' || key.startsWith('share_copy')) {
+                 const layout = blockData.layout || 'compact';
+                 const imageUrl = blockData.imageUrl;
+                 const caption = blockData.caption || userCardData?.desc || '';
+                 // Формируем правильную ссылку для просмотра
+                 const viewUrl = window.location.origin + window.location.pathname + '?view=1';
+                 
+                 const copyBtn = `<button class="share-btn share-btn-copy" onclick="copyToClipboard('${viewUrl}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> ${t.share_btn_copy}</button>`;
+                 const storiesBtn = `<button class="share-btn share-btn-stories" onclick="shareToStories('${imageUrl || ''}', '${caption.replace(/'/g, "\\'")}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> ${t.share_btn_stories}</button>`;
+                 const shareBtn = `<button class="share-btn share-btn-share" onclick="shareViaBot('${imageUrl || ''}', '${caption.replace(/'/g, "\\'")}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> ${t.share_btn_share}</button>`;
+                 
+                 let buttonsHtml = '';
+                 if (layout === 'compact') {
+                     buttonsHtml = `<div class="share-layout-compact">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+                 } else if (layout === 'stories') {
+                     buttonsHtml = `<div class="share-layout-stories">${storiesBtn}${copyBtn}${shareBtn}</div>`;
+                 } else if (layout === 'grid') {
+                     buttonsHtml = `<div class="share-layout-grid">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+                 } else if (layout === 'list') {
+                     buttonsHtml = `<div class="share-layout-list">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+                 }
+                 
+                 contentHtml = `
+                     <div class="share-block-preview">
+                         ${imageUrl ? `<img src="${imageUrl}" alt="Share image" class="share-preview-image">` : ''}
+                         ${caption ? `<p class="share-preview-caption">${caption}</p>` : ''}
+                         ${buttonsHtml}
+                     </div>
+                 `;
+             }
+             else if (key === 'gallery' || key.startsWith('gallery_copy')) {
+                 const items = blockData.items || [];
+                 const format = blockData.displayFormat || 'grid';
+                 if (items.length > 0) {
+                     if (format === 'grid') {
+                         contentHtml = `<div class="gallery-grid">`;
+                         items.forEach(item => {
+                             if (item.type === 'image') {
+                                 contentHtml += `<div class="gallery-item" style="background-image: url('${item.src}');"></div>`;
+                             } else if (item.type === 'demo') {
+                                 contentHtml += `<div class="gallery-item demo-tile" style="background-color: ${item.color};"></div>`;
+                             }
+                         });
+                         contentHtml += `</div>`;
+                     } else if (format === 'carousel') {
+                         contentHtml = `<div class="gallery-carousel">`;
+                         items.forEach(item => {
+                             if (item.type === 'image') {
+                                 contentHtml += `<div class="gallery-carousel-item" style="background-image: url('${item.src}');"></div>`;
+                             } else if (item.type === 'demo') {
+                                 contentHtml += `<div class="gallery-carousel-item demo-tile" style="background-color: ${item.color};"></div>`;
+                             }
+                         });
+                         contentHtml += `</div>`;
+                     } else if (format === 'mosaic') {
+                         contentHtml = `<div class="gallery-mosaic">`;
+                         items.forEach((item, index) => {
+                             let spanClass = '';
+                             // Простая логика шахматного порядка: четные элементы широкие, нечетные высокие
+                             if (index % 2 === 0) {
+                                 spanClass = 'mosaic-wide';
+                             } else {
+                                 spanClass = 'mosaic-tall';
+                             }
+                             if (item.type === 'image') {
+                                 contentHtml += `<div class="gallery-mosaic-item ${spanClass}" style="background-image: url('${item.src}');"></div>`;
+                             } else if (item.type === 'demo') {
+                                 contentHtml += `<div class="gallery-mosaic-item demo-tile ${spanClass}" style="background-color: ${item.color};"></div>`;
+                             }
+                         });
+                         contentHtml += `</div>`;
+                     }
+                 } else {
+                     isEmpty = true;
+                     contentHtml = `<div style="padding: 20px; text-align:center; color: var(--text-secondary); border: 1px dashed var(--border-color); border-radius: 16px;">Нет добавленных фото</div>`;
+                 }
+             }
+             else {
+                 contentHtml = `<div style="padding: 10px 0; color: var(--text-secondary); font-size: 14px;">${t.preview_placeholder} (${title})</div>`;
+             }
+             
+             // Если включен режим просмотра пользователем и блок пуст, не добавляем его в DOM
+             if (isUserPreviewMode && isEmpty) {
+                 // Просто пропускаем этот блок
+             } else {
+                 container.appendChild(createBlockSection(key, blockData, title, contentHtml));
+             }
+         }
+     });
+     
+     // Добавляем нативную кнопку шеринга только в режиме просмотра
+     if (isViewMode && !document.getElementById('native-share-fab')) {
+         const fab = document.createElement('button');
+         fab.id = 'native-share-fab';
+         fab.className = 'telegram-fab'; 
+         fab.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`;
+         // Принудительно формируем ссылку на просмотр
+         const shareUrl = window.location.origin + window.location.pathname + '?view=1';
+         fab.onclick = () => {
+             if (navigator.share) {
+                 navigator.share({
+                     title: userCardData?.name || 'Моя визитка',
+                     text: userCardData?.desc || '',
+                     url: shareUrl // Используем правильную ссылку
+                 }).catch(console.error);
+             } else {
+                 copyToClipboard(shareUrl);
+             }
+         };
+         document.getElementById('screen-preview').appendChild(fab);
+     } else if (!isViewMode && !document.getElementById('telegram-fab')) {
+         // Старая кнопка для режима редактора (если нужна)
+         const fab = document.createElement('button');
+         fab.id = 'telegram-fab';
+         fab.className = 'telegram-fab';
+         fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21.9 2.2L2.4 9.7c-1.1.4-1.1 1.5-.2 1.8l5 1.6 1.9 6c.2.6.7.6 1.1.3l2.8-2.3 4.3 3.2c.8.6 1.5.3 1.7-.7L22.8 3.3c.3-1.1-.4-1.4-.9-1.1zM9.6 12.5l8.8-5.5-6.9 6.5-.5 2.4-1.4-3.4z"/></svg>`;
+         document.getElementById('screen-preview').appendChild(fab);
+     }
+     
+     if (container.children.length <= 1) { 
+         const emptyMsg = document.createElement('div');
+         emptyMsg.style.textAlign = 'center'; emptyMsg.style.color = 'var(--text-secondary)'; emptyMsg.style.padding = '40px 0';
+         emptyMsg.innerText = t.empty_h3;
+         container.appendChild(emptyMsg);
+     }
 }
 
 function toggleBlockVisibility(key) {
@@ -1146,23 +1131,23 @@ function toggleBlockVisibility(key) {
     selectedBlocks[key].visible = !selectedBlocks[key].visible;
     
     const sections = document.querySelectorAll('.preview-block-section');
-    let targetSection = null;
-    sections.forEach(sec => {
-        const btn = sec.querySelector(`button[onclick="toggleBlockVisibility('${key}')"]`);
-        if (btn) targetSection = sec;
-    });
-    
-    if (targetSection) {
-        const btn = targetSection.querySelector('.action-btn'); 
-        if (selectedBlocks[key].visible) {
-            targetSection.classList.remove('hidden-block');
-            if(btn) btn.classList.add('active-eye');
-        } else {
-            targetSection.classList.add('hidden-block');
-            if(btn) btn.classList.remove('active-eye');
-        }
-    }
-    saveUserData();
+     let targetSection = null;
+     sections.forEach(sec => {
+         const btn = sec.querySelector(`button[onclick="toggleBlockVisibility('${key}')"]`);
+         if (btn) targetSection = sec;
+     });
+     
+     if (targetSection) {
+         const btn = targetSection.querySelector('.action-btn'); 
+         if (selectedBlocks[key].visible) {
+             targetSection.classList.remove('hidden-block');
+             if(btn) btn.classList.add('active-eye');
+         } else {
+             targetSection.classList.add('hidden-block');
+             if(btn) btn.classList.remove('active-eye');
+         }
+     }
+     saveUserData();
 }
 
 const editModalOverlay = document.getElementById('editModalOverlay');
@@ -1173,654 +1158,654 @@ function openEditBlock(key) {
     const blockData = selectedBlocks[key] || {};
     const t = translations[currentLang];
     const titleEl = document.getElementById('edit-modal-title');
-    const fieldsContainer = document.getElementById('edit-modal-fields');
-    fieldsContainer.innerHTML = ''; 
-    
-    if (key.startsWith('about')) {
-        titleEl.innerText = t.blk_about || 'О бизнесе';
-        fieldsContainer.innerHTML = `
-            <div class="form-group" style="margin-bottom: 16px;"><label class="form-label">Заголовок</label><input type="text" class="form-input" id="edit-input-1" value="${blockData.title || 'О бизнесе'}"></div>
-            <div class="form-group"><label class="form-label">Текст</label><textarea class="form-input" id="edit-input-2" rows="4" style="resize: none;">${blockData.text || ''}</textarea></div>
-        `;
-    } else if (key === 'hours' || key.startsWith('hours_copy')) {
-        titleEl.innerText = 'Часы работы';
-        const defaultSchedule = {
-            mode: 'simple', 
-            is247: false,
-            simple: { days: [1,2,3,4,5], open: '10:00', close: '22:00' },
-            individual: {} 
-        };
-        if (!blockData.schedule) blockData.schedule = JSON.parse(JSON.stringify(defaultSchedule));
-        for (let i = 1; i <= 7; i++) {
-            if (!blockData.schedule.individual[i]) {
-                blockData.schedule.individual[i] = { 
-                    active: blockData.schedule.simple.days.includes(i), 
-                    open: blockData.schedule.simple.open || '10:00', 
-                    close: blockData.schedule.simple.close || '22:00' 
-                };
-            }
-        }
-        const sched = blockData.schedule;
-        const isIndividual = sched.mode === 'individual';
-        const activeDays = sched.simple.days || [];
-        const openTime = sched.simple.open || '10:00';
-        const closeTime = sched.simple.close || '22:00';
-        
-        const templatesDiv = document.createElement('div');
-        templatesDiv.className = 'hours-templates';
-        templatesDiv.style.marginBottom = '20px';
-        templatesDiv.innerHTML = `
-            <button class="template-btn" onclick="applyHoursTemplate('work')">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 
-                Пн-Пт 9:00–18:00
-            </button>
-            <button class="template-btn" onclick="applyHoursTemplate('weekend')">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 
-                Пн-Сб 10:00–20:00
-            </button>
-            <button class="template-btn" onclick="applyHoursTemplate('daily')">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 
-                Каждый день 10:00–22:00
-            </button>
-            <button class="template-btn" onclick="applyHoursTemplate('247')">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 
-                24/7
-            </button>
-        `;
-        fieldsContainer.appendChild(templatesDiv);
-        
-        const modesDiv = document.createElement('div');
-        modesDiv.innerHTML = `
-            <div class="hours-mode-item mode-highlight" style="margin-bottom: 20px;">
-                <div class="hours-mode-info">
-                    <div class="hours-mode-icon" style="color: var(--text-main);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
-                    <div class="hours-mode-text"><h4>Разные часы по дням</h4><p>свой график для каждого дня</p></div>
-                </div>
-                <label class="toggle-switch"><input type="checkbox" id="hours-individual-toggle" ${isIndividual ? 'checked' : ''}><span class="slider-toggle"></span></label>
-            </div>
-        `;
-        fieldsContainer.appendChild(modesDiv);
-        
-        const settingsDiv = document.createElement('div');
-        settingsDiv.id = 'hours-settings-container';
-        if (isIndividual) {
-            const dayNames = ['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
-            let listHtml = '<div class="individual-days-list">';
-            for (let i = 1; i <= 7; i++) {
-                const dayData = sched.individual[i] || { active: true, open: '10:00', close: '22:00' };
-                const isActive = dayData.active;
-                const disabledClass = isActive ? '' : 'is-disabled';
-                const checkedAttr = isActive ? 'checked' : '';
-                listHtml += `
-                    <div class="day-row-item ${disabledClass}" data-day="${i}">
-                        <div class="day-row-left">
-                            <label class="toggle-switch" style="transform: scale(0.8); transform-origin: left;">
-                                <input type="checkbox" class="day-active-toggle" data-day="${i}" ${checkedAttr}>
-                                <span class="slider-toggle"></span>
-                            </label>
-                            <span class="day-name-text">${dayNames[i]}</span>
-                        </div>
-                        <div class="day-row-right">
-                            <input type="time" class="mini-time-input day-open" data-day="${i}" value="${dayData.open}" ${!isActive ? 'disabled' : ''}>
-                            <span class="time-separator">–</span>
-                            <input type="time" class="mini-time-input day-close" data-day="${i}" value="${dayData.close}" ${!isActive ? 'disabled' : ''}>
-                        </div>
-                    </div>
-                `;
-            }
-            listHtml += '</div>';
-            settingsDiv.innerHTML = listHtml;
-            setTimeout(() => {
-                settingsDiv.querySelectorAll('.day-active-toggle').forEach(toggle => {
-                    toggle.addEventListener('change', (e) => {
-                        const row = e.target.closest('.day-row-item');
-                        const inputs = row.querySelectorAll('input[type="time"]');
-                        if (e.target.checked) {
-                            row.classList.remove('is-disabled');
-                            inputs.forEach(inp => inp.removeAttribute('disabled'));
-                        } else {
-                            row.classList.add('is-disabled');
-                            inputs.forEach(inp => inp.setAttribute('disabled', 'true'));
-                        }
-                    });
-                });
-            }, 0);
-        } else {
-            let html = `
-                <label class="hours-editor-label">Рабочие дни</label>
-                <div class="days-selector-grid" id="hours-days-grid">
-                    ${['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map((d, i) => {
-                        if (i===0) return '';
-                        const isActive = activeDays.includes(i);
-                        return `<button class="day-toggle-btn ${isActive ? 'active' : ''}" data-day="${i}">${d}</button>`;
-                    }).join('')}
-                </div>
-                <div class="time-range-container">
-                    <div class="time-input-wrapper">
-                        <label>Открытие</label>
-                        <input type="time" class="custom-time-input" id="hours-open-global" value="${openTime}">
-                        <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
-                    <div style="padding-top: 20px; color: var(--text-secondary);">–</div>
-                    <div class="time-input-wrapper">
-                        <label>Закрытие</label>
-                        <input type="time" class="custom-time-input" id="hours-close-global" value="${closeTime}">
-                        <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
-                </div>
-                <div class="hours-hint-text">Статус «открыто / закрыто» считается автоматически по времени.</div>
-            `;
-            settingsDiv.innerHTML = html;
-            setTimeout(() => {
-                const grid = document.getElementById('hours-days-grid');
-                if(grid) {
-                    grid.querySelectorAll('.day-toggle-btn').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            btn.classList.toggle('active');
-                        });
-                    });
-                }
-            }, 0);
-        }
-        fieldsContainer.appendChild(settingsDiv);
-        
-        setTimeout(() => {
-            const toggleIndividual = document.getElementById('hours-individual-toggle');
-            if(toggleIndividual) {
-                toggleIndividual.addEventListener('change', (e) => {
-                    const isIndiv = e.target.checked;
-                    if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
-                    selectedBlocks[currentEditingBlockId].schedule = selectedBlocks[currentEditingBlockId].schedule || {};
-                    selectedBlocks[currentEditingBlockId].schedule.mode = isIndiv ? 'individual' : 'simple';
-                    openEditBlock(currentEditingBlockId);
-                });
-            }
-        }, 0);
-        
-    } else if (key === 'socials' || key.startsWith('socials_copy')) {
-        titleEl.innerText = 'Соцсети';
-        const savedSocials = blockData.items || {};
-        socialNetworksConfig.forEach(net => {
-            const isEnabled = savedSocials[net.id]?.enabled ?? true;
-            const url = savedSocials[net.id]?.url || '';
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'social-item';
-            itemDiv.innerHTML = `
-                <div class="social-header">
-                    <div class="social-info"><div class="social-icon-box">${net.icon}</div><div class="social-name">${net.name}</div></div>
-                    <label class="toggle-switch"><input type="checkbox" class="social-toggle" data-id="${net.id}" ${isEnabled ? 'checked' : ''}><span class="slider-toggle"></span></label>
-                </div>
-                <input type="text" class="social-input" data-id="${net.id}" placeholder="${net.placeholder}" value="${url}" ${!isEnabled ? 'disabled' : ''}>
-            `;
-            fieldsContainer.appendChild(itemDiv);
-        });
-        fieldsContainer.querySelectorAll('.social-toggle').forEach(toggle => {
-            toggle.addEventListener('change', (e) => {
-                const input = fieldsContainer.querySelector(`.social-input[data-id="${e.target.dataset.id}"]`);
-                if (e.target.checked) { input.removeAttribute('disabled'); input.focus(); } 
-                else { input.setAttribute('disabled', 'true'); }
-            });
-        });
-        
-    } else if (key === 'links' || key.startsWith('links_copy')) {
-        titleEl.innerText = 'Ссылки-кнопки';
-        const sectionTitleDiv = document.createElement('div');
-        sectionTitleDiv.className = 'form-group'; sectionTitleDiv.style.marginBottom = '24px';
-        sectionTitleDiv.innerHTML = `<label class="form-label">Заголовок секции</label><input type="text" class="form-input" id="edit-section-title" value="${blockData.title || 'Ссылки'}">`;
-        fieldsContainer.appendChild(sectionTitleDiv);
-        
-        const linksListDiv = document.createElement('div');
-        linksListDiv.id = 'links-editor-list'; linksListDiv.className = 'links-editor-list';
-        const links = blockData.items || [{name: 'Наш сайт', url: ''}];
-        links.forEach((link, index) => linksListDiv.appendChild(createLinkItemElement(link.name, link.url, index)));
-        fieldsContainer.appendChild(linksListDiv);
-        
-        const addBtn = document.createElement('button');
-        addBtn.className = 'btn-add-link';
-        addBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Добавить ссылку`;
-        addBtn.onclick = () => linksListDiv.appendChild(createLinkItemElement('', '', linksListDiv.children.length));
-        fieldsContainer.appendChild(addBtn);
-        
-    } else if (key === 'cta' || key.startsWith('cta_copy')) {
-        titleEl.innerText = 'Кнопка-призыв';
-        const ctaText = blockData.text || 'Написать мне';
-        const ctaLink = blockData.link || '';
-        const ctaStyle = blockData.style || 'normal';
-        fieldsContainer.innerHTML = `
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label">Текст кнопки</label>
-                <input type="text" class="form-input" id="edit-cta-text" value="${ctaText}" placeholder="Например: Записаться">
-            </div>
-            <div class="form-group" style="margin-bottom: 24px;">
-                <label class="form-label">Куда ведёт кнопка</label>
-                <input type="text" class="form-input" id="edit-cta-link" value="${ctaLink}" placeholder="@username в Telegram или https://...">
-            </div>
-            <label class="form-label" style="margin-bottom: 10px; display:block;">Оформление</label>
-            <div class="style-selector-grid">
-                <div class="style-option-btn ${ctaStyle === 'normal' ? 'active' : ''}" data-style="normal" onclick="selectCtaStyle(this)">
-                    <div class="style-mini-preview"></div>
-                    <span class="style-option-label">Обычное</span>
-                </div>
-                <div class="style-option-btn ${ctaStyle === 'shimmer' ? 'active' : ''}" data-style="shimmer" onclick="selectCtaStyle(this)">
-                    <div class="style-mini-preview"></div>
-                    <span class="style-option-label">Перелив</span>
-                </div>
-                <div class="style-option-btn ${ctaStyle === 'flash' ? 'active' : ''}" data-style="flash" onclick="selectCtaStyle(this)">
-                    <div class="style-mini-preview"></div>
-                    <span class="style-option-label">Проблеск</span>
-                </div>
-                <div class="style-option-btn ${ctaStyle === 'pulse' ? 'active' : ''}" data-style="pulse" onclick="selectCtaStyle(this)">
-                    <div class="style-mini-preview"></div>
-                    <span class="style-option-label">Пульсация</span>
-                </div>
-            </div>
-            <input type="hidden" id="edit-cta-style" value="${ctaStyle}">
-        `;
-        
-    } else if (key === 'contacts' || key.startsWith('contacts_copy')) {
-        titleEl.innerText = 'Контакты';
-        const phone = blockData.phone || '';
-        const email = blockData.email || '';
-        const showVcard = blockData.showVcard !== false;
-        fieldsContainer.innerHTML = `
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label">Заголовок</label>
-                <input type="text" class="form-input" id="edit-contacts-title" value="${blockData.title || 'Контакты'}" placeholder="Контакты">
-            </div>
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label">Телефон</label>
-                <input type="tel" class="form-input" id="edit-contacts-phone" value="${phone}" placeholder="+995 ...">
-            </div>
-            <div class="form-group" style="margin-bottom: 24px;">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-input" id="edit-contacts-email" value="${email}" placeholder="hello@example.com">
-            </div>
-            <div class="contact-toggle-row">
-                <div class="contact-toggle-info">
-                    <div class="contact-toggle-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    </div>
-                    <div class="contact-toggle-text">
-                        <h4>Кнопка «Сохранить в контакты»</h4>
-                        <p>клиент сохранит визитку в тел. книжку (vCard)</p>
-                    </div>
-                </div>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="edit-contacts-vcard-toggle" ${showVcard ? 'checked' : ''}>
-                    <span class="slider-toggle"></span>
-                </label>
-            </div>
-            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; line-height: 1.4;">
-                «Позвонить» сразу набирает номер. «Сохранить в контакты» скачивает vCard-файл — имя берётся из шапки, телефон и email из этого блока.
-            </div>
-        `;
-        
-    } else if (key === 'price' || key.startsWith('price_copy')) {
-        titleEl.innerText = 'Прайс / меню';
-        const items = blockData.items || [{name: '', cost: ''}];
-        const limit = 5; 
-        let itemsHtml = '<div class="price-items-list">';
-        items.forEach((item, index) => {
-            itemsHtml += `
-                <div class="price-item-row">
-                    <input type="text" class="price-input-name" placeholder="Название" value="${item.name}" data-index="${index}">
-                    <input type="text" class="price-input-cost" placeholder="Цена" value="${item.cost}" data-index="${index}">
-                    <button class="btn-remove-price" onclick="removePriceItem(this)">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                    </button>
-                </div>
-            `;
-        });
-        itemsHtml += '</div>';
-        fieldsContainer.innerHTML = `
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label">Заголовок</label>
-                <input type="text" class="form-input" id="edit-price-title" value="${blockData.title || 'Прайс'}" placeholder="Прайс">
-            </div>
-            <label class="form-label" style="margin-bottom: 10px; display:block;">Позиции</label>
-            ${itemsHtml}
-            <button class="btn-add-price" onclick="addPriceItem()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                Добавить позицию
-            </button>
-            <div class="price-limit-hint">
-                <span class="limit-badge">${items.length}/${limit}</span>
-                бесплатно — до ${limit} элементов, дальше расширение блока
-            </div>
-        `;
-        
-    } else if (key === 'discounts' || key.startsWith('discounts_copy')) {
-        titleEl.innerText = 'Скидки / Акции';
-        const items = blockData.items || [{name: '', oldPrice: '', newPrice: '', percent: ''}];
-        const limit = 3;
-        let itemsHtml = '';
-        items.forEach((item, index) => {
-            itemsHtml += `
-                <div class="discount-item-row">
-                    <div class="discount-top-row">
-                        <input type="text" class="discount-input-name" placeholder="Название акции" value="${item.name}" data-index="${index}">
-                        <button class="btn-remove-discount" onclick="removeDiscountItem(this)">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </button>
-                    </div>
-                    <div class="discount-prices-row">
-                        <input type="number" class="discount-input-price discount-old" placeholder="Цена до" value="${item.oldPrice}" data-index="${index}" oninput="calculateDiscountPercent(this)">
-                        <input type="number" class="discount-input-price discount-new" placeholder="Цена после" value="${item.newPrice}" data-index="${index}" oninput="calculateDiscountPercent(this)">
-                        <input type="text" class="discount-input-percent" placeholder="% скидк" value="${item.percent}" data-index="${index}">
-                    </div>
-                </div>
-            `;
-        });
-        fieldsContainer.innerHTML = `
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label">Заголовок</label>
-                <input type="text" class="form-input" id="edit-discounts-title" value="${blockData.title || 'Акции'}" placeholder="Акции">
-            </div>
-            <label class="form-label" style="margin-bottom: 10px; display:block;">Скидки</label>
-            <div id="discounts-list-container">
-                ${itemsHtml}
-            </div>
-            <button class="btn-add-price" onclick="addDiscountItem()" style="margin-bottom: 8px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                Добавить скидку
-            </button>
-            <div class="price-limit-hint">
-                <span class="limit-badge" id="discounts-counter">${items.length}/${limit}</span>
-                бесплатно — до ${limit} элементов, в PRO больше
-            </div>
-            <div class="discount-hint-text">
-                Оставь «%» пустым — посчитаю сам из цен «до» и «после». Или укажи процент вручную.
-            </div>
-        `;
-        
-    } else if (key === 'reviews' || key.startsWith('reviews_copy')) {
-        titleEl.innerText = 'Отзывы';
-        const items = blockData.items || [{type: 'link', platform: 'yandex', name: 'Яндекс Карты', url: ''}];
-        const limit = 4;
-        let itemsHtml = '';
-        items.forEach((item, index) => {
-            if (item.type === 'link') {
-                itemsHtml += `
-                    <div class="review-edit-item" data-index="${index}">
-                        <label class="form-label" style="margin-bottom: 8px;">Ссылки на отзывы</label>
-                        <div class="platform-selector">
-                            ${reviewPlatformsConfig.map(p => `
-                                <div class="platform-icon-btn ${item.platform === p.id ? 'active' : ''}" 
-                                     data-platform="${p.id}" 
-                                     onclick="selectReviewPlatform(this)"
-                                     style="border-color: ${item.platform === p.id ? p.color : 'rgba(255,255,255,0.1)'}">
-                                    ${p.icon}
-                                </div>
-                            `).join('')}
-                        </div>
-                        <input type="text" class="form-input review-link-input" placeholder="https://..." value="${item.url || ''}" data-index="${index}" style="margin-top: 10px;">
-                        <input type="hidden" class="review-type-input" value="link">
-                        <button class="btn-remove-review" onclick="removeReviewItem(this)">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </button>
-                    </div>
-                `;
-            } else {
-                itemsHtml += `
-                    <div class="review-edit-item" data-index="${index}">
-                        <label class="form-label" style="margin-bottom: 8px;">Свои отзывы вручную</label>
-                        <div class="review-manual-fields">
-                            <div style="display:flex; gap:8px; margin-bottom:8px;">
-                                <input type="text" class="form-input review-author-input" placeholder="Имя (напр. Анна)" value="${item.author || ''}" style="flex:2;">
-                                <div class="rating-selector">
-                                    ${[1,2,3,4,5].map(star => `
-                                        <span class="star-btn ${star <= (item.rating || 5) ? 'active' : ''}" data-star="${star}" onclick="selectReviewRating(this)">&#9733;</span>
-                                    `).join('')}
-                                </div>
-                                <button class="btn-remove-review" onclick="removeReviewItem(this)">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                </button>
-                            </div>
-                            <textarea class="form-input review-text-input" placeholder="Текст отзыва..." rows="2" style="resize:none;">${item.text || ''}</textarea>
-                            <input type="hidden" class="review-type-input" value="text">
-                            <input type="hidden" class="review-rating-hidden" value="${item.rating || 5}">
-                        </div>
-                    </div>
-                `;
-            }
-        });
-        fieldsContainer.innerHTML = `
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label">Заголовок</label>
-                <input type="text" class="form-input" id="edit-reviews-title" value="${blockData.title || 'Отзывы'}" placeholder="Отзывы">
-            </div>
-            <div id="reviews-list-container">
-                ${itemsHtml}
-            </div>
-            <button class="btn-add-price" onclick="addReviewItem()" style="margin-bottom: 8px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                Добавить отзыв
-            </button>
-            <div class="price-limit-hint">
-                <span class="limit-badge" id="reviews-counter">${items.length}/${limit}</span>
-                бесплатно — до ${limit} элементов, в PRO больше
-            </div>
-        `;
-        
-    } else if (key === 'faq' || key.startsWith('faq_copy')) {
-        titleEl.innerText = 'Вопрос-ответ';
-        const items = blockData.items || [{question: '', answer: ''}];
-        const limit = 4;
-        let itemsHtml = '';
-        items.forEach((item, index) => {
-            itemsHtml += `
-                <div class="faq-edit-item" data-index="${index}">
-                    <div style="display:flex; gap:8px; margin-bottom:8px;">
-                        <input type="text" class="form-input faq-question-input" placeholder="Вопрос" value="${item.question || ''}" style="flex:1;">
-                        <button class="btn-remove-review" onclick="removeFaqItem(this)">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </button>
-                    </div>
-                    <textarea class="form-input faq-answer-input" placeholder="Ответ" rows="2" style="resize:none;">${item.answer || ''}</textarea>
-                </div>
-            `;
-        });
-        fieldsContainer.innerHTML = `
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label">Заголовок</label>
-                <input type="text" class="form-input" id="edit-faq-title" value="${blockData.title || 'Частые вопросы'}" placeholder="Частые вопросы">
-            </div>
-            <div id="faq-list-container">
-                ${itemsHtml}
-            </div>
-            <button class="btn-add-price" onclick="addFaqItem()" style="margin-bottom: 8px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                Добавить вопрос
-            </button>
-            <div class="price-limit-hint">
-                <span class="limit-badge" id="faq-counter">${items.length}/${limit}</span>
-                бесплатно — до ${limit} элементов, в PRO больше
-            </div>
-        `;
-        
-    } else if (key === 'facts' || key.startsWith('facts_copy')) {
-        titleEl.innerText = 'Цифры / факты';
-        const items = blockData.items || [{number: '', label: ''}];
-        const limit = 3;
-        let itemsHtml = '';
-        items.forEach((item, index) => {
-            itemsHtml += `
-                <div class="fact-edit-item" data-index="${index}">
-                    <div style="display:flex; gap:8px; align-items: center;">
-                        <input type="text" class="form-input fact-number-input" placeholder="500+" value="${item.number || ''}" style="flex:1;">
-                        <input type="text" class="form-input fact-label-input" placeholder="клиентов" value="${item.label || ''}" style="flex:2;">
-                        <button class="btn-remove-review" onclick="removeFactItem(this)" style="flex-shrink: 0;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </button>
-                    </div>
-                </div>
-            `;
-        });
-        fieldsContainer.innerHTML = `
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label">Заголовок</label>
-                <input type="text" class="form-input" id="edit-facts-title" value="${blockData.title || 'Цифры'}" placeholder="Цифры">
-            </div>
-            <label class="form-label" style="margin-bottom: 10px; display:block;">Цифры</label>
-            <div id="facts-list-container">
-                ${itemsHtml}
-            </div>
-            <button class="btn-add-price" onclick="addFactItem()" style="margin-bottom: 8px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                Добавить цифру
-            </button>
-            <div class="price-limit-hint">
-                <span class="limit-badge" id="facts-counter">${items.length}/${limit}</span>
-                бесплатно — до ${limit} элементов, в PRO больше
-            </div>
-        `;
-        
-    } else if (key === 'video' || key.startsWith('video_copy')) {
-        titleEl.innerText = 'Видео';
-        const videoUrl = blockData.url || '';
-        fieldsContainer.innerHTML = `
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label">Заголовок</label>
-                <input type="text" class="form-input" id="edit-video-title" value="${blockData.title || 'Видео'}" placeholder="Видео">
-            </div>
-            <div class="form-group" style="margin-bottom: 8px;">
-                <label class="form-label">Ссылка на видео</label>
-                <input type="text" class="form-input" id="edit-video-url" value="${videoUrl}" placeholder="YouTube, Shorts, TikTok, Reels, Vimeo или .mp4">
-            </div>
-            <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.4;">
-                Вставь ссылку — плеер появится сразу. Подходят YouTube, TikTok, Shorts, Reels, Vimeo.
-            </p>
-            <div class="video-info-box">
-                <div class="video-info-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
-                </div>
-                <div class="video-info-text">
-                    <h4>Видео прямо из Telegram</h4>
-                    <p>После создания бота сможешь присылать видео и кружочки прямо в чат — они появятся здесь. Обычные до 20 МБ; что больше — ссылкой с видеохостинга.</p>
-                </div>
-            </div>
-        `;
-        
-    } else if (key === 'share' || key.startsWith('share_copy')) {
-        titleEl.innerText = t.blk_share;
-        const imageUrl = blockData.imageUrl || '';
-        const caption = blockData.caption || '';
-        const layout = blockData.layout || 'compact';
-        fieldsContainer.innerHTML = `
-            <div class="form-group">
-                <label class="form-label">${t.share_title}</label>
-                <input type="text" class="form-input" id="edit-share-title" value="${blockData.title || 'Поделиться'}">
-            </div>
-            <div class="form-group">
-                <label class="form-label">${t.share_image_label}</label>
-                <input type="text" class="form-input" id="edit-share-image-url" placeholder="https://..." value="${imageUrl}">
-                <div class="share-upload-area" onclick="document.getElementById('share-image-upload').click()">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                    <span>${t.share_upload_btn}</span>
-                </div>
-                <input type="file" id="share-image-upload" accept="image/*" style="display:none" onchange="handleShareImageUpload(this)">
-                ${imageUrl ? `<img src="${imageUrl}" class="share-uploaded-preview" style="display:block;">` : '<img class="share-uploaded-preview" style="display:none;">'}
-            </div>
-            <p class="share-hint-text">${t.share_desc_hint}</p>
-            <div class="form-group">
-                <label class="form-label">${t.share_caption_label}</label>
-                <textarea class="form-input" id="edit-share-caption" rows="3" maxlength="200" placeholder="${t.share_caption_placeholder}" oninput="updateCaptionCounter(this)">${caption}</textarea>
-                <div class="share-caption-counter" id="share-caption-counter">${caption.length}/200</div>
-                <p class="share-info-text">${t.share_caption_info}</p>
-            </div>
-            <div class="form-group">
-                <label class="form-label">${t.share_layout_label}</label>
-                <div class="share-layout-selector">
-                    <div class="share-layout-option ${layout === 'compact' ? 'active' : ''}" data-layout="compact" onclick="selectShareLayout(this)">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                        <span>${t.share_layout_compact}</span>
-                    </div>
-                    <div class="share-layout-option ${layout === 'stories' ? 'active' : ''}" data-layout="stories" onclick="selectShareLayout(this)">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                        <span>${t.share_layout_stories}</span>
-                    </div>
-                    <div class="share-layout-option ${layout === 'grid' ? 'active' : ''}" data-layout="grid" onclick="selectShareLayout(this)">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                        <span>${t.share_layout_grid}</span>
-                    </div>
-                    <div class="share-layout-option ${layout === 'list' ? 'active' : ''}" data-layout="list" onclick="selectShareLayout(this)">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-                        <span>${t.share_layout_list}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="share-preview-section">
-                <label class="form-label">${t.share_preview_label}</label>
-                <div class="share-preview-container" id="share-preview-container"></div>
-            </div>
-        `;
-        setTimeout(() => updateSharePreview(layout, imageUrl, caption), 0);
-        
-    } else if (key === 'gallery' || key.startsWith('gallery_copy')) {
-        titleEl.innerText = t.blk_gallery || 'Галерея';
-        const items = blockData.items || [];
-        const displayFormat = blockData.displayFormat || 'grid';
-        const limit = 8;
-        
-        // Генерируем HTML для превью загруженных фото/демо-плиток
-        let photosPreviewHtml = '<div class="gallery-photos-preview">';
-        items.forEach((item, index) => {
-            if (item.type === 'image') {
-                photosPreviewHtml += `<div class="gallery-photo-thumb" style="background-image: url('${item.src}');" onclick="removeGalleryItem(${index})"><button class="remove-photo-btn">×</button></div>`;
-            } else if (item.type === 'demo') {
-                photosPreviewHtml += `<div class="gallery-photo-thumb demo-tile" style="background-color: ${item.color};" onclick="removeGalleryItem(${index})"><button class="remove-photo-btn">×</button></div>`;
-            }
-        });
-        // Добавляем кнопку "+" для загрузки
-        photosPreviewHtml += `<div class="gallery-photo-thumb add-photo-btn" onclick="document.getElementById('gallery-upload-input').click()">+</div>`;
-        photosPreviewHtml += '</div>';
-        // Скрытый инпут для загрузки файлов
-        photosPreviewHtml += `<input type="file" id="gallery-upload-input" accept="image/*" multiple style="display:none" onchange="handleGalleryUpload(this)">`;
-        
-        fieldsContainer.innerHTML = `
-            <div class="form-group">
-                <label class="form-label">${t.gallery_title}</label>
-                <input type="text" class="form-input" id="edit-gallery-title" value="${blockData.title || 'Галерея'}">
-            </div>
-            <div class="form-group">
-                <label class="form-label">${t.gallery_display_format}</label>
-                <div class="gallery-format-selector">
-                    <div class="gallery-format-option ${displayFormat === 'grid' ? 'active' : ''}" data-format="grid" onclick="selectGalleryFormat(this)">${t.gallery_grid}</div>
-                    <div class="gallery-format-option ${displayFormat === 'carousel' ? 'active' : ''}" data-format="carousel" onclick="selectGalleryFormat(this)">${t.gallery_carousel}</div>
-                    <div class="gallery-format-option ${displayFormat === 'mosaic' ? 'active' : ''}" data-format="mosaic" onclick="selectGalleryFormat(this)">${t.gallery_mosaic}</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label">${t.gallery_photos}</label>
-                ${photosPreviewHtml}
-            </div>
-            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                <button class="btn-secondary" style="flex:1; padding: 12px;" onclick="document.getElementById('gallery-upload-input').click()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 5px; vertical-align: middle;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                    ${t.gallery_upload_photo}
-                </button>
-                <button class="btn-secondary" style="flex:1; padding: 12px;" onclick="addDemoTile()">
-                    ${t.gallery_demo_tile}
-                </button>
-            </div>
-            <p class="share-hint-text">${t.gallery_upload_hint}</p>
-            <p class="share-hint-text" style="margin-top: 5px;">${t.gallery_demo_hint}</p>
-            <div class="price-limit-hint" style="margin-top: 15px;">
-                <span class="limit-badge" id="gallery-counter">${items.length}/${limit}</span>
-                ${t.gallery_limit}
-            </div>
-        `;
-        
-    } else {
-        titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
-        fieldsContainer.innerHTML = `
-            <div class="form-group" style="margin-bottom: 16px;"><label class="form-label">Название блока</label><input type="text" class="form-input" id="edit-input-1" value="${blockData.title || t[`blk_${key}`] || key}"></div>
-            <div class="form-group"><label class="form-label">Описание</label><input type="text" class="form-input" id="edit-input-2" value="${blockData.desc || ''}"></div>
-        `;
-    }
-    
-    editModalOverlay.classList.add('open'); 
-    editModalSheet.classList.add('open');
+     const fieldsContainer = document.getElementById('edit-modal-fields');
+     fieldsContainer.innerHTML = ''; 
+     
+     if (key.startsWith('about')) {
+         titleEl.innerText = 'О бизнесе';
+         fieldsContainer.innerHTML = `
+             <div class="form-group" style="margin-bottom: 16px;"><label class="form-label">Заголовок</label><input type="text" class="form-input" id="edit-input-1" value="${blockData.title || 'О бизнесе'}"></div>
+             <div class="form-group"><label class="form-label">Текст</label><textarea class="form-input" id="edit-input-2" rows="4" style="resize: none;">${blockData.text || ''}</textarea></div>
+         `;
+     } else if (key === 'hours' || key.startsWith('hours_copy')) {
+         titleEl.innerText = 'Часы работы';
+         const defaultSchedule = {
+             mode: 'simple', 
+             is247: false,
+             simple: { days: [1,2,3,4,5], open: '10:00', close: '22:00' },
+             individual: {} 
+         };
+         if (!blockData.schedule) blockData.schedule = JSON.parse(JSON.stringify(defaultSchedule));
+         for (let i = 1; i <= 7; i++) {
+             if (!blockData.schedule.individual[i]) {
+                 blockData.schedule.individual[i] = { 
+                     active: blockData.schedule.simple.days.includes(i), 
+                     open: blockData.schedule.simple.open || '10:00', 
+                     close: blockData.schedule.simple.close || '22:00' 
+                 };
+             }
+         }
+         const sched = blockData.schedule;
+         const isIndividual = sched.mode === 'individual';
+         const activeDays = sched.simple.days || [];
+         const openTime = sched.simple.open || '10:00';
+         const closeTime = sched.simple.close || '22:00';
+         
+         const templatesDiv = document.createElement('div');
+         templatesDiv.className = 'hours-templates';
+         templatesDiv.style.marginBottom = '20px';
+         templatesDiv.innerHTML = `
+             <button class="template-btn" onclick="applyHoursTemplate('work')">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 
+                 Пн-Пт 9:00–18:00
+             </button>
+             <button class="template-btn" onclick="applyHoursTemplate('weekend')">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 
+                 Пн-Сб 10:00–20:00
+             </button>
+             <button class="template-btn" onclick="applyHoursTemplate('daily')">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 
+                 Каждый день 10:00–22:00
+             </button>
+             <button class="template-btn" onclick="applyHoursTemplate('247')">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 
+                 24/7
+             </button>
+         `;
+         fieldsContainer.appendChild(templatesDiv);
+         
+         const modesDiv = document.createElement('div');
+         modesDiv.innerHTML = `
+             <div class="hours-mode-item mode-highlight" style="margin-bottom: 20px;">
+                 <div class="hours-mode-info">
+                     <div class="hours-mode-icon" style="color: var(--text-main);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+                     <div class="hours-mode-text"><h4>Разные часы по дням</h4><p>свой график для каждого дня</p></div>
+                 </div>
+                 <label class="toggle-switch"><input type="checkbox" id="hours-individual-toggle" ${isIndividual ? 'checked' : ''}><span class="slider-toggle"></span></label>
+             </div>
+         `;
+         fieldsContainer.appendChild(modesDiv);
+         
+         const settingsDiv = document.createElement('div');
+         settingsDiv.id = 'hours-settings-container';
+         if (isIndividual) {
+             const dayNames = ['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+             let listHtml = '<div class="individual-days-list">';
+             for (let i = 1; i <= 7; i++) {
+                 const dayData = sched.individual[i] || { active: true, open: '10:00', close: '22:00' };
+                 const isActive = dayData.active;
+                 const disabledClass = isActive ? '' : 'is-disabled';
+                 const checkedAttr = isActive ? 'checked' : '';
+                 listHtml += `
+                     <div class="day-row-item ${disabledClass}" data-day="${i}">
+                         <div class="day-row-left">
+                             <label class="toggle-switch" style="transform: scale(0.8); transform-origin: left;">
+                                 <input type="checkbox" class="day-active-toggle" data-day="${i}" ${checkedAttr}>
+                                 <span class="slider-toggle"></span>
+                             </label>
+                             <span class="day-name-text">${dayNames[i]}</span>
+                         </div>
+                         <div class="day-row-right">
+                             <input type="time" class="mini-time-input day-open" data-day="${i}" value="${dayData.open}" ${!isActive ? 'disabled' : ''}>
+                             <span class="time-separator">–</span>
+                             <input type="time" class="mini-time-input day-close" data-day="${i}" value="${dayData.close}" ${!isActive ? 'disabled' : ''}>
+                         </div>
+                     </div>
+                 `;
+             }
+             listHtml += '</div>';
+             settingsDiv.innerHTML = listHtml;
+             setTimeout(() => {
+                 settingsDiv.querySelectorAll('.day-active-toggle').forEach(toggle => {
+                     toggle.addEventListener('change', (e) => {
+                         const row = e.target.closest('.day-row-item');
+                         const inputs = row.querySelectorAll('input[type="time"]');
+                         if (e.target.checked) {
+                             row.classList.remove('is-disabled');
+                             inputs.forEach(inp => inp.removeAttribute('disabled'));
+                         } else {
+                             row.classList.add('is-disabled');
+                             inputs.forEach(inp => inp.setAttribute('disabled', 'true'));
+                         }
+                     });
+                 });
+             }, 0);
+         } else {
+             let html = `
+                 <label class="hours-editor-label">Рабочие дни</label>
+                 <div class="days-selector-grid" id="hours-days-grid">
+                     ${['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map((d, i) => {
+                         if (i===0) return '';
+                         const isActive = activeDays.includes(i);
+                         return `<button class="day-toggle-btn ${isActive ? 'active' : ''}" data-day="${i}">${d}</button>`;
+                     }).join('')}
+                 </div>
+                 <div class="time-range-container">
+                     <div class="time-input-wrapper">
+                         <label>Открытие</label>
+                         <input type="time" class="custom-time-input" id="hours-open-global" value="${openTime}">
+                         <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                     </div>
+                     <div style="padding-top: 20px; color: var(--text-secondary);">–</div>
+                     <div class="time-input-wrapper">
+                         <label>Закрытие</label>
+                         <input type="time" class="custom-time-input" id="hours-close-global" value="${closeTime}">
+                         <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                     </div>
+                 </div>
+                 <div class="hours-hint-text">Статус «открыто / закрыто» считается автоматически по времени.</div>
+             `;
+             settingsDiv.innerHTML = html;
+             setTimeout(() => {
+                 const grid = document.getElementById('hours-days-grid');
+                 if(grid) {
+                     grid.querySelectorAll('.day-toggle-btn').forEach(btn => {
+                         btn.addEventListener('click', () => {
+                             btn.classList.toggle('active');
+                         });
+                     });
+                 }
+             }, 0);
+         }
+         fieldsContainer.appendChild(settingsDiv);
+         
+         setTimeout(() => {
+             const toggleIndividual = document.getElementById('hours-individual-toggle');
+             if(toggleIndividual) {
+                 toggleIndividual.addEventListener('change', (e) => {
+                     const isIndiv = e.target.checked;
+                     if (!selectedBlocks[currentEditingBlockId]) selectedBlocks[currentEditingBlockId] = {};
+                     selectedBlocks[currentEditingBlockId].schedule = selectedBlocks[currentEditingBlockId].schedule || {};
+                     selectedBlocks[currentEditingBlockId].schedule.mode = isIndiv ? 'individual' : 'simple';
+                     openEditBlock(currentEditingBlockId);
+                 });
+             }
+         }, 0);
+         
+     } else if (key === 'socials' || key.startsWith('socials_copy')) {
+         titleEl.innerText = 'Соцсети';
+         const savedSocials = blockData.items || {};
+         socialNetworksConfig.forEach(net => {
+             const isEnabled = savedSocials[net.id]?.enabled ?? true;
+             const url = savedSocials[net.id]?.url || '';
+             const itemDiv = document.createElement('div');
+             itemDiv.className = 'social-item';
+             itemDiv.innerHTML = `
+                 <div class="social-header">
+                     <div class="social-info"><div class="social-icon-box">${net.icon}</div><div class="social-name">${net.name}</div></div>
+                     <label class="toggle-switch"><input type="checkbox" class="social-toggle" data-id="${net.id}" ${isEnabled ? 'checked' : ''}><span class="slider-toggle"></span></label>
+                 </div>
+                 <input type="text" class="social-input" data-id="${net.id}" placeholder="${net.placeholder}" value="${url}" ${!isEnabled ? 'disabled' : ''}>
+             `;
+             fieldsContainer.appendChild(itemDiv);
+         });
+         fieldsContainer.querySelectorAll('.social-toggle').forEach(toggle => {
+             toggle.addEventListener('change', (e) => {
+                 const input = fieldsContainer.querySelector(`.social-input[data-id="${e.target.dataset.id}"]`);
+                 if (e.target.checked) { input.removeAttribute('disabled'); input.focus(); } 
+                 else { input.setAttribute('disabled', 'true'); }
+             });
+         });
+         
+     } else if (key === 'links' || key.startsWith('links_copy')) {
+         titleEl.innerText = 'Ссылки-кнопки';
+         const sectionTitleDiv = document.createElement('div');
+         sectionTitleDiv.className = 'form-group'; sectionTitleDiv.style.marginBottom = '24px';
+         sectionTitleDiv.innerHTML = `<label class="form-label">Заголовок секции</label><input type="text" class="form-input" id="edit-section-title" value="${blockData.title || 'Ссылки'}">`;
+         fieldsContainer.appendChild(sectionTitleDiv);
+         
+         const linksListDiv = document.createElement('div');
+         linksListDiv.id = 'links-editor-list'; linksListDiv.className = 'links-editor-list';
+         const links = blockData.items || [{name: 'Наш сайт', url: ''}];
+         links.forEach((link, index) => linksListDiv.appendChild(createLinkItemElement(link.name, link.url, index)));
+         fieldsContainer.appendChild(linksListDiv);
+         
+         const addBtn = document.createElement('button');
+         addBtn.className = 'btn-add-link';
+         addBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Добавить ссылку`;
+         addBtn.onclick = () => linksListDiv.appendChild(createLinkItemElement('', '', linksListDiv.children.length));
+         fieldsContainer.appendChild(addBtn);
+         
+     } else if (key === 'cta' || key.startsWith('cta_copy')) {
+         titleEl.innerText = 'Кнопка-призыв';
+         const ctaText = blockData.text || 'Написать мне';
+         const ctaLink = blockData.link || '';
+         const ctaStyle = blockData.style || 'normal';
+         fieldsContainer.innerHTML = `
+             <div class="form-group" style="margin-bottom: 16px;">
+                 <label class="form-label">Текст кнопки</label>
+                 <input type="text" class="form-input" id="edit-cta-text" value="${ctaText}" placeholder="Например: Записаться">
+             </div>
+             <div class="form-group" style="margin-bottom: 24px;">
+                 <label class="form-label">Куда ведёт кнопка</label>
+                 <input type="text" class="form-input" id="edit-cta-link" value="${ctaLink}" placeholder="@username в Telegram или https://...">
+             </div>
+             <label class="form-label" style="margin-bottom: 10px; display:block;">Оформление</label>
+             <div class="style-selector-grid">
+                 <div class="style-option-btn ${ctaStyle === 'normal' ? 'active' : ''}" data-style="normal" onclick="selectCtaStyle(this)">
+                     <div class="style-mini-preview"></div>
+                     <span class="style-option-label">Обычное</span>
+                 </div>
+                 <div class="style-option-btn ${ctaStyle === 'shimmer' ? 'active' : ''}" data-style="shimmer" onclick="selectCtaStyle(this)">
+                     <div class="style-mini-preview"></div>
+                     <span class="style-option-label">Перелив</span>
+                 </div>
+                 <div class="style-option-btn ${ctaStyle === 'flash' ? 'active' : ''}" data-style="flash" onclick="selectCtaStyle(this)">
+                     <div class="style-mini-preview"></div>
+                     <span class="style-option-label">Проблеск</span>
+                 </div>
+                 <div class="style-option-btn ${ctaStyle === 'pulse' ? 'active' : ''}" data-style="pulse" onclick="selectCtaStyle(this)">
+                     <div class="style-mini-preview"></div>
+                     <span class="style-option-label">Пульсация</span>
+                 </div>
+             </div>
+             <input type="hidden" id="edit-cta-style" value="${ctaStyle}">
+         `;
+         
+     } else if (key === 'contacts' || key.startsWith('contacts_copy')) {
+         titleEl.innerText = 'Контакты';
+         const phone = blockData.phone || '';
+         const email = blockData.email || '';
+         const showVcard = blockData.showVcard !== false;
+         fieldsContainer.innerHTML = `
+             <div class="form-group" style="margin-bottom: 16px;">
+                 <label class="form-label">Заголовок</label>
+                 <input type="text" class="form-input" id="edit-contacts-title" value="${blockData.title || 'Контакты'}" placeholder="Контакты">
+             </div>
+             <div class="form-group" style="margin-bottom: 16px;">
+                 <label class="form-label">Телефон</label>
+                 <input type="tel" class="form-input" id="edit-contacts-phone" value="${phone}" placeholder="+995 ...">
+             </div>
+             <div class="form-group" style="margin-bottom: 24px;">
+                 <label class="form-label">Email</label>
+                 <input type="email" class="form-input" id="edit-contacts-email" value="${email}" placeholder="hello@example.com">
+             </div>
+             <div class="contact-toggle-row">
+                 <div class="contact-toggle-info">
+                     <div class="contact-toggle-icon">
+                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                     </div>
+                     <div class="contact-toggle-text">
+                         <h4>Кнопка «Сохранить в контакты»</h4>
+                         <p>клиент сохранит визитку в тел. книжку (vCard)</p>
+                     </div>
+                 </div>
+                 <label class="toggle-switch">
+                     <input type="checkbox" id="edit-contacts-vcard-toggle" ${showVcard ? 'checked' : ''}>
+                     <span class="slider-toggle"></span>
+                 </label>
+             </div>
+             <div style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; line-height: 1.4;">
+                 «Позвонить» сразу набирает номер. «Сохранить в контакты» скачивает vCard-файл — имя берётся из шапки, телефон и email из этого блока.
+             </div>
+         `;
+         
+     } else if (key === 'price' || key.startsWith('price_copy')) {
+         titleEl.innerText = 'Прайс / меню';
+         const items = blockData.items || [{name: '', cost: ''}];
+         const limit = 5; 
+         let itemsHtml = '<div class="price-items-list">';
+         items.forEach((item, index) => {
+             itemsHtml += `
+                 <div class="price-item-row">
+                     <input type="text" class="price-input-name" placeholder="Название" value="${item.name}" data-index="${index}">
+                     <input type="text" class="price-input-cost" placeholder="Цена" value="${item.cost}" data-index="${index}">
+                     <button class="btn-remove-price" onclick="removePriceItem(this)">
+                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                     </button>
+                 </div>
+             `;
+         });
+         itemsHtml += '</div>';
+         fieldsContainer.innerHTML = `
+             <div class="form-group" style="margin-bottom: 16px;">
+                 <label class="form-label">Заголовок</label>
+                 <input type="text" class="form-input" id="edit-price-title" value="${blockData.title || 'Прайс'}" placeholder="Прайс">
+             </div>
+             <label class="form-label" style="margin-bottom: 10px; display:block;">Позиции</label>
+             ${itemsHtml}
+             <button class="btn-add-price" onclick="addPriceItem()">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                 Добавить позицию
+             </button>
+             <div class="price-limit-hint">
+                 <span class="limit-badge">${items.length}/${limit}</span>
+                 бесплатно — до ${limit} элементов, дальше расширение блока
+             </div>
+         `;
+         
+     } else if (key === 'discounts' || key.startsWith('discounts_copy')) {
+         titleEl.innerText = 'Скидки / Акции';
+         const items = blockData.items || [{name: '', oldPrice: '', newPrice: '', percent: ''}];
+         const limit = 3;
+         let itemsHtml = '';
+         items.forEach((item, index) => {
+             itemsHtml += `
+                 <div class="discount-item-row">
+                     <div class="discount-top-row">
+                         <input type="text" class="discount-input-name" placeholder="Название акции" value="${item.name}" data-index="${index}">
+                         <button class="btn-remove-discount" onclick="removeDiscountItem(this)">
+                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                         </button>
+                     </div>
+                     <div class="discount-prices-row">
+                         <input type="number" class="discount-input-price discount-old" placeholder="Цена до" value="${item.oldPrice}" data-index="${index}" oninput="calculateDiscountPercent(this)">
+                         <input type="number" class="discount-input-price discount-new" placeholder="Цена после" value="${item.newPrice}" data-index="${index}" oninput="calculateDiscountPercent(this)">
+                         <input type="text" class="discount-input-percent" placeholder="% скидк" value="${item.percent}" data-index="${index}">
+                     </div>
+                 </div>
+             `;
+         });
+         fieldsContainer.innerHTML = `
+             <div class="form-group" style="margin-bottom: 16px;">
+                 <label class="form-label">Заголовок</label>
+                 <input type="text" class="form-input" id="edit-discounts-title" value="${blockData.title || 'Акции'}" placeholder="Акции">
+             </div>
+             <label class="form-label" style="margin-bottom: 10px; display:block;">Скидки</label>
+             <div id="discounts-list-container">
+                 ${itemsHtml}
+             </div>
+             <button class="btn-add-price" onclick="addDiscountItem()" style="margin-bottom: 8px;">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                 Добавить скидку
+             </button>
+             <div class="price-limit-hint">
+                 <span class="limit-badge" id="discounts-counter">${items.length}/${limit}</span>
+                 бесплатно — до ${limit} элементов, в PRO больше
+             </div>
+             <div class="discount-hint-text">
+                 Оставь «%» пустым — посчитаю сам из цен «до» и «после». Или укажи процент вручную.
+             </div>
+         `;
+         
+     } else if (key === 'reviews' || key.startsWith('reviews_copy')) {
+         titleEl.innerText = 'Отзывы';
+         const items = blockData.items || [{type: 'link', platform: 'yandex', name: 'Яндекс Карты', url: ''}];
+         const limit = 4;
+         let itemsHtml = '';
+         items.forEach((item, index) => {
+             if (item.type === 'link') {
+                 itemsHtml += `
+                     <div class="review-edit-item" data-index="${index}">
+                         <label class="form-label" style="margin-bottom: 8px;">Ссылки на отзывы</label>
+                         <div class="platform-selector">
+                             ${reviewPlatformsConfig.map(p => `
+                                 <div class="platform-icon-btn ${item.platform === p.id ? 'active' : ''}" 
+                                      data-platform="${p.id}" 
+                                      onclick="selectReviewPlatform(this)"
+                                      style="border-color: ${item.platform === p.id ? p.color : 'rgba(255,255,255,0.1)'}">
+                                     ${p.icon}
+                                 </div>
+                             `).join('')}
+                         </div>
+                         <input type="text" class="form-input review-link-input" placeholder="https://..." value="${item.url || ''}" data-index="${index}" style="margin-top: 10px;">
+                         <input type="hidden" class="review-type-input" value="link">
+                         <button class="btn-remove-review" onclick="removeReviewItem(this)">
+                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                         </button>
+                     </div>
+                 `;
+             } else {
+                 itemsHtml += `
+                     <div class="review-edit-item" data-index="${index}">
+                         <label class="form-label" style="margin-bottom: 8px;">Свои отзывы вручную</label>
+                         <div class="review-manual-fields">
+                             <div style="display:flex; gap:8px; margin-bottom:8px;">
+                                 <input type="text" class="form-input review-author-input" placeholder="Имя (напр. Анна)" value="${item.author || ''}" style="flex:2;">
+                                 <div class="rating-selector">
+                                     ${[1,2,3,4,5].map(star => `
+                                         <span class="star-btn ${star <= (item.rating || 5) ? 'active' : ''}" data-star="${star}" onclick="selectReviewRating(this)">&#9733;</span>
+                                     `).join('')}
+                                 </div>
+                                 <button class="btn-remove-review" onclick="removeReviewItem(this)">
+                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                 </button>
+                             </div>
+                             <textarea class="form-input review-text-input" placeholder="Текст отзыва..." rows="2" style="resize:none;">${item.text || ''}</textarea>
+                             <input type="hidden" class="review-type-input" value="text">
+                             <input type="hidden" class="review-rating-hidden" value="${item.rating || 5}">
+                         </div>
+                     </div>
+                 `;
+             }
+         });
+         fieldsContainer.innerHTML = `
+             <div class="form-group" style="margin-bottom: 16px;">
+                 <label class="form-label">Заголовок</label>
+                 <input type="text" class="form-input" id="edit-reviews-title" value="${blockData.title || 'Отзывы'}" placeholder="Отзывы">
+             </div>
+             <div id="reviews-list-container">
+                 ${itemsHtml}
+             </div>
+             <button class="btn-add-price" onclick="addReviewItem()" style="margin-bottom: 8px;">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                 Добавить отзыв
+             </button>
+             <div class="price-limit-hint">
+                 <span class="limit-badge" id="reviews-counter">${items.length}/${limit}</span>
+                 бесплатно — до ${limit} элементов, в PRO больше
+             </div>
+         `;
+         
+     } else if (key === 'faq' || key.startsWith('faq_copy')) {
+         titleEl.innerText = 'Вопрос-ответ';
+         const items = blockData.items || [{question: '', answer: ''}];
+         const limit = 4;
+         let itemsHtml = '';
+         items.forEach((item, index) => {
+             itemsHtml += `
+                 <div class="faq-edit-item" data-index="${index}">
+                     <div style="display:flex; gap:8px; margin-bottom:8px;">
+                         <input type="text" class="form-input faq-question-input" placeholder="Вопрос" value="${item.question || ''}" style="flex:1;">
+                         <button class="btn-remove-review" onclick="removeFaqItem(this)">
+                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                         </button>
+                     </div>
+                     <textarea class="form-input faq-answer-input" placeholder="Ответ" rows="2" style="resize:none;">${item.answer || ''}</textarea>
+                 </div>
+             `;
+         });
+         fieldsContainer.innerHTML = `
+             <div class="form-group" style="margin-bottom: 16px;">
+                 <label class="form-label">Заголовок</label>
+                 <input type="text" class="form-input" id="edit-faq-title" value="${blockData.title || 'Частые вопросы'}" placeholder="Частые вопросы">
+             </div>
+             <div id="faq-list-container">
+                 ${itemsHtml}
+             </div>
+             <button class="btn-add-price" onclick="addFaqItem()" style="margin-bottom: 8px;">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                 Добавить вопрос
+             </button>
+             <div class="price-limit-hint">
+                 <span class="limit-badge" id="faq-counter">${items.length}/${limit}</span>
+                 бесплатно — до ${limit} элементов, в PRO больше
+             </div>
+         `;
+         
+     } else if (key === 'facts' || key.startsWith('facts_copy')) {
+         titleEl.innerText = 'Цифры / факты';
+         const items = blockData.items || [{number: '', label: ''}];
+         const limit = 3;
+         let itemsHtml = '';
+         items.forEach((item, index) => {
+             itemsHtml += `
+                 <div class="fact-edit-item" data-index="${index}">
+                     <div style="display:flex; gap:8px; align-items: center;">
+                         <input type="text" class="form-input fact-number-input" placeholder="500+" value="${item.number || ''}" style="flex:1;">
+                         <input type="text" class="form-input fact-label-input" placeholder="клиентов" value="${item.label || ''}" style="flex:2;">
+                         <button class="btn-remove-review" onclick="removeFactItem(this)" style="flex-shrink: 0;">
+                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                         </button>
+                     </div>
+                 </div>
+             `;
+         });
+         fieldsContainer.innerHTML = `
+             <div class="form-group" style="margin-bottom: 16px;">
+                 <label class="form-label">Заголовок</label>
+                 <input type="text" class="form-input" id="edit-facts-title" value="${blockData.title || 'Цифры'}" placeholder="Цифры">
+             </div>
+             <label class="form-label" style="margin-bottom: 10px; display:block;">Цифры</label>
+             <div id="facts-list-container">
+                 ${itemsHtml}
+             </div>
+             <button class="btn-add-price" onclick="addFactItem()" style="margin-bottom: 8px;">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                 Добавить цифру
+             </button>
+             <div class="price-limit-hint">
+                 <span class="limit-badge" id="facts-counter">${items.length}/${limit}</span>
+                 бесплатно — до ${limit} элементов, в PRO больше
+             </div>
+         `;
+         
+     } else if (key === 'video' || key.startsWith('video_copy')) {
+         titleEl.innerText = 'Видео';
+         const videoUrl = blockData.url || '';
+         fieldsContainer.innerHTML = `
+             <div class="form-group" style="margin-bottom: 16px;">
+                 <label class="form-label">Заголовок</label>
+                 <input type="text" class="form-input" id="edit-video-title" value="${blockData.title || 'Видео'}" placeholder="Видео">
+             </div>
+             <div class="form-group" style="margin-bottom: 8px;">
+                 <label class="form-label">Ссылка на видео</label>
+                 <input type="text" class="form-input" id="edit-video-url" value="${videoUrl}" placeholder="YouTube, Shorts, TikTok, Reels, Vimeo или .mp4">
+             </div>
+             <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.4;">
+                 Вставь ссылку — плеер появится сразу. Подходят YouTube, TikTok, Shorts, Reels, Vimeo.
+             </p>
+             <div class="video-info-box">
+                 <div class="video-info-icon">
+                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                 </div>
+                 <div class="video-info-text">
+                     <h4>Видео прямо из Telegram</h4>
+                     <p>После создания бота сможешь присылать видео и кружочки прямо в чат — они появятся здесь. Обычные до 20 МБ; что больше — ссылкой с видеохостинга.</p>
+                 </div>
+             </div>
+         `;
+         
+     } else if (key === 'share' || key.startsWith('share_copy')) {
+         titleEl.innerText = t.blk_share;
+         const imageUrl = blockData.imageUrl || '';
+         const caption = blockData.caption || '';
+         const layout = blockData.layout || 'compact';
+         fieldsContainer.innerHTML = `
+             <div class="form-group">
+                 <label class="form-label">${t.share_title}</label>
+                 <input type="text" class="form-input" id="edit-share-title" value="${blockData.title || 'Поделиться'}">
+             </div>
+             <div class="form-group">
+                 <label class="form-label">${t.share_image_label}</label>
+                 <input type="text" class="form-input" id="edit-share-image-url" placeholder="https://..." value="${imageUrl}">
+                 <div class="share-upload-area" onclick="document.getElementById('share-image-upload').click()">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                     <span>${t.share_upload_btn}</span>
+                 </div>
+                 <input type="file" id="share-image-upload" accept="image/*" style="display:none" onchange="handleShareImageUpload(this)">
+                 ${imageUrl ? `<img src="${imageUrl}" class="share-uploaded-preview" style="display:block;">` : '<img class="share-uploaded-preview" style="display:none;">'}
+             </div>
+             <p class="share-hint-text">${t.share_desc_hint}</p>
+             <div class="form-group">
+                 <label class="form-label">${t.share_caption_label}</label>
+                 <textarea class="form-input" id="edit-share-caption" rows="3" maxlength="200" placeholder="${t.share_caption_placeholder}" oninput="updateCaptionCounter(this)">${caption}</textarea>
+                 <div class="share-caption-counter" id="share-caption-counter">${caption.length}/200</div>
+                 <p class="share-info-text">${t.share_caption_info}</p>
+             </div>
+             <div class="form-group">
+                 <label class="form-label">${t.share_layout_label}</label>
+                 <div class="share-layout-selector">
+                     <div class="share-layout-option ${layout === 'compact' ? 'active' : ''}" data-layout="compact" onclick="selectShareLayout(this)">
+                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                         <span>${t.share_layout_compact}</span>
+                     </div>
+                     <div class="share-layout-option ${layout === 'stories' ? 'active' : ''}" data-layout="stories" onclick="selectShareLayout(this)">
+                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                         <span>${t.share_layout_stories}</span>
+                     </div>
+                     <div class="share-layout-option ${layout === 'grid' ? 'active' : ''}" data-layout="grid" onclick="selectShareLayout(this)">
+                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                         <span>${t.share_layout_grid}</span>
+                     </div>
+                     <div class="share-layout-option ${layout === 'list' ? 'active' : ''}" data-layout="list" onclick="selectShareLayout(this)">
+                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                         <span>${t.share_layout_list}</span>
+                     </div>
+                 </div>
+             </div>
+             <div class="share-preview-section">
+                 <label class="form-label">${t.share_preview_label}</label>
+                 <div class="share-preview-container" id="share-preview-container"></div>
+             </div>
+         `;
+         setTimeout(() => updateSharePreview(layout, imageUrl, caption), 0);
+         
+     } else if (key === 'gallery' || key.startsWith('gallery_copy')) {
+         titleEl.innerText = t.blk_gallery || 'Галерея';
+         const items = blockData.items || [];
+         const displayFormat = blockData.displayFormat || 'grid';
+         const limit = 8;
+         
+         // Генерируем HTML для превью загруженных фото/демо-плиток
+         let photosPreviewHtml = '<div class="gallery-photos-preview">';
+         items.forEach((item, index) => {
+             if (item.type === 'image') {
+                 photosPreviewHtml += `<div class="gallery-photo-thumb" style="background-image: url('${item.src}');" onclick="removeGalleryItem(${index})"><button class="remove-photo-btn">×</button></div>`;
+             } else if (item.type === 'demo') {
+                 photosPreviewHtml += `<div class="gallery-photo-thumb demo-tile" style="background-color: ${item.color};" onclick="removeGalleryItem(${index})"><button class="remove-photo-btn">×</button></div>`;
+             }
+         });
+         // Добавляем кнопку "+" для загрузки
+         photosPreviewHtml += `<div class="gallery-photo-thumb add-photo-btn" onclick="document.getElementById('gallery-upload-input').click()">+</div>`;
+         photosPreviewHtml += '</div>';
+         // Скрытый инпут для загрузки файлов
+         photosPreviewHtml += `<input type="file" id="gallery-upload-input" accept="image/*" multiple style="display:none" onchange="handleGalleryUpload(this)">`;
+         
+         fieldsContainer.innerHTML = `
+             <div class="form-group">
+                 <label class="form-label">${t.gallery_title}</label>
+                 <input type="text" class="form-input" id="edit-gallery-title" value="${blockData.title || 'Галерея'}">
+             </div>
+             <div class="form-group">
+                 <label class="form-label">${t.gallery_display_format}</label>
+                 <div class="gallery-format-selector">
+                     <div class="gallery-format-option ${displayFormat === 'grid' ? 'active' : ''}" data-format="grid" onclick="selectGalleryFormat(this)">${t.gallery_grid}</div>
+                     <div class="gallery-format-option ${displayFormat === 'carousel' ? 'active' : ''}" data-format="carousel" onclick="selectGalleryFormat(this)">${t.gallery_carousel}</div>
+                     <div class="gallery-format-option ${displayFormat === 'mosaic' ? 'active' : ''}" data-format="mosaic" onclick="selectGalleryFormat(this)">${t.gallery_mosaic}</div>
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label class="form-label">${t.gallery_photos}</label>
+                 ${photosPreviewHtml}
+             </div>
+             <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                 <button class="btn-secondary" style="flex:1; padding: 12px;" onclick="document.getElementById('gallery-upload-input').click()">
+                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 5px; vertical-align: middle;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                     ${t.gallery_upload_photo}
+                 </button>
+                 <button class="btn-secondary" style="flex:1; padding: 12px;" onclick="addDemoTile()">
+                     ${t.gallery_demo_tile}
+                 </button>
+             </div>
+             <p class="share-hint-text">${t.gallery_upload_hint}</p>
+             <p class="share-hint-text" style="margin-top: 5px;">${t.gallery_demo_hint}</p>
+             <div class="price-limit-hint" style="margin-top: 15px;">
+                 <span class="limit-badge" id="gallery-counter">${items.length}/${limit}</span>
+                 ${t.gallery_limit}
+             </div>
+         `;
+         
+     } else {
+         titleEl.innerText = t.edit_modal_title || 'Редактировать блок';
+         fieldsContainer.innerHTML = `
+             <div class="form-group" style="margin-bottom: 16px;"><label class="form-label">Название блока</label><input type="text" class="form-input" id="edit-input-1" value="${blockData.title || t[`blk_${key}`] || key}"></div>
+             <div class="form-group"><label class="form-label">Описание</label><input type="text" class="form-input" id="edit-input-2" value="${blockData.desc || ''}"></div>
+         `;
+     }
+     
+     editModalOverlay.classList.add('open'); 
+     editModalSheet.classList.add('open');
 }
 
 function selectCtaStyle(element) {
@@ -1837,24 +1822,24 @@ function applyHoursTemplate(type) {
         return;
     }
     const openInput = document.getElementById('hours-open-global');
-    const closeInput = document.getElementById('hours-close-global');
-    const grid = document.getElementById('hours-days-grid');
-    if (!grid || !openInput || !closeInput) return;
-    
-    grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.remove('active'));
-    if (type === 'work') {
-        openInput.value = '09:00'; closeInput.value = '18:00';
-        for(let i=0; i<5; i++) grid.children[i].classList.add('active');
-    } else if (type === 'weekend') {
-        openInput.value = '10:00'; closeInput.value = '20:00';
-        for(let i=0; i<6; i++) grid.children[i].classList.add('active');
-    } else if (type === 'daily') {
-        openInput.value = '10:00'; closeInput.value = '22:00';
-        grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.add('active'));
-    } else if (type === '247') {
-        openInput.value = '00:00'; closeInput.value = '23:59';
-        grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.add('active'));
-    }
+     const closeInput = document.getElementById('hours-close-global');
+     const grid = document.getElementById('hours-days-grid');
+     if (!grid || !openInput || !closeInput) return;
+     
+     grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.remove('active'));
+     if (type === 'work') {
+         openInput.value = '09:00'; closeInput.value = '18:00';
+         for(let i=0; i<5; i++) grid.children[i].classList.add('active');
+     } else if (type === 'weekend') {
+         openInput.value = '10:00'; closeInput.value = '20:00';
+         for(let i=0; i<6; i++) grid.children[i].classList.add('active');
+     } else if (type === 'daily') {
+         openInput.value = '10:00'; closeInput.value = '22:00';
+         grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.add('active'));
+     } else if (type === '247') {
+         openInput.value = '00:00'; closeInput.value = '23:59';
+         grid.querySelectorAll('.day-toggle-btn').forEach(btn => btn.classList.add('active'));
+     }
 }
 
 function createLinkItemElement(name, url, index) {
@@ -1920,7 +1905,7 @@ function addReviewItem() {
     const container = document.getElementById('reviews-list-container');
     const index = container.children.length;
     const row = document.createElement('div');
-    row.className = 'review-edit-item';
+     row.className = 'review-edit-item';
     row.setAttribute('data-index', index);
     row.innerHTML =  `<label class="form-label" style="margin-bottom: 8px;">Ссылки на отзывы</label> <div class="platform-selector"> ${reviewPlatformsConfig.map(p =>` <div class= "platform-icon-btn ${p.id === 'yandex' ? 'active' : ''} " 
     data-platform= "${p.id} " 
@@ -2068,28 +2053,28 @@ function updateSharePreview(layout, imageUrl, caption) {
     const container = document.getElementById('share-preview-container');
     if (!container) return;
     const t = translations[currentLang];
-    let buttonsHtml = '';
-    const copyBtn = `<button class="share-btn share-btn-copy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> ${t.share_btn_copy}</button>`;
-    const storiesBtn = `<button class="share-btn share-btn-stories"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> ${t.share_btn_stories}</button>`;
-    const shareBtn = `<button class="share-btn share-btn-share"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> ${t.share_btn_share}</button>`;
-    
-    if (layout === 'compact') {
-        buttonsHtml = `<div class="share-layout-compact">${copyBtn}${storiesBtn}${shareBtn}</div>`;
-    } else if (layout === 'stories') {
-        buttonsHtml = `<div class="share-layout-stories">${storiesBtn}${copyBtn}${shareBtn}</div>`;
-    } else if (layout === 'grid') {
-        buttonsHtml = `<div class="share-layout-grid">${copyBtn}${storiesBtn}${shareBtn}</div>`;
-    } else if (layout === 'list') {
-        buttonsHtml = `<div class="share-layout-list">${copyBtn}${storiesBtn}${shareBtn}</div>`;
-    }
-    
-    container.innerHTML = `
-        <div class="share-block-preview">
-            ${imageUrl ? `<img src="${imageUrl}" alt="Share image" class="share-preview-image">` : ''}
-            ${caption ? `<p class="share-preview-caption">${caption}</p>` : ''}
-            ${buttonsHtml}
-        </div>
-    `;
+     let buttonsHtml = '';
+     const copyBtn = `<button class="share-btn share-btn-copy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> ${t.share_btn_copy}</button>`;
+     const storiesBtn = `<button class="share-btn share-btn-stories"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> ${t.share_btn_stories}</button>`;
+     const shareBtn = `<button class="share-btn share-btn-share"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> ${t.share_btn_share}</button>`;
+     
+     if (layout === 'compact') {
+         buttonsHtml = `<div class="share-layout-compact">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+     } else if (layout === 'stories') {
+         buttonsHtml = `<div class="share-layout-stories">${storiesBtn}${copyBtn}${shareBtn}</div>`;
+     } else if (layout === 'grid') {
+         buttonsHtml = `<div class="share-layout-grid">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+     } else if (layout === 'list') {
+         buttonsHtml = `<div class="share-layout-list">${copyBtn}${storiesBtn}${shareBtn}</div>`;
+     }
+     
+     container.innerHTML = `
+         <div class="share-block-preview">
+             ${imageUrl ? `<img src="${imageUrl}" alt="Share image" class="share-preview-image">` : ''}
+             ${caption ? `<p class="share-preview-caption">${caption}</p>` : ''}
+             ${buttonsHtml}
+         </div>
+     `;
 }
 
 // --- Функции для блока Галерея ---
@@ -2119,22 +2104,22 @@ function handleGalleryUpload(input) {
     const blockData = selectedBlocks[currentEditingBlockId];
     if (!blockData.items) blockData.items = [];
     let processedCount = 0;
-    files.forEach(file => {
-        if (blockData.items.length >= 8) return; // Проверка лимита внутри цикла
-        if (['image/jpeg', 'image/png', 'image/jpg', 'image/webp'].includes(file.type)) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                blockData.items.push({ type: 'image', src: e.target.result });
-                processedCount++;
-                // Когда все файлы обработаны, перерисовываем модалку
-                if (processedCount === files.length || blockData.items.length >= 8) {
-                    openEditBlock(currentEditingBlockId);
-                }
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-    input.value = ''; // Сброс инпута
+     files.forEach(file => {
+         if (blockData.items.length >= 8) return; // Проверка лимита внутри цикла
+         if (['image/jpeg', 'image/png', 'image/jpg', 'image/webp'].includes(file.type)) {
+             const reader = new FileReader();
+             reader.onload = function(e) {
+                 blockData.items.push({ type: 'image', src: e.target.result });
+                 processedCount++;
+                 // Когда все файлы обработаны, перерисовываем модалку
+                 if (processedCount === files.length || blockData.items.length >= 8) {
+                     openEditBlock(currentEditingBlockId);
+                 }
+             };
+             reader.readAsDataURL(file);
+         }
+     });
+     input.value = ''; // Сброс инпута
 }
 
 function removeGalleryItem(index) {
@@ -2399,21 +2384,21 @@ function openHeaderModal() {
     switchHeaderTab(currentHeaderFormat);
     
     const nameInput = document.getElementById('modal-input-name');
-    const descInput = document.getElementById('modal-input-desc');
-    if (userCardData) {
-        nameInput.value = userCardData.name || '';
-        descInput.value = userCardData.desc || '';
-        updateAvatarFromUrl(userCardData.avatarUrl || '');
-        updateCoverFromUrl(userCardData.coverUrl || '');
-        renderCarouselPreview();
-        // Обновляем превью баннера при открытии модалки
-        updateBannerPreview();
-    } else { 
-        nameInput.value = ''; 
-        descInput.value = ''; 
-        // Сброс превью если данных нет
-        updateBannerPreview('', '');
-    }
+     const descInput = document.getElementById('modal-input-desc');
+     if (userCardData) {
+         nameInput.value = userCardData.name || '';
+         descInput.value = userCardData.desc || '';
+         updateAvatarFromUrl(userCardData.avatarUrl || '');
+         updateCoverFromUrl(userCardData.coverUrl || '');
+         renderCarouselPreview();
+         // Обновляем превью баннера при открытии модалки
+         updateBannerPreview();
+     } else { 
+         nameInput.value = ''; 
+         descInput.value = ''; 
+         // Сброс превью если данных нет
+         updateBannerPreview('', '');
+     }
 }
 
 function closeHeaderModal() {
@@ -2447,32 +2432,32 @@ function updateBannerPreview(coverUrl, avatarUrl) {
     const nameEl = document.getElementById('modal-banner-preview-name');
     
     // Если параметры не переданы, берем из текущих данных
-    if (coverUrl === undefined) coverUrl = userCardData?.coverUrl || '';
-    if (avatarUrl === undefined) avatarUrl = userCardData?.avatarUrl || '';
-    
-    // Обновляем фон
-    if (coverUrl) {
-        bgEl.style.backgroundImage = `url(${coverUrl})`;
-        bgEl.style.backgroundSize = 'cover';
-        bgEl.style.backgroundPosition = 'center';
-    } else {
-        bgEl.style.backgroundImage = '';
-    }
-    
-    // Обновляем аватар
-    if (avatarUrl) {
-        avEl.style.backgroundImage = `url(${avatarUrl})`;
-        avEl.style.backgroundSize = 'cover';
-        avEl.style.backgroundPosition = 'center';
-        avEl.innerHTML = '';
-    } else {
-        avEl.style.backgroundImage = '';
-        avEl.innerHTML = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
-    }
-    
-    // Обновляем имя
-    const currentName = document.getElementById('modal-input-name')?.value || userCardData?.name || 'Имя компании';
-    nameEl.innerText = currentName;
+     if (coverUrl === undefined) coverUrl = userCardData?.coverUrl || '';
+     if (avatarUrl === undefined) avatarUrl = userCardData?.avatarUrl || '';
+     
+     // Обновляем фон
+     if (coverUrl) {
+         bgEl.style.backgroundImage = `url(${coverUrl})`;
+         bgEl.style.backgroundSize = 'cover';
+         bgEl.style.backgroundPosition = 'center';
+     } else {
+         bgEl.style.backgroundImage = '';
+     }
+     
+     // Обновляем аватар
+     if (avatarUrl) {
+         avEl.style.backgroundImage = `url(${avatarUrl})`;
+         avEl.style.backgroundSize = 'cover';
+         avEl.style.backgroundPosition = 'center';
+         avEl.innerHTML = '';
+     } else {
+         avEl.style.backgroundImage = '';
+         avEl.innerHTML = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
+     }
+     
+     // Обновляем имя
+     const currentName = document.getElementById('modal-input-name')?.value || userCardData?.name || 'Имя компании';
+     nameEl.innerText = currentName;
 }
 
 function handleFileUpload(event, updateCallback) {
